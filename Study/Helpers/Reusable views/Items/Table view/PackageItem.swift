@@ -28,6 +28,7 @@ class PackageItem: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         buildFrames()
+        buildShadows()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -68,15 +69,7 @@ private extension PackageItem {
         //content view
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 16
-        contentView.layer.borderWidth = 0.2
-        contentView.layer.borderColor = AppColor.lightGray.cgColor
-
-        //content view shadow
-        contentView.layer.masksToBounds = false
-        contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        contentView.layer.shadowOpacity = 0.24
-        contentView.layer.shadowRadius = CGFloat(1)
+        contentView.backgroundColor = AppColor.white.uiColor
 
         //package name label view
         packageNameLabelView.text = "Discrete mathematics"
@@ -91,7 +84,7 @@ private extension PackageItem {
         //package icon view
         packageIconView.layer.cornerRadius = 16
         packageIconView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        packageIconView.backgroundColor = UIColor.orange
+        packageIconView.backgroundColor = AppColor.white.uiColor
         packageIconView.contentMode = .scaleAspectFit
 
         //community view
@@ -134,6 +127,15 @@ private extension PackageItem {
             make.top.equalTo(communityView.snp.bottom).offset(6)
             make.left.equalTo(packageNameLabelView.snp.left)
         }
+    }
+
+    func buildShadows() -> Void {
+        let shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 16)
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.lightGray.cgColor
+        contentView.layer.shadowOffset = .zero
+        contentView.layer.shadowOpacity = 0.15
+        contentView.layer.shadowPath = shadowPath.cgPath
     }
 
     func buildFrames() -> Void {

@@ -27,6 +27,7 @@ class SubscribedPackageItem: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         buildFrames()
+        buildShadows()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -63,9 +64,7 @@ private extension SubscribedPackageItem {
         //content view
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 16
-        contentView.layer.borderWidth = 0.3
-        contentView.layer.borderColor = AppColor.main.cgColor
-        contentView.layer.cornerRadius = 13.0
+        contentView.backgroundColor = AppColor.white.uiColor
 
         //package name label view
         packageNameLabelView.text = "Discrete mathematics"
@@ -117,6 +116,15 @@ private extension SubscribedPackageItem {
             make.top.equalTo(progressView.snp.bottom).offset(26)
             make.bottom.equalTo(-26 - verticalPadding)
         }
+    }
+
+    func buildShadows() -> Void {
+        let shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 16)
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.lightGray.cgColor
+        contentView.layer.shadowOffset = .zero
+        contentView.layer.shadowOpacity = 0.15
+        contentView.layer.shadowPath = shadowPath.cgPath
     }
 
     func buildFrames() -> Void {
