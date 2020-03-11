@@ -103,7 +103,7 @@ private extension ModuleItem {
         topicImageView.snp.makeConstraints { (make) in
             make.top.left.equalTo(2.0)
             make.bottom.equalTo(separatorLineView.snp.top).offset(-2.0)
-            make.height.width.equalTo(60.0)
+            make.height.width.equalTo(60.0).priority(999)
         }
 
         topicLabelView.snp.makeConstraints { (make) in
@@ -114,7 +114,6 @@ private extension ModuleItem {
 
         informationStackView.snp.makeConstraints { (make) in
             make.left.equalTo(topicLabelView.snp.left)
-//            make.right.equalTo(-20.0)
             make.height.equalTo(20.0)
             make.top.equalTo(topicLabelView.snp.bottom).offset(7.0)
         }

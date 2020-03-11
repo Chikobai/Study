@@ -5,7 +5,7 @@ PODS:
   - Charts/Core (3.4.0)
   - Cosmos (21.0.0)
   - InputMask (5.0.0)
-  - IQKeyboardManager (6.5.5)
+  - IQKeyboardManagerSwift (6.5.5)
   - SJSegmentedScrollView (1.5.0)
   - SnapKit (5.0.1)
   - XLPagerTabStrip (9.0.0)
@@ -15,7 +15,7 @@ DEPENDENCIES:
   - Charts
   - Cosmos
   - InputMask
-  - IQKeyboardManager
+  - IQKeyboardManagerSwift
   - SJSegmentedScrollView
   - SnapKit
   - XLPagerTabStrip
@@ -26,7 +26,7 @@ SPEC REPOS:
     - Charts
     - Cosmos
     - InputMask
-    - IQKeyboardManager
+    - IQKeyboardManagerSwift
     - SJSegmentedScrollView
     - SnapKit
     - XLPagerTabStrip
@@ -36,11 +36,11 @@ SPEC CHECKSUMS:
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
   InputMask: 8a10dbc8ac3f94f0a5b4c380424bbe6795c69b16
-  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   SJSegmentedScrollView: 67ca97389a9c3a409d3b54c88781f031f5091c61
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 85ab569ada79cfc3124bae5c56cc956b110664aa
+PODFILE CHECKSUM: 66bea4068704abea051cfb59b27050602cb5aa5a
 
 COCOAPODS: 1.8.4

@@ -11,10 +11,10 @@ import Charts
 
 class ProfileStatisticsItem: UITableViewCell {
 
-    private lazy var barChartView: BarChartView = BarChartView()
-
-    private var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
+    private lazy var barChartView: BasicBarChart = BasicBarChart(frame: .zero)
+    private lazy var titleLabelView: UILabel = UILabel()
     private let verticalPaddingValue: CGFloat = 12.0
+    private let numEntry = 7
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,25 +37,16 @@ class ProfileStatisticsItem: UITableViewCell {
     }
 }
 
-extension ProfileStatisticsItem {
+private extension ProfileStatisticsItem {
 
-    func setChart(dataPoints: [String], values: [Double]) {
-
-        barChartView.noDataText = "You need to provide data for the chart."
-        var dataEntries: [BarChartDataEntry] = []
-
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
+    func generateRandomDataEntries() -> [DataEntry] {
+        var result: [DataEntry] = []
+        for _ in 0..<numEntry {
+            let value = (arc4random() % 90) + 10
+            let height: Float = Float(value) / 100.0
+            result.append(DataEntry(color: AppColor.main.uiColor, height: height, textValue: "", title: ""))
         }
-
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
-        chartDataSet.setColor(AppColor.main.uiColor)
-        chartDataSet.highlightColor = AppColor.main.uiColor
-        chartDataSet.drawValuesEnabled = false
-    
-        let chartData = BarChartData.init(dataSet: chartDataSet)
-        barChartView.data = chartData
+        return result
     }
 }
 
@@ -76,51 +67,31 @@ private extension ProfileStatisticsItem {
         backgroundColor = AppColor.lightGray.uiColor
         contentView.backgroundColor = AppColor.white.uiColor
 
+        //title label view
+        titleLabelView.text = AppTitle.Profile.statistics
+        titleLabelView.textColor = AppColor.black.uiColor
+        titleLabelView.font = .boldSystemFont(ofSize: 14)
+        titleLabelView.textAlignment = .left
+
         //bar chart view
-        barChartView.backgroundColor = AppColor.white.uiColor
+        let dataEntries = generateRandomDataEntries()
+        barChartView.updateDataEntries(dataEntries: dataEntries, animated: true)
 
-        let leftAxisFormatter1 = NumberFormatter()
-        leftAxisFormatter1.minimumFractionDigits = 0
-        leftAxisFormatter1.maximumFractionDigits = 1
-
-        let xAxis = barChartView.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter1)
-        xAxis.drawGridLinesEnabled = false
-        xAxis.granularityEnabled = false
-        xAxis.axisLineColor = .clear
-
-        let leftAxisFormatter = NumberFormatter()
-        leftAxisFormatter.minimumFractionDigits = 0
-        leftAxisFormatter.maximumFractionDigits = 1
-
-        let leftAxis = barChartView.leftAxis
-        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-        leftAxis.labelPosition = .outsideChart
-        leftAxis.drawGridLinesEnabled = false
-        leftAxis.granularityEnabled = false
-        leftAxis.axisLineColor = .clear
-
-        barChartView.rightAxis.enabled = false
-        barChartView.legend.form = .line
-        barChartView.legend.formLineWidth = 2
-        barChartView.legend.formSize = 40
-        barChartView.xAxis.drawLabelsEnabled = false
-        barChartView.leftAxis.drawLabelsEnabled = false
-
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0]
-        setChart(dataPoints: months, values: unitsSold)
     }
 
     func buildLayouts() -> Void {
 
-        addSubview(barChartView)
+        addSubviews(with: [titleLabelView, barChartView])
+        titleLabelView.snp.makeConstraints { (make) in
+            make.left.equalTo(45)
+            make.top.equalTo(12 + verticalPaddingValue)
+        }
         barChartView.snp.makeConstraints { (make) in
             make.right.equalToSuperview()
-            make.left.equalTo(100)
+            make.left.equalTo(140)
             make.height.equalTo(120)
             make.bottom.equalTo(-10)
-            make.top.equalTo(10 + verticalPaddingValue)
+            make.top.equalTo(12 + verticalPaddingValue)
         }
     }
 

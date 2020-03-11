@@ -8,18 +8,20 @@
 
 import UIKit
 import SnapKit
-import IQKeyboardManager
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        IQKeyboardManager.shared().isEnabled = true
-        IQKeyboardManager.shared().toolbarDoneBarButtonItemText = "Отмена"
+//        IQKeyboardManager.shared.toolbarBarTintColor = .red
+//        IQKeyboardManager.shared.
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemImage = #imageLiteral(resourceName: "book 3")
+//        IQKeyboardManager.shared.toolbarDoneBarButtonItemAccessibilityLabel = "Shyjked"
+        IQKeyboardManager.shared.enable = true
 
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()

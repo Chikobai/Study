@@ -39,10 +39,10 @@ class ModuleExpandableHeaderView: UIView {
 private extension ModuleExpandableHeaderView {
 
     @objc
-    func superViewTapped(_ sender: UITapGestureRecognizer) -> Void {
+    func tappedToExpand(_ sender: UITapGestureRecognizer) -> Void {
 
         isExpanded.toggle()
-        let image = isExpanded ? #imageLiteral(resourceName: "up-and-down 17") : #imageLiteral(resourceName: "up-and-down 5")
+        let image = isExpanded ? #imageLiteral(resourceName: "up-and-down 5") : #imageLiteral(resourceName: "up-and-down 17")
         toExpandButtonView.setImage(image, for: .normal)
         executeTappedEvent?()
     }
@@ -128,7 +128,7 @@ private extension ModuleExpandableHeaderView {
 
     func buildGestures() -> Void {
 
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(superViewTapped))
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tappedToExpand))
         self.addGestureRecognizer(tap)
     }
 }

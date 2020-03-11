@@ -7,7 +7,7 @@ target 'Study' do
 
   # Pods for Study
 pod 'XLPagerTabStrip'
-pod 'IQKeyboardManager'
+pod 'IQKeyboardManagerSwift'
 pod 'Alamofire'
 pod 'SnapKit'
 pod 'InputMask'

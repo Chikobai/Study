@@ -84,6 +84,7 @@ class AppTitle {
 
     class Profile {
 
+        static let statistics: String = "Statistics"
         static let notification: String = "Notifications"
         static let notificationSubtitle: String = "Напоминать о занятиях"
        

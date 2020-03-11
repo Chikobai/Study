@@ -28,6 +28,14 @@
 		083081582413963000947567 /* ProfileCertificateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083081572413963000947567 /* ProfileCertificateItem.swift */; };
 		0830815A2413974F00947567 /* CertificateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083081592413974F00947567 /* CertificateItem.swift */; };
 		0830815C241399DD00947567 /* UICollectionViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830815B241399DD00947567 /* UICollectionViewCell+Ext.swift */; };
+		083707E32418C848008A85FB /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DB2418C843008A85FB /* CALayerExtension.swift */; };
+		083707E42418C848008A85FB /* CustomSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DC2418C843008A85FB /* CustomSegments.swift */; };
+		083707E52418C848008A85FB /* BasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DD2418C844008A85FB /* BasicBarChart.swift */; };
+		083707E72418C848008A85FB /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DF2418C846008A85FB /* DataEntry.swift */; };
+		083707E92418C848008A85FB /* BasicBarChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707E12418C847008A85FB /* BasicBarChartPresenter.swift */; };
+		083707EA2418C848008A85FB /* BasicBarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707E22418C848008A85FB /* BasicBarEntry.swift */; };
+		083707EC2418C862008A85FB /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707EB2418C862008A85FB /* Array+Extensions.swift */; };
+		083707EF2418C962008A85FB /* UIBezierPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */; };
 		0840502323FCE93800A084A4 /* AuthorizationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502223FCE93800A084A4 /* AuthorizationValidator.swift */; };
 		0840502623FCEFCD00A084A4 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */; };
 		0840502823FCEFE500A084A4 /* RestorePasswordAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */; };
@@ -129,6 +137,14 @@
 		083081572413963000947567 /* ProfileCertificateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCertificateItem.swift; sourceTree = "<group>"; };
 		083081592413974F00947567 /* CertificateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateItem.swift; sourceTree = "<group>"; };
 		0830815B241399DD00947567 /* UICollectionViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Ext.swift"; sourceTree = "<group>"; };
+		083707DB2418C843008A85FB /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
+		083707DC2418C843008A85FB /* CustomSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegments.swift; sourceTree = "<group>"; };
+		083707DD2418C844008A85FB /* BasicBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicBarChart.swift; path = "../New Group/BasicBarChart.swift"; sourceTree = "<group>"; };
+		083707DF2418C846008A85FB /* DataEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
+		083707E12418C847008A85FB /* BasicBarChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicBarChartPresenter.swift; sourceTree = "<group>"; };
+		083707E22418C848008A85FB /* BasicBarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicBarEntry.swift; sourceTree = "<group>"; };
+		083707EB2418C862008A85FB /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Extensions.swift"; sourceTree = "<group>"; };
 		0840502223FCE93800A084A4 /* AuthorizationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationValidator.swift; sourceTree = "<group>"; };
 		0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordAdapter.swift; sourceTree = "<group>"; };
@@ -305,6 +321,35 @@
 				0875B68F240E284F00669C5B /* PickerViewManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		0837078F2418C7A8008A85FB /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				083707ED2418C88D008A85FB /* Chart */,
+				083707DA2418C820008A85FB /* Shared */,
+			);
+			path = BarChart;
+			sourceTree = "<group>";
+		};
+		083707DA2418C820008A85FB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				083707DB2418C843008A85FB /* CALayerExtension.swift */,
+				083707DC2418C843008A85FB /* CustomSegments.swift */,
+				083707DF2418C846008A85FB /* DataEntry.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		083707ED2418C88D008A85FB /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				083707DD2418C844008A85FB /* BasicBarChart.swift */,
+				083707E12418C847008A85FB /* BasicBarChartPresenter.swift */,
+				083707E22418C848008A85FB /* BasicBarEntry.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		0840502423FCEB2C00A084A4 /* Restore Password */ = {
@@ -529,11 +574,13 @@
 				08E1D3F323FBB278006E3042 /* UINavigationController+Extenstions.swift */,
 				08E1D3F823FBB313006E3042 /* UIViewController+Extenstions.swift */,
 				08E1D40C23FBBED8006E3042 /* UITableViewCell+Extensions.swift */,
-				08E1D40A23FBBEB7006E3042 /* String+Extensions.swift */,
 				08E1D41F23FC0C6A006E3042 /* UIView+Extensions.swift */,
 				08E1D42123FC0FAC006E3042 /* UIStackView+Extensions.swift */,
 				0829FAE424039B92000CACCF /* UILabel+Extenstions.swift */,
 				0830815B241399DD00947567 /* UICollectionViewCell+Ext.swift */,
+				083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */,
+				08E1D40A23FBBEB7006E3042 /* String+Extensions.swift */,
+				083707EB2418C862008A85FB /* Array+Extensions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -560,6 +607,7 @@
 		08E1D40023FBB732006E3042 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0837078F2418C7A8008A85FB /* BarChart */,
 				08483D6E240B8E4E00B40B1F /* PaddingLabel.swift */,
 				08E1D40123FBB821006E3042 /* FloatingTextField.swift */,
 				08E1D40623FBBA23006E3042 /* SecureTextField.swift */,
@@ -730,14 +778,17 @@
 				082B1D122400EB2400316D24 /* MainViewController.swift in Sources */,
 				08B0C740240CBFC500D2AE79 /* CourseInfoDescriptionItem.swift in Sources */,
 				0840503D23FE526C00A084A4 /* CourseReviewsAdapter.swift in Sources */,
+				083707E42418C848008A85FB /* CustomSegments.swift in Sources */,
 				082B1D192400F43500316D24 /* PostItem.swift in Sources */,
 				0840502C23FCF02F00A084A4 /* RestorePasswordValidator.swift in Sources */,
 				089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */,
 				08E1D42223FC0FAC006E3042 /* UIStackView+Extensions.swift in Sources */,
 				08E1D41723FBCACD006E3042 /* DefaultButtonItem.swift in Sources */,
+				083707EC2418C862008A85FB /* Array+Extensions.swift in Sources */,
 				08483D6B240B8D9E00B40B1F /* CourseCommunityView.swift in Sources */,
 				0875B686240E162600669C5B /* SettingsViewController.swift in Sources */,
 				08E1D42423FC38C4006E3042 /* MessageItem.swift in Sources */,
+				083707E92418C848008A85FB /* BasicBarChartPresenter.swift in Sources */,
 				08E1D41A23FBDACF006E3042 /* Stylizing.swift in Sources */,
 				08E1D41E23FC08C6006E3042 /* OTPTextField.swift in Sources */,
 				0840502F23FE403600A084A4 /* CourseDetailsViewController.swift in Sources */,
@@ -760,6 +811,7 @@
 				0875B680240DFBDC00669C5B /* LessonViewController.swift in Sources */,
 				08E1D3F723FBB2EC006E3042 /* NavigationController.swift in Sources */,
 				0875B68A240E185D00669C5B /* SettingsModel.swift in Sources */,
+				083707EF2418C962008A85FB /* UIBezierPath+Extensions.swift in Sources */,
 				082DAEBE241755E300F025E4 /* VariantCollectionView.swift in Sources */,
 				0840503723FE424F00A084A4 /* CourseReviewsViewController.swift in Sources */,
 				089A46A12402389F007068DB /* ByCategoryViewController.swift in Sources */,
@@ -767,6 +819,7 @@
 				083081532413884F00947567 /* ProfileNotificationItem.swift in Sources */,
 				0840502323FCE93800A084A4 /* AuthorizationValidator.swift in Sources */,
 				08E1D3F923FBB313006E3042 /* UIViewController+Extenstions.swift in Sources */,
+				083707E52418C848008A85FB /* BasicBarChart.swift in Sources */,
 				0875B67E240DF9AD00669C5B /* VideoViewController.swift in Sources */,
 				08089F2923FA6CC900EFDD85 /* AppDelegate.swift in Sources */,
 				0830814D24136CC500947567 /* ProfileHeaderView.swift in Sources */,
@@ -782,6 +835,7 @@
 				08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */,
 				08E1D41C23FC0893006E3042 /* OTPItem.swift in Sources */,
 				08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */,
+				083707E32418C848008A85FB /* CALayerExtension.swift in Sources */,
 				08E1D3F423FBB278006E3042 /* UINavigationController+Extenstions.swift in Sources */,
 				0840505423FE6B6B00A084A4 /* CourseInfoAdapter.swift in Sources */,
 				08E1D41323FBC81C006E3042 /* FilledButtonItem.swift in Sources */,
@@ -795,7 +849,9 @@
 				0840505223FE6B5800A084A4 /* CourseInfoViewController.swift in Sources */,
 				08E1D40223FBB822006E3042 /* FloatingTextField.swift in Sources */,
 				0830815124136FA800947567 /* ProfileModels.swift in Sources */,
+				083707E72418C848008A85FB /* DataEntry.swift in Sources */,
 				089A46B224026F1D007068DB /* TabbedPageController.swift in Sources */,
+				083707EA2418C848008A85FB /* BasicBarEntry.swift in Sources */,
 				089A46B024026F1D007068DB /* TabCell.swift in Sources */,
 				08483D67240B6DF800B40B1F /* ModuleItem.swift in Sources */,
 				0830815C241399DD00947567 /* UICollectionViewCell+Ext.swift in Sources */,
