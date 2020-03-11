@@ -95,8 +95,8 @@ private extension ProfileViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        self.navigationController?.navigationBar.tintColor = .black
+//        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.tintColor = AppColor.main.uiColor
 
         //navigation items
         navigationItem.rightBarButtonItems = [settingsBarButtonItemView, editBarButtonItemView]

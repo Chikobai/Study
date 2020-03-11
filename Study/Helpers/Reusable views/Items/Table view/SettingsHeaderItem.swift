@@ -50,7 +50,7 @@ private extension SettingsHeaderItem {
         photoImageView.layer.cornerRadius = 42.5
         photoImageView.clipsToBounds = true
         photoImageView.contentMode = .scaleAspectFill
-        photoImageView.image = #imageLiteral(resourceName: "8aa0748250185d0dba6c4ec4b217680e")
+        photoImageView.image = #imageLiteral(resourceName: "photo")
 
         //name label view
         nameLabelView.text = "Aibek S."

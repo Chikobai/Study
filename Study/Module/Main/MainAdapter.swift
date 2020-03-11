@@ -17,6 +17,7 @@ struct ExpandedLabel {
 
 class MainAdapter: NSObject {
 
+    var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
     private var posts: [ExpandedLabel] = [
         ExpandedLabel(text: "When the user taps the search field of the search bar, isActive is automatically set to true. If the search controller is active and the user has typed something into the search field, the returned data comes from filteredCandies. Otherwise, the data comes from the full list of items. When the user taps the search field of the search bar, isActive is automatically set to true. If the search controller is active and the user has typed something into the search field, the returned data comes from filteredCandies. Otherwise, the data comes from the full list of items.", collapsed: true),
         ExpandedLabel(text: "Remember that the search controller automatically handles showing and hiding the results table, so all your code has to do is provide the correct data (filtered or non-filtered) depending on the state of the controller and whether the user has searched for anything.", collapsed: true),
@@ -28,7 +29,6 @@ class MainAdapter: NSObject {
 
     override init() {
         super.init()
-
     }
 
     deinit {
@@ -53,7 +53,10 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 0
+        if let estimatedHeight = estimateRowHeightStorage[indexPath] {
+            return estimatedHeight
+        }
+        return 44.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,14 +67,18 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
 
         cell?.descriptionLabelGestureNotified = { [weak self] in
             self?.posts[indexPath.row].collapsed.toggle()
-            UIView.animate(withDuration: 0.15, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 tableView.beginUpdates()
-                tableView.reloadRows(at: [indexPath], with: .automatic)
+                tableView.reloadRows(at: [indexPath], with: .none)
                 tableView.endUpdates()
             })
         }
 
         return cell!
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        estimateRowHeightStorage[indexPath] = cell.frame.size.height
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

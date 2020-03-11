@@ -47,7 +47,7 @@ private extension ProfileHeaderView {
         //photo image view
         photoImageView.layer.cornerRadius = 55
         photoImageView.clipsToBounds = true
-        photoImageView.image = #imageLiteral(resourceName: "8aa0748250185d0dba6c4ec4b217680e")
+        photoImageView.image = #imageLiteral(resourceName: "photo")
         photoImageView.contentMode = .scaleAspectFill
 
         //user name label view

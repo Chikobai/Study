@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-//        IQKeyboardManager.shared.toolbarBarTintColor = .red
-//        IQKeyboardManager.shared.
         IQKeyboardManager.shared.toolbarDoneBarButtonItemImage = #imageLiteral(resourceName: "book 3")
 //        IQKeyboardManager.shared.toolbarDoneBarButtonItemAccessibilityLabel = "Shyjked"
         IQKeyboardManager.shared.enable = true
@@ -28,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = TabBarViewController()
         window?.rootViewController = viewController
 
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: AppColor.systemBlue.uiColor], for: .normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: AppColor.main.uiColor], for: .normal)
         buildBackTitle()
 
         return true

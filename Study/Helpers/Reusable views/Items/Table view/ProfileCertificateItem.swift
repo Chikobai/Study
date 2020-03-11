@@ -136,13 +136,13 @@ private extension ProfileCertificateItem {
         previousButtonView.snp.makeConstraints { (make) in
             make.centerY.equalTo(collectionView)
             make.right.equalTo(collectionView.snp.left).offset(-5.0)
-            make.width.height.equalTo(12.0)
+            make.width.height.equalTo(20.0)
         }
 
         nextButtonView.snp.makeConstraints { (make) in
             make.centerY.equalTo(collectionView)
             make.left.equalTo(collectionView.snp.right).offset(5.0)
-            make.width.height.equalTo(12.0)
+            make.width.height.equalTo(20.0)
         }
     }
 

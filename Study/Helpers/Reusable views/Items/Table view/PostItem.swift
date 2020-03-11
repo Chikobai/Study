@@ -91,7 +91,7 @@ private extension PostItem {
         playButtonView.clipsToBounds = true
 
         //posted user image view
-        postedUserImageView.image = #imageLiteral(resourceName: "8aa0748250185d0dba6c4ec4b217680e")
+        postedUserImageView.image = #imageLiteral(resourceName: "photo")
         postedUserImageView.clipsToBounds = true
         postedUserImageView.layer.cornerRadius = 18.0
 

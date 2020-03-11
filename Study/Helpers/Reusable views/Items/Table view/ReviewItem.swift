@@ -59,7 +59,7 @@ private extension ReviewItem {
 
         //reviewer image view
         reviewerImageView.layer.cornerRadius = 19.0
-        reviewerImageView.image = #imageLiteral(resourceName: "8aa0748250185d0dba6c4ec4b217680e")
+        reviewerImageView.image = #imageLiteral(resourceName: "photo")
         reviewerImageView.contentMode = .scaleToFill
         reviewerImageView.clipsToBounds = true
 
