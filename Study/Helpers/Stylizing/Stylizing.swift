@@ -104,12 +104,6 @@ extension Stylizing where Self: CategoryViewController {
         //superview
         edgesForExtendedLayout = [.bottom, .left, .right]
 
-        //navigation bar
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.barTintColor = AppColor.white.uiColor
-        navigationController?.navigationBar.tintColor = AppColor.main.uiColor
-        navigationController?.navigationBar.isTranslucent = false
-
         //navigation item
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .search, target: self, action: #selector(searchPressed))
     }
@@ -165,12 +159,6 @@ extension Stylizing where Self: SearchViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = AppTitle.Search.title
-
-        //navigation bar
-        navigationController?.navigationBar.barTintColor = AppColor.white.uiColor
-        navigationController?.navigationBar.tintColor = AppColor.main.uiColor
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     func buildServices() -> Void {
@@ -219,11 +207,6 @@ extension Stylizing where Self: MyCoursesViewController {
 
         //navigation item
         navigationItem.title = AppTitle.MyCourses.title
-
-        //navigation bar
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.tintColor = AppColor.white.uiColor
-//        navigationController?.navigationBar.isTranslucent = false
     }
 
     func buildServices() -> Void {
@@ -249,11 +232,6 @@ extension Stylizing where  Self: MainViewController {
 
         //navigation item
         navigationItem.title = "Posts"
-
-        //navigation bar
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.tintColor = AppColor.white.uiColor
-//        navigationController?.navigationBar.isTranslucent = false
 
         //table view
         tableView.tableFooterView = UIView()

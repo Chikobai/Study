@@ -26,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = TabBarViewController()
         window?.rootViewController = viewController
 
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: AppColor.main.uiColor], for: .normal)
-        buildBackTitle()
+        build()
 
         return true
     }
@@ -58,11 +57,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private extension AppDelegate {
 
-    func buildBackTitle() -> Void {
-        let attributes = [NSAttributedString.Key.font:  UIFont(name: "Helvetica-Bold", size: 0.1)!, NSAttributedString.Key.foregroundColor: UIColor.clear]
+    func build() -> Void {
 
-        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
-        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
+        buildNavigationBar()
+        buildBarButtonItem()
+    }
+
+    func buildNavigationBar() -> Void {
+        UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "Arrow")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "Arrow")
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = AppColor.white.uiColor
+        UINavigationBar.appearance().tintColor = AppColor.main.uiColor
+        UINavigationBar.appearance().titleTextAttributes = [
+            .foregroundColor: AppColor.black.uiColor,
+            .font: UIFont.boldSystemFont(ofSize: 17)
+        ]
+    }
+
+    func buildBarButtonItem() -> Void {
+
+        //bar button item
+        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear, .font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear, .font: UIFont.boldSystemFont(ofSize: 17)], for: .highlighted)
+
+        //search bar cancel button
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: AppColor.main.uiColor], for: .normal)
     }
 }
 

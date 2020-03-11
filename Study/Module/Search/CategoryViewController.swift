@@ -34,8 +34,6 @@ class CategoryViewController: ButtonBarPagerTabStripViewController, Stylizing {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
 
         navigationItem.title = AppTitle.Category.title
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.isTranslucent = false
 
         let child_1 = ByCategoryViewController(with: "Chemistry")
         let child_2 = ByCategoryViewController(with: "Math")
