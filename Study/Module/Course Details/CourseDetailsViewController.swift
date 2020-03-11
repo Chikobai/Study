@@ -38,18 +38,19 @@ class CourseDetailsViewController: ScrollViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scrollView.delegate = self
         build()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.transparentBar()
         super.viewWillAppear(animated)
+
+         self.transparentBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.defaulteBar()
         super.viewDidDisappear(animated)
+
+        self.defaulteBar()
     }
 }
 
@@ -184,6 +185,7 @@ private extension CourseDetailsViewController {
 
     func buildServices() -> Void {
 
+        scrollView.delegate = self
         pagerViewController.scrollDelegate = self
     }
 }

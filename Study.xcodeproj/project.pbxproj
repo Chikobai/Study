@@ -71,11 +71,6 @@
 		089A469F24023887007068DB /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A469E24023887007068DB /* CategoryViewController.swift */; };
 		089A46A12402389F007068DB /* ByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A02402389F007068DB /* ByCategoryViewController.swift */; };
 		089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A2240238BF007068DB /* ByCategoryAdapter.swift */; };
-		089A46AE24026F1D007068DB /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A924026F1D007068DB /* PageController.swift */; };
-		089A46AF24026F1D007068DB /* Indexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46AA24026F1D007068DB /* Indexable.swift */; };
-		089A46B024026F1D007068DB /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46AB24026F1D007068DB /* TabCell.swift */; };
-		089A46B124026F1D007068DB /* TabbedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46AC24026F1D007068DB /* TabbedController.swift */; };
-		089A46B224026F1D007068DB /* TabbedPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46AD24026F1D007068DB /* TabbedPageController.swift */; };
 		08A73E262406471200244B9E /* PackageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A73E252406471200244B9E /* PackageItem.swift */; };
 		08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A73E2724065B8D00244B9E /* IconableLabelView.swift */; };
 		08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A73E2A2406610400244B9E /* MyCoursesViewController.swift */; };
@@ -180,11 +175,6 @@
 		089A469E24023887007068DB /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		089A46A02402389F007068DB /* ByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByCategoryViewController.swift; sourceTree = "<group>"; };
 		089A46A2240238BF007068DB /* ByCategoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByCategoryAdapter.swift; sourceTree = "<group>"; };
-		089A46A924026F1D007068DB /* PageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
-		089A46AA24026F1D007068DB /* Indexable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indexable.swift; sourceTree = "<group>"; };
-		089A46AB24026F1D007068DB /* TabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
-		089A46AC24026F1D007068DB /* TabbedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedController.swift; sourceTree = "<group>"; };
-		089A46AD24026F1D007068DB /* TabbedPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedPageController.swift; sourceTree = "<group>"; };
 		08A73E252406471200244B9E /* PackageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageItem.swift; sourceTree = "<group>"; };
 		08A73E2724065B8D00244B9E /* IconableLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconableLabelView.swift; sourceTree = "<group>"; };
 		08A73E2A2406610400244B9E /* MyCoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoursesViewController.swift; sourceTree = "<group>"; };
@@ -469,18 +459,6 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		089A46A824026F1D007068DB /* TabbedPageController */ = {
-			isa = PBXGroup;
-			children = (
-				089A46A924026F1D007068DB /* PageController.swift */,
-				089A46AA24026F1D007068DB /* Indexable.swift */,
-				089A46AB24026F1D007068DB /* TabCell.swift */,
-				089A46AC24026F1D007068DB /* TabbedController.swift */,
-				089A46AD24026F1D007068DB /* TabbedPageController.swift */,
-			);
-			path = TabbedPageController;
-			sourceTree = "<group>";
-		};
 		08A73E292406609700244B9E /* My Courses */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,7 +517,6 @@
 		08E1D3F223FBB25A006E3042 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				089A46A824026F1D007068DB /* TabbedPageController */,
 				08E1D41823FBDAB7006E3042 /* Stylizing */,
 				08E1D3FE23FBB700006E3042 /* Reusable views */,
 				08E1D3FD23FBB53E006E3042 /* Extenstions */,
@@ -770,7 +747,6 @@
 				08E1D3FC23FBB4E6006E3042 /* AppTitle.swift in Sources */,
 				08E1D40F23FBC1F3006E3042 /* AuthorizationViewModel.swift in Sources */,
 				082DAEC02417573300F025E4 /* VariantItem.swift in Sources */,
-				089A46AF24026F1D007068DB /* Indexable.swift in Sources */,
 				0840503323FE41D500A084A4 /* CourseDetailsPagerViewController.swift in Sources */,
 				0829FAE524039B92000CACCF /* UILabel+Extenstions.swift in Sources */,
 				0840503B23FE524300A084A4 /* CourseModulesAdapter.swift in Sources */,
@@ -793,7 +769,6 @@
 				08E1D41E23FC08C6006E3042 /* OTPTextField.swift in Sources */,
 				0840502F23FE403600A084A4 /* CourseDetailsViewController.swift in Sources */,
 				08B0C744240CCF2800D2AE79 /* CourseInfoSkillsItem.swift in Sources */,
-				089A46AE24026F1D007068DB /* PageController.swift in Sources */,
 				08D2DA412413686D001EC235 /* ProfileViewController.swift in Sources */,
 				08E1D40B23FBBEB7006E3042 /* String+Extensions.swift in Sources */,
 				0840505923FE717700A084A4 /* ReviewItem.swift in Sources */,
@@ -850,12 +825,9 @@
 				08E1D40223FBB822006E3042 /* FloatingTextField.swift in Sources */,
 				0830815124136FA800947567 /* ProfileModels.swift in Sources */,
 				083707E72418C848008A85FB /* DataEntry.swift in Sources */,
-				089A46B224026F1D007068DB /* TabbedPageController.swift in Sources */,
 				083707EA2418C848008A85FB /* BasicBarEntry.swift in Sources */,
-				089A46B024026F1D007068DB /* TabCell.swift in Sources */,
 				08483D67240B6DF800B40B1F /* ModuleItem.swift in Sources */,
 				0830815C241399DD00947567 /* UICollectionViewCell+Ext.swift in Sources */,
-				089A46B124026F1D007068DB /* TabbedController.swift in Sources */,
 				08B0C742240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift in Sources */,
 				082DAEBB241754A300F025E4 /* QuestionsViewController.swift in Sources */,
 				082B1D172400F0D200316D24 /* TabBarViewController.swift in Sources */,

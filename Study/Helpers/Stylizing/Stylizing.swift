@@ -107,6 +107,7 @@ extension Stylizing where Self: CategoryViewController {
         //navigation bar
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barTintColor = AppColor.white.uiColor
+        navigationController?.navigationBar.tintColor = AppColor.main.uiColor
         navigationController?.navigationBar.isTranslucent = false
 
         //navigation item
@@ -167,6 +168,7 @@ extension Stylizing where Self: SearchViewController {
 
         //navigation bar
         navigationController?.navigationBar.barTintColor = AppColor.white.uiColor
+        navigationController?.navigationBar.tintColor = AppColor.main.uiColor
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage()
     }
