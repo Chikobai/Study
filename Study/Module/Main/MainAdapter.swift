@@ -56,7 +56,7 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
         if let estimatedHeight = estimateRowHeightStorage[indexPath] {
             return estimatedHeight
         }
-        return 44.0
+        return  UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,11 +67,9 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
 
         cell?.descriptionLabelGestureNotified = { [weak self] in
             self?.posts[indexPath.row].collapsed.toggle()
-            UIView.animate(withDuration: 0.25, animations: {
-                tableView.beginUpdates()
-                tableView.reloadRows(at: [indexPath], with: .none)
-                tableView.endUpdates()
-            })
+            tableView.beginUpdates()
+            tableView.reloadRows(at: [indexPath], with: .none)
+            tableView.endUpdates()
         }
 
         return cell!

@@ -153,11 +153,6 @@ private extension CourseDetailsViewController {
         //superview
         view.backgroundColor = AppColor.white.uiColor
 
-        //navigation bar
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.isTranslucent = false
-
         //scroll view
         scrollView.showsVerticalScrollIndicator = false
         scrollView.bounces = false

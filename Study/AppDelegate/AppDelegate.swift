@@ -17,9 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemImage = #imageLiteral(resourceName: "book 3")
-//        IQKeyboardManager.shared.toolbarDoneBarButtonItemAccessibilityLabel = "Shyjked"
-        IQKeyboardManager.shared.enable = true
 
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -61,6 +58,7 @@ private extension AppDelegate {
 
         buildNavigationBar()
         buildBarButtonItem()
+        buildIQKeyboardManager()
     }
 
     func buildNavigationBar() -> Void {
@@ -83,6 +81,14 @@ private extension AppDelegate {
 
         //search bar cancel button
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: AppColor.main.uiColor], for: .normal)
+    }
+
+    func buildIQKeyboardManager() -> Void {
+
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemImage = #imageLiteral(resourceName: "tick")
+        IQKeyboardManager.shared.toolbarBarTintColor = AppColor.white.uiColor
+        IQKeyboardManager.shared.toolbarTintColor = AppColor.main.uiColor
+        IQKeyboardManager.shared.enable = true
     }
 }
 

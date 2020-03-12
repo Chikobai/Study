@@ -42,7 +42,7 @@ extension UIViewController {
 
     func defaulteBar() -> Void {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.shadowImage = nil
     }
     
 }

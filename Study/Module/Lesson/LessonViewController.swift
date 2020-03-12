@@ -11,9 +11,6 @@ import XLPagerTabStrip
 
 class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTabItem> {
 
-    let redColor = UIColor(red: 221/255.0, green: 0/255.0, blue: 19/255.0, alpha: 1.0)
-    let unselectedIconColor = UIColor(red: 73/255.0, green: 8/255.0, blue: 10/255.0, alpha: 1.0)
-
     private lazy var shareBarButtonView: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(sharePressedEvent))
     private lazy var infoBarButtonView: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(infoPressedEvent))
 
@@ -33,10 +30,10 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
     }
 
     override func viewDidLoad() {
-        settings.style.buttonBarBackgroundColor = AppColor.main.uiColor.withAlphaComponent(0.6)
+        settings.style.buttonBarBackgroundColor = AppColor.white.uiColor
         settings.style.buttonBarItemBackgroundColor = .clear
-        settings.style.selectedBarBackgroundColor = UIColor(red: 234/255.0, green: 234/255.0, blue: 234/255.0, alpha: 1.0)
-        settings.style.selectedBarHeight = 4.0
+        settings.style.selectedBarBackgroundColor = AppColor.main.uiColor
+        settings.style.selectedBarHeight = 2.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .black
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
@@ -44,8 +41,8 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
         settings.style.buttonBarRightContentInset = 0
         changeCurrentIndexProgressive = { [weak self] (oldCell: IconableTabItem?, newCell: IconableTabItem?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            oldCell?.iconImageView.tintColor = .white
-            newCell?.iconImageView.tintColor = self?.unselectedIconColor
+            oldCell?.iconImageView.tintColor = AppColor.black.uiColor.withAlphaComponent(0.3)
+            newCell?.iconImageView.tintColor = AppColor.main.uiColor
         }
 
         super.viewDidLoad()
@@ -66,11 +63,11 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child_1 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "play-button 1")))
-        let child_2 = QuestionsViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question 6")))
-        let child_3 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question 6")))
+        let child_2 = QuestionsViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question")))
+        let child_3 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question")))
         let child_4 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "book 3")))
         let child_5 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "play-button 1")))
-        let child_6 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "book 3")))
+        let child_6 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question")))
         return [child_1, child_2, child_3, child_4, child_5, child_6]
     }
 
