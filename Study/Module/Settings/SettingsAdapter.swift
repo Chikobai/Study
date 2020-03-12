@@ -63,8 +63,8 @@ extension SettingsAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-//        delegate?.didSelect()
+        let item = items[indexPath.section].cells[indexPath.row]
+        delegate?.didSelected(with: item)
     }
 }
 
@@ -73,7 +73,11 @@ extension SettingsAdapter: UITableViewDelegate, UITableViewDataSource {
 
 private extension SettingsAdapter {
 
-    func defaultItemView(with tableView: UITableView, _ indexPath: IndexPath, _ item: SettingsItem) -> UITableViewCell {
+    func defaultItemView(
+        with tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ item: SettingsItem
+    ) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.cellIdentifier(), for: indexPath)
         cell.textLabel?.text = item.title
@@ -85,7 +89,11 @@ private extension SettingsAdapter {
         return cell
     }
 
-    func changableItemView(with tableView: UITableView, _ indexPath: IndexPath, _ item: SettingsItem) -> SettingsChangableItem {
+    func changableItemView(
+        with tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ item: SettingsItem
+    ) -> SettingsChangableItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsChangableItem.cellIdentifier(), for: indexPath) as? SettingsChangableItem
         cell?.textLabel?.text = item.title
@@ -94,13 +102,20 @@ private extension SettingsAdapter {
         return cell!
     }
 
-    func headerItem(with tableView: UITableView, _ indexPath: IndexPath) -> SettingsHeaderItem {
+    func headerItem(
+        with tableView: UITableView,
+        _ indexPath: IndexPath
+    ) -> SettingsHeaderItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsHeaderItem.cellIdentifier(), for: indexPath) as? SettingsHeaderItem
         return cell!
     }
 
-    func languageItem(with tableView: UITableView, _ indexPath: IndexPath, _ item: SettingsItem) -> SettingsLanguageItem {
+    func languageItem(
+        with tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ item: SettingsItem
+    ) -> SettingsLanguageItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsLanguageItem.cellIdentifier(), for: indexPath) as? SettingsLanguageItem
         cell?.textLabel?.text = item.title

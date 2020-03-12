@@ -30,13 +30,15 @@ class DatePickerViewManager: UIDatePicker {
     }
 }
 
-//  MARK: Target actions
-extension DatePickerViewManager {
+//  MARK: Targets
+
+private extension DatePickerViewManager {
 
     @objc func valueChangedEvent() -> Void {
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.dateFormat = "HH:mm"
+
         valueChanged?(formatter.string(from: self.date))
     }
 }

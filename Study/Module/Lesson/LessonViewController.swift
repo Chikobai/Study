@@ -12,7 +12,7 @@ import XLPagerTabStrip
 class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTabItem> {
 
     private lazy var shareBarButtonView: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(sharePressedEvent))
-    private lazy var infoBarButtonView: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(infoPressedEvent))
+    private lazy var infoBarButtonView: UIBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "exclamation (1) 1"), style: .plain, target: self, action: #selector(infoPressedEvent))
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -51,7 +51,7 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
         navigationItem.title = "Hello, world"
         edgesForExtendedLayout = []
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItems = [infoBarButtonView, shareBarButtonView]
+        navigationItem.rightBarButtonItems = [shareBarButtonView, infoBarButtonView]
     }
 
 

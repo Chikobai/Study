@@ -53,10 +53,8 @@ extension CategoryViewController {
     @objc
     func searchPressed() -> Void {
 
-        self.hidesBottomBarWhenPushed = true
         let viewController = SearchViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
-        self.hidesBottomBarWhenPushed = false
+        self.pushWithHidesBottomBar(viewController)
     }
 }
 

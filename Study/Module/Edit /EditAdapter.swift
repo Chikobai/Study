@@ -1,32 +1,32 @@
 //
-//  AuthorizationAdapter.swift
+//  EditAdapter.swift
 //  Study
 //
-//  Created by I on 2/18/20.
+//  Created by I on 3/12/20.
 //  Copyright © 2020 Shyngys. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class AuthorizationAdapter: NSObject {
+class EditAdapter: NSObject {
 
-    private var items: [AuthorizationSection] = []
-    weak var delegate: AuthorizationDelegate?
+    private var items: [EditSection] = []
+    weak var delegate: EditDelegate?
 
-    init(with type: AuthorizationSection) {
+    init(with type: EditSection) {
         items = [type]
         super.init()
     }
 
     deinit {
-        print("DEINIT: AuthorizationAdapter")
+        print("DEINIT: EditAdapter")
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension AuthorizationAdapter: UITableViewDelegate, UITableViewDataSource {
+extension EditAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
@@ -47,15 +47,11 @@ extension AuthorizationAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = items[indexPath.section].cells[indexPath.row]
         switch type {
-        case .passwordInput, .phoneInput, .nameInput, .emailInput:
+        case .phoneInput, .nameInput:
             return self.floatingInputItemView(with: tableView, indexPath, type)
-        case .loginButton, .resgistrationButton, .sendOTPButton:
+        case .changeButton, .resumeButton:
             return self.filledButtonItemView(with: tableView, indexPath, type)
-        case .toRestorePasswordButton, .toResgistrationButton, .toLoginButton:
-            return self.defaultButtonItemView(with: tableView, indexPath, type)
-        case .otpInput:
-            return self.otpInputItemView(with: tableView, indexPath)
-        case .OTPMessage, .loginMessage, .loginWithEmailMessage:
+        case .nameMessageItem, .phoneMessageItem:
             return self.messageItemView(with: tableView, indexPath, type)
         case .emptySpacer:
             return self.emptyItemView(with: tableView, indexPath)
@@ -71,12 +67,12 @@ extension AuthorizationAdapter: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Custom Items
 
-private extension AuthorizationAdapter {
+private extension EditAdapter {
 
     func filledButtonItemView(
         with tableView: UITableView,
         _ indexPath: IndexPath,
-        _ type: AuthorizationItem
+        _ type: EditItem
     ) -> FilledButtonItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: FilledButtonItem.cellIdentifier(), for: indexPath) as? FilledButtonItem
@@ -87,24 +83,10 @@ private extension AuthorizationAdapter {
         return cell!
     }
 
-    func defaultButtonItemView(
-        with tableView: UITableView,
-        _ indexPath: IndexPath,
-        _ type: AuthorizationItem
-    ) -> DefaultButtonItem {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: DefaultButtonItem.cellIdentifier(), for: indexPath) as? DefaultButtonItem
-        cell?.configure(with: type.placeholder)
-        cell?.buttonPressed = { [weak self] in
-            self?.delegate?.didPressed(with: type)
-        }
-        return cell!
-    }
-
     func floatingInputItemView(
         with tableView: UITableView,
         _ indexPath: IndexPath,
-        _ type: AuthorizationItem
+        _ type: EditItem
     ) -> FloatingTextFieldItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: FloatingTextFieldItem.cellIdentifier(), for: indexPath) as? FloatingTextFieldItem
@@ -115,23 +97,15 @@ private extension AuthorizationAdapter {
         return cell!
     }
 
-    func otpInputItemView(
-        with tableView: UITableView,
-        _ indexPath: IndexPath
-        ) -> OTPItem {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: OTPItem.cellIdentifier(), for: indexPath) as? OTPItem
-        return cell!
-    }
 
     func messageItemView(
         with tableView: UITableView,
         _ indexPath: IndexPath,
-        _ type: AuthorizationItem
-        ) -> UITableViewCell {
+        _ type: EditItem
+    ) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageItem.cellIdentifier(), for: indexPath) as? MessageItem
-        cell?.configure(with: type.placeholder, (type == .OTPMessage) ? .center : .left)
+        cell?.configure(with: type.placeholder, .left)
         return cell!
     }
 

@@ -20,6 +20,9 @@ class ProfileNotificationItem: UITableViewCell {
 
     private let verticalPaddingValue: CGFloat = 12.0
 
+    private let fromDatePicker = DatePickerViewManager()
+    private let tillDatePicker = DatePickerViewManager()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -49,12 +52,13 @@ private extension ProfileNotificationItem {
 
         buildViews()
         buildLayouts()
+        buildTargets()
     }
 
     func buildViews() -> Void {
 
         //superview
-        backgroundColor = AppColor.lightGray.uiColor
+        backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
         contentView.backgroundColor = AppColor.white.uiColor
         selectionStyle = .none
 
@@ -75,13 +79,15 @@ private extension ProfileNotificationItem {
         fromTimeInputView.placeholder = "20:00"
         fromTimeInputView.textAlignment = .center
         fromTimeInputView.font = .boldSystemFont(ofSize: 22)
-        fromTimeInputView.inputView = DatePickerViewManager()
+        fromTimeInputView.textColor = AppColor.main.uiColor
+        fromTimeInputView.inputView = fromDatePicker
 
         //to time input view
         toTimeInputView.placeholder = "23:00"
         toTimeInputView.textAlignment = .center
         toTimeInputView.font = .boldSystemFont(ofSize: 22)
-        toTimeInputView.inputView = DatePickerViewManager()
+        toTimeInputView.textColor = AppColor.main.uiColor
+        toTimeInputView.inputView = tillDatePicker
 
         //switch view
         switchView.tintColor = AppColor.main.uiColor
@@ -133,5 +139,16 @@ private extension ProfileNotificationItem {
         let insetContentViewFrame = contentViewFrame.inset(by: UIEdgeInsets(top: verticalPaddingValue, left: 0, bottom: 0, right: 0))
         self.contentView.frame = insetContentViewFrame
         self.selectedBackgroundView?.frame = insetContentViewFrame
+    }
+
+    func buildTargets() -> Void {
+
+        fromDatePicker.valueChanged = {[weak fromTimeInputView] value in
+            fromTimeInputView?.text = value
+        }
+
+        tillDatePicker.valueChanged = {[weak toTimeInputView] value in
+            toTimeInputView?.text = value
+        }
     }
 }

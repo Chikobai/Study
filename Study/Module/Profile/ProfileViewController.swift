@@ -88,7 +88,7 @@ private extension ProfileViewController {
 //      table view
         tableView.tableHeaderView = headerView
         tableView.separatorStyle = .none
-        tableView.backgroundColor = AppColor.lightGray.uiColor
+        tableView.backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
         tableView.showsVerticalScrollIndicator = false
 
         //navigation bar

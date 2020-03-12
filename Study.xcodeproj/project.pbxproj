@@ -67,6 +67,10 @@
 		0875B68C240E1C4D00669C5B /* SettingsHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68B240E1C4D00669C5B /* SettingsHeaderItem.swift */; };
 		0875B68E240E263100669C5B /* SettingsLanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68D240E263100669C5B /* SettingsLanguageItem.swift */; };
 		0875B690240E284F00669C5B /* PickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68F240E284F00669C5B /* PickerViewManager.swift */; };
+		0875DF202419FDB400CCB46B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF1F2419FDB400CCB46B /* EditViewController.swift */; };
+		0875DF222419FDBE00CCB46B /* EditAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF212419FDBE00CCB46B /* EditAdapter.swift */; };
+		0875DF242419FDC900CCB46B /* EditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF232419FDC900CCB46B /* EditModels.swift */; };
+		0875DF262419FE5900CCB46B /* EditValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF252419FE5900CCB46B /* EditValidator.swift */; };
 		088F4078240783D10094D854 /* SubscribedPackageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F4077240783D10094D854 /* SubscribedPackageItem.swift */; };
 		089A469F24023887007068DB /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A469E24023887007068DB /* CategoryViewController.swift */; };
 		089A46A12402389F007068DB /* ByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A02402389F007068DB /* ByCategoryViewController.swift */; };
@@ -171,6 +175,10 @@
 		0875B68B240E1C4D00669C5B /* SettingsHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderItem.swift; sourceTree = "<group>"; };
 		0875B68D240E263100669C5B /* SettingsLanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLanguageItem.swift; sourceTree = "<group>"; };
 		0875B68F240E284F00669C5B /* PickerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewManager.swift; sourceTree = "<group>"; };
+		0875DF1F2419FDB400CCB46B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		0875DF212419FDBE00CCB46B /* EditAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAdapter.swift; sourceTree = "<group>"; };
+		0875DF232419FDC900CCB46B /* EditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModels.swift; sourceTree = "<group>"; };
+		0875DF252419FE5900CCB46B /* EditValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValidator.swift; sourceTree = "<group>"; };
 		088F4077240783D10094D854 /* SubscribedPackageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedPackageItem.swift; sourceTree = "<group>"; };
 		089A469E24023887007068DB /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		089A46A02402389F007068DB /* ByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByCategoryViewController.swift; sourceTree = "<group>"; };
@@ -448,6 +456,17 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		0875DF1E2419FD9200CCB46B /* Edit  */ = {
+			isa = PBXGroup;
+			children = (
+				0875DF1F2419FDB400CCB46B /* EditViewController.swift */,
+				0875DF212419FDBE00CCB46B /* EditAdapter.swift */,
+				0875DF232419FDC900CCB46B /* EditModels.swift */,
+				0875DF252419FE5900CCB46B /* EditValidator.swift */,
+			);
+			path = "Edit ";
+			sourceTree = "<group>";
+		};
 		089A469D2402384F007068DB /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +502,7 @@
 			children = (
 				08E1D3F523FBB2BC006E3042 /* Base */,
 				08D2DA3F241366E4001EC235 /* Profile */,
+				0875DF1E2419FD9200CCB46B /* Edit  */,
 				082B1D102400EAF800316D24 /* Main */,
 				089A469D2402384F007068DB /* Search */,
 				08A73E292406609700244B9E /* My Courses */,
@@ -745,6 +765,7 @@
 				089A469F24023887007068DB /* CategoryViewController.swift in Sources */,
 				08E1D41523FBC847006E3042 /* FilledButton.swift in Sources */,
 				08E1D3FC23FBB4E6006E3042 /* AppTitle.swift in Sources */,
+				0875DF222419FDBE00CCB46B /* EditAdapter.swift in Sources */,
 				08E1D40F23FBC1F3006E3042 /* AuthorizationViewModel.swift in Sources */,
 				082DAEC02417573300F025E4 /* VariantItem.swift in Sources */,
 				0840503323FE41D500A084A4 /* CourseDetailsPagerViewController.swift in Sources */,
@@ -807,6 +828,7 @@
 				08E1D40D23FBBED8006E3042 /* UITableViewCell+Extensions.swift in Sources */,
 				082B1D142400EB4800316D24 /* MainAdapter.swift in Sources */,
 				08483D69240B882F00B40B1F /* CourseHeaderView.swift in Sources */,
+				0875DF202419FDB400CCB46B /* EditViewController.swift in Sources */,
 				08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */,
 				08E1D41C23FC0893006E3042 /* OTPItem.swift in Sources */,
 				08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */,
@@ -818,9 +840,11 @@
 				08A73E262406471200244B9E /* PackageItem.swift in Sources */,
 				083081582413963000947567 /* ProfileCertificateItem.swift in Sources */,
 				0875B68C240E1C4D00669C5B /* SettingsHeaderItem.swift in Sources */,
+				0875DF242419FDC900CCB46B /* EditModels.swift in Sources */,
 				0840503123FE405F00A084A4 /* ScrollViewController.swift in Sources */,
 				0875B682240DFCE400669C5B /* IconableTabItem.swift in Sources */,
 				08483D6F240B8E4E00B40B1F /* PaddingLabel.swift in Sources */,
+				0875DF262419FE5900CCB46B /* EditValidator.swift in Sources */,
 				0840505223FE6B5800A084A4 /* CourseInfoViewController.swift in Sources */,
 				08E1D40223FBB822006E3042 /* FloatingTextField.swift in Sources */,
 				0830815124136FA800947567 /* ProfileModels.swift in Sources */,

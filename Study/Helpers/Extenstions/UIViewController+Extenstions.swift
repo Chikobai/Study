@@ -16,6 +16,14 @@ extension UIViewController {
         return NavigationController(rootViewController: self)
     }
 
+    func pushWithHidesBottomBar(_ directedController: UIViewController) -> Void {
+        if let navigationController = self.navigationController {
+            self.hidesBottomBarWhenPushed = true
+            navigationController.pushViewController(directedController, animated: true)
+            self.hidesBottomBarWhenPushed=false
+        }
+    }
+
     func add(_ child: UIViewController, onView aView: UIView) {
         addChild(child)
         aView.addSubview(child.view)

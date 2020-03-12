@@ -87,6 +87,17 @@ class AppTitle {
         static let statistics: String = "Statistics"
         static let notification: String = "Notifications"
         static let notificationSubtitle: String = "Напоминать о занятиях"
-       
+    }
+
+    class Edit {
+
+        static let nameEdit: String = "Изменить имя"
+        static let phoneEdit: String = "Изменить номер"
+        static let enterPhoneNumber = "Введите ваш номер"
+        static let changeNameMessage = "Чтобы изменить имя пользователя, введите ваше имя"
+        static let changePhoneMessage = "Чтобы изменить номер, введите ваш номер"
+        static let enterName = "Введите ваше имя"
+        static let change = "Подтвердить"
+        static let resume = "Продолжить"
     }
 }

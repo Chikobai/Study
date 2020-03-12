@@ -123,7 +123,7 @@ private extension SubscribedPackageItem {
         contentView.layer.masksToBounds = false
         contentView.layer.shadowColor = UIColor.lightGray.cgColor
         contentView.layer.shadowOffset = .zero
-        contentView.layer.shadowOpacity = 0.15
+        contentView.layer.shadowOpacity = 0.3
         contentView.layer.shadowPath = shadowPath.cgPath
     }
 

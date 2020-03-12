@@ -10,6 +10,7 @@ import UIKit
 
 protocol SettingsDelegate: class {
 
+    func didSelected(with item: SettingsItem) -> Void
 }
 
 class SettingsViewController: UITableViewController {
@@ -20,6 +21,24 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
 
         build()
+    }
+}
+
+// MARK: - SettingsDelegate
+
+extension SettingsViewController: SettingsDelegate {
+
+    func didSelected(with item: SettingsItem) {
+        switch item {
+        case .changableNameItem:
+            let viewController = EditViewController(with: .changeUserName)
+            self.pushWithHidesBottomBar(viewController)
+        case .changablePhoneItem:
+            let viewController = EditViewController(with: .changePhone)
+            self.pushWithHidesBottomBar(viewController)
+        default:
+            return
+        }
     }
 }
 
@@ -49,6 +68,7 @@ private extension SettingsViewController {
 
     func buildServices() -> Void {
 
+        adapter.delegate = self
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.cellIdentifier())

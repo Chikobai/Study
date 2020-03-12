@@ -59,6 +59,20 @@ class FloatingTextFieldItem: UITableViewCell {
             textField.maskString = maskString
         }
     }
+
+    func configure(with type: EditItem) -> Void {
+        textField.isSecureTextEntry = type.isSecureTextEntry
+        textField.placeholder = type.placeholder
+        textField.keyboardType = type.keyboardType
+
+        visibilityButtonView.isHidden = !type.isSecureTextEntry
+        textField.rightView = (type.isSecureTextEntry == true) ? visibilityCoverView : nil
+        textField.rightViewMode = (type.isSecureTextEntry == true) ? .always : .never
+
+        if let maskString = type.maskString {
+            textField.maskString = maskString
+        }
+    }
 }
 
 private extension FloatingTextFieldItem {

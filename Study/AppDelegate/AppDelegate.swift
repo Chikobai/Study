@@ -17,12 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-
-        window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        let viewController = TabBarViewController()
-        window?.rootViewController = viewController
-
         build()
 
         return true
@@ -56,9 +50,18 @@ private extension AppDelegate {
 
     func build() -> Void {
 
+        buildRoot()
         buildNavigationBar()
         buildBarButtonItem()
         buildIQKeyboardManager()
+    }
+
+    func buildRoot() -> Void {
+
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        let viewController = TabBarViewController()
+        window?.rootViewController = viewController
     }
 
     func buildNavigationBar() -> Void {

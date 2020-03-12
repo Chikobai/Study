@@ -64,7 +64,7 @@ private extension ProfileStatisticsItem {
 
         //superview
         selectionStyle = .none
-        backgroundColor = AppColor.lightGray.uiColor
+        backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
         contentView.backgroundColor = AppColor.white.uiColor
 
         //title label view

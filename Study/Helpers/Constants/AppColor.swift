@@ -12,6 +12,7 @@ import UIKit.UIColor
 enum AppColor {
 
     case lightGray
+    case secondaryLightGray
     case darkGray
     case white
     case black
@@ -23,6 +24,7 @@ enum AppColor {
     var uiColor: UIColor {
         switch self {
         case .lightGray: return UIColor(rgb: 246, 246, 246)
+        case .secondaryLightGray: return UIColor.init(rgb: 229, 229, 229)
         case .main: return UIColor(rgb: 53,170,230)
         case .white: return UIColor.white
         case .black: return UIColor.black
