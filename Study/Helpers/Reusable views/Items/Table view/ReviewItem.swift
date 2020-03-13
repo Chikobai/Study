@@ -64,17 +64,17 @@ private extension ReviewItem {
         reviewerImageView.clipsToBounds = true
 
         //reviewed time view
-        reviewedTimeView.font = .systemFont(ofSize: 8.0)
+        reviewedTimeView.font = .systemFont(ofSize: 10.0)
         reviewedTimeView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         reviewedTimeView.text = "3 дня назад"
 
         //reviewer name view
-        reviewerNameView.font = .systemFont(ofSize: 10.0)
-        reviewerNameView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
+        reviewerNameView.font = .systemFont(ofSize: 13.0)
+        reviewerNameView.textColor = AppColor.black.uiColor
         reviewerNameView.text = "Aibow Shadibek"
 
         //comment view
-        commentView.font = .systemFont(ofSize: 10.0)
+        commentView.font = .systemFont(ofSize: 13.0)
         commentView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         commentView.numberOfLines = 0
 
@@ -110,7 +110,7 @@ private extension ReviewItem {
         }
 
         commentView.snp.makeConstraints { (make) in
-            make.top.equalTo(reviewerImageView.snp.bottom)
+            make.top.equalTo(reviewerImageView.snp.bottom).offset(10.0)
             make.left.equalTo(reviewerNameView)
             make.right.equalTo(-16.0)
             make.bottom.equalTo(-20.0)

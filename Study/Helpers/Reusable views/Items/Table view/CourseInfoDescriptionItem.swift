@@ -83,11 +83,11 @@ private extension CourseInfoDescriptionItem {
         selectionStyle = .none
 
         //title label view
-        titleLabelView.font = .boldSystemFont(ofSize: 16)
+        titleLabelView.font = .boldSystemFont(ofSize: 16.0)
         titleLabelView.numberOfLines = 0
 
         //description label view
-        descriptionLabelView.font = .systemFont(ofSize: 9)
+        descriptionLabelView.font = .systemFont(ofSize: 11.0)
         descriptionLabelView.numberOfLines = 0
     }
 

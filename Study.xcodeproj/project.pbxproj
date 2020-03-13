@@ -85,6 +85,8 @@
 		08B0C742240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C741240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift */; };
 		08B0C744240CCF2800D2AE79 /* CourseInfoSkillsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C743240CCF2800D2AE79 /* CourseInfoSkillsItem.swift */; };
 		08B0C746240CD41F00D2AE79 /* CourseInfoLanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C745240CD41F00D2AE79 /* CourseInfoLanguageItem.swift */; };
+		08CF860B241B9085009F31FE /* Skilltem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF860A241B9085009F31FE /* Skilltem.swift */; };
+		08CF860D241B9446009F31FE /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */; };
 		08D2DA412413686D001EC235 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D2DA402413686D001EC235 /* ProfileViewController.swift */; };
 		08D2DA4324136880001EC235 /* ProfileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D2DA4224136880001EC235 /* ProfileAdapter.swift */; };
 		08E1D3F123FBB1BB006E3042 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E1D3F023FBB1BB006E3042 /* AuthorizationViewController.swift */; };
@@ -193,6 +195,8 @@
 		08B0C741240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoTeacherItem.swift; sourceTree = "<group>"; };
 		08B0C743240CCF2800D2AE79 /* CourseInfoSkillsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoSkillsItem.swift; sourceTree = "<group>"; };
 		08B0C745240CD41F00D2AE79 /* CourseInfoLanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoLanguageItem.swift; sourceTree = "<group>"; };
+		08CF860A241B9085009F31FE /* Skilltem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skilltem.swift; sourceTree = "<group>"; };
+		08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		08D2DA402413686D001EC235 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		08D2DA4224136880001EC235 /* ProfileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdapter.swift; sourceTree = "<group>"; };
 		08E1D3F023FBB1BB006E3042 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 				083081592413974F00947567 /* CertificateItem.swift */,
 				082DAEBF2417573300F025E4 /* VariantItem.swift */,
 				0875B681240DFCE400669C5B /* IconableTabItem.swift */,
+				08CF860A241B9085009F31FE /* Skilltem.swift */,
 			);
 			path = "Collection view";
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				08483D6A240B8D9E00B40B1F /* CourseCommunityView.swift */,
 				08483D6C240B8E1A00B40B1F /* CourseRatingView.swift */,
 				082DAEBD241755E300F025E4 /* VariantCollectionView.swift */,
+				08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -841,8 +847,10 @@
 				083081582413963000947567 /* ProfileCertificateItem.swift in Sources */,
 				0875B68C240E1C4D00669C5B /* SettingsHeaderItem.swift in Sources */,
 				0875DF242419FDC900CCB46B /* EditModels.swift in Sources */,
+				08CF860D241B9446009F31FE /* DynamicHeightCollectionView.swift in Sources */,
 				0840503123FE405F00A084A4 /* ScrollViewController.swift in Sources */,
 				0875B682240DFCE400669C5B /* IconableTabItem.swift in Sources */,
+				08CF860B241B9085009F31FE /* Skilltem.swift in Sources */,
 				08483D6F240B8E4E00B40B1F /* PaddingLabel.swift in Sources */,
 				0875DF262419FE5900CCB46B /* EditValidator.swift in Sources */,
 				0840505223FE6B5800A084A4 /* CourseInfoViewController.swift in Sources */,

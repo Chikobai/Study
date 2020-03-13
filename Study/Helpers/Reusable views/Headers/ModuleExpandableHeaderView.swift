@@ -76,7 +76,7 @@ private extension ModuleExpandableHeaderView {
         //score label view
         scoreLabelView.text = "0/7 баллов"
         scoreLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        scoreLabelView.font = .systemFont(ofSize: 8.0)
+        scoreLabelView.font = .systemFont(ofSize: 10.0)
 
         //to expand button view
         toExpandButtonView.setImage(#imageLiteral(resourceName: "up-and-down 5"), for: .normal)

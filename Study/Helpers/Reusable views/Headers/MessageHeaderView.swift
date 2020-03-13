@@ -45,7 +45,7 @@ private extension MessageHeaderView {
 
         //title label view
         titleLabelView.textColor = AppColor.black.uiColor
-        titleLabelView.font = .systemFont(ofSize: 9)
+        titleLabelView.font = .systemFont(ofSize: 11)
         titleLabelView.textAlignment = .center
         titleLabelView.numberOfLines = 0
     }

@@ -10,7 +10,14 @@ import UIKit
 
 class CourseInfoSkillsItem: UITableViewCell {
 
+    private var items: [String] = []
+    
     private lazy var skillsLabelView: UILabel = UILabel()
+    private lazy var skillsCollectionView: DynamicHeightCollectionView = {
+        let layout = DynamicHeightCollectionViewFlowLayout()
+        let view = DynamicHeightCollectionView(frame: .zero, collectionViewLayout: layout)
+        return view
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,20 +35,47 @@ class CourseInfoSkillsItem: UITableViewCell {
 
     func  configure(with skills: [String]) -> Void {
 
-        let titleAttribute = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor]
-        let skillsAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 9.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor.withAlphaComponent(0.5)]
+        self.items = skills
+        skillsCollectionView.reloadData()
+        skillsCollectionView.layoutIfNeeded()
+    }
+}
 
-        let titleAttributedString = NSMutableAttributedString.init(string: "Skills you will gain:   ", attributes: titleAttribute)
+// MARK: - UICollectionViewDelegate
 
-        skills.enumerated().forEach { (arg0) in
+extension CourseInfoSkillsItem: UICollectionViewDelegate{
 
-            let skill = (arg0.offset == skills.count - 1) ? arg0.element : "\(arg0.element), "
+}
 
-            let skillAttributedString = NSMutableAttributedString.init(string: skill, attributes: skillsAttribute)
-            titleAttributedString.append(skillAttributedString)
-        }
+// MARK: - UICollectionViewDataSource
 
-        skillsLabelView.attributedText = titleAttributedString
+extension CourseInfoSkillsItem: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Skilltem.cellIdentifier(), for: indexPath) as? Skilltem
+        cell?.configure(with: items[indexPath.item])
+
+        return cell!
+    }
+
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension CourseInfoSkillsItem: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = items[indexPath.item].width(withConstrainedHeight: 34, font: UIFont.systemFont(ofSize: 12.0)) + 20
+        return CGSize(width: width, height: 34)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 }
 
@@ -53,6 +87,7 @@ private extension CourseInfoSkillsItem {
 
         buildViews()
         buildLayouts()
+        buildServices()
     }
 
     func buildViews() -> Void {
@@ -62,19 +97,35 @@ private extension CourseInfoSkillsItem {
         selectionStyle = .none
 
         //skills label view
-        skillsLabelView.numberOfLines = 0
+        skillsLabelView.text = "Skills you will gain:"
+        skillsLabelView.numberOfLines =  2
+        skillsLabelView.font = .boldSystemFont(ofSize: 16.0)
 
+        //skills collection view
+        skillsCollectionView.backgroundColor = .clear
+        skillsCollectionView.showsHorizontalScrollIndicator = false
     }
 
     func buildLayouts() -> Void {
 
-        addSubview(skillsLabelView)
+        addSubviews(with: [skillsLabelView, skillsCollectionView])
         skillsLabelView.snp.makeConstraints { (make) in
+            make.top.equalTo(12)
             make.left.equalTo(29.0)
             make.right.equalTo(-29.0)
-            make.centerY.equalToSuperview()
-            make.top.equalTo(12)
-            make.bottom.equalTo(-12)
         }
+
+        skillsCollectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(skillsLabelView.snp.bottom).offset(8.0)
+            make.left.equalTo(15.0)
+            make.right.equalTo(-15.0)
+            make.bottom.equalTo(-8.0)
+        }
+    }
+
+    func buildServices() -> Void {
+        skillsCollectionView.register(Skilltem.self, forCellWithReuseIdentifier: Skilltem.cellIdentifier())
+        skillsCollectionView.delegate = self
+        skillsCollectionView.dataSource = self
     }
 }

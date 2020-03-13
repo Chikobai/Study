@@ -57,7 +57,7 @@ private extension ModuleItem {
 
         //topic label view
         topicLabelView.text = "Hello, world"
-        topicLabelView.font = .systemFont(ofSize: 10.0)
+        topicLabelView.font = .systemFont(ofSize: 13.0)
         topicLabelView.textColor = AppColor.black.uiColor
 
         //information stack view
@@ -69,22 +69,22 @@ private extension ModuleItem {
         //score label view
         scoreLabelView.text = "0/7 баллов"
         scoreLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        scoreLabelView.font = .systemFont(ofSize: 6.0)
+        scoreLabelView.font = .systemFont(ofSize: 10.0)
 
         //duration label view
         durationLabelView.text = "15 мин"
         durationLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        durationLabelView.font = .systemFont(ofSize: 6.0)
+        durationLabelView.font = .systemFont(ofSize: 10.0)
 
         //population label view
         populationLabelView.text = "36 человеков"
         populationLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        populationLabelView.font = .systemFont(ofSize: 6.0)
+        populationLabelView.font = .systemFont(ofSize: 10.0)
 
         //liked label view
         likedLabelView.text = "36 нравиться"
         likedLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        likedLabelView.font = .systemFont(ofSize: 6.0)
+        likedLabelView.font = .systemFont(ofSize: 10.0)
 
         //separator line view
         separatorLineView.backgroundColor = AppColor.black.uiColor.withAlphaComponent(0.2)
