@@ -80,12 +80,12 @@ private extension ProfileViewController {
     func buildViews() -> Void {
 
         //superview
-        view.backgroundColor = AppColor.white.uiColor
+        view.backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
 
         //header view
-        headerView.frame.size.height = 230
+        headerView.frame.size.height = 230.0
 
-//      table view
+        //table view
         tableView.tableHeaderView = headerView
         tableView.separatorStyle = .none
         tableView.backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
@@ -99,7 +99,6 @@ private extension ProfileViewController {
 
         //navigation items
         navigationItem.rightBarButtonItems = [settingsBarButtonItemView, editBarButtonItemView]
-        
     }
 
     func buildLayouts() -> Void {

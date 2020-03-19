@@ -12,12 +12,18 @@ import UIKit
 
 class MyCoursesAdapter: NSObject {
 
+    private var courses: [SubscribedCourse] = []
+
     override init() {
         super.init()
     }
 
     deinit {
         print("DEINIT: MyCoursesAdapter")
+    }
+
+    func configure(with courses: [SubscribedCourse]) -> Void {
+        self.courses = courses
     }
 }
 
@@ -30,7 +36,7 @@ extension MyCoursesAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return courses.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

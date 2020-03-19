@@ -58,6 +58,13 @@
 		08483D6B240B8D9E00B40B1F /* CourseCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D6A240B8D9E00B40B1F /* CourseCommunityView.swift */; };
 		08483D6D240B8E1A00B40B1F /* CourseRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D6C240B8E1A00B40B1F /* CourseRatingView.swift */; };
 		08483D6F240B8E4E00B40B1F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D6E240B8E4E00B40B1F /* PaddingLabel.swift */; };
+		0856AA7C241F6C1C00BFAE4F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA74241F6C1C00BFAE4F /* NetworkManager.swift */; };
+		0856AA7D241F6C1C00BFAE4F /* CustomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA75241F6C1C00BFAE4F /* CustomParser.swift */; };
+		0856AA7E241F6C1C00BFAE4F /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA77241F6C1C00BFAE4F /* Endpoints.swift */; };
+		0856AA7F241F6C1C00BFAE4F /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA78241F6C1C00BFAE4F /* Requests.swift */; };
+		0856AA80241F6C1C00BFAE4F /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA79241F6C1C00BFAE4F /* Parser.swift */; };
+		0856AA81241F6C1C00BFAE4F /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA7A241F6C1C00BFAE4F /* CustomError.swift */; };
+		0856AA82241F6C1C00BFAE4F /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA7B241F6C1C00BFAE4F /* EndpointType.swift */; };
 		0875B67E240DF9AD00669C5B /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B67D240DF9AD00669C5B /* VideoViewController.swift */; };
 		0875B680240DFBDC00669C5B /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B67F240DFBDC00669C5B /* LessonViewController.swift */; };
 		0875B682240DFCE400669C5B /* IconableTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B681240DFCE400669C5B /* IconableTabItem.swift */; };
@@ -85,6 +92,10 @@
 		08B0C742240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C741240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift */; };
 		08B0C744240CCF2800D2AE79 /* CourseInfoSkillsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C743240CCF2800D2AE79 /* CourseInfoSkillsItem.swift */; };
 		08B0C746240CD41F00D2AE79 /* CourseInfoLanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C745240CD41F00D2AE79 /* CourseInfoLanguageItem.swift */; };
+		08C981AA2423BDDD00B2A802 /* GeneralPaginationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981A92423BDDD00B2A802 /* GeneralPaginationModel.swift */; };
+		08C981AC2423BF5600B2A802 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981AB2423BF5600B2A802 /* PostModel.swift */; };
+		08C981AF2423E2AF00B2A802 /* MessageBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */; };
+		08C981B12423E4D900B2A802 /* SubscribedCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981B02423E4D900B2A802 /* SubscribedCourseModel.swift */; };
 		08CF860B241B9085009F31FE /* Skilltem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF860A241B9085009F31FE /* Skilltem.swift */; };
 		08CF860D241B9446009F31FE /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */; };
 		08D2DA412413686D001EC235 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D2DA402413686D001EC235 /* ProfileViewController.swift */; };
@@ -168,6 +179,13 @@
 		08483D6A240B8D9E00B40B1F /* CourseCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCommunityView.swift; sourceTree = "<group>"; };
 		08483D6C240B8E1A00B40B1F /* CourseRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRatingView.swift; sourceTree = "<group>"; };
 		08483D6E240B8E4E00B40B1F /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		0856AA74241F6C1C00BFAE4F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0856AA75241F6C1C00BFAE4F /* CustomParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomParser.swift; sourceTree = "<group>"; };
+		0856AA77241F6C1C00BFAE4F /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		0856AA78241F6C1C00BFAE4F /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		0856AA79241F6C1C00BFAE4F /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		0856AA7A241F6C1C00BFAE4F /* CustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		0856AA7B241F6C1C00BFAE4F /* EndpointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		0875B67D240DF9AD00669C5B /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0875B67F240DFBDC00669C5B /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		0875B681240DFCE400669C5B /* IconableTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconableTabItem.swift; sourceTree = "<group>"; };
@@ -195,6 +213,10 @@
 		08B0C741240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoTeacherItem.swift; sourceTree = "<group>"; };
 		08B0C743240CCF2800D2AE79 /* CourseInfoSkillsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoSkillsItem.swift; sourceTree = "<group>"; };
 		08B0C745240CD41F00D2AE79 /* CourseInfoLanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoLanguageItem.swift; sourceTree = "<group>"; };
+		08C981A92423BDDD00B2A802 /* GeneralPaginationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPaginationModel.swift; sourceTree = "<group>"; };
+		08C981AB2423BF5600B2A802 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBackgroundView.swift; sourceTree = "<group>"; };
+		08C981B02423E4D900B2A802 /* SubscribedCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedCourseModel.swift; sourceTree = "<group>"; };
 		08CF860A241B9085009F31FE /* Skilltem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skilltem.swift; sourceTree = "<group>"; };
 		08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		08D2DA402413686D001EC235 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -260,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				08E1D3F223FBB25A006E3042 /* Helpers */,
-				083081542413911300947567 /* Managers */,
 				08E1D3EE23FBB188006E3042 /* AppDelegate */,
 				08E1D3ED23FBB180006E3042 /* Module */,
 				08089F2F23FA6CCE00EFDD85 /* Assets.xcassets */,
@@ -320,6 +341,7 @@
 		083081542413911300947567 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0856AA73241F6C1C00BFAE4F /* NetworkManager */,
 				083081552413916100947567 /* DatePickerManager.swift */,
 				0875B68F240E284F00669C5B /* PickerViewManager.swift */,
 			);
@@ -417,6 +439,28 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
+		0856AA73241F6C1C00BFAE4F /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0856AA74241F6C1C00BFAE4F /* NetworkManager.swift */,
+				0856AA75241F6C1C00BFAE4F /* CustomParser.swift */,
+				0856AA76241F6C1C00BFAE4F /* Request */,
+				0856AA79241F6C1C00BFAE4F /* Parser.swift */,
+				0856AA7A241F6C1C00BFAE4F /* CustomError.swift */,
+				0856AA7B241F6C1C00BFAE4F /* EndpointType.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		0856AA76241F6C1C00BFAE4F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				0856AA77241F6C1C00BFAE4F /* Endpoints.swift */,
+				0856AA78241F6C1C00BFAE4F /* Requests.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		0875B679240DF8E200669C5B /* Lesson */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +536,32 @@
 			path = "My Courses";
 			sourceTree = "<group>";
 		};
+		08C981A72423BD3400B2A802 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				08C981A82423BD4E00B2A802 /* Base */,
+				08C981AB2423BF5600B2A802 /* PostModel.swift */,
+				08C981B02423E4D900B2A802 /* SubscribedCourseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		08C981A82423BD4E00B2A802 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				08C981A92423BDDD00B2A802 /* GeneralPaginationModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		08C981AD2423E29800B2A802 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
 		08D2DA3F241366E4001EC235 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +612,8 @@
 		08E1D3F223FBB25A006E3042 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				08C981A72423BD3400B2A802 /* Models */,
+				083081542413911300947567 /* Managers */,
 				08E1D41823FBDAB7006E3042 /* Stylizing */,
 				08E1D3FE23FBB700006E3042 /* Reusable views */,
 				08E1D3FD23FBB53E006E3042 /* Extenstions */,
@@ -590,6 +662,7 @@
 		08E1D3FE23FBB700006E3042 /* Reusable views */ = {
 			isa = PBXGroup;
 			children = (
+				08C981AD2423E29800B2A802 /* Backgrounds */,
 				08E1D40023FBB732006E3042 /* Views */,
 				0840505523FE6E2400A084A4 /* Headers */,
 				08E1D3FF23FBB71F006E3042 /* Items */,
@@ -773,6 +846,7 @@
 				08E1D3FC23FBB4E6006E3042 /* AppTitle.swift in Sources */,
 				0875DF222419FDBE00CCB46B /* EditAdapter.swift in Sources */,
 				08E1D40F23FBC1F3006E3042 /* AuthorizationViewModel.swift in Sources */,
+				0856AA7C241F6C1C00BFAE4F /* NetworkManager.swift in Sources */,
 				082DAEC02417573300F025E4 /* VariantItem.swift in Sources */,
 				0840503323FE41D500A084A4 /* CourseDetailsPagerViewController.swift in Sources */,
 				0829FAE524039B92000CACCF /* UILabel+Extenstions.swift in Sources */,
@@ -792,6 +866,7 @@
 				0875B686240E162600669C5B /* SettingsViewController.swift in Sources */,
 				08E1D42423FC38C4006E3042 /* MessageItem.swift in Sources */,
 				083707E92418C848008A85FB /* BasicBarChartPresenter.swift in Sources */,
+				0856AA7D241F6C1C00BFAE4F /* CustomParser.swift in Sources */,
 				08E1D41A23FBDACF006E3042 /* Stylizing.swift in Sources */,
 				08E1D41E23FC08C6006E3042 /* OTPTextField.swift in Sources */,
 				0840502F23FE403600A084A4 /* CourseDetailsViewController.swift in Sources */,
@@ -801,9 +876,12 @@
 				0840505923FE717700A084A4 /* ReviewItem.swift in Sources */,
 				08A73E2D2406613D00244B9E /* MyCoursesAdapter.swift in Sources */,
 				0875B68E240E263100669C5B /* SettingsLanguageItem.swift in Sources */,
+				0856AA82241F6C1C00BFAE4F /* EndpointType.swift in Sources */,
 				083081562413916100947567 /* DatePickerManager.swift in Sources */,
 				0875B690240E284F00669C5B /* PickerViewManager.swift in Sources */,
+				0856AA81241F6C1C00BFAE4F /* CustomError.swift in Sources */,
 				08D2DA4324136880001EC235 /* ProfileAdapter.swift in Sources */,
+				08C981AA2423BDDD00B2A802 /* GeneralPaginationModel.swift in Sources */,
 				08E1D42023FC0C6A006E3042 /* UIView+Extensions.swift in Sources */,
 				0840503523FE422900A084A4 /* CourseModulesViewController.swift in Sources */,
 				08483D65240B655000B40B1F /* ModuleExpandableHeaderView.swift in Sources */,
@@ -829,9 +907,11 @@
 				0875B688240E165C00669C5B /* SettingsAdapter.swift in Sources */,
 				0830814F24136E6400947567 /* ProfileStatisticsItem.swift in Sources */,
 				08B0C73E240CBD1200D2AE79 /* CourseInfoHeaderView.swift in Sources */,
+				08C981AF2423E2AF00B2A802 /* MessageBackgroundView.swift in Sources */,
 				08E1D40723FBBA23006E3042 /* SecureTextField.swift in Sources */,
 				08B0C746240CD41F00D2AE79 /* CourseInfoLanguageItem.swift in Sources */,
 				08E1D40D23FBBED8006E3042 /* UITableViewCell+Extensions.swift in Sources */,
+				08C981AC2423BF5600B2A802 /* PostModel.swift in Sources */,
 				082B1D142400EB4800316D24 /* MainAdapter.swift in Sources */,
 				08483D69240B882F00B40B1F /* CourseHeaderView.swift in Sources */,
 				0875DF202419FDB400CCB46B /* EditViewController.swift in Sources */,
@@ -844,6 +924,7 @@
 				08E1D41323FBC81C006E3042 /* FilledButtonItem.swift in Sources */,
 				0840502A23FCEFF600A084A4 /* RestorePasswordViewModel.swift in Sources */,
 				08A73E262406471200244B9E /* PackageItem.swift in Sources */,
+				0856AA80241F6C1C00BFAE4F /* Parser.swift in Sources */,
 				083081582413963000947567 /* ProfileCertificateItem.swift in Sources */,
 				0875B68C240E1C4D00669C5B /* SettingsHeaderItem.swift in Sources */,
 				0875DF242419FDC900CCB46B /* EditModels.swift in Sources */,
@@ -853,9 +934,12 @@
 				08CF860B241B9085009F31FE /* Skilltem.swift in Sources */,
 				08483D6F240B8E4E00B40B1F /* PaddingLabel.swift in Sources */,
 				0875DF262419FE5900CCB46B /* EditValidator.swift in Sources */,
+				0856AA7F241F6C1C00BFAE4F /* Requests.swift in Sources */,
 				0840505223FE6B5800A084A4 /* CourseInfoViewController.swift in Sources */,
 				08E1D40223FBB822006E3042 /* FloatingTextField.swift in Sources */,
 				0830815124136FA800947567 /* ProfileModels.swift in Sources */,
+				08C981B12423E4D900B2A802 /* SubscribedCourseModel.swift in Sources */,
+				0856AA7E241F6C1C00BFAE4F /* Endpoints.swift in Sources */,
 				083707E72418C848008A85FB /* DataEntry.swift in Sources */,
 				083707EA2418C848008A85FB /* BasicBarEntry.swift in Sources */,
 				08483D67240B6DF800B40B1F /* ModuleItem.swift in Sources */,

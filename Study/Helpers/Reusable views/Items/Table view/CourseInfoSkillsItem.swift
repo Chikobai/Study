@@ -13,8 +13,9 @@ class CourseInfoSkillsItem: UITableViewCell {
     private var items: [String] = []
     
     private lazy var skillsLabelView: UILabel = UILabel()
-    private lazy var skillsCollectionView: DynamicHeightCollectionView = {
-        let layout = DynamicHeightCollectionViewFlowLayout()
+    lazy var skillsCollectionView: DynamicHeightCollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = CGSize.init(width: 1, height: 1)
         let view = DynamicHeightCollectionView(frame: .zero, collectionViewLayout: layout)
         return view
     }()
@@ -50,6 +51,7 @@ extension CourseInfoSkillsItem: UICollectionViewDelegate{
 // MARK: - UICollectionViewDataSource
 
 extension CourseInfoSkillsItem: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
@@ -61,7 +63,6 @@ extension CourseInfoSkillsItem: UICollectionViewDataSource {
 
         return cell!
     }
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -70,12 +71,9 @@ extension CourseInfoSkillsItem: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = items[indexPath.item].width(withConstrainedHeight: 34, font: UIFont.systemFont(ofSize: 12.0)) + 20
-        return CGSize(width: width, height: 34)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        let text = items[indexPath.item]
+        let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize:12.0)]).width + 30.0
+        return CGSize(width: cellWidth, height: 30.0)
     }
 }
 
@@ -108,18 +106,19 @@ private extension CourseInfoSkillsItem {
 
     func buildLayouts() -> Void {
 
-        addSubviews(with: [skillsLabelView, skillsCollectionView])
-        skillsLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(12)
-            make.left.equalTo(29.0)
-            make.right.equalTo(-29.0)
-        }
+        addSubviews(with: [ skillsCollectionView])
+//        skillsLabelView.snp.makeConstraints { (make) in
+//            make.top.equalTo(8)
+//            make.left.equalTo(29.0)
+//            make.right.equalTo(-29.0)
+//        }
 
         skillsCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(skillsLabelView.snp.bottom).offset(8.0)
-            make.left.equalTo(15.0)
-            make.right.equalTo(-15.0)
-            make.bottom.equalTo(-8.0)
+//            make.top.equalTo(skillsLabelView.snp.bottom).offset(8.0)
+//            make.left.equalTo(29.0)
+//            make.right.equalTo(-29.0)
+//            make.bottom.equalTo(-8.0)
+            make.edges.equalToSuperview()
         }
     }
 

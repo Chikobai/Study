@@ -42,7 +42,7 @@ private extension ProfileHeaderView {
     func buildViews() -> Void {
 
         //superview
-        backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
+        backgroundColor = .clear
 
         //photo image view
         photoImageView.layer.cornerRadius = 55

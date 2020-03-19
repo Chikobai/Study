@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.0)
+  - Alamofire (4.2.0)
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
@@ -32,7 +32,7 @@ SPEC REPOS:
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
-  Alamofire: 58ff2bfb8daaacaa233d5c36e37b10a5248f59b1
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
   InputMask: 8a10dbc8ac3f94f0a5b4c380424bbe6795c69b16

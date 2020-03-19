@@ -32,7 +32,7 @@ class DynamicHeightCollectionViewFlowLayout: UICollectionViewFlowLayout {
                     currentLayoutAttributes.frame = frame ?? CGRect.zero
                 } else {
                     // self.shiftCellsToCenter()
-                    currentLayoutAttributes.frame.origin.x = leftEdgeInset
+                    currentLayoutAttributes.frame.origin.x = 0
                     //To Avoid InConvience Emoji Cell
                     if (prevLayoutAttributes.frame.origin.x != 0) {
                         currentLayoutAttributes.frame.origin.y = prevLayoutAttributes.frame.origin.y + prevLayoutAttributes.frame.size.height + 08
@@ -61,6 +61,60 @@ class DynamicHeightCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
 }
 
+import UIKit
+
+class TokenCollViewFlowLayout: UICollectionViewFlowLayout {
+
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributesForElementsInRect = super.layoutAttributesForElements(in: rect)
+        var newAttributesForElementsInRect = [UICollectionViewLayoutAttributes]()
+
+        var leftMargin: CGFloat = self.sectionInset.left
+
+        for attributes in attributesForElementsInRect! {
+            if (attributes.frame.origin.x == self.sectionInset.left) {
+                leftMargin = self.sectionInset.left
+            } else {
+                var newLeftAlignedFrame = attributes.frame
+
+                if leftMargin + attributes.frame.width < self.collectionViewContentSize.width {
+                    newLeftAlignedFrame.origin.x = leftMargin
+                } else {
+                    newLeftAlignedFrame.origin.x = self.sectionInset.left
+                }
+
+                attributes.frame = newLeftAlignedFrame
+            }
+            leftMargin += attributes.frame.size.width + 8
+            newAttributesForElementsInRect.append(attributes)
+        }
+
+        return newAttributesForElementsInRect
+    }
+}
+
+//class DynmicHeightCollectionView: UICollectionView {
+//
+//    var isDynamicSizeRequired = false
+//
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
+//
+//            if self.intrinsicContentSize.height > frame.size.height {
+//                self.invalidateIntrinsicContentSize()
+//            }
+//            if isDynamicSizeRequired {
+//                self.invalidateIntrinsicContentSize()
+//            }
+//        }
+//    }
+//
+//    override var intrinsicContentSize: CGSize {
+//        return contentSize
+//    }
+//}
+
 class DynamicHeightCollectionView: UICollectionView {
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -70,6 +124,6 @@ class DynamicHeightCollectionView: UICollectionView {
     }
 
     override var intrinsicContentSize: CGSize {
-        return contentSize
+        return collectionViewLayout.collectionViewContentSize
     }
 }

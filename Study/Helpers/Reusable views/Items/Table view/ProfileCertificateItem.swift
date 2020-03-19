@@ -98,7 +98,7 @@ private extension ProfileCertificateItem {
     func buildViews() -> Void {
 
         //superview
-        backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
+        backgroundColor = .clear
         contentView.backgroundColor = AppColor.white.uiColor
         selectionStyle = .none
 

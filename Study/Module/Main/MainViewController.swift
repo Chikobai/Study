@@ -8,9 +8,18 @@
 
 import UIKit
 
+protocol MainDelegate: class {
+
+    func moreLoad() -> Void
+}
+
 class MainViewController: UITableViewController, Stylizing {
 
+    private(set) var refreshControlView: UIRefreshControl = UIRefreshControl()
     private(set) var adapter: MainAdapter = MainAdapter()
+
+    private var limit: Int = 0
+    private var offset: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +27,41 @@ class MainViewController: UITableViewController, Stylizing {
         build()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        fetchPosts()
+    }
+
     deinit {
         print("DEINIT: MainViewController")
+    }
+}
+
+extension MainViewController {
+
+    @objc
+    func fetchPosts() -> Void {
+        tableView.backgroundView = nil
+        refreshControlView.beginRefreshing()
+        Request.shared.loadPosts(complitionHandler: { (posts) in
+            self.refreshControlView.endRefreshing()
+            self.adapter.newPost(with: posts)
+            self.tableView.reloadData()
+        }) { (message) in
+            self.refreshControlView.endRefreshing()
+            self.tableView.backgroundView = MessageBackgroundView.init()
+        }
+    }
+
+    @objc
+    func fetchMorePosts() -> Void {
+        tableView.backgroundView = nil
+        Request.shared.loadPosts(complitionHandler: { (posts) in
+            self.adapter.appendPost(with: posts)
+            self.tableView.reloadData()
+        }) { (message) in
+            self.tableView.backgroundView = UILabel()
+        }
     }
 }

@@ -34,27 +34,26 @@ class PostItem: UITableViewCell {
         print("DEINIT: PostItem")
     }
 
-    func configure(with data: ExpandedLabel) -> Void {
+    func configure(with data: Post, isCollapsed: Bool) -> Void {
 
         let mainContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor]
         let moreContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor.withAlphaComponent(0.5)]
-
-        if data.collapsed == true {
-            if data.text.count >= 150
+        if (isCollapsed == false) {
+            if data.description.count >= 150
             {
-                let mainAttributedString = NSMutableAttributedString(string: "\(data.text.prefix(150))...", attributes: mainContentAttribute)
+                let mainAttributedString = NSMutableAttributedString(string: "\(data.description.prefix(150))...", attributes: mainContentAttribute)
                 let moreAttributedString = NSMutableAttributedString(string: "More", attributes: moreContentAttribute)
                 mainAttributedString.append(moreAttributedString)
 
                 postDescriptionLabelView.attributedText = mainAttributedString
             }
             else{
-                postDescriptionLabelView.attributedText = NSMutableAttributedString(string: data.text, attributes: mainContentAttribute)
+                postDescriptionLabelView.attributedText = NSMutableAttributedString(string: data.description, attributes: mainContentAttribute)
             }
         }
-        else{
-            postDescriptionLabelView.attributedText = NSMutableAttributedString(string: data.text, attributes: mainContentAttribute)
-        }
+
+
+        postedUserNameLabelView.text = data.teacher.first_name + " " + data.teacher.last_name
     }
 }
 
@@ -96,16 +95,13 @@ private extension PostItem {
         postedUserImageView.layer.cornerRadius = 18.0
 
         //posted user name label view
-        postedUserNameLabelView.text = "Nemchenko A."
         postedUserNameLabelView.font = .systemFont(ofSize: 14.0)
 
         //post name label view
-        postNameLabelView.text = "Discrete mathematics"
         postNameLabelView.font = .boldSystemFont(ofSize: 20.0)
         postNameLabelView.numberOfLines = 2
 
         //post description label view
-        postDescriptionLabelView.text = "Discrete mathematics is the study of mathematical structures...More"
         postDescriptionLabelView.numberOfLines = 0
         postDescriptionLabelView.isUserInteractionEnabled = true
 

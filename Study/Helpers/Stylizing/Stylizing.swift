@@ -207,6 +207,9 @@ extension Stylizing where Self: MyCoursesViewController {
 
         //navigation item
         navigationItem.title = AppTitle.MyCourses.title
+
+        //table view
+        tableView.addSubview(refreshControlView)
     }
 
     func buildServices() -> Void {
@@ -217,6 +220,11 @@ extension Stylizing where Self: MyCoursesViewController {
         tableView.separatorStyle = .none
         tableView.register(SubscribedPackageItem.self, forCellReuseIdentifier: SubscribedPackageItem.cellIdentifier())
     }
+
+    func buildTargets() -> Void {
+
+        refreshControlView.addTarget(self, action: #selector(fetchSubscribedCourses), for: .valueChanged)
+    }
 }
 
 
@@ -226,6 +234,7 @@ extension Stylizing where  Self: MainViewController {
 
         buildViews()
         buildServices()
+        buildTargets()
     }
 
     func buildViews() -> Void {
@@ -236,6 +245,7 @@ extension Stylizing where  Self: MainViewController {
         //table view
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .zero
+        tableView.addSubview(refreshControlView)
     }
 
     func buildServices() -> Void {
@@ -243,5 +253,10 @@ extension Stylizing where  Self: MainViewController {
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(PostItem.self, forCellReuseIdentifier: PostItem.cellIdentifier())
+    }
+
+    func buildTargets() -> Void {
+
+        refreshControlView.addTarget(self, action: #selector(fetchPosts), for: .valueChanged)
     }
 }

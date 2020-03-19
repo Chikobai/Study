@@ -52,15 +52,14 @@ private extension Skilltem {
         //title label view
         titleLabelView.font = UIFont.systemFont(ofSize: 12.0)
         titleLabelView.textColor = AppColor.white.uiColor
+        titleLabelView.textAlignment = .center
     }
 
     func buildLayouts() -> Void {
 
         addSubview(titleLabelView)
         titleLabelView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.top.left.equalTo(10)
-            make.bottom.right.equalTo(-10)
+            make.top.left.right.bottom.equalToSuperview()
         }
     }
 }

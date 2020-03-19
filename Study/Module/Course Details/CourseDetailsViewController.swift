@@ -41,15 +41,17 @@ class CourseDetailsViewController: ScrollViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
         super.viewWillAppear(animated)
-
-         self.transparentBar()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.isTranslucent = false
         super.viewDidDisappear(animated)
-
-        self.defaulteBar()
     }
 }
 

@@ -13,6 +13,7 @@ class CourseInfoAdapter: NSObject {
 
     weak var scrollDelegate: CourseInfoScrollDelegate?
     private var descriptionIsExpanded: Bool = false
+    private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
 
     override init() {
         super.init()
@@ -40,7 +41,10 @@ extension CourseInfoAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30.0
+        if let estimatedHeight = estimateRowHeightStorage[indexPath] {
+            return estimatedHeight
+        }
+        return  UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +63,10 @@ extension CourseInfoAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        estimateRowHeightStorage[indexPath] = cell.frame.size.height
     }
 }
 
@@ -101,7 +109,7 @@ private extension CourseInfoAdapter {
     func skillsItemView(with tableView: UITableView, _ indexPath: IndexPath) -> CourseInfoSkillsItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoSkillsItem.cellIdentifier(), for: indexPath) as? CourseInfoSkillsItem
-        cell?.configure(with: ["Discrete Math", "Math", "Statistic", "Marketolog", "Geo"])
+        cell?.configure(with: ["Discrete Math", "Math", "Statistic", "Marketolog", "Geo", "Discrete Math", "Math", "Statistic", "Marketolog", "Geo"])
         return cell!
     }
 
