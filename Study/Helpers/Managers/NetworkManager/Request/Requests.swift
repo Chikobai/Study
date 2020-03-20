@@ -25,14 +25,18 @@ extension  Request {
     func loadPosts(
         complitionHandler: @escaping (([Post])->Void),
         complitionHandlerError: @escaping ((String)->Void)
-        ) -> Void {
+    ) -> Void {
         let endpoints = Endpoints.posts(limit: 1, offset: 0)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
                 complitionHandlerError(error)
             case .success(let posts):
-                complitionHandlerError("")
+                guard (posts.results.isEmpty == false) else {
+                    complitionHandlerError("No data")
+                    return
+                }
+                complitionHandler(posts.results)
             }
         }
     }
@@ -40,14 +44,18 @@ extension  Request {
     func loadMorePosts(
         complitionHandler: @escaping (([Post])->Void),
         complitionHandlerError: @escaping ((String)->Void)
-        ) -> Void {
+    ) -> Void {
         let endpoints = Endpoints.posts(limit: 1, offset: 0)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
                 complitionHandlerError(error)
             case .success(let posts):
-                complitionHandlerError("")
+                guard (posts.results.isEmpty == false) else {
+                    complitionHandlerError("No data")
+                    return
+                }
+                complitionHandler(posts.results)
             }
         }
     }
@@ -55,23 +63,40 @@ extension  Request {
     func loadSubscribedCourses(
         complitionHandler: @escaping (([SubscribedCourse])->Void),
         complitionHandlerError: @escaping ((String)->Void)
-        ) -> Void {
+    ) -> Void {
         let endpoints = Endpoints.subscribedCourses
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<SubscribedCourse>>) in
             switch result {
             case .failure(let error, _):
                 complitionHandlerError(error)
             case .success(let subscribedCourses):
-                guard (subscribedCourses.results.isEmpty == true) else {
-                    complitionHandler(subscribedCourses.results)
+                guard (subscribedCourses.results.isEmpty == false) else {
+                    complitionHandlerError("No data")
                     return
                 }
-                complitionHandlerError("")
+                complitionHandler(subscribedCourses.results)
             }
         }
     }
 
-
+    func loadCourses(
+        complitionHandler: @escaping (([Course])->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+        ) -> Void {
+        let endpoints = Endpoints.courses
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let courses):
+                guard (courses.results.isEmpty == false) else {
+                    complitionHandlerError("No data")
+                    return
+                }
+                complitionHandler(courses.results)
+            }
+        }
+    }
 }
 
 //  MARK: PUT REQUESTS

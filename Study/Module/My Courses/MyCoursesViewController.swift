@@ -10,7 +10,6 @@ import UIKit
 
 class MyCoursesViewController: UITableViewController, Stylizing {
 
-    private(set) var refreshControlView: UIRefreshControl = UIRefreshControl()
     private(set) var adapter: MyCoursesAdapter = MyCoursesAdapter()
 
     init(){
@@ -43,14 +42,14 @@ extension MyCoursesViewController {
     @objc
     func fetchSubscribedCourses() -> Void {
         tableView.backgroundView = nil
-        refreshControlView.beginRefreshing()
+        refreshControl?.beginRefreshing()
         Request.shared.loadSubscribedCourses(complitionHandler: { (courses) in
-            self.refreshControlView.endRefreshing()
+            self.refreshControl?.endRefreshing()
             self.adapter.configure(with: courses)
             self.tableView.reloadData()
         }) { (message) in
-            self.refreshControlView.endRefreshing()
-            self.tableView.backgroundView = MessageBackgroundView.init()
+            self.refreshControl?.endRefreshing()
+            self.tableView.backgroundView = MessageBackgroundView(with: message)
         }
     }
 }

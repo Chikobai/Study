@@ -173,12 +173,16 @@ extension Stylizing where Self: ByCategoryViewController {
 
         buildViews()
         buildServices()
+        buildTargets()
     }
 
     func buildViews() -> Void {
 
         //superview
         view.backgroundColor = AppColor.white.uiColor
+
+        //refresh control
+        refreshControl = UIRefreshControl()
     }
 
     func buildServices() -> Void {
@@ -190,6 +194,11 @@ extension Stylizing where Self: ByCategoryViewController {
         tableView.separatorStyle = .none
         tableView.register(PackageItem.self, forCellReuseIdentifier: PackageItem.cellIdentifier())
     }
+
+    func buildTargets() -> Void {
+
+        refreshControl?.addTarget(self, action: #selector(fetchCourses), for: .valueChanged)
+    }
 }
 
 extension Stylizing where Self: MyCoursesViewController {
@@ -198,6 +207,7 @@ extension Stylizing where Self: MyCoursesViewController {
 
         buildViews()
         buildServices()
+        buildTargets()
     }
 
     func buildViews() -> Void {
@@ -208,8 +218,9 @@ extension Stylizing where Self: MyCoursesViewController {
         //navigation item
         navigationItem.title = AppTitle.MyCourses.title
 
-        //table view
-        tableView.addSubview(refreshControlView)
+        //refresh control
+        refreshControl = UIRefreshControl()
+
     }
 
     func buildServices() -> Void {
@@ -223,7 +234,7 @@ extension Stylizing where Self: MyCoursesViewController {
 
     func buildTargets() -> Void {
 
-        refreshControlView.addTarget(self, action: #selector(fetchSubscribedCourses), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(fetchSubscribedCourses), for: .valueChanged)
     }
 }
 
@@ -242,10 +253,12 @@ extension Stylizing where  Self: MainViewController {
         //navigation item
         navigationItem.title = "Posts"
 
+        //refresh control
+        refreshControl = UIRefreshControl()
+
         //table view
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .zero
-        tableView.addSubview(refreshControlView)
     }
 
     func buildServices() -> Void {
@@ -257,6 +270,6 @@ extension Stylizing where  Self: MainViewController {
 
     func buildTargets() -> Void {
 
-        refreshControlView.addTarget(self, action: #selector(fetchPosts), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(fetchPosts), for: .valueChanged)
     }
 }

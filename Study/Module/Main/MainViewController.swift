@@ -15,7 +15,6 @@ protocol MainDelegate: class {
 
 class MainViewController: UITableViewController, Stylizing {
 
-    private(set) var refreshControlView: UIRefreshControl = UIRefreshControl()
     private(set) var adapter: MainAdapter = MainAdapter()
 
     private var limit: Int = 0
@@ -43,14 +42,14 @@ extension MainViewController {
     @objc
     func fetchPosts() -> Void {
         tableView.backgroundView = nil
-        refreshControlView.beginRefreshing()
+        refreshControl?.beginRefreshing()
         Request.shared.loadPosts(complitionHandler: { (posts) in
-            self.refreshControlView.endRefreshing()
+            self.refreshControl?.endRefreshing()
             self.adapter.newPost(with: posts)
             self.tableView.reloadData()
         }) { (message) in
-            self.refreshControlView.endRefreshing()
-            self.tableView.backgroundView = MessageBackgroundView.init()
+            self.refreshControl?.endRefreshing()
+            self.tableView.backgroundView = MessageBackgroundView(with: message)
         }
     }
 

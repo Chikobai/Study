@@ -38,6 +38,13 @@ class PackageItem: UITableViewCell {
     deinit {
         print("DEINIT: PackageItem")
     }
+
+    func configure(with package: Course) -> Void {
+
+        packageNameLabelView.text = package.name
+        communityView.configure(with: package.user_counts, #imageLiteral(resourceName: "user"))
+        lessonsView.configure(with: package.module_counts, #imageLiteral(resourceName: "pay"))
+    }
 }
 
 // MARK: - Targets

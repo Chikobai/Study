@@ -34,6 +34,12 @@ class ByCategoryViewController: UITableViewController, Stylizing {
         build()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        fetchCourses()
+    }
+
     deinit {
         print("DEINIT: ByCategoryViewController")
     }
@@ -53,5 +59,22 @@ extension ByCategoryViewController: IndicatorInfoProvider {
 
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo!
+    }
+}
+
+extension ByCategoryViewController {
+
+    @objc
+    func fetchCourses() -> Void {
+        tableView.backgroundView = nil
+        refreshControl?.beginRefreshing()
+        Request.shared.loadCourses(complitionHandler: { (courses) in
+            self.refreshControl?.endRefreshing()
+            self.adapter.configure(with: courses)
+            self.tableView.reloadData()
+        }) { (message) in
+            self.refreshControl?.endRefreshing()
+            self.tableView.backgroundView = MessageBackgroundView(with: message)
+        }
     }
 }

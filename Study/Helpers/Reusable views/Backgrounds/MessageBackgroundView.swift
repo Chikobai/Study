@@ -11,8 +11,10 @@ import UIKit
 
 class MessageBackgroundView: UIView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(with message: String) {
+        super.init(frame: .zero)
+
+        messageLabel.text = message
 
         setupViews()
         setupBackground()
@@ -37,7 +39,6 @@ class MessageBackgroundView: UIView {
     func setupBackground() -> Void {
 
         backgroundColor = .white
-        messageLabel.text = "Еще раз повторите, используя pull to refresh"
     }
 
     lazy var messageLabel: UILabel = {

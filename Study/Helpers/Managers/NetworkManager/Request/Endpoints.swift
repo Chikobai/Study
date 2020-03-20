@@ -13,6 +13,7 @@ enum Endpoints: EndPointType {
     //GET
     case posts(limit: Int, offset: Int)
     case subscribedCourses
+    case courses
 
     //POST
 
@@ -45,7 +46,8 @@ enum Endpoints: EndPointType {
     var headers: HTTPHeaders {
         switch self {
         case .posts(_, _),
-             .subscribedCourses:
+             .subscribedCourses,
+             .courses:
             return ["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im11a2hpdGJveXNAZ21haWwuY29tIiwiaWQiOjIsImlhdCI6MTU4Mjc4OTgyMn0.BTxSailhu2VMHIrUurZdjmzusv2DAa0i4l0OIrD7AkE"]
         }
     }
@@ -56,6 +58,8 @@ enum Endpoints: EndPointType {
             return "/api/v1/posts/"
         case .subscribedCourses:
             return "/api/v1/mycourses/"
+        case .courses:
+            return "/api/v1/courses/"
         }
     }
 }

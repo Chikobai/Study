@@ -13,6 +13,7 @@ import UIKit
 class ByCategoryAdapter: NSObject {
 
     weak var delegate: ByCategoryDelegate?
+    private var courses: [Course] = []
 
     override init() {
         super.init()
@@ -20,6 +21,10 @@ class ByCategoryAdapter: NSObject {
 
     deinit {
         print("DEINIT: ByCategoryAdapter")
+    }
+
+    func configure(with courses: [Course]) -> Void {
+        self.courses = courses
     }
 }
 
@@ -32,7 +37,7 @@ extension ByCategoryAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return courses.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,7 +51,7 @@ extension ByCategoryAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: PackageItem.cellIdentifier(), for: indexPath) as? PackageItem
-        cell?.selectionStyle = .none
+        cell?.configure(with: courses[indexPath.row])
         return cell!
     }
 
