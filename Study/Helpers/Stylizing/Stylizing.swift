@@ -263,6 +263,7 @@ extension Stylizing where  Self: MainViewController {
 
     func buildServices() -> Void {
 
+        adapter.delegate = self
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(PostItem.self, forCellReuseIdentifier: PostItem.cellIdentifier())

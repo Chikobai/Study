@@ -28,12 +28,6 @@ struct Course: Decodable {
     let title: String
     let name: String
     let info: String
-    let video_url: String
-    let language: String
-    let rating: Double?
     let user_counts: Int
-    let is_my_course: Bool
     let module_counts: Int
-    let owner: CourseOwner
-    let course_skills: [CourseSkill]
 }

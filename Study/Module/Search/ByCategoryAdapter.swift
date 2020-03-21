@@ -40,7 +40,7 @@ extension ByCategoryAdapter: UITableViewDelegate, UITableViewDataSource {
         return courses.count
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 
         return UITableView.automaticDimension
     }
 

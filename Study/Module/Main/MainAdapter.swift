@@ -10,16 +10,17 @@ import Foundation
 import UIKit
 
 
-struct ExpandedLabel {
-    var text: String
-    var collapsed: Bool
-}
 
 class MainAdapter: NSObject {
 
     private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
     private var collapsedRowStorage: [IndexPath] = []
     private var posts: [Post] = []
+
+    private var totalPosts: Int = 0
+    private var currentOffset: Int = 0
+
+    weak var  delegate: MainDelegate?
 
     override init() {
         super.init()
@@ -28,13 +29,24 @@ class MainAdapter: NSObject {
     deinit {
         print("DEINIT: MainAdapter")
     }
+}
 
-    func appendPost(with posts: [Post]) -> Void {
+extension MainAdapter {
+
+    func appendPosts(with posts: [Post]) -> Void {
         self.posts.append(contentsOf: posts)
     }
 
-    func newPost(with posts: [Post]) -> Void {
+    func refreshPosts(with posts: [Post]) -> Void {
         self.posts = posts
+    }
+
+    func currentOffset(with value: Int) -> Void {
+        self.currentOffset = value
+    }
+
+    func totalPosts(with value: Int) -> Void {
+        self.totalPosts = value
     }
 }
 
@@ -81,6 +93,17 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         estimateRowHeightStorage[indexPath] = cell.frame.size.height
+
+        if indexPath.row == posts.count - 1 {
+            if totalPosts > posts.count {
+                delegate?.fetchMorePosts(with: currentOffset)
+                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView?.isHidden = false
+            }
+            else{
+                tableView.tableFooterView = nil
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

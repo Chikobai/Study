@@ -20,6 +20,7 @@
 		082DAEBE241755E300F025E4 /* VariantCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082DAEBD241755E300F025E4 /* VariantCollectionView.swift */; };
 		082DAEC02417573300F025E4 /* VariantItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082DAEBF2417573300F025E4 /* VariantItem.swift */; };
 		082DAEC524175D4A00F025E4 /* AppSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082DAEC424175D4A00F025E4 /* AppSize.swift */; };
+		082E268C242654C300C6E32D /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E268B242654C300C6E32D /* SpinnerView.swift */; };
 		0830814D24136CC500947567 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830814C24136CC500947567 /* ProfileHeaderView.swift */; };
 		0830814F24136E6400947567 /* ProfileStatisticsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830814E24136E6400947567 /* ProfileStatisticsItem.swift */; };
 		0830815124136FA800947567 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830815024136FA800947567 /* ProfileModels.swift */; };
@@ -142,6 +143,7 @@
 		082DAEBD241755E300F025E4 /* VariantCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantCollectionView.swift; sourceTree = "<group>"; };
 		082DAEBF2417573300F025E4 /* VariantItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantItem.swift; sourceTree = "<group>"; };
 		082DAEC424175D4A00F025E4 /* AppSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSize.swift; sourceTree = "<group>"; };
+		082E268B242654C300C6E32D /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		0830814C24136CC500947567 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		0830814E24136E6400947567 /* ProfileStatisticsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStatisticsItem.swift; sourceTree = "<group>"; };
 		0830815024136FA800947567 /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
@@ -696,6 +698,7 @@
 				08483D6C240B8E1A00B40B1F /* CourseRatingView.swift */,
 				082DAEBD241755E300F025E4 /* VariantCollectionView.swift */,
 				08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */,
+				082E268B242654C300C6E32D /* SpinnerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				0830814F24136E6400947567 /* ProfileStatisticsItem.swift in Sources */,
 				08B0C73E240CBD1200D2AE79 /* CourseInfoHeaderView.swift in Sources */,
 				08C981AF2423E2AF00B2A802 /* MessageBackgroundView.swift in Sources */,
+				082E268C242654C300C6E32D /* SpinnerView.swift in Sources */,
 				08E1D40723FBBA23006E3042 /* SecureTextField.swift in Sources */,
 				08B0C746240CD41F00D2AE79 /* CourseInfoLanguageItem.swift in Sources */,
 				08E1D40D23FBBED8006E3042 /* UITableViewCell+Extensions.swift in Sources */,

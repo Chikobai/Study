@@ -23,10 +23,10 @@ class Request{
 extension  Request {
 
     func loadPosts(
-        complitionHandler: @escaping (([Post])->Void),
+        complitionHandler: @escaping (([Post], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.posts(limit: 1, offset: 0)
+        let endpoints = Endpoints.posts(limit: 3, offset: 0)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
@@ -36,25 +36,22 @@ extension  Request {
                     complitionHandlerError("No data")
                     return
                 }
-                complitionHandler(posts.results)
+                complitionHandler(posts.results, posts.count)
             }
         }
     }
 
     func loadMorePosts(
+        offset: Int,
         complitionHandler: @escaping (([Post])->Void),
-        complitionHandlerError: @escaping ((String)->Void)
+        complitionHandlerError: @escaping (()->Void)
     ) -> Void {
-        let endpoints = Endpoints.posts(limit: 1, offset: 0)
+        let endpoints = Endpoints.posts(limit: 3, offset: offset)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
-                complitionHandlerError(error)
+                complitionHandlerError()
             case .success(let posts):
-                guard (posts.results.isEmpty == false) else {
-                    complitionHandlerError("No data")
-                    return
-                }
                 complitionHandler(posts.results)
             }
         }
