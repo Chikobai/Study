@@ -32,12 +32,11 @@ class ByCategoryViewController: UITableViewController, Stylizing {
         super.viewDidLoad()
 
         build()
+        fetchCourses()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        fetchCourses()
     }
 
     deinit {
