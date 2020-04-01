@@ -91,12 +91,13 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
 
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
         estimateRowHeightStorage[indexPath] = cell.frame.size.height
 
         if indexPath.row == posts.count - 1 {
             if totalPosts > posts.count {
-                delegate?.fetchMorePosts(with: currentOffset)
                 tableView.tableFooterView = SpinnerView()
                 tableView.tableFooterView?.isHidden = false
             }
@@ -106,9 +107,14 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 
+        guard
+            (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height else { return }
 
+        if totalPosts > posts.count {
+            delegate?.fetchMorePosts(with: currentOffset)
+        }
     }
 }
 
