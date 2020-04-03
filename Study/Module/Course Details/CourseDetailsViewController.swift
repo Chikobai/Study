@@ -22,8 +22,11 @@ class CourseDetailsViewController: ScrollViewController {
     private lazy var coverViewOfPagerView: UIView = UIView()
     private lazy var pagerViewController: CourseDetailsPagerViewController = CourseDetailsPagerViewController()
 
-    init() {
+    init(with course: Course) {
         super.init(nibName: nil, bundle: nil)
+
+        self.pagerViewController.configure(with: course.id)
+        headerView.configure(with: course)
     }
 
     required init?(coder aDecoder: NSCoder) {

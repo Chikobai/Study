@@ -30,6 +30,12 @@ class CourseHeaderView: UIView {
         print("DEINIT: CourseHeaderView")
     }
 
+    func configure(with course: Course) -> Void {
+
+        courseNameLabelView.text = course.name
+        communityView.configure(with: course.user_counts, #imageLiteral(resourceName: "avatar 3"))
+        ratingView.configure(with: course.rating ?? 5.0)
+    }
 }
 
 // MARK: - Builds
@@ -56,12 +62,6 @@ private extension CourseHeaderView {
         courseNameLabelView.font = .systemFont(ofSize: 18)
         courseNameLabelView.textColor = AppColor.black.uiColor
         courseNameLabelView.text = "Discrete mathematics"
-
-        //community view
-        communityView.configure(with: 342, #imageLiteral(resourceName: "avatar 3"))
-
-        //course rating view
-        ratingView.configure(with: 3.5)
 
         //join button view
         joinButtonView.backgroundColor = AppColor.main.uiColor

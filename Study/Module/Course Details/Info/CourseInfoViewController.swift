@@ -16,14 +16,16 @@ protocol CourseInfoScrollDelegate: class {
 class CourseInfoViewController: UITableViewController {
 
     private var itemInfo: IndicatorInfo?
+    private var courseIdentifier: Int?
     private var adapter: CourseInfoAdapter = CourseInfoAdapter()
 
     weak var scrollDelegate: CourseInfoScrollDelegate?
 
     private lazy var headerView = CourseInfoHeaderView()
 
-    init(with itemInfo: IndicatorInfo) {
+    init(with itemInfo: IndicatorInfo, _ courseIdentifier: Int) {
         self.itemInfo = itemInfo
+        self.courseIdentifier = courseIdentifier
         super.init(nibName: nil, bundle: nil)
     }
 

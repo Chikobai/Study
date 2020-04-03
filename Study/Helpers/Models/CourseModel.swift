@@ -30,4 +30,5 @@ struct Course: Decodable {
     let info: String
     let user_counts: Int
     let module_counts: Int
+    let rating: Double?
 }

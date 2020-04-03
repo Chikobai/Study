@@ -16,17 +16,14 @@ struct ExpandableModel {
     let names: [String]
 }
 
-class CourseModulesAdapter: NSObject {
+final class CourseModulesAdapter: NSObject {
+
+    private var modules: [Module] = []
+    private var totalModules: Int = 0
+    private var currentOffset: Int = 0
 
     weak var scrollDelegate: CourseModulesScrollDelegate?
     weak var delegate: CourseModuleDelegate?
-    private var items: [ExpandableModel] = [
-        ExpandableModel.init(isExpanded: true, name: "Introduction to Java", names: ["CourseModulesAdapter", "CourseModulesAdapter", "CourseModulesAdapter"]),
-        ExpandableModel.init(isExpanded: true, name: "Introduction to Python", names: ["CourseModulesAdapter", "CourseModulesAdapter", "CourseModulesAdapter"]),
-        ExpandableModel.init(isExpanded: true, name: "Introduction to iOS Programming", names: ["CourseModulesAdapter", "CourseModulesAdapter", "CourseModulesAdapter"]),
-        ExpandableModel.init(isExpanded: true, name: "Introduction to Android", names: ["CourseModulesAdapter", "CourseModulesAdapter", "CourseModulesAdapter"]),
-        ExpandableModel.init(isExpanded: true, name: "Introduction to Kotlin", names: ["CourseModulesAdapter", "CourseModulesAdapter", "CourseModulesAdapter"]),
-    ]
 
     override init() {
         super.init()
@@ -37,19 +34,45 @@ class CourseModulesAdapter: NSObject {
     }
 }
 
+extension CourseModulesAdapter {
+
+    func appendModules(with modules: [Module]) -> Void {
+        modules.forEach { (module) in
+            module.isCollapsed = true
+        }
+        self.modules.append(contentsOf: modules)
+    }
+
+    func refreshModules(with modules: [Module]) -> Void {
+        self.modules = modules
+        modules.forEach { (module) in
+            module.isCollapsed = true
+        }
+        self.currentOffset = 0
+    }
+
+    func currentOffset(with value: Int) -> Void {
+        self.currentOffset = value
+    }
+
+    func totalModules(with value: Int) -> Void {
+        self.totalModules = value
+    }
+}
+
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension CourseModulesAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return items.count
+        return modules.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (items[section].isExpanded == false) {
+        if (modules[section].isCollapsed == true) {
             return 0
         }
-        return items[section].names.count
+        return modules[section].lessons.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -66,24 +89,56 @@ extension CourseModulesAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let expandableHeaderView = ModuleExpandableHeaderView()
+        let expandableHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ModuleExpandableHeaderView.viewIdentifier()) as! ModuleExpandableHeaderView
         expandableHeaderView.sectionLabelView.text = "\(section + 1)"
         expandableHeaderView.executeTappedEvent = { [weak self] in
-            self?.items[section].isExpanded.toggle()
-            self?.delegate?.toExpand(with: section, self?.items ?? [])
+            self?.modules[section].isCollapsed?.toggle()
+            if let isCollapsed = self?.modules[section].isCollapsed {
+                var lessonIndexPaths: [IndexPath] = []
+                self?.modules[section].lessons.enumerated().forEach({ (arg0) in
+                    let (offset, _) = arg0
+                    lessonIndexPaths.append(IndexPath(row: offset, section: section))
+                })
+                self?.delegate?.toExpand(with: section, isCollapsed, lessonIndexPaths)
+            }
         }
+        expandableHeaderView.configure(with: modules[section])
         return expandableHeaderView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: ModuleItem.cellIdentifier(), for: indexPath) as? ModuleItem
+        let cell = tableView.dequeueReusableCell(withIdentifier: LessonItem.cellIdentifier(), for: indexPath) as? LessonItem
+        cell?.configure(with: modules[indexPath.section].lessons[indexPath.row])
         return cell!
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        delegate?.didSelect()
+        delegate?.toRouteLessonDetail(with: modules[indexPath.section].lessons[indexPath.row])
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        if indexPath.row == modules.count - 1 {
+            if totalModules > modules.count {
+                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView?.isHidden = false
+            }
+            else{
+                tableView.tableFooterView = nil
+            }
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        guard
+            (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height else { return }
+
+        if totalModules > modules.count {
+            delegate?.fetchMoreModules(with: currentOffset)
+        }
     }
 }
 

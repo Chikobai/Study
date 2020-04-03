@@ -76,8 +76,8 @@ extension SearchViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = CourseDetailsViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = CourseDetailsViewController()
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

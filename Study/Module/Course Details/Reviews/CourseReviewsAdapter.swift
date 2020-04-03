@@ -11,18 +11,12 @@ import UIKit
 
 class CourseReviewsAdapter: NSObject {
 
+    private var reviews: [Review] = []
+    private var totalReviews: Int = 0
+    private var currentOffset: Int = 0
+
     weak var scrollDelegate: CourseReviewsScrollDelegate?
-    private var items: [String] = [
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable.",
-        "Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable. Examples of structures that are discrete are combinations, graphs, and logical statements. Discrete structures can be finite or infinite.Discrete mathematics is the study of mathematical structures that are countable or otherwise distinct and separable."
-    ]
+    weak var delegate: CourseReviewsDelegate?
 
     override init() {
         super.init()
@@ -30,6 +24,26 @@ class CourseReviewsAdapter: NSObject {
 
     deinit {
         print("DEINIT: CourseReviewsAdapter")
+    }
+}
+
+extension CourseReviewsAdapter {
+
+    func appendReviews(with reviews: [Review]) -> Void {
+        self.reviews.append(contentsOf: reviews)
+    }
+
+    func refreshReviews(with reviews: [Review]) -> Void {
+        self.reviews = reviews
+        self.currentOffset = 0
+    }
+
+    func currentOffset(with value: Int) -> Void {
+        self.currentOffset = value
+    }
+
+    func totalReviews(with value: Int) -> Void {
+        self.totalReviews = value
     }
 }
 
@@ -42,7 +56,7 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return reviews.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -55,6 +69,7 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = MessageHeaderView(with: AppTitle.CourseDetails.reviewsMessage)
+        header.isHidden = reviews.isEmpty
         return header
     }
 
@@ -69,12 +84,35 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewItem.cellIdentifier(), for: indexPath) as? ReviewItem
-        cell?.configure(with: items[indexPath.row])
+        cell?.configure(with: reviews[indexPath.row].text)
         return cell!
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        if indexPath.row == reviews.count - 1 {
+            if totalReviews > reviews.count {
+                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView?.isHidden = false
+            }
+            else{
+                tableView.tableFooterView = nil
+            }
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        guard
+            (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height else { return }
+
+        if totalReviews > reviews.count {
+            delegate?.fetchMoreReviews(with: currentOffset)
+        }
     }
 }
 

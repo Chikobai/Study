@@ -17,6 +17,11 @@ extension UIView {
             self.addSubview(view)
         }
     }
+
+
+    static func viewIdentifier() -> String {
+        return String.init(describing: self)
+    }
 }
 
 extension UIView {

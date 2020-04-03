@@ -35,6 +35,7 @@ extension ByCategoryAdapter {
 
     func refreshCourses(with courses: [Course]) -> Void {
         self.courses = courses
+        self.currentOffset = 0
     }
 
     func currentOffset(with value: Int) -> Void {
@@ -75,7 +76,7 @@ extension ByCategoryAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        delegate?.toRouteCourseDetails(with: courses[indexPath.row].id)
+        delegate?.toRouteCourseDetails(with: courses[indexPath.row])
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

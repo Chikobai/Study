@@ -14,18 +14,23 @@ protocol CourseModulesScrollDelegate: class {
 }
 
 protocol CourseModuleDelegate: class {
-    func toExpand(with section: Int, _ items: [ExpandableModel]) -> Void
-    func didSelect() -> Void
+    
+    func toExpand( with section: Int, _ isCollapsed: Bool, _ lessonIndexPaths: [IndexPath]) -> Void
+    func fetchMoreModules(with offset: Int) -> Void
+    func toRouteLessonDetail(with lesson: Lesson) -> Void
 }
 
 class CourseModulesViewController: UITableViewController {
 
     private var itemInfo: IndicatorInfo?
+    private var courseIdentifier: Int?
     private var adapter: CourseModulesAdapter = CourseModulesAdapter()
+
     weak var scrollDelegate: CourseModulesScrollDelegate?
 
-    init(with itemInfo: IndicatorInfo) {
+    init(with itemInfo: IndicatorInfo, _ courseIdentifier: Int) {
         self.itemInfo = itemInfo
+        self.courseIdentifier = courseIdentifier
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -41,6 +46,31 @@ class CourseModulesViewController: UITableViewController {
         super.viewDidLoad()
 
         build()
+
+        fetchModules()
+    }
+}
+
+// MARK: - Targets
+
+extension CourseModulesViewController {
+
+    @objc
+    func fetchModules() -> Void {
+        tableView.backgroundView = nil
+        refreshControl?.beginRefreshing()
+        if let courseIdentifier = courseIdentifier {
+            Request.shared.loadModules(with: courseIdentifier, complitionHandler: { (modules, count) in
+                self.refreshControl?.endRefreshing()
+                self.adapter.refreshModules(with: modules)
+                self.adapter.totalModules(with: count)
+                self.tableView.reloadData()
+            }) { (message) in
+                self.refreshControl?.endRefreshing()
+                self.adapter.refreshModules(with: [])
+                self.tableView.backgroundView = MessageBackgroundView(with: message)
+            }
+        }
     }
 }
 
@@ -48,25 +78,34 @@ class CourseModulesViewController: UITableViewController {
 
 extension CourseModulesViewController: CourseModuleDelegate {
 
-    func toExpand(with section: Int, _ items: [ExpandableModel]) -> Void {
-
-        var indexPaths = [IndexPath]()
-        for row in items[section].names.indices {
-            let indexPath = IndexPath(row: row, section: section)
-            indexPaths.append(indexPath)
-        }
+    func toExpand(with section: Int, _ isCollapsed: Bool, _ lessonIndexPaths: [IndexPath]) -> Void {
         
-        if (items[section].isExpanded == false) {
-            tableView.deleteRows(at: indexPaths, with: .fade)
+        if (isCollapsed == true) {
+            tableView.deleteRows(at: lessonIndexPaths, with: .fade)
         } else {
-            tableView.insertRows(at: indexPaths, with: .fade)
+            tableView.insertRows(at: lessonIndexPaths, with: .fade)
         }
     }
 
-    func didSelect() -> Void {
+    func toRouteLessonDetail(with lesson: Lesson) -> Void {
 
         let viewController = LessonViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func fetchMoreModules(with offset: Int) -> Void {
+        tableView.backgroundView = nil
+        if let courseIdentifier = courseIdentifier {
+            Request.shared.loadMoreModules(with: courseIdentifier, offset: offset + 1, complitionHandler: { (modules) in
+                self.adapter.appendModules(with: modules)
+                self.adapter.currentOffset(with: offset + 1)
+                self.tableView.reloadData()
+                self.tableView.tableFooterView?.isHidden.toggle()
+            }) { (message) in
+                self.tableView.tableFooterView = nil
+                self.display(with: message)
+            }
+        }
     }
 }
 
@@ -99,20 +138,28 @@ private extension CourseModulesViewController {
 
         buildViews()
         buildServices()
+        buildTargets()
     }
 
     func buildViews() -> Void {
 
-        //
+        //table view
+        tableView.separatorStyle = .none
+        tableView.refreshControl = UIRefreshControl()
     }
 
     func buildServices() -> Void {
 
         adapter.delegate = self
         adapter.scrollDelegate = self
-        tableView.separatorStyle = .none
         tableView.delegate = adapter
         tableView.dataSource = adapter
-        tableView.register(ModuleItem.self, forCellReuseIdentifier: ModuleItem.cellIdentifier())
+        tableView.register(LessonItem.self, forCellReuseIdentifier: LessonItem.cellIdentifier())
+        tableView.register(ModuleExpandableHeaderView.self, forHeaderFooterViewReuseIdentifier: ModuleExpandableHeaderView.viewIdentifier())
+    }
+
+    func buildTargets() -> Void {
+
+        refreshControl?.addTarget(self, action: #selector(fetchModules), for: .valueChanged)
     }
 }

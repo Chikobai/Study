@@ -23,6 +23,8 @@ class Request{
 //  MARK: GET REQUESTS
 extension  Request {
 
+    //  MARK: POSTS
+
     func loadPosts(
         complitionHandler: @escaping (([Post], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
@@ -58,6 +60,8 @@ extension  Request {
         }
     }
 
+    //  MARK: SUBSCRIBED COURSES
+
     func loadSubscribedCourses(
         complitionHandler: @escaping (([SubscribedCourse])->Void),
         complitionHandlerError: @escaping ((String)->Void)
@@ -76,6 +80,8 @@ extension  Request {
             }
         }
     }
+
+    //  MARK: COURSES
 
     func loadCourses(
         complitionHandler: @escaping (([Course], Int)->Void),
@@ -101,7 +107,7 @@ extension  Request {
         complitionHandler: @escaping (([Course])->Void),
         complitionHandlerError: @escaping ((String)->Void)
         ) -> Void {
-        let endpoints = Endpoints.courses(limit: 3, offset: offset)
+        let endpoints = Endpoints.courses(limit: limit, offset: offset)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
             switch result {
             case .failure(let error, _):
@@ -112,6 +118,83 @@ extension  Request {
         }
     }
 
+    //  MARK: MODULES
+
+    func loadModules(
+        with id: Int,
+        complitionHandler: @escaping (([Module], Int)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        let endpoints = Endpoints.modules(id: id, limit: limit, offset: 0)
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Module>>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let modules):
+                guard (modules.results.isEmpty == false) else {
+                    complitionHandlerError("No data")
+                    return
+                }
+                complitionHandler(modules.results, modules.count)
+            }
+        }
+    }
+
+    func loadMoreModules(
+        with id: Int,
+        offset: Int,
+        complitionHandler: @escaping (([Module])->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        let endpoints = Endpoints.modules(id: id, limit: limit, offset: offset)
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Module>>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let modules):
+                complitionHandler(modules.results)
+            }
+        }
+    }
+
+    //  MARK: REVIEWS
+
+    func loadReviews(
+        with id: Int,
+        complitionHandler: @escaping (([Review], Int)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        let endpoints = Endpoints.reviews(id: id, limit: limit, offset: 0)
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let reviews):
+                guard (reviews.results.isEmpty == false) else {
+                    complitionHandlerError("No data")
+                    return
+                }
+                complitionHandler(reviews.results, reviews.count)
+            }
+        }
+    }
+
+    func loadMoreReviews(
+        with id: Int,
+        offset: Int,
+        complitionHandler: @escaping (([Review])->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+        ) -> Void {
+        let endpoints = Endpoints.reviews(id: id, limit: limit, offset: offset)
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let reviews):
+                complitionHandler(reviews.results)
+            }
+        }
+    }
 }
 
 //  MARK: PUT REQUESTS

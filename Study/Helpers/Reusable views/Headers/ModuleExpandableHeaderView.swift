@@ -17,12 +17,12 @@ class ModuleExpandableHeaderView: UIView {
     private lazy var toExpandButtonView: UIButton = UIButton()
     private lazy var separatorLineView: UIView = UIView()
 
-    private var isExpanded: Bool = true
+    private var isCollapsed: Bool? = true
 
     var executeTappedEvent: (()->())?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
 
         build()
     }
@@ -34,6 +34,16 @@ class ModuleExpandableHeaderView: UIView {
     deinit {
         print("DEINIT: ModuleExpandableHeaderView")
     }
+
+    func configure(with module: Module) -> Void {
+
+        chapterLabelView.text = module.title
+        isCollapsed = module.isCollapsed
+        scoreLabelView.text = "\(module.result.passed)/\(module.result.count) баллов"
+        
+        let image = (isCollapsed ?? true) ? #imageLiteral(resourceName: "up-and-down 5") : #imageLiteral(resourceName: "up-and-down 17")
+        toExpandButtonView.setImage(image, for: .normal)
+    }
 }
 
 private extension ModuleExpandableHeaderView {
@@ -41,8 +51,8 @@ private extension ModuleExpandableHeaderView {
     @objc
     func tappedToExpand(_ sender: UITapGestureRecognizer) -> Void {
 
-        isExpanded.toggle()
-        let image = isExpanded ? #imageLiteral(resourceName: "up-and-down 5") : #imageLiteral(resourceName: "up-and-down 17")
+        isCollapsed?.toggle()
+        let image = (isCollapsed ?? true) ? #imageLiteral(resourceName: "up-and-down 5") : #imageLiteral(resourceName: "up-and-down 17")
         toExpandButtonView.setImage(image, for: .normal)
         executeTappedEvent?()
     }
@@ -71,10 +81,8 @@ private extension ModuleExpandableHeaderView {
         //chapter label view
         chapterLabelView.font = .systemFont(ofSize: 15.0)
         chapterLabelView.textColor = AppColor.black.uiColor
-        chapterLabelView.text = "Intoduction to Java"
 
         //score label view
-        scoreLabelView.text = "0/7 баллов"
         scoreLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         scoreLabelView.font = .systemFont(ofSize: 10.0)
 

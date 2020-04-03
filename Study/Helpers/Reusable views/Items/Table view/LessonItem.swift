@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModuleItem: UITableViewCell {
+class LessonItem: UITableViewCell {
 
     private lazy var topicImageView: UIImageView = UIImageView()
     private lazy var topicLabelView: UILabel = UILabel()
@@ -30,13 +30,21 @@ class ModuleItem: UITableViewCell {
     }
 
     deinit {
-        print("DEINIT: ModuleItem")
+        print("DEINIT: LessonItem")
+    }
+
+    func configure(with lesson: Lesson) -> Void {
+
+        topicLabelView.text = lesson.title
+        scoreLabelView.text = "\(lesson.result.passed)/\(lesson.result.count) баллов"
+        durationLabelView.text = "\(lesson.time) мин"
+        populationLabelView.text = "36 человеков"
     }
 }
 
 // MARK: - Builds
 
-private extension ModuleItem {
+private extension LessonItem {
 
     func build() -> Void {
 
@@ -56,7 +64,6 @@ private extension ModuleItem {
         topicImageView.image = #imageLiteral(resourceName: "topic")
 
         //topic label view
-        topicLabelView.text = "Hello, world"
         topicLabelView.font = .systemFont(ofSize: 13.0)
         topicLabelView.textColor = AppColor.black.uiColor
 
@@ -67,17 +74,14 @@ private extension ModuleItem {
         informationStackView.spacing = 20
 
         //score label view
-        scoreLabelView.text = "0/7 баллов"
         scoreLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         scoreLabelView.font = .systemFont(ofSize: 10.0)
 
         //duration label view
-        durationLabelView.text = "15 мин"
         durationLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         durationLabelView.font = .systemFont(ofSize: 10.0)
 
         //population label view
-        populationLabelView.text = "36 человеков"
         populationLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         populationLabelView.font = .systemFont(ofSize: 10.0)
 

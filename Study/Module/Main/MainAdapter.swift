@@ -36,6 +36,7 @@ extension MainAdapter {
 
     func refreshPosts(with posts: [Post]) -> Void {
         self.posts = posts
+        self.currentOffset = 0
     }
 
     func currentOffset(with value: Int) -> Void {

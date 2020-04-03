@@ -11,6 +11,7 @@ import XLPagerTabStrip
 
 class CourseDetailsPagerViewController: ButtonBarPagerTabStripViewController {
 
+    private var courseIdentifier: Int?
     weak var scrollDelegate: CourseDetailsScrollDelegate?
 
     init(){
@@ -47,7 +48,11 @@ class CourseDetailsPagerViewController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
 
         edgesForExtendedLayout = []
-//        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
+    func configure(with courseIdentifier: Int) -> Void {
+        self.courseIdentifier = courseIdentifier
+        self.reloadPagerTabStripView()
     }
     
 
@@ -55,16 +60,20 @@ class CourseDetailsPagerViewController: ButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
 
-        let info = CourseInfoViewController(with: "Info")
-        info.scrollDelegate = self
+        if let courseIdentifier = courseIdentifier {
+            let info = CourseInfoViewController(with: "Info", courseIdentifier)
+            info.scrollDelegate = self
 
-        let reviews = CourseReviewsViewController(with: "Reviews")
-        reviews.scrollDelegate = self
+            let reviews = CourseReviewsViewController(with: "Reviews", courseIdentifier)
+            reviews.scrollDelegate = self
 
-        let modules = CourseModulesViewController(with: "Modules")
-        modules.scrollDelegate = self
+            let modules = CourseModulesViewController(with: "Modules", courseIdentifier)
+            modules.scrollDelegate = self
 
-        return [info, reviews, modules]
+            return [info, reviews, modules]
+        }
+
+        return []
     }
 }
 

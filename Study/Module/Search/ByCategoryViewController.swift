@@ -11,7 +11,7 @@ import XLPagerTabStrip
 
 protocol ByCategoryDelegate: class {
 
-    func toRouteCourseDetails(with id: Int) -> Void
+    func toRouteCourseDetails(with course: Course) -> Void
     func fetchMoreCourses(with offset: Int) -> Void
 }
 
@@ -49,8 +49,8 @@ class ByCategoryViewController: UITableViewController, Stylizing {
 
 extension ByCategoryViewController: ByCategoryDelegate {
 
-    func toRouteCourseDetails(with id: Int) -> Void {
-        let viewController = CourseDetailsViewController()
+    func toRouteCourseDetails(with course: Course) -> Void {
+        let viewController = CourseDetailsViewController(with: course)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

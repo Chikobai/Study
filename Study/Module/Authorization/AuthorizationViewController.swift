@@ -62,8 +62,9 @@ extension AuthorizationViewController: AuthorizationDelegate {
             let viewController = RestorePasswordViewController(with: .enterEmail)
             self.navigationController?.pushViewController(viewController, animated: true)
         case .loginButton:
-            let viewController = CourseDetailsViewController()
-            self.navigationController?.pushViewController(viewController, animated: true)
+            print("wefwe")
+//            let viewController = CourseDetailsViewController()
+//            self.navigationController?.pushViewController(viewController, animated: true)
         default:
             return
         }
