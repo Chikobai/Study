@@ -106,6 +106,9 @@ extension Stylizing where Self: CategoryViewController {
 
         //navigation item
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .search, target: self, action: #selector(searchPressed))
+
+        //navigation bar
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     func buildPagers() -> Void {
