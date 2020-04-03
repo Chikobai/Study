@@ -28,7 +28,7 @@
 		083081562413916100947567 /* DatePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083081552413916100947567 /* DatePickerManager.swift */; };
 		083081582413963000947567 /* ProfileCertificateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083081572413963000947567 /* ProfileCertificateItem.swift */; };
 		0830815A2413974F00947567 /* CertificateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083081592413974F00947567 /* CertificateItem.swift */; };
-		0830815C241399DD00947567 /* UICollectionViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830815B241399DD00947567 /* UICollectionViewCell+Ext.swift */; };
+		0830815C241399DD00947567 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830815B241399DD00947567 /* UICollectionViewCell+Extensions.swift */; };
 		083707E32418C848008A85FB /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DB2418C843008A85FB /* CALayerExtension.swift */; };
 		083707E42418C848008A85FB /* CustomSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DC2418C843008A85FB /* CustomSegments.swift */; };
 		083707E52418C848008A85FB /* BasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DD2418C844008A85FB /* BasicBarChart.swift */; };
@@ -53,7 +53,7 @@
 		0840505423FE6B6B00A084A4 /* CourseInfoAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840505323FE6B6B00A084A4 /* CourseInfoAdapter.swift */; };
 		0840505723FE6E4A00A084A4 /* MessageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840505623FE6E4A00A084A4 /* MessageHeaderView.swift */; };
 		0840505923FE717700A084A4 /* ReviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840505823FE717700A084A4 /* ReviewItem.swift */; };
-		08479E1324371E0B005029C8 /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08479E1224371E0B005029C8 /* UIEdgeInsets+Ext.swift */; };
+		08479E1324371E0B005029C8 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08479E1224371E0B005029C8 /* UIEdgeInsets+Extensions.swift */; };
 		08483D65240B655000B40B1F /* ModuleExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D64240B655000B40B1F /* ModuleExpandableHeaderView.swift */; };
 		08483D67240B6DF800B40B1F /* ModuleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D66240B6DF800B40B1F /* ModuleItem.swift */; };
 		08483D69240B882F00B40B1F /* CourseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D68240B882F00B40B1F /* CourseHeaderView.swift */; };
@@ -152,7 +152,7 @@
 		083081552413916100947567 /* DatePickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerManager.swift; sourceTree = "<group>"; };
 		083081572413963000947567 /* ProfileCertificateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCertificateItem.swift; sourceTree = "<group>"; };
 		083081592413974F00947567 /* CertificateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateItem.swift; sourceTree = "<group>"; };
-		0830815B241399DD00947567 /* UICollectionViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Ext.swift"; sourceTree = "<group>"; };
+		0830815B241399DD00947567 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		083707DB2418C843008A85FB /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		083707DC2418C843008A85FB /* CustomSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegments.swift; sourceTree = "<group>"; };
 		083707DD2418C844008A85FB /* BasicBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicBarChart.swift; path = "../New Group/BasicBarChart.swift"; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		0840505323FE6B6B00A084A4 /* CourseInfoAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoAdapter.swift; sourceTree = "<group>"; };
 		0840505623FE6E4A00A084A4 /* MessageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeaderView.swift; sourceTree = "<group>"; };
 		0840505823FE717700A084A4 /* ReviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItem.swift; sourceTree = "<group>"; };
-		08479E1224371E0B005029C8 /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
+		08479E1224371E0B005029C8 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
 		08483D64240B655000B40B1F /* ModuleExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExpandableHeaderView.swift; sourceTree = "<group>"; };
 		08483D66240B6DF800B40B1F /* ModuleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleItem.swift; sourceTree = "<group>"; };
 		08483D68240B882F00B40B1F /* CourseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHeaderView.swift; sourceTree = "<group>"; };
@@ -653,13 +653,13 @@
 			isa = PBXGroup;
 			children = (
 				08E1D3F323FBB278006E3042 /* UINavigationController+Extenstions.swift */,
-				08479E1224371E0B005029C8 /* UIEdgeInsets+Ext.swift */,
+				08479E1224371E0B005029C8 /* UIEdgeInsets+Extensions.swift */,
 				08E1D3F823FBB313006E3042 /* UIViewController+Extenstions.swift */,
 				08E1D40C23FBBED8006E3042 /* UITableViewCell+Extensions.swift */,
 				08E1D41F23FC0C6A006E3042 /* UIView+Extensions.swift */,
 				08E1D42123FC0FAC006E3042 /* UIStackView+Extensions.swift */,
 				0829FAE424039B92000CACCF /* UILabel+Extenstions.swift */,
-				0830815B241399DD00947567 /* UICollectionViewCell+Ext.swift */,
+				0830815B241399DD00947567 /* UICollectionViewCell+Extensions.swift */,
 				083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */,
 				08E1D40A23FBBEB7006E3042 /* String+Extensions.swift */,
 				083707EB2418C862008A85FB /* Array+Extensions.swift */,
@@ -928,7 +928,7 @@
 				08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */,
 				08E1D41C23FC0893006E3042 /* OTPItem.swift in Sources */,
 				08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */,
-				08479E1324371E0B005029C8 /* UIEdgeInsets+Ext.swift in Sources */,
+				08479E1324371E0B005029C8 /* UIEdgeInsets+Extensions.swift in Sources */,
 				083707E32418C848008A85FB /* CALayerExtension.swift in Sources */,
 				08E1D3F423FBB278006E3042 /* UINavigationController+Extenstions.swift in Sources */,
 				0840505423FE6B6B00A084A4 /* CourseInfoAdapter.swift in Sources */,
@@ -955,7 +955,7 @@
 				083707E72418C848008A85FB /* DataEntry.swift in Sources */,
 				083707EA2418C848008A85FB /* BasicBarEntry.swift in Sources */,
 				08483D67240B6DF800B40B1F /* ModuleItem.swift in Sources */,
-				0830815C241399DD00947567 /* UICollectionViewCell+Ext.swift in Sources */,
+				0830815C241399DD00947567 /* UICollectionViewCell+Extensions.swift in Sources */,
 				08B0C742240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift in Sources */,
 				082DAEBB241754A300F025E4 /* QuestionsViewController.swift in Sources */,
 				082B1D172400F0D200316D24 /* TabBarViewController.swift in Sources */,

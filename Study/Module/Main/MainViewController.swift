@@ -48,6 +48,7 @@ extension MainViewController {
             self.tableView.reloadData()
         }) { (message) in
             self.refreshControl?.endRefreshing()
+            self.adapter.refreshPosts(with: [])
             self.tableView.backgroundView = MessageBackgroundView(with: message)
         }
     }
