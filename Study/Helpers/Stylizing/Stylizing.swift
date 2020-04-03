@@ -188,7 +188,7 @@ extension Stylizing where Self: ByCategoryViewController {
         view.backgroundColor = AppColor.white.uiColor
 
         //table view
-        tableView.contentInset = .bottom(with: 44)
+        tableView.contentInset = .bottom(with: 50)
 
         //refresh control
         refreshControl = UIRefreshControl()

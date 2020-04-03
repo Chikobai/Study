@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 
 
-class ByCategoryAdapter: NSObject {
+final class ByCategoryAdapter: NSObject {
+
+    private var courses: [Course] = []
+    private var totalCourses: Int = 0
+    private var currentOffset: Int = 0
 
     weak var delegate: ByCategoryDelegate?
-    private var courses: [Course] = []
 
     override init() {
         super.init()
@@ -22,9 +25,24 @@ class ByCategoryAdapter: NSObject {
     deinit {
         print("DEINIT: ByCategoryAdapter")
     }
+}
 
-    func configure(with courses: [Course]) -> Void {
+extension ByCategoryAdapter {
+
+    func appendCourses(with courses: [Course]) -> Void {
+        self.courses.append(contentsOf: courses)
+    }
+
+    func refreshCourses(with courses: [Course]) -> Void {
         self.courses = courses
+    }
+
+    func currentOffset(with value: Int) -> Void {
+        self.currentOffset = value
+    }
+
+    func totalCourses(with value: Int) -> Void {
+        self.totalCourses = value
     }
 }
 
@@ -57,7 +75,30 @@ extension ByCategoryAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        delegate?.didSelect()
+        delegate?.toRouteCourseDetails(with: courses[indexPath.row].id)
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        if indexPath.row == courses.count - 1 {
+            if totalCourses > courses.count {
+                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView?.isHidden = false
+            }
+            else{
+                tableView.tableFooterView = nil
+            }
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        guard
+            (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height else { return }
+
+        if totalCourses > courses.count {
+            delegate?.fetchMoreCourses(with: currentOffset)
+        }
     }
 }
 

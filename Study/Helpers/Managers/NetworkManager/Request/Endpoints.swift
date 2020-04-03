@@ -12,8 +12,8 @@ enum Endpoints: EndPointType {
 
     //GET
     case posts(limit: Int, offset: Int)
+    case courses(limit: Int, offset: Int)
     case subscribedCourses
-    case courses
 
     //POST
 
@@ -36,7 +36,8 @@ enum Endpoints: EndPointType {
     
     var httpTask: HTTPTask {
         switch self {
-        case .posts(let limit, let offset):
+        case .posts(let limit, let offset),
+             .courses(let limit, let offset):
             return .requestWithParameters(parameters: ["offset": offset, "limit": limit])
         default:
             return .request

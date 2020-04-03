@@ -9,14 +9,11 @@
 import Foundation
 import UIKit
 
-
-
 class MainAdapter: NSObject {
 
     private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
     private var collapsedRowStorage: [IndexPath] = []
     private var posts: [Post] = []
-
     private var totalPosts: Int = 0
     private var currentOffset: Int = 0
 

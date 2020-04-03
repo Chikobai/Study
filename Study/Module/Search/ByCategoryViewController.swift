@@ -11,7 +11,8 @@ import XLPagerTabStrip
 
 protocol ByCategoryDelegate: class {
 
-    func didSelect() -> Void
+    func toRouteCourseDetails(with id: Int) -> Void
+    func fetchMoreCourses(with offset: Int) -> Void
 }
 
 class ByCategoryViewController: UITableViewController, Stylizing {
@@ -44,11 +45,26 @@ class ByCategoryViewController: UITableViewController, Stylizing {
     }
 }
 
+// MARK: - ByCategoryDelegate
+
 extension ByCategoryViewController: ByCategoryDelegate {
 
-    func didSelect() -> Void {
+    func toRouteCourseDetails(with id: Int) -> Void {
         let viewController = CourseDetailsViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func fetchMoreCourses(with offset: Int) -> Void {
+        tableView.backgroundView = nil
+        Request.shared.loadMoreCourses(offset: offset + 1, complitionHandler: { (courses) in
+            self.adapter.appendCourses(with: courses)
+            self.adapter.currentOffset(with: offset + 1)
+            self.tableView.reloadData()
+            self.tableView.tableFooterView?.isHidden.toggle()
+        }) { (message) in
+            self.tableView.tableFooterView = nil
+            self.display(with: message)
+        }
     }
 }
 
@@ -67,13 +83,16 @@ extension ByCategoryViewController {
     func fetchCourses() -> Void {
         tableView.backgroundView = nil
         refreshControl?.beginRefreshing()
-        Request.shared.loadCourses(complitionHandler: { (courses) in
+        Request.shared.loadCourses(complitionHandler: { (courses, count) in
             self.refreshControl?.endRefreshing()
-            self.adapter.configure(with: courses)
+            self.adapter.refreshCourses(with: courses)
+            self.adapter.totalCourses(with: count)
             self.tableView.reloadData()
         }) { (message) in
             self.refreshControl?.endRefreshing()
+            self.adapter.refreshCourses(with: [])
             self.tableView.backgroundView = MessageBackgroundView(with: message)
         }
     }
 }
+

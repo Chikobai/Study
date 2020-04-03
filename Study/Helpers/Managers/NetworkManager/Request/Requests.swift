@@ -11,6 +11,7 @@ import Foundation
 class Request{
 
     private let networkManager: NetworkManager = NetworkManager()
+    private let limit: Int = 3
     static let shared = Request()
 
     init() {
@@ -26,7 +27,7 @@ extension  Request {
         complitionHandler: @escaping (([Post], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.posts(limit: 3, offset: 0)
+        let endpoints = Endpoints.posts(limit: limit, offset: 0)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
@@ -46,7 +47,7 @@ extension  Request {
         complitionHandler: @escaping (([Post])->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.posts(limit: 3, offset: offset)
+        let endpoints = Endpoints.posts(limit: limit, offset: offset)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
@@ -77,10 +78,10 @@ extension  Request {
     }
 
     func loadCourses(
-        complitionHandler: @escaping (([Course])->Void),
+        complitionHandler: @escaping (([Course], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
         ) -> Void {
-        let endpoints = Endpoints.courses
+        let endpoints = Endpoints.courses(limit: limit, offset: 0)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
             switch result {
             case .failure(let error, _):
@@ -90,10 +91,27 @@ extension  Request {
                     complitionHandlerError("No data")
                     return
                 }
+                complitionHandler(courses.results, courses.count)
+            }
+        }
+    }
+
+    func loadMoreCourses(
+        offset: Int,
+        complitionHandler: @escaping (([Course])->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+        ) -> Void {
+        let endpoints = Endpoints.courses(limit: 3, offset: offset)
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let courses):
                 complitionHandler(courses.results)
             }
         }
     }
+
 }
 
 //  MARK: PUT REQUESTS
