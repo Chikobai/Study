@@ -42,15 +42,16 @@ extension UIViewController {
         view.removeFromSuperview()
     }
 
-    func transparentBar() -> Void {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-    }
+    func display(with message: String) -> Void {
 
-    func defaulteBar() -> Void {
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
+        let alertController = UIAlertController.init(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.view.tintColor = AppColor.main.uiColor
+        alertController.addAction(UIAlertAction.init(title: "Ок", style: .default, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
-    
 }

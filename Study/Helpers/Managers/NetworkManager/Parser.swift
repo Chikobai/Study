@@ -59,9 +59,7 @@ public extension Parser {
                 return Result.failure(message, result)
             } else {
                 switch error._code {
-                case NSURLErrorTimedOut:
-                    return Result.failure("Время ожидания истекло", nil)
-                case NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost:
+                case NSURLErrorTimedOut, NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost:
                     return Result.failure("Подключитесь к сети", nil)
                 default:
                     return Result.failure(error.localizedDescription, nil)

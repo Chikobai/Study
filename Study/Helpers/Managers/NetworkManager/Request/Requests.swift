@@ -44,13 +44,13 @@ extension  Request {
     func loadMorePosts(
         offset: Int,
         complitionHandler: @escaping (([Post])->Void),
-        complitionHandlerError: @escaping (()->Void)
+        complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
         let endpoints = Endpoints.posts(limit: 3, offset: offset)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
-                complitionHandlerError()
+                complitionHandlerError(error)
             case .success(let posts):
                 complitionHandler(posts.results)
             }

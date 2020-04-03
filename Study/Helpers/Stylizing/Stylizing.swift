@@ -162,6 +162,9 @@ extension Stylizing where Self: SearchViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = AppTitle.Search.title
+
+        //navigation bar
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
     }
 
     func buildServices() -> Void {
@@ -183,6 +186,9 @@ extension Stylizing where Self: ByCategoryViewController {
 
         //superview
         view.backgroundColor = AppColor.white.uiColor
+
+        //table view
+        tableView.contentInset = .bottom(with: 44)
 
         //refresh control
         refreshControl = UIRefreshControl()

@@ -53,6 +53,7 @@
 		0840505423FE6B6B00A084A4 /* CourseInfoAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840505323FE6B6B00A084A4 /* CourseInfoAdapter.swift */; };
 		0840505723FE6E4A00A084A4 /* MessageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840505623FE6E4A00A084A4 /* MessageHeaderView.swift */; };
 		0840505923FE717700A084A4 /* ReviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840505823FE717700A084A4 /* ReviewItem.swift */; };
+		08479E1324371E0B005029C8 /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08479E1224371E0B005029C8 /* UIEdgeInsets+Ext.swift */; };
 		08483D65240B655000B40B1F /* ModuleExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D64240B655000B40B1F /* ModuleExpandableHeaderView.swift */; };
 		08483D67240B6DF800B40B1F /* ModuleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D66240B6DF800B40B1F /* ModuleItem.swift */; };
 		08483D69240B882F00B40B1F /* CourseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D68240B882F00B40B1F /* CourseHeaderView.swift */; };
@@ -176,6 +177,7 @@
 		0840505323FE6B6B00A084A4 /* CourseInfoAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoAdapter.swift; sourceTree = "<group>"; };
 		0840505623FE6E4A00A084A4 /* MessageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeaderView.swift; sourceTree = "<group>"; };
 		0840505823FE717700A084A4 /* ReviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItem.swift; sourceTree = "<group>"; };
+		08479E1224371E0B005029C8 /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
 		08483D64240B655000B40B1F /* ModuleExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExpandableHeaderView.swift; sourceTree = "<group>"; };
 		08483D66240B6DF800B40B1F /* ModuleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleItem.swift; sourceTree = "<group>"; };
 		08483D68240B882F00B40B1F /* CourseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHeaderView.swift; sourceTree = "<group>"; };
@@ -584,9 +586,9 @@
 				08D2DA3F241366E4001EC235 /* Profile */,
 				0875DF1E2419FD9200CCB46B /* Edit  */,
 				082B1D102400EAF800316D24 /* Main */,
+				0840502D23FE3F8F00A084A4 /* Course Details */,
 				089A469D2402384F007068DB /* Search */,
 				08A73E292406609700244B9E /* My Courses */,
-				0840502D23FE3F8F00A084A4 /* Course Details */,
 				0875B679240DF8E200669C5B /* Lesson */,
 				0875B683240E15FA00669C5B /* Settings */,
 				0840502423FCEB2C00A084A4 /* Restore Password */,
@@ -617,9 +619,9 @@
 		08E1D3F223FBB25A006E3042 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				08E1D41823FBDAB7006E3042 /* Stylizing */,
 				08C981A72423BD3400B2A802 /* Models */,
 				083081542413911300947567 /* Managers */,
-				08E1D41823FBDAB7006E3042 /* Stylizing */,
 				08E1D3FE23FBB700006E3042 /* Reusable views */,
 				08E1D3FD23FBB53E006E3042 /* Extenstions */,
 				08E1D3FA23FBB4D4006E3042 /* Constants */,
@@ -651,6 +653,7 @@
 			isa = PBXGroup;
 			children = (
 				08E1D3F323FBB278006E3042 /* UINavigationController+Extenstions.swift */,
+				08479E1224371E0B005029C8 /* UIEdgeInsets+Ext.swift */,
 				08E1D3F823FBB313006E3042 /* UIViewController+Extenstions.swift */,
 				08E1D40C23FBBED8006E3042 /* UITableViewCell+Extensions.swift */,
 				08E1D41F23FC0C6A006E3042 /* UIView+Extensions.swift */,
@@ -925,6 +928,7 @@
 				08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */,
 				08E1D41C23FC0893006E3042 /* OTPItem.swift in Sources */,
 				08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */,
+				08479E1324371E0B005029C8 /* UIEdgeInsets+Ext.swift in Sources */,
 				083707E32418C848008A85FB /* CALayerExtension.swift in Sources */,
 				08E1D3F423FBB278006E3042 /* UINavigationController+Extenstions.swift in Sources */,
 				0840505423FE6B6B00A084A4 /* CourseInfoAdapter.swift in Sources */,

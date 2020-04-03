@@ -20,8 +20,8 @@ public class NetworkManager {
     public init() {
         self.parser = CustomParser()
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 60
-        configuration.timeoutIntervalForResource = 60
+        configuration.timeoutIntervalForRequest = 15
+        configuration.timeoutIntervalForResource = 15
         manager = Alamofire.SessionManager.init(configuration: configuration)
     }
     

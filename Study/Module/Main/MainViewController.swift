@@ -62,8 +62,9 @@ extension MainViewController: MainDelegate {
             self.adapter.currentOffset(with: offset + 1)
             self.tableView.reloadData()
             self.tableView.tableFooterView?.isHidden.toggle()
-        }) {
+        }) { (message) in
             self.tableView.tableFooterView = nil
+            self.display(with: message)
         }
     }
 }
