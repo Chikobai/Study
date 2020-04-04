@@ -83,7 +83,7 @@ extension ByCategoryAdapter: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.row == courses.count - 1 {
             if totalCourses > courses.count {
-                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView = LoadMoreSpinnerView()
                 tableView.tableFooterView?.isHidden = false
             }
             else{

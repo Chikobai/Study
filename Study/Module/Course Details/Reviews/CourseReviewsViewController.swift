@@ -93,18 +93,6 @@ extension CourseReviewsViewController: CourseReviewsDelegate {
     }
 }
 
-
-// MARK: - CourseReviewsScrollDelegate
-
-extension CourseReviewsViewController: CourseReviewsScrollDelegate {
-
-    func scrollViewDidScroll(scrollView: UIScrollView, tableView: UITableView?) {
-
-//        print("FROM REVIEW: \(scrollView.contentOffset)")
-        scrollDelegate?.scrollViewDidScroll(scrollView: scrollView, tableView: self.tableView)
-    }
-}
-
 // MARK: - IndicatorInfoProvider
 
 extension CourseReviewsViewController: IndicatorInfoProvider {
@@ -136,7 +124,6 @@ private extension CourseReviewsViewController {
     func buildServices() -> Void {
 
         adapter.delegate = self
-        adapter.scrollDelegate = self
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(ReviewItem.self, forCellReuseIdentifier: ReviewItem.cellIdentifier())

@@ -19,7 +19,7 @@ enum Endpoints: EndPointType {
     case subscribedCourses
 
     //POST
-
+    case join(user_id: Int, course_id: Int)
 
     //PUT
 
@@ -32,6 +32,8 @@ enum Endpoints: EndPointType {
     
     var httpMethod: HTTPMethod {
         switch self {
+        case .join:
+            return .post
         default:
             return  .get
         }
@@ -44,6 +46,10 @@ enum Endpoints: EndPointType {
              .modules(_, let limit, let offset),
              .reviews(_, let limit, let offset):
             return .requestWithParameters(parameters: ["offset": offset, "limit": limit])
+        case .join(let user_id, let course_id):
+            return .requestWithParameters(parameters: [
+                "user_id": user_id, "course_id": course_id
+            ])
         default:
             return .request
         }
@@ -56,7 +62,8 @@ enum Endpoints: EndPointType {
              .courses,
              .modules,
              .reviews,
-             .info:
+             .info,
+             .join:
             return ["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im11a2hpdGJveXNAZ21haWwuY29tIiwiaWQiOjIsImlhdCI6MTU4Mjc4OTgyMn0.BTxSailhu2VMHIrUurZdjmzusv2DAa0i4l0OIrD7AkE"]
         }
     }
@@ -75,6 +82,8 @@ enum Endpoints: EndPointType {
             return "/api/v1/course/\(id)/reviews/"
         case .info(let id):
             return "\(id)"
+        case .join:
+            return "/api/v1/course/join/"
         }
     }
 }

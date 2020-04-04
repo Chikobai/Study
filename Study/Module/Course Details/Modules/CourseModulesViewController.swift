@@ -109,18 +109,6 @@ extension CourseModulesViewController: CourseModuleDelegate {
     }
 }
 
-// MARK: - CourseModulesScrollDelegate
-
-extension CourseModulesViewController: CourseModulesScrollDelegate {
-
-    func scrollViewDidScroll(scrollView: UIScrollView, tableView: UITableView?) {
-
-//        print("FROM MODULES: \(scrollView.contentOffset)")
-        scrollDelegate?.scrollViewDidScroll(scrollView: scrollView, tableView: self.tableView)
-    }
-}
-
-
 // MARK: - IndicatorInfoProvider
 
 extension CourseModulesViewController: IndicatorInfoProvider {
@@ -151,11 +139,9 @@ private extension CourseModulesViewController {
     func buildServices() -> Void {
 
         adapter.delegate = self
-        adapter.scrollDelegate = self
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(LessonItem.self, forCellReuseIdentifier: LessonItem.cellIdentifier())
-        tableView.register(ModuleExpandableHeaderView.self, forHeaderFooterViewReuseIdentifier: ModuleExpandableHeaderView.viewIdentifier())
     }
 
     func buildTargets() -> Void {

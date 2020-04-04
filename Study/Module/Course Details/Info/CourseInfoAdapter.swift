@@ -11,7 +11,6 @@ import UIKit
 
 class CourseInfoAdapter: NSObject {
 
-    weak var scrollDelegate: CourseInfoScrollDelegate?
     private var descriptionIsExpanded: Bool = false
     private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
 
@@ -67,15 +66,6 @@ extension CourseInfoAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         estimateRowHeightStorage[indexPath] = cell.frame.size.height
-    }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension CourseInfoAdapter: UIScrollViewDelegate {
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidScroll(scrollView: scrollView, tableView: nil)
     }
 }
 

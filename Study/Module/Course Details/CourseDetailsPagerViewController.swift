@@ -12,7 +12,6 @@ import XLPagerTabStrip
 class CourseDetailsPagerViewController: ButtonBarPagerTabStripViewController {
 
     private var courseIdentifier: Int?
-    weak var scrollDelegate: CourseDetailsScrollDelegate?
 
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -62,27 +61,14 @@ class CourseDetailsPagerViewController: ButtonBarPagerTabStripViewController {
 
         if let courseIdentifier = courseIdentifier {
             let info = CourseInfoViewController(with: "Info", courseIdentifier)
-            info.scrollDelegate = self
 
             let reviews = CourseReviewsViewController(with: "Reviews", courseIdentifier)
-            reviews.scrollDelegate = self
 
             let modules = CourseModulesViewController(with: "Modules", courseIdentifier)
-            modules.scrollDelegate = self
 
             return [info, reviews, modules]
         }
 
         return []
-    }
-}
-
-extension CourseDetailsPagerViewController: CourseInfoScrollDelegate, CourseModulesScrollDelegate, CourseReviewsScrollDelegate {
-
-    func scrollViewDidScroll(scrollView: UIScrollView, tableView: UITableView?) {
-//        print("FROM PAGER: \(scrollView.contentOffset)")
-        if let tableView = tableView {
-            scrollDelegate?.scrollViewDidScroll(scrollView: scrollView, tableView: tableView)
-        }
     }
 }

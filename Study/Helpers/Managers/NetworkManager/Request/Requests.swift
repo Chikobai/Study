@@ -184,7 +184,7 @@ extension  Request {
         offset: Int,
         complitionHandler: @escaping (([Review])->Void),
         complitionHandlerError: @escaping ((String)->Void)
-        ) -> Void {
+    ) -> Void {
         let endpoints = Endpoints.reviews(id: id, limit: limit, offset: offset)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
             switch result {
@@ -211,5 +211,27 @@ extension Request {
 //  MARK: POST REQUESTS
 extension Request {
 
+    //  MARK: JOIN TO COURSE
+
+    func join(
+        with user_id: Int,
+        _ course_id: Int,
+        complitionHandler: @escaping ((String)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        let endpoints = Endpoints.join(user_id: user_id, course_id: course_id)
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<Response>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let response):
+                guard response.success == true else {
+                    complitionHandlerError(response.message ?? "Что-то не так. Приносим извинения за неудобства")
+                    return
+                }
+                complitionHandler(response.message ?? "Успешно ;)")
+            }
+        }
+    }
     
 }

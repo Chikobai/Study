@@ -96,7 +96,7 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.row == posts.count - 1 {
             if totalPosts > posts.count {
-                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView = LoadMoreSpinnerView()
                 tableView.tableFooterView?.isHidden = false
             }
             else{

@@ -8,23 +8,18 @@
 
 import UIKit
 
-protocol CourseDetailsScrollDelegate: class {
-
-    func scrollViewDidScroll(scrollView: UIScrollView, tableView: UITableView)
-}
 
 class CourseDetailsViewController: ScrollViewController {
-
-    private var isGoingUp: Bool?
-    private var childScrollingDownDueToParent = false
 
     private lazy var headerView: CourseHeaderView = CourseHeaderView()
     private lazy var coverViewOfPagerView: UIView = UIView()
     private lazy var pagerViewController: CourseDetailsPagerViewController = CourseDetailsPagerViewController()
 
+    private var courseIdentifier: Int?
+
     init(with course: Course) {
         super.init(nibName: nil, bundle: nil)
-
+        self.courseIdentifier = course.id
         self.pagerViewController.configure(with: course.id)
         headerView.configure(with: course)
     }
@@ -56,86 +51,21 @@ class CourseDetailsViewController: ScrollViewController {
     }
 }
 
-extension CourseDetailsViewController: UIScrollViewDelegate {
+private extension CourseDetailsViewController {
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func toJoinCourse() -> Void {
 
-//        let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 0
-//        let statusBarHeight = self.navigationController?.navigationBar.frame.minY ?? 0
-//        let parentViewMaxContentYOffset = self.scrollView.contentSize.height - self.scrollView.frame.height
-//
-//        isGoingUp = scrollView.panGestureRecognizer.translation(in: scrollView).y < 0
-//
-//        print(statusBarHeight)
-//        if isGoingUp == true {
-//            if scrollView.contentOffset.y == parentViewMaxContentYOffset {
-//                self.navigationController?.setNavigationBarHidden(true, animated: true)
-//                scrollView.contentOffset.y = (parentViewMaxContentYOffset + navigationBarHeight - statusBarHeight)
-//            }
-//        }
-//        else{
-//            if scrollView.contentOffset.y < abs(statusBarHeight) {
-//                self.navigationController?.setNavigationBarHidden(false, animated: true)
-//            }
-//        }
-    }
-
-    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        return false
-    }
-}
-
-// MARK: - CourseDetailsScrollDelegate
-
-extension CourseDetailsViewController: CourseDetailsScrollDelegate {
-
-    func scrollViewDidScroll(scrollView: UIScrollView, tableView: UITableView) {
-
-//        isGoingUp = scrollView.panGestureRecognizer.translation(in: scrollView).y < 0
-//
-//        let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 0
-//        let statusBarHeight = self.navigationController?.navigationBar.frame.minY ?? 0
-//        let parentViewMaxContentYOffset = self.scrollView.contentSize.height - self.scrollView.frame.height
-//
-//        print(statusBarHeight)
-//        if (isGoingUp == true) {
-//            if scrollView == tableView {
-//                if self.scrollView.contentOffset.y < parentViewMaxContentYOffset && !childScrollingDownDueToParent {
-//                    self.scrollView.contentOffset.y = max(min(self.scrollView.contentOffset.y + tableView.contentOffset.y, parentViewMaxContentYOffset), 0)
-//                    tableView.contentOffset.y = 0
-//                }
-//                else{
-//                    self.navigationController?.setNavigationBarHidden(true, animated: true)
-//
-//                    let contentOffsetX = self.scrollView.contentOffset.x
-//                    let contentOffsetY = (parentViewMaxContentYOffset + navigationBarHeight - statusBarHeight)
-//                    self.scrollView.setContentOffset(CGPoint.init(x: contentOffsetX, y: contentOffsetY), animated: true)
-//                }
-//            }
-//        } else {
-//            if (scrollView == tableView) {
-//                if tableView.contentOffset.y < 0 && self.scrollView.contentOffset.y > 0 {
-//
-//                    self.scrollView.contentOffset.y = max(self.scrollView.contentOffset.y - abs(tableView.contentOffset.y), 0)
-//
-//                    if self.scrollView.contentOffset.y < abs(statusBarHeight) {
-//                         navigationController?.setNavigationBarHidden(false, animated: true)
-//                    }
-//                }
-//            }
-//
-//            if (scrollView == self.scrollView) {
-//                if tableView.contentOffset.y > 0 && self.scrollView.contentOffset.y < parentViewMaxContentYOffset {
-//                    childScrollingDownDueToParent = true
-//                    tableView.contentOffset.y = max(tableView.contentOffset.y - (parentViewMaxContentYOffset - self.scrollView.contentOffset.y) , 0)
-//
-//                    let contentOffsetX = self.scrollView.contentOffset.x
-//                    self.scrollView.setContentOffset(CGPoint.init(x: contentOffsetX, y: parentViewMaxContentYOffset), animated: true)
-//
-//                    childScrollingDownDueToParent = false
-//                }
-//            }
-//        }
+        let user_id: Int = 4
+        if let course_id = courseIdentifier {
+            headerView.joinButtonView.startLoading()
+            Request.shared.join(with: user_id, course_id, complitionHandler: { (message) in
+                self.headerView.joinButtonView.stopLoading()
+                self.display(with: message)
+            }) { (message) in
+                self.headerView.joinButtonView.stopLoading()
+                self.display(with: message)
+            }
+        }
     }
 }
 
@@ -184,7 +114,8 @@ private extension CourseDetailsViewController {
 
     func buildServices() -> Void {
 
-        scrollView.delegate = self
-        pagerViewController.scrollDelegate = self
+        headerView.toJoinCoursePressed = { [weak self] in
+            self?.toJoinCourse()
+        }
     }
 }

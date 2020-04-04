@@ -14,8 +14,7 @@ class CourseReviewsAdapter: NSObject {
     private var reviews: [Review] = []
     private var totalReviews: Int = 0
     private var currentOffset: Int = 0
-
-    weak var scrollDelegate: CourseReviewsScrollDelegate?
+    
     weak var delegate: CourseReviewsDelegate?
 
     override init() {
@@ -96,7 +95,7 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.row == reviews.count - 1 {
             if totalReviews > reviews.count {
-                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView = LoadMoreSpinnerView()
                 tableView.tableFooterView?.isHidden = false
             }
             else{
@@ -113,15 +112,6 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
         if totalReviews > reviews.count {
             delegate?.fetchMoreReviews(with: currentOffset)
         }
-    }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension CourseReviewsAdapter: UIScrollViewDelegate {
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidScroll(scrollView: scrollView, tableView: nil)
     }
 }
 

@@ -10,11 +10,13 @@ import UIKit
 
 class CourseHeaderView: UIView {
 
+    var toJoinCoursePressed: (()->())?
+
     private lazy var courseIconImageView: UIImageView = UIImageView()
     private lazy var courseNameLabelView: UILabel = UILabel()
     private lazy var communityView: CourseCommunityView = CourseCommunityView()
     private lazy var ratingView: CourseRatingView = CourseRatingView()
-    private lazy var joinButtonView: UIButton = UIButton()
+    private(set) lazy var joinButtonView: LoadingButton = LoadingButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +40,14 @@ class CourseHeaderView: UIView {
     }
 }
 
+extension CourseHeaderView {
+
+    @objc func joinCoursePressed() -> Void {
+        
+        toJoinCoursePressed?()
+    }
+}
+
 // MARK: - Builds
 
 private extension CourseHeaderView {
@@ -46,6 +56,7 @@ private extension CourseHeaderView {
 
         buildViews()
         buildLayouts()
+        buildTargets()
     }
 
     func buildViews() -> Void {
@@ -102,6 +113,10 @@ private extension CourseHeaderView {
             make.right.bottom.equalTo(-8.0)
             make.left.equalTo(8.0)
         }
+    }
 
+    func buildTargets() -> Void {
+
+        joinButtonView.addTarget(self, action: #selector(joinCoursePressed), for: .touchUpInside)
     }
 }

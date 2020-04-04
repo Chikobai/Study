@@ -9,18 +9,12 @@
 import UIKit
 import XLPagerTabStrip
 
-protocol CourseInfoScrollDelegate: class {
-    func scrollViewDidScroll(scrollView: UIScrollView, tableView: UITableView?)
-}
-
 class CourseInfoViewController: UITableViewController {
 
     private var itemInfo: IndicatorInfo?
     private var courseIdentifier: Int?
+
     private var adapter: CourseInfoAdapter = CourseInfoAdapter()
-
-    weak var scrollDelegate: CourseInfoScrollDelegate?
-
     private lazy var headerView = CourseInfoHeaderView()
 
     init(with itemInfo: IndicatorInfo, _ courseIdentifier: Int) {
@@ -43,18 +37,6 @@ class CourseInfoViewController: UITableViewController {
         build()
     }
 }
-
-// MARK: - CourseInfoScrollDelegate
-
-extension CourseInfoViewController: CourseInfoScrollDelegate {
-
-    func scrollViewDidScroll(scrollView: UIScrollView, tableView: UITableView?) {
-
-//        print("FROM INFO: \(scrollView.contentOffset)")
-        scrollDelegate?.scrollViewDidScroll(scrollView: scrollView, tableView: self.tableView)
-    }
-}
-
 
 // MARK: - IndicatorInfoProvider
 
@@ -86,7 +68,6 @@ private extension CourseInfoViewController {
 
     func buildServices() -> Void {
 
-        adapter.scrollDelegate = self
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(CourseInfoDescriptionItem.self, forCellReuseIdentifier: CourseInfoDescriptionItem.cellIdentifier())

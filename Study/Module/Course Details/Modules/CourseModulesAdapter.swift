@@ -22,7 +22,6 @@ final class CourseModulesAdapter: NSObject {
     private var totalModules: Int = 0
     private var currentOffset: Int = 0
 
-    weak var scrollDelegate: CourseModulesScrollDelegate?
     weak var delegate: CourseModuleDelegate?
 
     override init() {
@@ -89,7 +88,7 @@ extension CourseModulesAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let expandableHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ModuleExpandableHeaderView.viewIdentifier()) as! ModuleExpandableHeaderView
+        let expandableHeaderView = ModuleExpandableHeaderView()
         expandableHeaderView.sectionLabelView.text = "\(section + 1)"
         expandableHeaderView.executeTappedEvent = { [weak self] in
             self?.modules[section].isCollapsed?.toggle()
@@ -122,7 +121,7 @@ extension CourseModulesAdapter: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.row == modules.count - 1 {
             if totalModules > modules.count {
-                tableView.tableFooterView = SpinnerView()
+                tableView.tableFooterView = LoadMoreSpinnerView()
                 tableView.tableFooterView?.isHidden = false
             }
             else{
@@ -141,16 +140,6 @@ extension CourseModulesAdapter: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-// MARK: - UIScrollViewDelegate
-
-extension CourseModulesAdapter: UIScrollViewDelegate {
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidScroll(scrollView: scrollView, tableView: nil)
-    }
-}
-
 
 // MARK: - Custom Items
 

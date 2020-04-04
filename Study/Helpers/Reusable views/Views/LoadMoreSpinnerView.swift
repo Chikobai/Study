@@ -1,6 +1,6 @@
 
 //
-//  SpinnerView.swift
+//  LoadMoreSpinnerView.swift
 //  Study
 //
 //  Created by I on 3/21/20.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class SpinnerView: UIActivityIndicatorView {
+class LoadMoreSpinnerView: UIActivityIndicatorView {
 
     init() {
         super.init(frame: .zero)
