@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.2.0)
+  - Cache (4.2.0)
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
@@ -12,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Cache (~> 4.1)
   - Charts
   - Cosmos
   - InputMask
@@ -23,6 +25,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Cache
     - Charts
     - Cosmos
     - InputMask
@@ -33,6 +36,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Cache: f28f8dd64b632155aabf9b3906b036a659048251
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
   InputMask: 8a10dbc8ac3f94f0a5b4c380424bbe6795c69b16
@@ -41,6 +45,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 66bea4068704abea051cfb59b27050602cb5aa5a
+PODFILE CHECKSUM: 32885001d14d0cc9cfc2ba96999701959d6b5de8
 
 COCOAPODS: 1.8.4

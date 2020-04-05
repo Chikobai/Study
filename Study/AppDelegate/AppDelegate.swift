@@ -60,7 +60,7 @@ private extension AppDelegate {
 
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let viewController = TabBarViewController()
+        let viewController = AuthorizationViewController(with: .loginWithEmail).inNavigate()
         window?.rootViewController = viewController
     }
 

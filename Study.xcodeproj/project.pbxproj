@@ -16,6 +16,11 @@
 		082B1D142400EB4800316D24 /* MainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082B1D132400EB4800316D24 /* MainAdapter.swift */; };
 		082B1D172400F0D200316D24 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082B1D162400F0D200316D24 /* TabBarViewController.swift */; };
 		082B1D192400F43500316D24 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082B1D182400F43500316D24 /* PostItem.swift */; };
+		082D6A952439B72F009B3816 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D6A942439B72F009B3816 /* AuthModel.swift */; };
+		082D6A992439BF5A009B3816 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D6A982439BF5A009B3816 /* StorageManager.swift */; };
+		082D6A9B2439BF75009B3816 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D6A9A2439BF75009B3816 /* AppKey.swift */; };
+		082D6A9D2439C279009B3816 /* AppErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D6A9C2439C279009B3816 /* AppErrorMessage.swift */; };
+		082D6A9F2439C6CA009B3816 /* NSNotification.Name+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D6A9E2439C6CA009B3816 /* NSNotification.Name+Extensions.swift */; };
 		082DAEBB241754A300F025E4 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082DAEBA241754A300F025E4 /* QuestionsViewController.swift */; };
 		082DAEBE241755E300F025E4 /* VariantCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082DAEBD241755E300F025E4 /* VariantCollectionView.swift */; };
 		082DAEC02417573300F025E4 /* VariantItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082DAEBF2417573300F025E4 /* VariantItem.swift */; };
@@ -145,6 +150,11 @@
 		082B1D132400EB4800316D24 /* MainAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAdapter.swift; sourceTree = "<group>"; };
 		082B1D162400F0D200316D24 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		082B1D182400F43500316D24 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
+		082D6A942439B72F009B3816 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		082D6A982439BF5A009B3816 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		082D6A9A2439BF75009B3816 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
+		082D6A9C2439C279009B3816 /* AppErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorMessage.swift; sourceTree = "<group>"; };
+		082D6A9E2439C6CA009B3816 /* NSNotification.Name+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+Extensions.swift"; sourceTree = "<group>"; };
 		082DAEBA241754A300F025E4 /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		082DAEBD241755E300F025E4 /* VariantCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantCollectionView.swift; sourceTree = "<group>"; };
 		082DAEBF2417573300F025E4 /* VariantItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantItem.swift; sourceTree = "<group>"; };
@@ -316,6 +326,23 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		082D6A962439B814009B3816 /* UIManagers */ = {
+			isa = PBXGroup;
+			children = (
+				083081552413916100947567 /* DatePickerManager.swift */,
+				0875B68F240E284F00669C5B /* PickerViewManager.swift */,
+			);
+			path = UIManagers;
+			sourceTree = "<group>";
+		};
+		082D6A972439B839009B3816 /* StorageManager */ = {
+			isa = PBXGroup;
+			children = (
+				082D6A982439BF5A009B3816 /* StorageManager.swift */,
+			);
+			path = StorageManager;
+			sourceTree = "<group>";
+		};
 		082DAEC1241758B300F025E4 /* Collection view */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,9 +384,9 @@
 		083081542413911300947567 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				082D6A972439B839009B3816 /* StorageManager */,
+				082D6A962439B814009B3816 /* UIManagers */,
 				0856AA73241F6C1C00BFAE4F /* NetworkManager */,
-				083081552413916100947567 /* DatePickerManager.swift */,
-				0875B68F240E284F00669C5B /* PickerViewManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -562,6 +589,7 @@
 				08479E14243731A4005029C8 /* ModuleModel.swift */,
 				08479E1624373CD8005029C8 /* ReviewModel.swift */,
 				08479E1824374A94005029C8 /* LessonModel.swift */,
+				082D6A942439B72F009B3816 /* AuthModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -659,6 +687,8 @@
 				08E1D3FB23FBB4E6006E3042 /* AppTitle.swift */,
 				08E1D40423FBB8C5006E3042 /* AppColor.swift */,
 				082DAEC424175D4A00F025E4 /* AppSize.swift */,
+				082D6A9A2439BF75009B3816 /* AppKey.swift */,
+				082D6A9C2439C279009B3816 /* AppErrorMessage.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -677,6 +707,7 @@
 				083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */,
 				08E1D40A23FBBEB7006E3042 /* String+Extensions.swift */,
 				083707EB2418C862008A85FB /* Array+Extensions.swift */,
+				082D6A9E2439C6CA009B3816 /* NSNotification.Name+Extensions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -882,6 +913,7 @@
 				0840503D23FE526C00A084A4 /* CourseReviewsAdapter.swift in Sources */,
 				083707E42418C848008A85FB /* CustomSegments.swift in Sources */,
 				082B1D192400F43500316D24 /* PostItem.swift in Sources */,
+				082D6A992439BF5A009B3816 /* StorageManager.swift in Sources */,
 				08479E15243731A4005029C8 /* ModuleModel.swift in Sources */,
 				0840502C23FCF02F00A084A4 /* RestorePasswordValidator.swift in Sources */,
 				089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */,
@@ -890,6 +922,7 @@
 				083707EC2418C862008A85FB /* Array+Extensions.swift in Sources */,
 				08483D6B240B8D9E00B40B1F /* CourseCommunityView.swift in Sources */,
 				0875B686240E162600669C5B /* SettingsViewController.swift in Sources */,
+				082D6A9D2439C279009B3816 /* AppErrorMessage.swift in Sources */,
 				08E1D42423FC38C4006E3042 /* MessageItem.swift in Sources */,
 				083707E92418C848008A85FB /* BasicBarChartPresenter.swift in Sources */,
 				0856AA7D241F6C1C00BFAE4F /* CustomParser.swift in Sources */,
@@ -902,6 +935,7 @@
 				0840505923FE717700A084A4 /* ReviewItem.swift in Sources */,
 				08A73E2D2406613D00244B9E /* MyCoursesAdapter.swift in Sources */,
 				0875B68E240E263100669C5B /* SettingsLanguageItem.swift in Sources */,
+				082D6A9F2439C6CA009B3816 /* NSNotification.Name+Extensions.swift in Sources */,
 				0856AA82241F6C1C00BFAE4F /* EndpointType.swift in Sources */,
 				083081562413916100947567 /* DatePickerManager.swift in Sources */,
 				0875B690240E284F00669C5B /* PickerViewManager.swift in Sources */,
@@ -945,6 +979,7 @@
 				0875DF202419FDB400CCB46B /* EditViewController.swift in Sources */,
 				08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */,
 				08E1D41C23FC0893006E3042 /* OTPItem.swift in Sources */,
+				082D6A9B2439BF75009B3816 /* AppKey.swift in Sources */,
 				08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */,
 				08479E1324371E0B005029C8 /* UIEdgeInsets+Extensions.swift in Sources */,
 				083707E32418C848008A85FB /* CALayerExtension.swift in Sources */,
@@ -972,6 +1007,7 @@
 				0830815124136FA800947567 /* ProfileModels.swift in Sources */,
 				08C981B12423E4D900B2A802 /* SubscribedCourseModel.swift in Sources */,
 				0856AA7E241F6C1C00BFAE4F /* Endpoints.swift in Sources */,
+				082D6A952439B72F009B3816 /* AuthModel.swift in Sources */,
 				083707E72418C848008A85FB /* DataEntry.swift in Sources */,
 				083707EA2418C848008A85FB /* BasicBarEntry.swift in Sources */,
 				08483D67240B6DF800B40B1F /* LessonItem.swift in Sources */,

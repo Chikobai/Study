@@ -35,7 +35,15 @@ public class NetworkManager {
         case .request:
             manager?.request(url, method: endpoint.httpMethod, encoding: JSONEncoding.default, headers: endpoint.headers).validate(statusCode: 200..<300).responseJSON { (response) in
                 completion(self.parser.parse(response: response))}
-            
+
+        case .requestAuthorizationWithParameters(let parameters):
+            print(parameters)
+            manager?.request(url, method: endpoint.httpMethod, parameters: parameters, headers: endpoint.headers)
+                .validate(statusCode: 200..<500).responseJSON { (response) in
+                    print(response)
+                    completion(self.parser.parse(response: response))
+            }
+
         case .requestWithParameters(let parameters):
             print(parameters)
             manager?.request(url, method: endpoint.httpMethod, parameters: parameters, headers: endpoint.headers)

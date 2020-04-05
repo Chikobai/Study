@@ -22,7 +22,9 @@ class LoadingButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
+        NotificationCenter.default.addObserver(self, selector: #selector(startLoading), name: NSNotification.Name.init(.startLoading), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopLoading), name: NSNotification.Name.init(.stopLoading), object: nil)
         self.addSubviews(with: [spinner])
     }
     
@@ -30,8 +32,12 @@ class LoadingButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     
-    public func startLoading() {
+    @objc public func startLoading() {
         self.superview?.endEditing(true)
         self.superview?.layoutIfNeeded()
         
@@ -85,7 +91,7 @@ class LoadingButton: UIButton {
         layer.add(widthAnimation, forKey: widthAnimation.keyPath)
     }
     
-    public func stopLoading(completion: (() -> ())? = nil) {
+    @objc public func stopLoading(completion: (() -> ())? = nil) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.setOriginalState(completion: completion)
         }

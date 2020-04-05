@@ -14,5 +14,6 @@ pod 'InputMask'
 pod 'Cosmos'
 pod ’SJSegmentedScrollView’
 pod 'Charts'
+pod 'Cache', '~> 4.1'
 
 end

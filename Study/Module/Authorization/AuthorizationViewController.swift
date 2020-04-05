@@ -62,7 +62,7 @@ extension AuthorizationViewController: AuthorizationDelegate {
             let viewController = RestorePasswordViewController(with: .enterEmail)
             self.navigationController?.pushViewController(viewController, animated: true)
         case .loginButton:
-            print("wefwe")
+            self.login()
 //            let viewController = CourseDetailsViewController()
 //            self.navigationController?.pushViewController(viewController, animated: true)
         default:
@@ -80,5 +80,18 @@ extension AuthorizationViewController: AuthorizationDelegate {
 
 private extension AuthorizationViewController {
 
+    func login() -> Void {
+
+        validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.adapter?.startLoading()
+            Request.shared.login(with: params, complitionHandler: {
+                self?.adapter?.stopLoading()
+            }, complitionHandlerError: { (message) in
+                self?.display(with: message)
+            })
+        }, complitionOfError: { [weak self] (message) in
+            self?.display(with: message)
+        })
+    }
 }
 

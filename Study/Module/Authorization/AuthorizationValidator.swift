@@ -21,6 +21,18 @@ final class LoginStrategy:  AuthorizationValidatorStrategy{
 
     func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String: String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
 
+        if let email = params[AppKey.Authorization.email], email.isValidEmail() == true {
+
+            if let password = params[AppKey.Authorization.password], password.count > 7 {
+                complitionOfSuccess(params)
+            }
+            else{
+                complitionOfError(AppErrorMessage.Authorization.passwordIsSoWeak)
+            }
+        }
+        else{
+            complitionOfError(AppErrorMessage.Authorization.emailIsNotValid)
+        }
     }
 }
 
@@ -49,9 +61,9 @@ final class ContextAuthorizationValidator {
 
     init(with type: AuthorizationSection) {
         switch type {
-        case .login:
+        case .login, .loginWithEmail:
             self.context = LoginStrategy()
-        case .registration:
+        case .registration, .registrationWithEmail:
             self.context = RegistrationStrategy()
         default:
             self.context = OTPStrategy()

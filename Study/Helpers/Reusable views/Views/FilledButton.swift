@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilledButton: UIButton {
+class FilledButton: LoadingButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

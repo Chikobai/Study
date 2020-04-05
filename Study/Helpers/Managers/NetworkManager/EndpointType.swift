@@ -20,6 +20,7 @@ public protocol EndPointType {
 public enum HTTPTask {
     case request
     case requestWithParameters(parameters: Parameters)
+    case requestAuthorizationWithParameters(parameters: Parameters)
     case requestWithMultipartData(data: Any, parameters: Parameters, dataParameterName: String)
     case requestWithMultipartDatas(datas: [String: Any], parameters: Parameters)
 }

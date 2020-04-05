@@ -92,7 +92,14 @@ enum AuthorizationItem {
     }
 
     var key: String{
-        return "KEY"
+        switch self {
+        case .emailInput:
+            return AppKey.Authorization.email
+        case .passwordInput:
+            return AppKey.Authorization.password
+        default:
+            return "KEY"
+        }
     }
 }
 

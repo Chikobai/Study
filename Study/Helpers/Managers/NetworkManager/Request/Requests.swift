@@ -211,6 +211,30 @@ extension Request {
 //  MARK: POST REQUESTS
 extension Request {
 
+    //  MARK: LOGIN
+
+    func login(
+        with params: [String: String],
+        complitionHandler: @escaping (()->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+
+        let endpoints = Endpoints.login(params: params)
+        networkManager.makeRequest(endpoint: endpoints) { (result: Result<Auth>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let response):
+                guard response.success == true else {
+                    complitionHandlerError(response.message ?? "Что-то не так. Приносим извинения за неудобства")
+                    return
+                }
+                complitionHandler()
+                StoreManager.shared().setToken(with: response.token)
+            }
+        }
+    }
+
     //  MARK: JOIN TO COURSE
 
     func join(

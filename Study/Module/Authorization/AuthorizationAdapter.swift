@@ -22,6 +22,20 @@ class AuthorizationAdapter: NSObject {
     deinit {
         print("DEINIT: AuthorizationAdapter")
     }
+
+    func startLoading() -> Void {
+
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.init(.startLoading), object: nil)
+        }
+    }
+
+    func stopLoading() -> Void {
+
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.init(.stopLoading), object: nil)
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
