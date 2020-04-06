@@ -10,7 +10,7 @@ import UIKit
 
 class CourseInfoDescriptionItem: UITableViewCell {
 
-    var superviewGestureNotified: (()->())?
+    var tapToExpandExecuted: (()->())?
 
     private lazy var titleLabelView: UILabel = UILabel()
     private lazy var descriptionLabelView: UILabel = UILabel()
@@ -29,28 +29,29 @@ class CourseInfoDescriptionItem: UITableViewCell {
         print("DEINIT: CourseInfoDescriptionItem")
     }
 
-    func configure(with title: String, _ description: String, _ isExpanded: Bool) -> Void {
+    func configure(with title: String?, _ description: String?, _ isExpanded: Bool) -> Void {
 
         titleLabelView.text = title
 
         let mainContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor]
         let moreContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor.withAlphaComponent(0.5)]
+        if let description  = description {
+            if isExpanded == false {
+                if description.count >= 150
+                {
+                    let mainAttributedString = NSMutableAttributedString(string: "\(description.prefix(150))...", attributes: mainContentAttribute)
+                    let moreAttributedString = NSMutableAttributedString(string: "More", attributes: moreContentAttribute)
+                    mainAttributedString.append(moreAttributedString)
 
-        if isExpanded == false {
-            if description.count >= 150
-            {
-                let mainAttributedString = NSMutableAttributedString(string: "\(description.prefix(150))...", attributes: mainContentAttribute)
-                let moreAttributedString = NSMutableAttributedString(string: "More", attributes: moreContentAttribute)
-                mainAttributedString.append(moreAttributedString)
-
-                descriptionLabelView.attributedText = mainAttributedString
+                    descriptionLabelView.attributedText = mainAttributedString
+                }
+                else{
+                    descriptionLabelView.attributedText = NSMutableAttributedString(string: description, attributes: mainContentAttribute)
+                }
             }
             else{
                 descriptionLabelView.attributedText = NSMutableAttributedString(string: description, attributes: mainContentAttribute)
             }
-        }
-        else{
-            descriptionLabelView.attributedText = NSMutableAttributedString(string: description, attributes: mainContentAttribute)
         }
     }
 }
@@ -58,9 +59,9 @@ class CourseInfoDescriptionItem: UITableViewCell {
 private extension CourseInfoDescriptionItem {
 
     @objc
-    func superviewTapped() -> Void {
+    func tapToExpand() -> Void {
 
-        superviewGestureNotified?()
+        tapToExpandExecuted?()
     }
 }
 
@@ -109,7 +110,7 @@ private extension CourseInfoDescriptionItem {
 
     func buildGestures() -> Void {
 
-        let tapGesturesForDescriptions = UITapGestureRecognizer(target: self, action: #selector(superviewTapped))
+        let tapGesturesForDescriptions = UITapGestureRecognizer(target: self, action: #selector(tapToExpand))
         self.addGestureRecognizer(tapGesturesForDescriptions)
     }
 }

@@ -16,12 +16,14 @@ class CourseDetailsViewController: ScrollViewController {
     private lazy var pagerViewController: CourseDetailsPagerViewController = CourseDetailsPagerViewController()
 
     private var courseIdentifier: Int?
+    private var isJoinedCourse: Bool?
 
     init(with course: Course) {
+        courseIdentifier = course.id
+        isJoinedCourse = course.is_my_course
         super.init(nibName: nil, bundle: nil)
-        self.courseIdentifier = course.id
-        self.pagerViewController.configure(with: course.id)
         headerView.configure(with: course)
+        pagerViewController.configure(with: course.id)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -57,12 +59,14 @@ private extension CourseDetailsViewController {
 
         let user_id: Int = 4
         if let course_id = courseIdentifier {
-            headerView.joinButtonView.startLoading()
+            headerView.startLoading()
             Request.shared.join(with: user_id, course_id, complitionHandler: { (message) in
-                self.headerView.joinButtonView.stopLoading()
+                self.headerView.stopLoading()
+                self.headerView.setIsSubscribedCourse(with: true)
+                self.isJoinedCourse = true
                 self.display(with: message)
             }) { (message) in
-                self.headerView.joinButtonView.stopLoading()
+                self.headerView.stopLoading()
                 self.display(with: message)
             }
         }
@@ -115,7 +119,13 @@ private extension CourseDetailsViewController {
     func buildServices() -> Void {
 
         headerView.toJoinCoursePressed = { [weak self] in
-            self?.toJoinCourse()
+            if self?.isJoinedCourse == true {
+                let viewController = LessonViewController()
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            else{
+                self?.toJoinCourse()
+            }
         }
     }
 }

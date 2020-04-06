@@ -10,7 +10,7 @@ import UIKit
 
 class CourseInfoSkillsItem: UITableViewCell {
 
-    private var items: [String] = []
+    private var items: [CourseSkill] = []
     
     private lazy var skillsLabelView: UILabel = UILabel()
     lazy var skillsCollectionView: DynamicHeightCollectionView = {
@@ -34,7 +34,7 @@ class CourseInfoSkillsItem: UITableViewCell {
         print("DEINIT: CourseInfoSkillsItem")
     }
 
-    func  configure(with skills: [String]) -> Void {
+    func  configure(with skills: [CourseSkill]) -> Void {
 
         self.items = skills
         skillsCollectionView.reloadData()
@@ -59,7 +59,7 @@ extension CourseInfoSkillsItem: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Skilltem.cellIdentifier(), for: indexPath) as? Skilltem
-        cell?.configure(with: items[indexPath.item])
+        cell?.configure(with: items[indexPath.item].name)
 
         return cell!
     }
@@ -71,7 +71,7 @@ extension CourseInfoSkillsItem: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let text = items[indexPath.item]
+        let text = items[indexPath.item].name
         let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize:12.0)]).width + 30.0
         return CGSize(width: cellWidth, height: 30.0)
     }

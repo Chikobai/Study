@@ -195,6 +195,24 @@ extension  Request {
             }
         }
     }
+
+    //  MARK: INFO
+
+    func loadInfo(
+        with id: Int,
+        complitionHandler: @escaping ((CourseInfo)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        let endpoints = Endpoints.info(id: id)
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<CourseInfo>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let info):
+                complitionHandler(info)
+            }
+        }
+    }
 }
 
 //  MARK: PUT REQUESTS
@@ -220,6 +238,30 @@ extension Request {
     ) -> Void {
 
         let endpoints = Endpoints.login(params: params)
+        networkManager.makeRequest(endpoint: endpoints) { (result: Result<Auth>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let response):
+                guard response.success == true else {
+                    complitionHandlerError(response.message ?? "Что-то не так. Приносим извинения за неудобства")
+                    return
+                }
+                complitionHandler()
+                StoreManager.shared().setToken(with: response.token)
+            }
+        }
+    }
+
+    //  MARK: REGISTRATION
+
+    func registration(
+        with params: [String: String],
+        complitionHandler: @escaping (()->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+
+        let endpoints = Endpoints.registration(params: params)
         networkManager.makeRequest(endpoint: endpoints) { (result: Result<Auth>) in
             switch result {
             case .failure(let error, _):

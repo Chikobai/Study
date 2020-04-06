@@ -11,6 +11,7 @@ import Alamofire
 enum Endpoints: EndPointType {
 
     //GET
+    
     case posts(limit: Int, offset: Int)
     case courses(limit: Int, offset: Int)
     case modules(id: Int, limit: Int, offset: Int)
@@ -19,7 +20,9 @@ enum Endpoints: EndPointType {
     case subscribedCourses
 
     //POST
+
     case login(params: [String: String])
+    case registration(params: [String: String])
     case join(user_id: Int, course_id: Int)
 
     //PUT
@@ -34,7 +37,8 @@ enum Endpoints: EndPointType {
     var httpMethod: HTTPMethod {
         switch self {
         case .join,
-             .login:
+             .login,
+             .registration:
             return .post
         default:
             return  .get
@@ -54,7 +58,8 @@ enum Endpoints: EndPointType {
             return .requestWithParameters(parameters: [
                 "user_id": user_id, "course_id": course_id
             ])
-        case .login(let params):
+        case .login(let params),
+             .registration(let params):
             return .requestAuthorizationWithParameters(parameters: params)
         default:
             return .request
@@ -80,6 +85,8 @@ enum Endpoints: EndPointType {
         switch self {
         case .login:
             return "/auth/login/"
+        case .registration:
+            return "/auth/registration/"
         case .posts(_, _):
             return "/api/v1/posts/"
         case .subscribedCourses:
@@ -91,7 +98,7 @@ enum Endpoints: EndPointType {
         case .reviews(let id, _, _):
             return "/api/v1/course/\(id)/reviews/"
         case .info(let id):
-            return "\(id)"
+            return "/api/v1/courses/\(id)/"
         case .join:
             return "/api/v1/course/join/"
         }

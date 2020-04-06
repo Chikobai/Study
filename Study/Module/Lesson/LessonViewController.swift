@@ -11,9 +11,6 @@ import XLPagerTabStrip
 
 class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTabItem> {
 
-    private lazy var shareBarButtonView: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(sharePressedEvent))
-    private lazy var infoBarButtonView: UIBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "exclamation (1) 1"), style: .plain, target: self, action: #selector(infoPressedEvent))
-
     init() {
         super.init(nibName: nil, bundle: nil)
         buttonBarItemSpec = ButtonBarItemSpec.cellClass(width: { (_) -> CGFloat in
@@ -27,6 +24,18 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
         buttonBarItemSpec = ButtonBarItemSpec.cellClass(width: { (_) -> CGFloat in
             return 50.0
         })
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.isTranslucent = false
+        super.viewWillAppear(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.isTranslucent = true
+        super.viewWillDisappear(animated)
     }
 
     override func viewDidLoad() {
@@ -51,7 +60,6 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
         navigationItem.title = "Hello, world"
         edgesForExtendedLayout = []
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItems = [shareBarButtonView, infoBarButtonView]
     }
 
 

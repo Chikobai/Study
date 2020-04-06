@@ -22,5 +22,7 @@ class AppKey {
 
         static let email     = "email"
         static let password  = "password"
+        static let name  = "first_name"
+        static let surname  = "last_name"
     }
 }

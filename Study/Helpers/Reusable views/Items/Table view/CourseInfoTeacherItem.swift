@@ -27,6 +27,10 @@ class CourseInfoTeacherItem: UITableViewCell {
     deinit {
         print("DEINIT: CourseInfoTeacherItem")
     }
+
+    func configure(with owner: CourseOwner) -> Void {
+        nameLabelView.text = "\(owner.first_name) \(owner.last_name)"
+    }
 }
 
 // MARK: - Builds

@@ -42,6 +42,7 @@ private extension CourseInfoHeaderView {
 
         //superview
         backgroundColor = AppColor.white.uiColor
+        isHidden = true
 
         //video placeholder image view
         videoPlaceholderImageView.backgroundColor = AppColor.main.uiColor

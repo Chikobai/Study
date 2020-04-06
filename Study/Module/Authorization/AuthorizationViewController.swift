@@ -54,7 +54,7 @@ extension AuthorizationViewController: AuthorizationDelegate {
     func didPressed(with type: AuthorizationItem) -> Void {
         switch type {
         case .toResgistrationButton:
-            let viewController = AuthorizationViewController(with: .registration)
+            let viewController = AuthorizationViewController(with: .registrationWithEmail)
             self.navigationController?.pushViewController(viewController, animated: true)
         case .toLoginButton:
             self.navigationController?.popViewController(animated: true)
@@ -63,8 +63,8 @@ extension AuthorizationViewController: AuthorizationDelegate {
             self.navigationController?.pushViewController(viewController, animated: true)
         case .loginButton:
             self.login()
-//            let viewController = CourseDetailsViewController()
-//            self.navigationController?.pushViewController(viewController, animated: true)
+        case .resgistrationButton:
+            self.registration()
         default:
             return
         }
@@ -91,6 +91,20 @@ private extension AuthorizationViewController {
             })
         }, complitionOfError: { [weak self] (message) in
             self?.display(with: message)
+        })
+    }
+
+    func registration() -> Void {
+
+        validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.adapter?.startLoading()
+            Request.shared.registration(with: params, complitionHandler: {
+                self?.adapter?.stopLoading()
+            }, complitionHandlerError: { (message) in
+                self?.display(with: message)
+            })
+            }, complitionOfError: { [weak self] (message) in
+                self?.display(with: message)
         })
     }
 }

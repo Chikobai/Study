@@ -19,6 +19,7 @@ class AppTitle {
         static let enterPassword = "Введите пароль"
         static let enterEmail = "Введите эл.почту"
         static let enterName = "Введите ваше имя"
+        static let enterSurname = "Введите вашу фамилию"
         static let enter = "Войти"
         static let iHaveAnAccount = "У меня есть аккаунт"
         static let OTP = "SMS код"

@@ -16,7 +16,7 @@ class CourseHeaderView: UIView {
     private lazy var courseNameLabelView: UILabel = UILabel()
     private lazy var communityView: CourseCommunityView = CourseCommunityView()
     private lazy var ratingView: CourseRatingView = CourseRatingView()
-    private(set) lazy var joinButtonView: LoadingButton = LoadingButton()
+    private lazy var joinButtonView: LoadingButton = LoadingButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,9 +34,25 @@ class CourseHeaderView: UIView {
 
     func configure(with course: Course) -> Void {
 
+        joinButtonView.setTitle(course.is_my_course ? "Open" : "Join course", for: .normal)
         courseNameLabelView.text = course.name
         communityView.configure(with: course.user_counts, #imageLiteral(resourceName: "avatar 3"))
         ratingView.configure(with: course.rating ?? 5.0)
+    }
+
+    func setIsSubscribedCourse(with value: Bool) -> Void {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.joinButtonView.setTitle(value ? "Open" : "Join course", for: .normal)
+        }
+    }
+
+    func startLoading() -> Void {
+        joinButtonView.startLoading()
+    }
+
+    func stopLoading() -> Void {
+        joinButtonView.stopLoading()
     }
 }
 
@@ -72,11 +88,9 @@ private extension CourseHeaderView {
         //course name label view
         courseNameLabelView.font = .systemFont(ofSize: 18)
         courseNameLabelView.textColor = AppColor.black.uiColor
-        courseNameLabelView.text = "Discrete mathematics"
 
         //join button view
         joinButtonView.backgroundColor = AppColor.main.uiColor
-        joinButtonView.setTitle("Join course", for: .normal)
         joinButtonView.setTitleColor(AppColor.white.uiColor, for: .normal)
         joinButtonView.contentHorizontalAlignment = .left
         joinButtonView.layer.cornerRadius = 21

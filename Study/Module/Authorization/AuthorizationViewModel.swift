@@ -16,6 +16,7 @@ enum AuthorizationItem {
     case emailInput
     case otpInput
     case nameInput
+    case surnameInput
     case loginButton
     case sendOTPButton
     case resgistrationButton
@@ -35,6 +36,8 @@ enum AuthorizationItem {
             return AppTitle.Authorization.enterPassword
         case .nameInput:
             return AppTitle.Authorization.enterName
+        case .surnameInput:
+            return AppTitle.Authorization.enterSurname
         case .loginButton:
             return AppTitle.Authorization.enter
         case .resgistrationButton:
@@ -97,6 +100,10 @@ enum AuthorizationItem {
             return AppKey.Authorization.email
         case .passwordInput:
             return AppKey.Authorization.password
+        case .nameInput:
+            return AppKey.Authorization.name
+        case .surnameInput:
+            return AppKey.Authorization.surname
         default:
             return "KEY"
         }
@@ -129,7 +136,7 @@ enum AuthorizationSection {
         case .loginWithEmail:
             return [.loginWithEmailMessage, .emailInput, .passwordInput, .loginButton, .emptySpacer, .toRestorePasswordButton, .toResgistrationButton]
         case .registration, .registrationWithEmail:
-            return [.nameInput, .emailInput, .passwordInput, .resgistrationButton, .emptySpacer, .toLoginButton]
+            return [.nameInput, .surnameInput, .emailInput, .passwordInput, .resgistrationButton, .emptySpacer, .toLoginButton]
         case .otp:
             return [.emptySpacer, .OTPMessage, .emptySpacer, .otpInput , .sendOTPButton]
         }

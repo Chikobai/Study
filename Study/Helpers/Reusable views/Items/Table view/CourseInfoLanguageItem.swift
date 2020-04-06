@@ -28,9 +28,9 @@ class CourseInfoLanguageItem: UITableViewCell {
         print("DEINIT: CourseInfoLanguageItem")
     }
 
-    func  configure(with skills: [String]) -> Void {
+    func  configure(with language: String?) -> Void {
 
-
+        basicLanguageLabelView.text = language
     }
 }
 

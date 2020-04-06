@@ -9,8 +9,18 @@
 import Foundation
 import UIKit
 
+enum CourseInfoItem {
+
+    case descriptions
+    case languages
+    case skills
+    case teachers
+}
+
 class CourseInfoAdapter: NSObject {
 
+    private var object: CourseInfo?
+    private let items: [CourseInfoItem] = [.descriptions, .languages, .skills, .teachers]
     private var descriptionIsExpanded: Bool = false
     private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
 
@@ -21,6 +31,11 @@ class CourseInfoAdapter: NSObject {
     deinit {
         print("DEINIT: CourseInfoAdapter")
     }
+
+    func setObject(with value: CourseInfo) -> Void {
+
+        self.object = value
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -28,11 +43,11 @@ class CourseInfoAdapter: NSObject {
 extension CourseInfoAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return items.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return object == nil ? 0 : 1
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -48,16 +63,16 @@ extension CourseInfoAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if indexPath.row == 0 {
+        switch items[indexPath.section] {
+        case .descriptions:
             return descriptionItemView(with: tableView, indexPath)
-        }
-        else if indexPath.row == 1 {
+        case .languages:
             return languageItemView(with: tableView, indexPath)
-        }
-        else if indexPath.row == 2 {
+        case .skills:
             return skillsItemView(with: tableView, indexPath)
+        case .teachers:
+            return teacherItemView(with: tableView, indexPath)
         }
-        return teacherItemView(with: tableView, indexPath)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -77,8 +92,8 @@ private extension CourseInfoAdapter {
     func descriptionItemView(with tableView: UITableView, _ indexPath: IndexPath) -> CourseInfoDescriptionItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoDescriptionItem.cellIdentifier(), for: indexPath) as? CourseInfoDescriptionItem
-        cell?.configure(with: "Birdene turady myna jerde", "Sphingolipids are a class of lipids containing a backbone of sphingoid bases, a set of aliphatic amino alcohols that includes sphingosine. They were discovered in brain extracts in the 1870s and were named after the mythological sphinx because of their enigmatic nature.Sphingolipids are a class of lipids containing a backbone of sphingoid bases, a set of aliphatic amino alcohols that includes sphingosine. They were discovered in brain extracts in the 1870s and were named after the mythological sphinx because of their enigmatic nature", descriptionIsExpanded)
-        cell?.superviewGestureNotified = { [weak self] in
+        cell?.configure(with: object?.title, object?.info, descriptionIsExpanded)
+        cell?.tapToExpandExecuted = { [weak self] in
             self?.descriptionIsExpanded.toggle()
             tableView.beginUpdates()
             tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -86,26 +101,28 @@ private extension CourseInfoAdapter {
         }
 
         return cell!
-
     }
 
     func teacherItemView(with tableView: UITableView, _ indexPath: IndexPath) -> CourseInfoTeacherItem {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoTeacherItem.cellIdentifier(), for: indexPath) as? CourseInfoTeacherItem
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoTeacherItem.cellIdentifier(), for: indexPath) as? CourseInfoTeacherItem  
+        if let owner = object?.owner {
+            cell?.configure(with: owner)
+        }
         return cell!
     }
 
     func skillsItemView(with tableView: UITableView, _ indexPath: IndexPath) -> CourseInfoSkillsItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoSkillsItem.cellIdentifier(), for: indexPath) as? CourseInfoSkillsItem
-        cell?.configure(with: ["Discrete Math", "Math", "Statistic", "Marketolog", "Geo", "Discrete Math", "Math", "Statistic", "Marketolog", "Geo"])
+        cell?.configure(with: object?.course_skills ?? [])
         return cell!
     }
 
     func languageItemView(with tableView: UITableView, _ indexPath: IndexPath) -> CourseInfoLanguageItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoLanguageItem.cellIdentifier(), for: indexPath) as? CourseInfoLanguageItem
+        cell?.configure(with: object?.language)
 
         return cell!
     }

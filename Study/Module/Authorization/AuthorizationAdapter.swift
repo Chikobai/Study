@@ -61,7 +61,7 @@ extension AuthorizationAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = items[indexPath.section].cells[indexPath.row]
         switch type {
-        case .passwordInput, .phoneInput, .nameInput, .emailInput:
+        case .passwordInput, .phoneInput, .nameInput, .surnameInput, .emailInput:
             return self.floatingInputItemView(with: tableView, indexPath, type)
         case .loginButton, .resgistrationButton, .sendOTPButton:
             return self.filledButtonItemView(with: tableView, indexPath, type)

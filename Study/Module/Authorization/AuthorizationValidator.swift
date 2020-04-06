@@ -21,7 +21,8 @@ final class LoginStrategy:  AuthorizationValidatorStrategy{
 
     func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String: String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
 
-        if let email = params[AppKey.Authorization.email], email.isValidEmail() == true {
+        if let email = params[AppKey.Authorization.email],
+            email.isValidEmail() == true {
 
             if let password = params[AppKey.Authorization.password], password.count > 7 {
                 complitionOfSuccess(params)
@@ -41,6 +42,32 @@ final class RegistrationStrategy:  AuthorizationValidatorStrategy{
 
     func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String : String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
 
+        if let name = params[AppKey.Authorization.name],
+            name.removingWhitespaces().isEmpty == false {
+
+            if let surname = params[AppKey.Authorization.surname], surname.removingWhitespaces().isEmpty == false {
+
+                if let email = params[AppKey.Authorization.email],
+                    email.isValidEmail() == true {
+
+                    if let password = params[AppKey.Authorization.password], password.count > 7 {
+                        complitionOfSuccess(params)
+                    }
+                    else{
+                        complitionOfError(AppErrorMessage.Authorization.passwordIsSoWeak)
+                    }
+                }
+                else{
+                    complitionOfError(AppErrorMessage.Authorization.emailIsNotValid)
+                }
+            }
+            else{
+                complitionOfError(AppErrorMessage.Authorization.surnameIsEmpty)
+            }
+        }
+        else{
+            complitionOfError(AppErrorMessage.Authorization.nameIsEmpty)
+        }
     }
 }
 

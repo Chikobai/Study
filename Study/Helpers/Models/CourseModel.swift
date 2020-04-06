@@ -22,6 +22,16 @@ struct CourseSkill: Decodable {
     let name: String
 }
 
+struct CourseInfo: Decodable {
+
+    let title: String?
+    let info: String?
+    let video_url: String?
+    let language: String?
+    let owner: CourseOwner
+    let course_skills: [CourseSkill]
+}
+
 struct Course: Decodable {
 
     let id: Int
@@ -31,4 +41,5 @@ struct Course: Decodable {
     let user_counts: Int
     let module_counts: Int
     let rating: Double?
+    let is_my_course: Bool
 }

@@ -35,8 +35,34 @@ class CourseInfoViewController: UITableViewController {
         super.viewDidLoad()
 
         build()
+
+        fetchInfo()
     }
 }
+
+// MARK: - Targets
+
+extension CourseInfoViewController {
+
+    @objc
+    func fetchInfo() -> Void {
+        tableView.backgroundView = nil
+        refreshControl?.beginRefreshing()
+        if let courseIdentifier = courseIdentifier {
+            Request.shared.loadInfo(with: courseIdentifier, complitionHandler: { (info) in
+                self.refreshControl?.endRefreshing()
+                self.adapter.setObject(with: info)
+                self.headerView.isHidden = false
+                self.tableView.reloadData()
+            }) { (message) in
+                self.refreshControl?.endRefreshing()
+                self.headerView.isHidden = true
+                self.tableView.backgroundView = MessageBackgroundView(with: message)
+            }
+        }
+    }
+}
+
 
 // MARK: - IndicatorInfoProvider
 
@@ -55,12 +81,14 @@ private extension CourseInfoViewController {
 
         buildViews()
         buildServices()
+        buildTargets()
     }
 
     func buildViews() -> Void {
 
         //scroll view
         headerView.frame.size.height = 200.0
+        tableView.refreshControl = UIRefreshControl()
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
@@ -74,5 +102,10 @@ private extension CourseInfoViewController {
         tableView.register(CourseInfoTeacherItem.self, forCellReuseIdentifier: CourseInfoTeacherItem.cellIdentifier())
         tableView.register(CourseInfoSkillsItem.self, forCellReuseIdentifier: CourseInfoSkillsItem.cellIdentifier())
         tableView.register(CourseInfoLanguageItem.self, forCellReuseIdentifier: CourseInfoLanguageItem.cellIdentifier())
+    }
+
+    func buildTargets() -> Void {
+
+        tableView.refreshControl?.addTarget(self, action: #selector(fetchInfo), for: .touchUpInside)
     }
 }
