@@ -15,7 +15,9 @@ protocol ByCategoryDelegate: class {
     func fetchMoreCourses(with offset: Int) -> Void
 }
 
-class ByCategoryViewController: UITableViewController, Stylizing {
+class ByCategoryViewController: UITableViewController, FetchableMore, Stylizing {
+
+    var state: State = .empty
 
     private var itemInfo: IndicatorInfo?
     private(set) var adapter: ByCategoryAdapter = ByCategoryAdapter()
@@ -45,6 +47,26 @@ class ByCategoryViewController: UITableViewController, Stylizing {
     }
 }
 
+// MARK: - Targets
+
+extension ByCategoryViewController {
+
+    @objc
+    func fetchCourses() -> Void {
+        tableView.backgroundView = nil
+        refreshControl?.beginRefreshing()
+        Request.shared.loadCourses(complitionHandler: { (courses, count) in
+            self.refreshControl?.endRefreshing()
+            self.state.beginPartFetched = true
+            self.adapter.refreshCourses(with: courses)
+            self.adapter.totalCourses(with: count)
+            self.tableView.reloadData()
+        }) { (message) in
+            self.handleError(action: .fetching, with: message)
+        }
+    }
+}
+
 // MARK: - ByCategoryDelegate
 
 extension ByCategoryViewController: ByCategoryDelegate {
@@ -62,8 +84,7 @@ extension ByCategoryViewController: ByCategoryDelegate {
             self.tableView.reloadData()
             self.tableView.tableFooterView?.isHidden.toggle()
         }) { (message) in
-            self.tableView.tableFooterView = nil
-            self.display(with: message)
+            self.handleError(action: .fetchingMore, with: message)
         }
     }
 }
@@ -77,22 +98,4 @@ extension ByCategoryViewController: IndicatorInfoProvider {
     }
 }
 
-extension ByCategoryViewController {
-
-    @objc
-    func fetchCourses() -> Void {
-        tableView.backgroundView = nil
-        refreshControl?.beginRefreshing()
-        Request.shared.loadCourses(complitionHandler: { (courses, count) in
-            self.refreshControl?.endRefreshing()
-            self.adapter.refreshCourses(with: courses)
-            self.adapter.totalCourses(with: count)
-            self.tableView.reloadData()
-        }) { (message) in
-            self.refreshControl?.endRefreshing()
-            self.adapter.refreshCourses(with: [])
-            self.tableView.backgroundView = MessageBackgroundView(with: message)
-        }
-    }
-}
 

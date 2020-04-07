@@ -95,6 +95,7 @@
 		089A469F24023887007068DB /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A469E24023887007068DB /* CategoryViewController.swift */; };
 		089A46A12402389F007068DB /* ByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A02402389F007068DB /* ByCategoryViewController.swift */; };
 		089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A2240238BF007068DB /* ByCategoryAdapter.swift */; };
+		08A0FF46243C44AF0000119B /* UITableViewController+FetchableMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A0FF45243C44AF0000119B /* UITableViewController+FetchableMore.swift */; };
 		08A73E262406471200244B9E /* PackageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A73E252406471200244B9E /* PackageItem.swift */; };
 		08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A73E2724065B8D00244B9E /* IconableLabelView.swift */; };
 		08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A73E2A2406610400244B9E /* MyCoursesViewController.swift */; };
@@ -229,6 +230,7 @@
 		089A469E24023887007068DB /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		089A46A02402389F007068DB /* ByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByCategoryViewController.swift; sourceTree = "<group>"; };
 		089A46A2240238BF007068DB /* ByCategoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByCategoryAdapter.swift; sourceTree = "<group>"; };
+		08A0FF45243C44AF0000119B /* UITableViewController+FetchableMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+FetchableMore.swift"; sourceTree = "<group>"; };
 		08A73E252406471200244B9E /* PackageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageItem.swift; sourceTree = "<group>"; };
 		08A73E2724065B8D00244B9E /* IconableLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconableLabelView.swift; sourceTree = "<group>"; };
 		08A73E2A2406610400244B9E /* MyCoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoursesViewController.swift; sourceTree = "<group>"; };
@@ -696,6 +698,7 @@
 		08E1D3FD23FBB53E006E3042 /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
+				08A0FF45243C44AF0000119B /* UITableViewController+FetchableMore.swift */,
 				08E1D3F323FBB278006E3042 /* UINavigationController+Extenstions.swift */,
 				08479E1224371E0B005029C8 /* UIEdgeInsets+Extensions.swift */,
 				08E1D3F823FBB313006E3042 /* UIViewController+Extenstions.swift */,
@@ -968,6 +971,7 @@
 				0875B688240E165C00669C5B /* SettingsAdapter.swift in Sources */,
 				0830814F24136E6400947567 /* ProfileStatisticsItem.swift in Sources */,
 				08B0C73E240CBD1200D2AE79 /* CourseInfoHeaderView.swift in Sources */,
+				08A0FF46243C44AF0000119B /* UITableViewController+FetchableMore.swift in Sources */,
 				08C981AF2423E2AF00B2A802 /* MessageBackgroundView.swift in Sources */,
 				082E268C242654C300C6E32D /* LoadMoreSpinnerView.swift in Sources */,
 				08E1D40723FBBA23006E3042 /* SecureTextField.swift in Sources */,

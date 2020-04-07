@@ -9,7 +9,9 @@
 import UIKit
 import XLPagerTabStrip
 
-class CourseInfoViewController: UITableViewController {
+class CourseInfoViewController: UITableViewController, FetchableMore {
+
+    var state: State = .empty
 
     private var itemInfo: IndicatorInfo?
     private var courseIdentifier: Int?
@@ -51,13 +53,12 @@ extension CourseInfoViewController {
         if let courseIdentifier = courseIdentifier {
             Request.shared.loadInfo(with: courseIdentifier, complitionHandler: { (info) in
                 self.refreshControl?.endRefreshing()
+                self.state.beginPartFetched = true
                 self.adapter.setObject(with: info)
                 self.headerView.isHidden = false
                 self.tableView.reloadData()
             }) { (message) in
-                self.refreshControl?.endRefreshing()
-                self.headerView.isHidden = true
-                self.tableView.backgroundView = MessageBackgroundView(with: message)
+                self.handleError(action: .fetching, with: message)
             }
         }
     }
@@ -106,6 +107,6 @@ private extension CourseInfoViewController {
 
     func buildTargets() -> Void {
 
-        tableView.refreshControl?.addTarget(self, action: #selector(fetchInfo), for: .touchUpInside)
+        tableView.refreshControl?.addTarget(self, action: #selector(fetchInfo), for: .valueChanged)
     }
 }

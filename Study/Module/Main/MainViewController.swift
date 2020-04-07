@@ -13,8 +13,9 @@ protocol MainDelegate: class {
     func fetchMorePosts(with offset: Int) -> Void
 }
 
-class MainViewController: UITableViewController, Stylizing {
-
+class MainViewController: UITableViewController, FetchableMore, Stylizing {
+    
+    var state: State = .empty
     private(set) var adapter: MainAdapter = MainAdapter()
 
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class MainViewController: UITableViewController, Stylizing {
     deinit {
         print("DEINIT: MainViewController")
     }
+
 }
 
 extension MainViewController {
@@ -42,14 +44,12 @@ extension MainViewController {
         refreshControl?.beginRefreshing()
         Request.shared.loadPosts(complitionHandler: { (posts, totalPosts) in
             self.refreshControl?.endRefreshing()
+            self.state.beginPartFetched = true
             self.adapter.refreshPosts(with: posts)
             self.adapter.totalPosts(with: totalPosts)
-            self.adapter.currentOffset(with: 0)
             self.tableView.reloadData()
         }) { (message) in
-            self.refreshControl?.endRefreshing()
-            self.adapter.refreshPosts(with: [])
-            self.tableView.backgroundView = MessageBackgroundView(with: message)
+            self.handleError(action: .fetching, with: message)
         }
     }
 }
@@ -64,8 +64,7 @@ extension MainViewController: MainDelegate {
             self.tableView.reloadData()
             self.tableView.tableFooterView?.isHidden.toggle()
         }) { (message) in
-            self.tableView.tableFooterView = nil
-            self.display(with: message)
+            self.handleError(action: .fetchingMore, with: message)
         }
     }
 }

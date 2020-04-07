@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MyCoursesViewController: UITableViewController, Stylizing {
+class MyCoursesViewController: UITableViewController, FetchableMore, Stylizing {
+
+    var state: State = .empty
 
     private(set) var adapter: MyCoursesAdapter = MyCoursesAdapter()
 
@@ -45,11 +47,11 @@ extension MyCoursesViewController {
         refreshControl?.beginRefreshing()
         Request.shared.loadSubscribedCourses(complitionHandler: { (courses) in
             self.refreshControl?.endRefreshing()
+            self.state.beginPartFetched = true
             self.adapter.configure(with: courses)
             self.tableView.reloadData()
         }) { (message) in
-            self.refreshControl?.endRefreshing()
-            self.tableView.backgroundView = MessageBackgroundView(with: message)
+            self.handleError(action: .fetching, with: message)
         }
     }
 }

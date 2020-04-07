@@ -20,7 +20,9 @@ protocol CourseModuleDelegate: class {
     func toRouteLessonDetail(with lesson: Lesson) -> Void
 }
 
-class CourseModulesViewController: UITableViewController {
+class CourseModulesViewController: UITableViewController, FetchableMore {
+
+    var state: State = .empty
 
     private var itemInfo: IndicatorInfo?
     private var courseIdentifier: Int?
@@ -62,13 +64,12 @@ extension CourseModulesViewController {
         if let courseIdentifier = courseIdentifier {
             Request.shared.loadModules(with: courseIdentifier, complitionHandler: { (modules, count) in
                 self.refreshControl?.endRefreshing()
+                self.state.beginPartFetched = true
                 self.adapter.refreshModules(with: modules)
                 self.adapter.totalModules(with: count)
                 self.tableView.reloadData()
             }) { (message) in
-                self.refreshControl?.endRefreshing()
-                self.adapter.refreshModules(with: [])
-                self.tableView.backgroundView = MessageBackgroundView(with: message)
+                self.handleError(action: .fetching, with: message)
             }
         }
     }
@@ -102,8 +103,7 @@ extension CourseModulesViewController: CourseModuleDelegate {
                 self.tableView.reloadData()
                 self.tableView.tableFooterView?.isHidden.toggle()
             }) { (message) in
-                self.tableView.tableFooterView = nil
-                self.display(with: message)
+                self.handleError(action: .fetchingMore, with: message)
             }
         }
     }

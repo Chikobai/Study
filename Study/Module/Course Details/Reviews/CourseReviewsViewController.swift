@@ -19,13 +19,15 @@ protocol CourseReviewsDelegate: class {
     func fetchMoreReviews(with offset: Int) -> Void
 }
 
-class CourseReviewsViewController: UITableViewController {
+class CourseReviewsViewController: UITableViewController, FetchableMore {
+
+    var state: State = .empty
+
+    weak var scrollDelegate: CourseReviewsScrollDelegate?
 
     private var courseIdentifier: Int?
     private var itemInfo: IndicatorInfo?
     private var adapter: CourseReviewsAdapter = CourseReviewsAdapter()
-    weak var scrollDelegate: CourseReviewsScrollDelegate?
-
 
     init(with itemInfo: IndicatorInfo, _ courseIdentifier: Int) {
         self.itemInfo = itemInfo
@@ -61,13 +63,12 @@ extension CourseReviewsViewController {
         if let courseIdentifier = courseIdentifier {
             Request.shared.loadReviews(with: courseIdentifier, complitionHandler: { (reviews, count) in
                 self.refreshControl?.endRefreshing()
+                self.state.beginPartFetched = true
                 self.adapter.refreshReviews(with: reviews)
                 self.adapter.totalReviews(with: count)
                 self.tableView.reloadData()
             }) { (message) in
-                self.refreshControl?.endRefreshing()
-                self.adapter.refreshReviews(with: [])
-                self.tableView.backgroundView = MessageBackgroundView(with: message)
+                self.handleError(action: .fetching, with: message)
             }
         }
     }
@@ -86,8 +87,7 @@ extension CourseReviewsViewController: CourseReviewsDelegate {
                 self.tableView.reloadData()
                 self.tableView.tableFooterView?.isHidden.toggle()
             }) { (message) in
-                self.tableView.tableFooterView = nil
-                self.display(with: message)
+                self.handleError(action: .fetchingMore, with: message)
             }
         }
     }

@@ -33,15 +33,6 @@ extension UIViewController {
         child.didMove(toParent: self)
     }
 
-    func remove() {
-        guard parent != nil else {
-            return
-        }
-        willMove(toParent: nil)
-        removeFromParent()
-        view.removeFromSuperview()
-    }
-
     func display(with message: String) -> Void {
 
         let alertController = UIAlertController.init(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
@@ -50,7 +41,7 @@ extension UIViewController {
             self.dismiss(animated: true, completion: nil)
         }))
 
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.present(alertController, animated: true, completion: nil)
         }
     }
