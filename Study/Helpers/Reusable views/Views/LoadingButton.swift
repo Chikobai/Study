@@ -33,6 +33,7 @@ class LoadingButton: UIButton {
     }
 
     deinit {
+        print("DEINIT: LoadingButton")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -91,9 +92,9 @@ class LoadingButton: UIButton {
         layer.add(widthAnimation, forKey: widthAnimation.keyPath)
     }
     
-    @objc public func stopLoading(completion: (() -> ())? = nil) {
+    @objc public func stopLoading() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            self.setOriginalState(completion: completion)
+            self.setOriginalState(completion: nil)
         }
     }
     

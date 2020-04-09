@@ -75,7 +75,7 @@ enum Endpoints: EndPointType {
              .reviews,
              .info,
              .join:
-            return ["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im11a2hpdGJveXNAZ21haWwuY29tIiwiaWQiOjIsImlhdCI6MTU4Mjc4OTgyMn0.BTxSailhu2VMHIrUurZdjmzusv2DAa0i4l0OIrD7AkE"]
+            return ["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im9yeW5iYXNzYXIuc2h5bmd5c0BnbWFpbC5jb20iLCJpZCI6MTcsImlhdCI6MTU4NjQxMTYxNn0.OE0F6ZVNjrYbit8LERwv0Gkv3KZ8ECtS6puSlYPJiYU"]
         default:
             return [:]
         }

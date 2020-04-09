@@ -87,6 +87,7 @@ private extension AuthorizationViewController {
             Request.shared.login(with: params, complitionHandler: {
                 self?.adapter?.stopLoading()
             }, complitionHandlerError: { (message) in
+                self?.adapter?.stopLoading()
                 self?.display(with: message)
             })
         }, complitionOfError: { [weak self] (message) in
