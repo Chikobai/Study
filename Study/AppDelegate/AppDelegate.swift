@@ -58,10 +58,12 @@ private extension AppDelegate {
 
     func buildRoot() -> Void {
 
+        let rootViewController = StoreManager.shared().token() == nil ?
+            AuthorizationViewController(with: .loginWithEmail).inNavigate() : TabBarViewController()
+
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let viewController = AuthorizationViewController(with: .loginWithEmail).inNavigate()
-        window?.rootViewController = viewController
+        window?.rootViewController = rootViewController
     }
 
     func buildNavigationBar() -> Void {

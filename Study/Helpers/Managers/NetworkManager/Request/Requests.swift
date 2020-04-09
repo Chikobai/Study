@@ -36,7 +36,7 @@ extension  Request {
                 complitionHandlerError(error)
             case .success(let posts):
                 guard (posts.results.isEmpty == false) else {
-                    complitionHandlerError("No data")
+                    complitionHandlerError(AppErrorMessage.noData)
                     return
                 }
                 complitionHandler(posts.results, posts.count)
@@ -73,7 +73,7 @@ extension  Request {
                 complitionHandlerError(error)
             case .success(let subscribedCourses):
                 guard (subscribedCourses.results.isEmpty == false) else {
-                    complitionHandlerError("No data")
+                    complitionHandlerError(AppErrorMessage.noData)
                     return
                 }
                 complitionHandler(subscribedCourses.results)
@@ -94,7 +94,7 @@ extension  Request {
                 complitionHandlerError(error)
             case .success(let courses):
                 guard (courses.results.isEmpty == false) else {
-                    complitionHandlerError("No data")
+                    complitionHandlerError(AppErrorMessage.noData)
                     return
                 }
                 complitionHandler(courses.results, courses.count)
@@ -132,7 +132,7 @@ extension  Request {
                 complitionHandlerError(error)
             case .success(let modules):
                 guard (modules.results.isEmpty == false) else {
-                    complitionHandlerError("No data")
+                    complitionHandlerError(AppErrorMessage.noData)
                     return
                 }
                 complitionHandler(modules.results, modules.count)
@@ -171,7 +171,7 @@ extension  Request {
                 complitionHandlerError(error)
             case .success(let reviews):
                 guard (reviews.results.isEmpty == false) else {
-                    complitionHandlerError("No data")
+                    complitionHandlerError(AppErrorMessage.noData)
                     return
                 }
                 complitionHandler(reviews.results, reviews.count)
@@ -244,7 +244,7 @@ extension Request {
                 complitionHandlerError(error)
             case .success(let response):
                 guard response.success == true else {
-                    complitionHandlerError(response.message ?? "Что-то не так. Приносим извинения за неудобства")
+                    complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
                     return
                 }
                 complitionHandler()
@@ -268,11 +268,10 @@ extension Request {
                 complitionHandlerError(error)
             case .success(let response):
                 guard response.success == true else {
-                    complitionHandlerError(response.message ?? "Что-то не так. Приносим извинения за неудобства")
+                    complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
                     return
                 }
                 complitionHandler()
-                StoreManager.shared().setToken(with: response.token)
             }
         }
     }
@@ -280,22 +279,21 @@ extension Request {
     //  MARK: JOIN TO COURSE
 
     func join(
-        with user_id: Int,
-        _ course_id: Int,
+        with course_id: Int,
         complitionHandler: @escaping ((String)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.join(user_id: user_id, course_id: course_id)
+        let endpoints = Endpoints.join(course_id: course_id)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<Response>) in
             switch result {
             case .failure(let error, _):
                 complitionHandlerError(error)
             case .success(let response):
                 guard response.success == true else {
-                    complitionHandlerError(response.message ?? "Что-то не так. Приносим извинения за неудобства")
+                    complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
                     return
                 }
-                complitionHandler(response.message ?? "Успешно ;)")
+                complitionHandler(response.message ?? AppErrorMessage.success)
             }
         }
     }

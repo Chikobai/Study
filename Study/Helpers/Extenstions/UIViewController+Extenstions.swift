@@ -37,11 +37,22 @@ extension UIViewController {
 
         let alertController = UIAlertController.init(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.view.tintColor = AppColor.main.uiColor
-        alertController.addAction(UIAlertAction.init(title: "Ок", style: .default, handler: { (_) in
-            self.dismiss(animated: true, completion: nil)
-        }))
+        alertController.addAction(UIAlertAction(title: "Oк", style: .default, handler: nil))
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+
+    func display(with message: String, completionHandler: (() -> ())?) -> Void {
+
+        let alertController = UIAlertController.init(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.view.tintColor = AppColor.main.uiColor
+        alertController.addAction(UIAlertAction.init(title: "Ок", style: .default, handler: { (_) in
+            completionHandler?()
+        }))
+
+        DispatchQueue.main.async {
             self.present(alertController, animated: true, completion: nil)
         }
     }

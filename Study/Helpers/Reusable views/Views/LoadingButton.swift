@@ -123,7 +123,6 @@ class LoadingButton: UIButton {
         
         CATransaction.commit()
     }
-    
 }
 
 class SpinnerView : UIView {

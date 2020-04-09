@@ -57,10 +57,9 @@ private extension CourseDetailsViewController {
 
     func toJoinCourse() -> Void {
 
-        let user_id: Int = 4
         if let course_id = courseIdentifier {
             headerView.startLoading()
-            Request.shared.join(with: user_id, course_id, complitionHandler: { (message) in
+            Request.shared.join(with: course_id, complitionHandler: { (message) in
                 self.headerView.stopLoading()
                 self.headerView.setIsSubscribedCourse(with: true)
                 self.isJoinedCourse = true

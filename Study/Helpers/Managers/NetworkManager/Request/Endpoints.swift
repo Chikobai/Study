@@ -23,7 +23,7 @@ enum Endpoints: EndPointType {
 
     case login(params: [String: String])
     case registration(params: [String: String])
-    case join(user_id: Int, course_id: Int)
+    case join( course_id: Int)
 
     //PUT
 
@@ -52,11 +52,11 @@ enum Endpoints: EndPointType {
              .modules(_, let limit, let offset),
              .reviews(_, let limit, let offset):
             return .requestWithParameters(parameters: [
-                "offset": offset, "limit": limit
+                "page": offset, "limit": limit
             ])
-        case .join(let user_id, let course_id):
+        case .join(let course_id):
             return .requestWithParameters(parameters: [
-                "user_id": user_id, "course_id": course_id
+                "course_id": course_id
             ])
         case .login(let params),
              .registration(let params):

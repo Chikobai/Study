@@ -82,30 +82,42 @@ private extension AuthorizationViewController {
 
     func login() -> Void {
 
+        let viewController = TabBarViewController()
+        viewController.modalTransitionStyle = .flipHorizontal
+        viewController.modalPresentationStyle = .fullScreen
         validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.view.endEditing(true)
             self?.adapter?.startLoading()
             Request.shared.login(with: params, complitionHandler: {
                 self?.adapter?.stopLoading()
+                self?.present(viewController, animated: true, completion: nil)
             }, complitionHandlerError: { (message) in
                 self?.adapter?.stopLoading()
-                self?.display(with: message)
+                self?.display(with: message, completionHandler: nil)
             })
         }, complitionOfError: { [weak self] (message) in
-            self?.display(with: message)
+            self?.display(with: message, completionHandler: nil)
         })
     }
 
     func registration() -> Void {
 
         validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.view.endEditing(true)
             self?.adapter?.startLoading()
             Request.shared.registration(with: params, complitionHandler: {
                 self?.adapter?.stopLoading()
+                self?.display(with: AppErrorMessage.Authorization.verification, completionHandler: {
+                    DispatchQueue.main.async {
+                        self?.navigationController?.popViewController(animated: true)
+                    }
+                })
             }, complitionHandlerError: { (message) in
-                self?.display(with: message)
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: nil)
             })
-            }, complitionOfError: { [weak self] (message) in
-                self?.display(with: message)
+        }, complitionOfError: { [weak self] (message) in
+            self?.display(with: message, completionHandler: nil)
         })
     }
 }
