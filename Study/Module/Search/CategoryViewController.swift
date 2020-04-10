@@ -9,7 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-class CategoryViewController: ButtonBarPagerTabStripViewController, Stylizing {
+class CategoryViewController: UISlidingTabController, Stylizing {
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -20,33 +20,41 @@ class CategoryViewController: ButtonBarPagerTabStripViewController, Stylizing {
     }
 
     override func viewDidLoad() {
-        buildPagers()
         super.viewDidLoad()
+
+        title = AppTitle.Category.title
         build()
+        addItem(item: ByCategoryViewController(with: "", 1), title: "Geometry")
+        addItem(item: ByCategoryViewController(with: "", 1), title: "Biology")
+        addItem(item: ByCategoryViewController(with: "", 1), title: "Phisics")
+        addItem(item: ByCategoryViewController(with: "", 1), title: "Algebra")
+        addItem(item: ByCategoryViewController(with: "", 1), title: "History")
+        addItem(item: ByCategoryViewController(with: "", 1), title: "English")
+        addItem(item: ByCategoryViewController(with: "", 1), title: "Russian")
+        buildSlidingTab()
+        fetchCategories()
     }
 
     deinit {
         print("DEINIT: CategoryViewController")
     }
+}
 
-    // MARK: - PagerTabStripDataSource
+// MARK: Request
 
-    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+extension CategoryViewController {
 
-        navigationItem.title = AppTitle.Category.title
+    func fetchCategories() -> Void {
+        Request.shared.loadCategories(complitionHandler: { (categories) in
+//            self.backgroundView = nil
 
-        let child_1 = ByCategoryViewController(with: "Chemistry")
-        let child_2 = ByCategoryViewController(with: "Math")
-        let child_3 = ByCategoryViewController(with: "Programming")
-        let child_4 = ByCategoryViewController(with: "Biology")
-        let child_5 = ByCategoryViewController(with: "Geometry")
-        let child_6 = ByCategoryViewController(with: "Algebra")
-        let child_7 = ByCategoryViewController(with: "Economica")
-        let child_8 = ByCategoryViewController(with: "Geography")
-
-        return [child_1, child_2, child_3, child_4, child_5, child_6, child_7, child_8]
+        }) { (message) in
+//            self.collectionView.backgroundView = MessageBackgroundView(with: message)
+        }
     }
 }
+
+ // MARK: Targets
 
 extension CategoryViewController {
 
@@ -57,6 +65,3 @@ extension CategoryViewController {
         self.pushWithHidesBottomBar(viewController)
     }
 }
-
-
-

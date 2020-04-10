@@ -31,6 +31,8 @@ class ProfileHeaderView: UIView {
     }
 }
 
+// MARK: - Builds
+
 private extension ProfileHeaderView {
 
     func build() -> Void {

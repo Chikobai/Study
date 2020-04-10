@@ -13,6 +13,8 @@ extension NSNotification.Name {
     enum Notifications: String {
         case startLoading
         case stopLoading
+        case scrollPager
+        case didSelectPager
     }
     init(_ value: Notifications) {
         self = NSNotification.Name(value.rawValue)

@@ -104,11 +104,13 @@ open class PagerTabStripViewController: UIViewController, UIScrollViewDelegate {
         containerView.isPagingEnabled = true
         reloadViewControllers()
 
-        let childController = viewControllers[currentIndex]
-        addChild(childController)
-        childController.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        containerView.addSubview(childController.view)
-        childController.didMove(toParent: self)
+        if viewControllers.count > currentIndex {
+            let childController = viewControllers[currentIndex]
+            addChild(childController)
+            childController.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            containerView.addSubview(childController.view)
+            childController.didMove(toParent: self)
+        }
     }
 
     open override func viewWillAppear(_ animated: Bool) {
@@ -379,7 +381,8 @@ open class PagerTabStripViewController: UIViewController, UIScrollViewDelegate {
         viewControllers = dataSource.viewControllers(for: self)
         // viewControllers
         guard !viewControllers.isEmpty else {
-            fatalError("viewControllers(for:) should provide at least one child view controller")
+//            fatalError("viewControllers(for:) should provide at least one child view controller")
+            return
         }
         viewControllers.forEach { if !($0 is IndicatorInfoProvider) { fatalError("Every view controller provided by PagerTabStripDataSource's viewControllers(for:) method must conform to IndicatorInfoProvider") }}
 

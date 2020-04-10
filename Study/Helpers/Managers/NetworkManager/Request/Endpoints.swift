@@ -17,6 +17,7 @@ enum Endpoints: EndPointType {
     case modules(id: Int, limit: Int, offset: Int)
     case reviews(id: Int, limit: Int, offset: Int)
     case info(id: Int)
+    case categories
     case subscribedCourses
 
     //POST
@@ -101,6 +102,8 @@ enum Endpoints: EndPointType {
             return "/api/v1/courses/\(id)/"
         case .join:
             return "/api/v1/course/join/"
+        case .categories:
+            return "/api/v1/course/categories/"
         }
     }
 }

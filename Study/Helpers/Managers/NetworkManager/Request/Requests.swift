@@ -12,6 +12,7 @@ class Request{
 
     private let networkManager: NetworkManager = NetworkManager()
     private let limit: Int = 3
+    private let page: Int = 1
     static let shared = Request()
 
     init() {
@@ -29,7 +30,7 @@ extension  Request {
         complitionHandler: @escaping (([Post], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.posts(limit: limit, offset: 0)
+        let endpoints = Endpoints.posts(limit: limit, offset: page)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
             switch result {
             case .failure(let error, _):
@@ -87,7 +88,7 @@ extension  Request {
         complitionHandler: @escaping (([Course], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
         ) -> Void {
-        let endpoints = Endpoints.courses(limit: limit, offset: 0)
+        let endpoints = Endpoints.courses(limit: limit, offset: page)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
             switch result {
             case .failure(let error, _):
@@ -125,7 +126,7 @@ extension  Request {
         complitionHandler: @escaping (([Module], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.modules(id: id, limit: limit, offset: 0)
+        let endpoints = Endpoints.modules(id: id, limit: limit, offset: page)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Module>>) in
             switch result {
             case .failure(let error, _):
@@ -164,7 +165,7 @@ extension  Request {
         complitionHandler: @escaping (([Review], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.reviews(id: id, limit: limit, offset: 0)
+        let endpoints = Endpoints.reviews(id: id, limit: limit, offset: page)
         networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
             switch result {
             case .failure(let error, _):
@@ -210,6 +211,23 @@ extension  Request {
                 complitionHandlerError(error)
             case .success(let info):
                 complitionHandler(info)
+            }
+        }
+    }
+
+    //  MARK: CATEGORIES
+
+    func loadCategories(
+        complitionHandler: @escaping (([Category])->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        let endpoints = Endpoints.categories
+        networkManager.makeRequest(endpoint: endpoints) {(result: Result<[Category]>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let categories):
+                complitionHandler(categories)
             }
         }
     }

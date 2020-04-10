@@ -96,42 +96,15 @@ extension Stylizing where Self: CategoryViewController {
     func build() -> Void {
 
         buildViews()
-        buildServices()
     }
 
     func buildViews() -> Void {
-
-        //superview
-        edgesForExtendedLayout = [.bottom, .left, .right]
 
         //navigation item
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .search, target: self, action: #selector(searchPressed))
 
         //navigation bar
         navigationController?.navigationBar.shadowImage = UIImage()
-    }
-
-    func buildPagers() -> Void {
-
-        settings.style.buttonBarBackgroundColor = AppColor.white.uiColor
-        settings.style.buttonBarItemBackgroundColor = AppColor.white.uiColor
-        settings.style.selectedBarBackgroundColor = AppColor.main.uiColor
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
-        settings.style.selectedBarHeight = 2.0
-        settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
-        settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        settings.style.buttonBarLeftContentInset = 0
-        settings.style.buttonBarRightContentInset = 0
-    }
-
-    func buildServices() -> Void {
-
-        changeCurrentIndexProgressive = {(oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .black
-            newCell?.label.textColor = .black
-        }
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 
 protocol ByCategoryDelegate: class {
 
@@ -18,13 +17,13 @@ protocol ByCategoryDelegate: class {
 class ByCategoryViewController: UITableViewController, FetchableMore, Stylizing {
 
     var state: State = .empty
-
-    private var itemInfo: IndicatorInfo?
+    private var categoryIdentifier: Int?
     private(set) var adapter: ByCategoryAdapter = ByCategoryAdapter()
 
-    init(with infoItem: IndicatorInfo){
-        self.itemInfo = infoItem
+    init(with title: String, _ categoryIdentifier: Int){
         super.init(nibName: nil, bundle: nil)
+        self.title = title
+        self.categoryIdentifier = categoryIdentifier
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -86,15 +85,6 @@ extension ByCategoryViewController: ByCategoryDelegate {
         }) { (message) in
             self.handleError(action: .fetchingMore, with: message)
         }
-    }
-}
-
-// MARK: - IndicatorInfoProvider
-
-extension ByCategoryViewController: IndicatorInfoProvider {
-
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo!
     }
 }
 
