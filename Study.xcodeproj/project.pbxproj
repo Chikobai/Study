@@ -44,9 +44,9 @@
 		083707EF2418C962008A85FB /* UIBezierPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */; };
 		083DDF04243F078F00EA917D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF03243F078F00EA917D /* CategoryModel.swift */; };
 		083DDF0624403DD600EA917D /* LoadingBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0524403DD600EA917D /* LoadingBackgroundView.swift */; };
-		083DDF0A2440466B00EA917D /* PagerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF092440466B00EA917D /* PagerTabView.swift */; };
-		083DDF0C244048D400EA917D /* PageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0B244048D400EA917D /* PageItem.swift */; };
-		083DDF0E24408C5400EA917D /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0D24408C5400EA917D /* UISlidingTabController.swift */; };
+		083DDF0A2440466B00EA917D /* CategorySlidingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF092440466B00EA917D /* CategorySlidingTabView.swift */; };
+		083DDF0C244048D400EA917D /* CategorySlidingTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0B244048D400EA917D /* CategorySlidingTabItem.swift */; };
+		083DDF0E24408C5400EA917D /* CategorySlidingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0D24408C5400EA917D /* CategorySlidingTabViewController.swift */; };
 		0840502323FCE93800A084A4 /* AuthorizationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502223FCE93800A084A4 /* AuthorizationValidator.swift */; };
 		0840502623FCEFCD00A084A4 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */; };
 		0840502823FCEFE500A084A4 /* RestorePasswordAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */; };
@@ -97,7 +97,6 @@
 		087D909624386199003E74BD /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087D909524386199003E74BD /* ResponseModel.swift */; };
 		087D909824386B11003E74BD /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087D909724386B11003E74BD /* LoadingButton.swift */; };
 		088F4078240783D10094D854 /* SubscribedPackageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F4077240783D10094D854 /* SubscribedPackageItem.swift */; };
-		089A469F24023887007068DB /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A469E24023887007068DB /* CategoryViewController.swift */; };
 		089A46A12402389F007068DB /* ByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A02402389F007068DB /* ByCategoryViewController.swift */; };
 		089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A46A2240238BF007068DB /* ByCategoryAdapter.swift */; };
 		08A0FF46243C44AF0000119B /* UITableViewController+FetchableMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A0FF45243C44AF0000119B /* UITableViewController+FetchableMore.swift */; };
@@ -184,9 +183,9 @@
 		083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Extensions.swift"; sourceTree = "<group>"; };
 		083DDF03243F078F00EA917D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		083DDF0524403DD600EA917D /* LoadingBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingBackgroundView.swift; path = ../LoadingBackgroundView.swift; sourceTree = "<group>"; };
-		083DDF092440466B00EA917D /* PagerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerTabView.swift; sourceTree = "<group>"; };
-		083DDF0B244048D400EA917D /* PageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItem.swift; sourceTree = "<group>"; };
-		083DDF0D24408C5400EA917D /* UISlidingTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
+		083DDF092440466B00EA917D /* CategorySlidingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySlidingTabView.swift; sourceTree = "<group>"; };
+		083DDF0B244048D400EA917D /* CategorySlidingTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySlidingTabItem.swift; sourceTree = "<group>"; };
+		083DDF0D24408C5400EA917D /* CategorySlidingTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySlidingTabViewController.swift; sourceTree = "<group>"; };
 		0840502223FCE93800A084A4 /* AuthorizationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationValidator.swift; sourceTree = "<group>"; };
 		0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordAdapter.swift; sourceTree = "<group>"; };
@@ -237,7 +236,6 @@
 		087D909524386199003E74BD /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		087D909724386B11003E74BD /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		088F4077240783D10094D854 /* SubscribedPackageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedPackageItem.swift; sourceTree = "<group>"; };
-		089A469E24023887007068DB /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		089A46A02402389F007068DB /* ByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByCategoryViewController.swift; sourceTree = "<group>"; };
 		089A46A2240238BF007068DB /* ByCategoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByCategoryAdapter.swift; sourceTree = "<group>"; };
 		08A0FF45243C44AF0000119B /* UITableViewController+FetchableMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+FetchableMore.swift"; sourceTree = "<group>"; };
@@ -362,7 +360,7 @@
 				082DAEBF2417573300F025E4 /* VariantItem.swift */,
 				0875B681240DFCE400669C5B /* IconableTabItem.swift */,
 				08CF860A241B9085009F31FE /* Skilltem.swift */,
-				083DDF0B244048D400EA917D /* PageItem.swift */,
+				083DDF0B244048D400EA917D /* CategorySlidingTabItem.swift */,
 			);
 			path = "Collection view";
 			sourceTree = "<group>";
@@ -491,7 +489,7 @@
 				08B0C73D240CBD1200D2AE79 /* CourseInfoHeaderView.swift */,
 				08483D64240B655000B40B1F /* ModuleExpandableHeaderView.swift */,
 				0830814C24136CC500947567 /* ProfileHeaderView.swift */,
-				083DDF092440466B00EA917D /* PagerTabView.swift */,
+				083DDF092440466B00EA917D /* CategorySlidingTabView.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -576,7 +574,7 @@
 		089A469D2402384F007068DB /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				089A469E24023887007068DB /* CategoryViewController.swift */,
+				083DDF0D24408C5400EA917D /* CategorySlidingTabViewController.swift */,
 				0829FAE22403847F000CACCF /* SearchViewController.swift */,
 				089A46A02402389F007068DB /* ByCategoryViewController.swift */,
 				089A46A2240238BF007068DB /* ByCategoryAdapter.swift */,
@@ -690,7 +688,6 @@
 		08E1D3F523FBB2BC006E3042 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				083DDF0D24408C5400EA917D /* UISlidingTabController.swift */,
 				0840503023FE405F00A084A4 /* ScrollViewController.swift */,
 				08E1D3F623FBB2EC006E3042 /* NavigationController.swift */,
 				082B1D162400F0D200316D24 /* TabBarViewController.swift */,
@@ -912,10 +909,9 @@
 			files = (
 				08E1D40923FBBCBB006E3042 /* FloatingTextFieldItem.swift in Sources */,
 				08E1D3F123FBB1BB006E3042 /* AuthorizationViewController.swift in Sources */,
-				083DDF0A2440466B00EA917D /* PagerTabView.swift in Sources */,
+				083DDF0A2440466B00EA917D /* CategorySlidingTabView.swift in Sources */,
 				0830815A2413974F00947567 /* CertificateItem.swift in Sources */,
 				088F4078240783D10094D854 /* SubscribedPackageItem.swift in Sources */,
-				089A469F24023887007068DB /* CategoryViewController.swift in Sources */,
 				08E1D41523FBC847006E3042 /* FilledButton.swift in Sources */,
 				087D909624386199003E74BD /* ResponseModel.swift in Sources */,
 				08E1D3FC23FBB4E6006E3042 /* AppTitle.swift in Sources */,
@@ -924,7 +920,7 @@
 				0856AA7C241F6C1C00BFAE4F /* NetworkManager.swift in Sources */,
 				082DAEC02417573300F025E4 /* VariantItem.swift in Sources */,
 				0840503323FE41D500A084A4 /* CourseDetailsPagerViewController.swift in Sources */,
-				083DDF0E24408C5400EA917D /* UISlidingTabController.swift in Sources */,
+				083DDF0E24408C5400EA917D /* CategorySlidingTabViewController.swift in Sources */,
 				0829FAE524039B92000CACCF /* UILabel+Extenstions.swift in Sources */,
 				0840503B23FE524300A084A4 /* CourseModulesAdapter.swift in Sources */,
 				0840505723FE6E4A00A084A4 /* MessageHeaderView.swift in Sources */,
@@ -972,7 +968,7 @@
 				0875B680240DFBDC00669C5B /* LessonViewController.swift in Sources */,
 				087D909824386B11003E74BD /* LoadingButton.swift in Sources */,
 				08E1D3F723FBB2EC006E3042 /* NavigationController.swift in Sources */,
-				083DDF0C244048D400EA917D /* PageItem.swift in Sources */,
+				083DDF0C244048D400EA917D /* CategorySlidingTabItem.swift in Sources */,
 				0875B68A240E185D00669C5B /* SettingsModel.swift in Sources */,
 				083707EF2418C962008A85FB /* UIBezierPath+Extensions.swift in Sources */,
 				082DAEBE241755E300F025E4 /* VariantCollectionView.swift in Sources */,

@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
-class PageItem: UICollectionViewCell {
+class CategorySlidingTabItem: UICollectionViewCell {
 
-    private lazy var titleLabelView: UILabel = UILabel()
+    private let titleLabelView = UILabel()
+
+    var text: String! {
+        didSet {
+            titleLabelView.text = text
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,22 +25,16 @@ class PageItem: UICollectionViewCell {
         build()
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     deinit {
-        print("DEINIT: PageItem")
-    }
-
-    func configure(with title: String) -> Void {
-        titleLabelView.text = title
+        print("DEINIT: CategorySlidingTabItem")
     }
 }
 
-// MARK: - Builds
-
-private extension PageItem {
+extension CategorySlidingTabItem {
 
     func build() -> Void {
 
@@ -44,17 +44,20 @@ private extension PageItem {
 
     func buildViews() -> Void {
 
+        //superview
+        backgroundColor = .clear
+
         //title label view
-        titleLabelView.font = UIFont.boldSystemFont(ofSize: 14.0)
-        titleLabelView.textColor = AppColor.black.uiColor
-        titleLabelView.textAlignment = .center
+        titleLabelView.font = UIFont.boldSystemFont(ofSize: 14)
+
     }
 
     func buildLayouts() -> Void {
 
-        addSubview(titleLabelView)
+        self.addSubviews(with: [titleLabelView])
+
         titleLabelView.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalToSuperview()
+            make.center.equalToSuperview()
         }
     }
 }

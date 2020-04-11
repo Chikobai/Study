@@ -20,9 +20,8 @@ class ByCategoryViewController: UITableViewController, FetchableMore, Stylizing 
     private var categoryIdentifier: Int?
     private(set) var adapter: ByCategoryAdapter = ByCategoryAdapter()
 
-    init(with title: String, _ categoryIdentifier: Int){
+    init(with categoryIdentifier: Int){
         super.init(nibName: nil, bundle: nil)
-        self.title = title
         self.categoryIdentifier = categoryIdentifier
     }
 
