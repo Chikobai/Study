@@ -11,20 +11,35 @@ import Alamofire
 enum Endpoints: EndPointType {
 
     //GET
-    
-    case posts(limit: Int, offset: Int)
-    case courses(limit: Int, offset: Int)
-    case modules(id: Int, limit: Int, offset: Int)
-    case reviews(id: Int, limit: Int, offset: Int)
-    case info(id: Int)
+
     case categories
-    case subscribedCourses
+    case posts(
+        limit: Int, offset: Int
+    )
+    case subscribedCourses(
+        token: String
+    )
+    case courses(
+        token: String, limit: Int, offset: Int,
+        categoryIdentifier: Int
+    )
+    case modules(
+        token: String, courseIdentifier: Int,
+        limit: Int, offset: Int
+    )
+    case reviews(
+        token: String, courseIdentifier: Int,
+        limit: Int, offset: Int
+    )
+    case info(
+        token: String, courseIdentifier: Int
+    )
 
     //POST
 
     case login(params: [String: String])
     case registration(params: [String: String])
-    case join( course_id: Int)
+    case join(token: String, courseIdentifier: Int)
 
     //PUT
 
@@ -49,15 +64,18 @@ enum Endpoints: EndPointType {
     var httpTask: HTTPTask {
         switch self {
         case .posts(let limit, let offset),
-             .courses(let limit, let offset),
-             .modules(_, let limit, let offset),
-             .reviews(_, let limit, let offset):
+             .modules(_, _, let limit, let offset),
+             .reviews(_, _, let limit, let offset):
             return .requestWithParameters(parameters: [
                 "page": offset, "limit": limit
             ])
-        case .join(let course_id):
+        case .courses(_, let limit, let offset, let categoryIdentifier):
             return .requestWithParameters(parameters: [
-                "course_id": course_id
+                "page": offset, "limit": limit, "category_id": categoryIdentifier
+            ])
+        case .join(_ ,let courseIdentifier):
+            return .requestWithParameters(parameters: [
+                "course_id": courseIdentifier
             ])
         case .login(let params),
              .registration(let params):
@@ -69,14 +87,15 @@ enum Endpoints: EndPointType {
     
     var headers: HTTPHeaders {
         switch self {
-        case .posts,
-             .subscribedCourses,
-             .courses,
-             .modules,
-             .reviews,
-             .info,
-             .join:
+        case .posts:
             return ["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im9yeW5iYXNzYXIuc2h5bmd5c0BnbWFpbC5jb20iLCJpZCI6MTcsImlhdCI6MTU4NjQxMTYxNn0.OE0F6ZVNjrYbit8LERwv0Gkv3KZ8ECtS6puSlYPJiYU"]
+        case .subscribedCourses(let token),
+             .join(let token, _),
+             .info(let token, _),
+             .courses(let token, _, _, _),
+             .modules(let token, _, _, _),
+             .reviews(let token, _, _, _):
+            return ["Authorization": "Bearer \(token)"]
         default:
             return [:]
         }
@@ -94,12 +113,12 @@ enum Endpoints: EndPointType {
             return "/api/v1/mycourses/"
         case .courses:
             return "/api/v1/courses/"
-        case .modules(let id, _, _):
-            return "/api/v1/course/\(id)/modules/"
-        case .reviews(let id, _, _):
-            return "/api/v1/course/\(id)/reviews/"
-        case .info(let id):
-            return "/api/v1/courses/\(id)/"
+        case .modules(_, let courseIdentifier, _, _):
+            return "/api/v1/course/\(courseIdentifier)/modules/"
+        case .reviews(_, let courseIdentifier, _, _):
+            return "/api/v1/course/\(courseIdentifier)/reviews/"
+        case .info(_, let courseIdentifier):
+            return "/api/v1/courses/\(courseIdentifier)/"
         case .join:
             return "/api/v1/course/join/"
         case .categories:

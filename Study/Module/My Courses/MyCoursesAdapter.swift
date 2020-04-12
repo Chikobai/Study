@@ -50,7 +50,7 @@ extension MyCoursesAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SubscribedPackageItem.cellIdentifier(), for: indexPath) as? SubscribedPackageItem
-        cell?.selectionStyle = .none
+        cell?.configure(with: courses[indexPath.row])
         return cell!
     }
 

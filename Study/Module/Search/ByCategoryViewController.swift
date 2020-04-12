@@ -51,16 +51,18 @@ extension ByCategoryViewController {
 
     @objc
     func fetchCourses() -> Void {
-        tableView.backgroundView = nil
-        refreshControl?.beginRefreshing()
-        Request.shared.loadCourses(complitionHandler: { (courses, count) in
-            self.refreshControl?.endRefreshing()
-            self.state.beginPartFetched = true
-            self.adapter.refreshCourses(with: courses)
-            self.adapter.totalCourses(with: count)
-            self.tableView.reloadData()
-        }) { (message) in
-            self.handleError(action: .fetching, with: message)
+        if let categoryIdentifier = categoryIdentifier {
+            tableView.backgroundView = nil
+            refreshControl?.beginRefreshing()
+            Request.shared.loadCourses(with: categoryIdentifier, complitionHandler: { (courses, count) in
+                self.refreshControl?.endRefreshing()
+                self.state.beginPartFetched = true
+                self.adapter.refreshCourses(with: courses)
+                self.adapter.totalCourses(with: count)
+                self.tableView.reloadData()
+            }) { (message) in
+                self.handleError(action: .fetching, with: message)
+            }
         }
     }
 }
@@ -75,14 +77,16 @@ extension ByCategoryViewController: ByCategoryDelegate {
     }
 
     func fetchMoreCourses(with offset: Int) -> Void {
-        tableView.backgroundView = nil
-        Request.shared.loadMoreCourses(offset: offset + 1, complitionHandler: { (courses) in
-            self.adapter.appendCourses(with: courses)
-            self.adapter.currentOffset(with: offset + 1)
-            self.tableView.reloadData()
-            self.tableView.tableFooterView?.isHidden.toggle()
-        }) { (message) in
-            self.handleError(action: .fetchingMore, with: message)
+        if let categoryIdentifier = categoryIdentifier {
+            tableView.backgroundView = nil
+            Request.shared.loadMoreCourses(with: categoryIdentifier, offset + 1, complitionHandler: { (courses) in
+                self.adapter.appendCourses(with: courses)
+                self.adapter.currentOffset(with: offset + 1)
+                self.tableView.reloadData()
+                self.tableView.tableFooterView?.isHidden.toggle()
+            }) { (message) in
+                self.handleError(action: .fetchingMore, with: message)
+            }
         }
     }
 }

@@ -29,11 +29,11 @@ class CategorySlidingTabView: UICollectionView {
         print("DEINIT: CategorySlidingTabView")
     }
 
-    func configure(with path: IndexPath = IndexPath(row: 0, section: 0)) -> Void {
+    func configure(with path: IndexPath) -> Void {
         if let cell = self.cellForItem(at: path) {
             self.leftConstraintOfIndicator.constant = cell.frame.minX
             self.widthConstraintOfIndicator.constant = cell.frame.width
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.3) {
                 self.layoutIfNeeded()
             }
         }

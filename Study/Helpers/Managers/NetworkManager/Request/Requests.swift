@@ -36,11 +36,11 @@ extension  Request {
             case .failure(let error, _):
                 complitionHandlerError(error)
             case .success(let posts):
-                guard (posts.results.isEmpty == false) else {
+                guard (posts.data.isEmpty == false) else {
                     complitionHandlerError(AppErrorMessage.noData)
                     return
                 }
-                complitionHandler(posts.results, posts.count)
+                complitionHandler(posts.data, posts.count)
             }
         }
     }
@@ -56,7 +56,7 @@ extension  Request {
             case .failure(let error, _):
                 complitionHandlerError(error)
             case .success(let posts):
-                complitionHandler(posts.results)
+                complitionHandler(posts.data)
             }
         }
     }
@@ -67,17 +67,19 @@ extension  Request {
         complitionHandler: @escaping (([SubscribedCourse])->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.subscribedCourses
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<SubscribedCourse>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let subscribedCourses):
-                guard (subscribedCourses.results.isEmpty == false) else {
-                    complitionHandlerError(AppErrorMessage.noData)
-                    return
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.subscribedCourses(token: token)
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<SubscribedCourse>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let subscribedCourses):
+                    guard (subscribedCourses.data.isEmpty == false) else {
+                        complitionHandlerError(AppErrorMessage.noData)
+                        return
+                    }
+                    complitionHandler(subscribedCourses.data)
                 }
-                complitionHandler(subscribedCourses.results)
             }
         }
     }
@@ -85,36 +87,48 @@ extension  Request {
     //  MARK: COURSES
 
     func loadCourses(
+        with categoryIdentifier: Int,
         complitionHandler: @escaping (([Course], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
-        ) -> Void {
-        let endpoints = Endpoints.courses(limit: limit, offset: page)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let courses):
-                guard (courses.results.isEmpty == false) else {
-                    complitionHandlerError(AppErrorMessage.noData)
-                    return
+    ) -> Void {
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.courses(
+                token: token, limit: limit,
+                offset: page, categoryIdentifier: categoryIdentifier
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let courses):
+                    guard (courses.data.isEmpty == false) else {
+                        complitionHandlerError(AppErrorMessage.noData)
+                        return
+                    }
+                    complitionHandler(courses.data, courses.count)
                 }
-                complitionHandler(courses.results, courses.count)
             }
         }
     }
 
     func loadMoreCourses(
-        offset: Int,
+        with categoryIdentifier: Int,
+        _ offset: Int,
         complitionHandler: @escaping (([Course])->Void),
         complitionHandlerError: @escaping ((String)->Void)
         ) -> Void {
-        let endpoints = Endpoints.courses(limit: limit, offset: offset)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let courses):
-                complitionHandler(courses.results)
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.courses(
+                token: token, limit: limit,
+                offset: offset, categoryIdentifier: categoryIdentifier
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let courses):
+                    complitionHandler(courses.data)
+                }
             }
         }
     }
@@ -122,38 +136,46 @@ extension  Request {
     //  MARK: MODULES
 
     func loadModules(
-        with id: Int,
+        with courseIdentifier: Int,
         complitionHandler: @escaping (([Module], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.modules(id: id, limit: limit, offset: page)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Module>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let modules):
-                guard (modules.results.isEmpty == false) else {
-                    complitionHandlerError(AppErrorMessage.noData)
-                    return
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.modules(
+                token: token, courseIdentifier: courseIdentifier, limit: limit, offset: page
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Module>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let modules):
+                    guard (modules.data.isEmpty == false) else {
+                        complitionHandlerError(AppErrorMessage.noData)
+                        return
+                    }
+                    complitionHandler(modules.data, modules.count)
                 }
-                complitionHandler(modules.results, modules.count)
             }
         }
     }
 
     func loadMoreModules(
-        with id: Int,
+        with courseIdentifier: Int,
         offset: Int,
         complitionHandler: @escaping (([Module])->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.modules(id: id, limit: limit, offset: offset)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Module>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let modules):
-                complitionHandler(modules.results)
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.modules(
+                token: token, courseIdentifier: courseIdentifier, limit: limit, offset: offset
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Module>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let modules):
+                    complitionHandler(modules.data)
+                }
             }
         }
     }
@@ -161,38 +183,46 @@ extension  Request {
     //  MARK: REVIEWS
 
     func loadReviews(
-        with id: Int,
+        with courseIdentifier: Int,
         complitionHandler: @escaping (([Review], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.reviews(id: id, limit: limit, offset: page)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let reviews):
-                guard (reviews.results.isEmpty == false) else {
-                    complitionHandlerError(AppErrorMessage.noData)
-                    return
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.reviews(
+                token: token, courseIdentifier: courseIdentifier, limit: limit, offset: page
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let reviews):
+                    guard (reviews.data.isEmpty == false) else {
+                        complitionHandlerError(AppErrorMessage.noData)
+                        return
+                    }
+                    complitionHandler(reviews.data, reviews.count)
                 }
-                complitionHandler(reviews.results, reviews.count)
             }
         }
     }
 
     func loadMoreReviews(
-        with id: Int,
+        with courseIdentifier: Int,
         offset: Int,
         complitionHandler: @escaping (([Review])->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.reviews(id: id, limit: limit, offset: offset)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let reviews):
-                complitionHandler(reviews.results)
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.reviews(
+                token: token, courseIdentifier: courseIdentifier, limit: limit, offset: offset
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Review>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let reviews):
+                    complitionHandler(reviews.data)
+                }
             }
         }
     }
@@ -200,17 +230,21 @@ extension  Request {
     //  MARK: INFO
 
     func loadInfo(
-        with id: Int,
+        with courseIdentifier: Int,
         complitionHandler: @escaping ((CourseInfo)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.info(id: id)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<CourseInfo>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let info):
-                complitionHandler(info)
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.info(
+                token: token, courseIdentifier: courseIdentifier
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<CourseInfo>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let info):
+                    complitionHandler(info)
+                }
             }
         }
     }
@@ -297,23 +331,24 @@ extension Request {
     //  MARK: JOIN TO COURSE
 
     func join(
-        with course_id: Int,
+        with courseIdentifier: Int,
         complitionHandler: @escaping ((String)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.join(course_id: course_id)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<Response>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let response):
-                guard response.success == true else {
-                    complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
-                    return
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.join(token: token, courseIdentifier: courseIdentifier)
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<Response>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let response):
+                    guard response.success == true else {
+                        complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
+                        return
+                    }
+                    complitionHandler(response.message ?? AppErrorMessage.success)
                 }
-                complitionHandler(response.message ?? AppErrorMessage.success)
             }
         }
     }
-    
 }

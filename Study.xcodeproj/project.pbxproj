@@ -140,6 +140,8 @@
 		08E1D42023FC0C6A006E3042 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E1D41F23FC0C6A006E3042 /* UIView+Extensions.swift */; };
 		08E1D42223FC0FAC006E3042 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E1D42123FC0FAC006E3042 /* UIStackView+Extensions.swift */; };
 		08E1D42423FC38C4006E3042 /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E1D42323FC38C4006E3042 /* MessageItem.swift */; };
+		08FCD8362442E742007F058A /* SearchDrawlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD8352442E742007F058A /* SearchDrawlable.swift */; };
+		08FCD8382442F52B007F058A /* RetryBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD8372442F52B007F058A /* RetryBackgroundView.swift */; };
 		4AD76D50A3B7452E87059F81 /* Pods_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CA6ACFDE41D6E3BA3EA7AA /* Pods_Study.framework */; };
 /* End PBXBuildFile section */
 
@@ -279,6 +281,8 @@
 		08E1D41F23FC0C6A006E3042 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		08E1D42123FC0FAC006E3042 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		08E1D42323FC38C4006E3042 /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
+		08FCD8352442E742007F058A /* SearchDrawlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDrawlable.swift; sourceTree = "<group>"; };
+		08FCD8372442F52B007F058A /* RetryBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryBackgroundView.swift; sourceTree = "<group>"; };
 		392A17BE6ABD807B886A68CE /* Pods-Study.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study.debug.xcconfig"; path = "Target Support Files/Pods-Study/Pods-Study.debug.xcconfig"; sourceTree = "<group>"; };
 		3CC7ABAAC8BD399282CA6677 /* Pods-Study.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study.release.xcconfig"; path = "Target Support Files/Pods-Study/Pods-Study.release.xcconfig"; sourceTree = "<group>"; };
 		50CA6ACFDE41D6E3BA3EA7AA /* Pods_Study.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Study.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -497,9 +501,9 @@
 		0856AA73241F6C1C00BFAE4F /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				0856AA76241F6C1C00BFAE4F /* Request */,
 				0856AA74241F6C1C00BFAE4F /* NetworkManager.swift */,
 				0856AA75241F6C1C00BFAE4F /* CustomParser.swift */,
-				0856AA76241F6C1C00BFAE4F /* Request */,
 				0856AA79241F6C1C00BFAE4F /* Parser.swift */,
 				0856AA7A241F6C1C00BFAE4F /* CustomError.swift */,
 				0856AA7B241F6C1C00BFAE4F /* EndpointType.swift */,
@@ -619,6 +623,7 @@
 		08C981AD2423E29800B2A802 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				08FCD8372442F52B007F058A /* RetryBackgroundView.swift */,
 				083DDF0524403DD600EA917D /* LoadingBackgroundView.swift */,
 				08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */,
 			);
@@ -771,6 +776,7 @@
 			isa = PBXGroup;
 			children = (
 				08E1D41923FBDACF006E3042 /* Stylizing.swift */,
+				08FCD8352442E742007F058A /* SearchDrawlable.swift */,
 			);
 			path = Stylizing;
 			sourceTree = "<group>";
@@ -935,6 +941,7 @@
 				089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */,
 				08E1D42223FC0FAC006E3042 /* UIStackView+Extensions.swift in Sources */,
 				08E1D41723FBCACD006E3042 /* DefaultButtonItem.swift in Sources */,
+				08FCD8362442E742007F058A /* SearchDrawlable.swift in Sources */,
 				083707EC2418C862008A85FB /* Array+Extensions.swift in Sources */,
 				08483D6B240B8D9E00B40B1F /* CourseCommunityView.swift in Sources */,
 				083DDF04243F078F00EA917D /* CategoryModel.swift in Sources */,
@@ -999,6 +1006,7 @@
 				08A73E2B2406610400244B9E /* MyCoursesViewController.swift in Sources */,
 				08E1D41C23FC0893006E3042 /* OTPItem.swift in Sources */,
 				082D6A9B2439BF75009B3816 /* AppKey.swift in Sources */,
+				08FCD8382442F52B007F058A /* RetryBackgroundView.swift in Sources */,
 				08A73E2824065B8D00244B9E /* IconableLabelView.swift in Sources */,
 				08479E1324371E0B005029C8 /* UIEdgeInsets+Extensions.swift in Sources */,
 				083707E32418C848008A85FB /* CALayerExtension.swift in Sources */,

@@ -8,16 +8,23 @@
 
 import UIKit
 
-class CategorySlidingTabViewController: UIViewController {
+class CategorySlidingTabViewController: UIViewController, SearchDrawlable {
     
     private(set) var collectionIndicator = CategorySlidingTabView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     private(set) var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
 
     private var items = [UIViewController]()
     private var titles = [String]()
+    private var widthOfIndicators: [CGFloat]{
+        get{
+            return calculteWidths()
+        }
+    }
 
     private var currentPosition = 0
-    private let heightHeader = 44
+    private(set) var slidingTabHeight = 44
+
+    private var lastContentOffset: CGFloat = .zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +33,13 @@ class CategorySlidingTabViewController: UIViewController {
         fetchCategories()
     }
 
-    func addItem(item: UIViewController, title: String){
+    private func addItem(item: UIViewController, title: String){
         items.append(item)
+        addChild(item)
         titles.append(title)
     }
     
-    func setCurrentPosition(position: Int){
+    private func setCurrentPosition(position: Int){
         currentPosition = position
         let path = IndexPath(item: currentPosition, section: 0)
         DispatchQueue.main.async {
@@ -39,6 +47,17 @@ class CategorySlidingTabViewController: UIViewController {
             self.collectionIndicator.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
             self.collectionView.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
         }
+    }
+
+    private func calculteWidths() -> [CGFloat] {
+
+        var widths = [CGFloat]()
+        titles.forEach { (title) in
+            let width = title.size(withAttributes:[.font: UIFont.boldSystemFont(ofSize: 14)]).width + 10.0
+            widths.append(width)
+        }
+
+        return widths
     }
 
     deinit {
@@ -83,8 +102,8 @@ extension CategorySlidingTabViewController: UICollectionViewDataSource {
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.cellIdentifier(), for: indexPath)
             let viewController = items[indexPath.row]
-            cell.addSubview(viewController.view)
-            viewController.view.frame = cell.frame
+            viewController.view.frame = view.bounds
+            cell.contentView.addSubview(viewController.view)
             return cell
         }
     }
@@ -96,9 +115,10 @@ extension CategorySlidingTabViewController: UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionIndicator {
-            let text = titles[indexPath.item]
-            let width = text.size(withAttributes:[.font: UIFont.boldSystemFont(ofSize: 14)]).width + 10.0
-            return CGSize(width: width, height: CGFloat(heightHeader - 10))
+            if widthOfIndicators.reduce(0, +) > collectionView.frame.width {
+                return CGSize(width: widthOfIndicators[indexPath.item], height: CGFloat(slidingTabHeight - 10))
+            }
+            return CGSize(width: collectionView.frame.width/CGFloat(titles.count), height: CGFloat(slidingTabHeight - 10))
         }
         return collectionView.frame.size
     }
@@ -139,59 +159,10 @@ extension CategorySlidingTabViewController {
             self.setCurrentPosition(position: 0)
             
         }) { (message) in
-            self.collectionView.backgroundView = MessageBackgroundView(with: message)
+            self.collectionView.backgroundView = RetryBackgroundView(with: message, retry: {
+                self.fetchCategories()
+            })
         }
     }
 }
 
-// MARK: - Builds
-
-extension CategorySlidingTabViewController {
-
-    func build() -> Void {
-
-        buildViews()
-        buildLayouts()
-        buildServices()
-    }
-
-    func buildViews() -> Void {
-
-        //collection indicator view
-        (collectionIndicator.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
-        collectionIndicator.showsHorizontalScrollIndicator = false
-
-        //collection view
-        collectionView.backgroundColor = .white
-        collectionView.showsHorizontalScrollIndicator = false
-        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
-        collectionView.isPagingEnabled = true
-    }
-
-    func buildLayouts() -> Void {
-
-        view.addSubviews(with: [collectionIndicator, collectionView])
-
-        collectionIndicator.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(heightHeader)
-        }
-
-        collectionView.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(collectionIndicator.snp.bottom)
-        }
-    }
-
-    func buildServices() -> Void {
-
-        collectionIndicator.register(CategorySlidingTabItem.self, forCellWithReuseIdentifier: CategorySlidingTabItem.cellIdentifier())
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.cellIdentifier())
-        collectionIndicator.delegate = self
-        collectionIndicator.dataSource = self
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-}

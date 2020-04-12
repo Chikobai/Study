@@ -11,7 +11,5 @@ import Foundation
 struct GeneralPaginationModel <T: Decodable>: Decodable {
 
     var count: Int
-    var next: String?
-    var previous: String?
-    var results: [T]
+    var data: [T]
 }

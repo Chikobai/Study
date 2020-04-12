@@ -9,5 +9,5 @@
 import Foundation
 
 struct SubscribedCourse: Decodable {
-    
+    let name: String
 }
