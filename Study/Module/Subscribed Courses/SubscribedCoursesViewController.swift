@@ -8,11 +8,15 @@
 
 import UIKit
 
-class MyCoursesViewController: UITableViewController, FetchableMore, Stylizing {
+protocol SubscribedCoursesDelegate: class {
+    func toRouteCourseDetails(with course: SubscribedCourse) -> Void
+}
+
+class SubscribedCoursesViewController: UITableViewController, FetchableMore, Stylizing {
 
     var state: State = .empty
 
-    private(set) var adapter: MyCoursesAdapter = MyCoursesAdapter()
+    private(set) var adapter: SubscribedCoursesAdapter = SubscribedCoursesAdapter()
 
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -35,11 +39,13 @@ class MyCoursesViewController: UITableViewController, FetchableMore, Stylizing {
     }
 
     deinit {
-        print("DEINIT: MyCoursesViewController")
+        print("DEINIT: SubscribedCoursesViewController")
     }
 }
 
-extension MyCoursesViewController {
+// MARK: - Targets
+
+extension SubscribedCoursesViewController {
 
     @objc
     func fetchSubscribedCourses() -> Void {
@@ -53,5 +59,16 @@ extension MyCoursesViewController {
         }) { (message) in
             self.handleError(action: .fetching, with: message)
         }
+    }
+}
+
+// MARK: - SubscribedCoursesDelegate
+
+extension SubscribedCoursesViewController: SubscribedCoursesDelegate {
+
+    func toRouteCourseDetails(with course: SubscribedCourse) -> Void {
+
+        let viewController = LessonViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

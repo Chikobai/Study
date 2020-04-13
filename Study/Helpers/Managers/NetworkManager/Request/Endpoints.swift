@@ -14,6 +14,7 @@ enum Endpoints: EndPointType {
 
     case categories
     case posts(
+        token: String,
         limit: Int, offset: Int
     )
     case subscribedCourses(
@@ -63,7 +64,7 @@ enum Endpoints: EndPointType {
     
     var httpTask: HTTPTask {
         switch self {
-        case .posts(let limit, let offset),
+        case .posts(_, let limit, let offset),
              .modules(_, _, let limit, let offset),
              .reviews(_, _, let limit, let offset):
             return .requestWithParameters(parameters: [
@@ -87,11 +88,10 @@ enum Endpoints: EndPointType {
     
     var headers: HTTPHeaders {
         switch self {
-        case .posts:
-            return ["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im9yeW5iYXNzYXIuc2h5bmd5c0BnbWFpbC5jb20iLCJpZCI6MTcsImlhdCI6MTU4NjQxMTYxNn0.OE0F6ZVNjrYbit8LERwv0Gkv3KZ8ECtS6puSlYPJiYU"]
         case .subscribedCourses(let token),
              .join(let token, _),
              .info(let token, _),
+             .posts(let token, _, _),
              .courses(let token, _, _, _),
              .modules(let token, _, _, _),
              .reviews(let token, _, _, _):
@@ -107,7 +107,7 @@ enum Endpoints: EndPointType {
             return "/auth/login/"
         case .registration:
             return "/auth/registration/"
-        case .posts(_, _):
+        case .posts:
             return "/api/v1/posts/"
         case .subscribedCourses:
             return "/api/v1/mycourses/"

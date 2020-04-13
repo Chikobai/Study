@@ -30,17 +30,21 @@ extension  Request {
         complitionHandler: @escaping (([Post], Int)->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.posts(limit: limit, offset: page)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let posts):
-                guard (posts.data.isEmpty == false) else {
-                    complitionHandlerError(AppErrorMessage.noData)
-                    return
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.posts(
+                token: token, limit: limit, offset: page
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let posts):
+                    guard (posts.data.isEmpty == false) else {
+                        complitionHandlerError(AppErrorMessage.noData)
+                        return
+                    }
+                    complitionHandler(posts.data, posts.count)
                 }
-                complitionHandler(posts.data, posts.count)
             }
         }
     }
@@ -50,13 +54,17 @@ extension  Request {
         complitionHandler: @escaping (([Post])->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
-        let endpoints = Endpoints.posts(limit: limit, offset: offset)
-        networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
-            switch result {
-            case .failure(let error, _):
-                complitionHandlerError(error)
-            case .success(let posts):
-                complitionHandler(posts.data)
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.posts(
+                token: token, limit: limit, offset: page
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Post>>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let posts):
+                    complitionHandler(posts.data)
+                }
             }
         }
     }

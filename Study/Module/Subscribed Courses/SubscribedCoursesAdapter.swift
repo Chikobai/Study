@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class MyCoursesAdapter: NSObject {
+class SubscribedCoursesAdapter: NSObject {
 
     private var courses: [SubscribedCourse] = []
 
@@ -29,7 +29,7 @@ class MyCoursesAdapter: NSObject {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension MyCoursesAdapter: UITableViewDelegate, UITableViewDataSource {
+extension SubscribedCoursesAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -63,7 +63,7 @@ extension MyCoursesAdapter: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Custom Items
 
-private extension MyCoursesAdapter {
+private extension SubscribedCoursesAdapter {
 
 
 }

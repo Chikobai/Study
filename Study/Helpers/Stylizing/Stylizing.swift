@@ -184,7 +184,7 @@ extension Stylizing where Self: ByCategoryViewController {
     }
 }
 
-extension Stylizing where Self: MyCoursesViewController {
+extension Stylizing where Self: SubscribedCoursesViewController {
 
     func build() -> Void {
 
