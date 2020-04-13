@@ -208,6 +208,7 @@ extension Stylizing where Self: SubscribedCoursesViewController {
 
     func buildServices() -> Void {
 
+        adapter.delegate = self
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.tableFooterView = UIView()

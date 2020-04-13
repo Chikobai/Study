@@ -12,6 +12,7 @@ import UIKit
 
 class SubscribedCoursesAdapter: NSObject {
 
+    weak var delegate: SubscribedCoursesDelegate?
     private var courses: [SubscribedCourse] = []
 
     override init() {
@@ -56,7 +57,7 @@ extension SubscribedCoursesAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-
+        delegate?.toRouteCourseDetails(with: courses[indexPath.row])
     }
 }
 

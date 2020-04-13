@@ -30,14 +30,9 @@ class SubscribedCoursesViewController: UITableViewController, FetchableMore, Sty
         super.viewDidLoad()
 
         build()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
         fetchSubscribedCourses()
     }
-
+    
     deinit {
         print("DEINIT: SubscribedCoursesViewController")
     }
