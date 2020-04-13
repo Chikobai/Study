@@ -23,8 +23,7 @@ class CategorySlidingTabViewController: UIViewController, SearchDrawlable {
 
     private var currentPosition = 0
     private(set) var slidingTabHeight = 44
-
-    private var lastContentOffset: CGFloat = .zero
+    private var lastContentOffsetX: CGFloat = .zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +78,36 @@ extension CategorySlidingTabViewController: UICollectionViewDelegate {
             setCurrentPosition(position: currentIndex)
         }
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == collectionView {
+            let currentIndex = Int(self.collectionView.contentOffset.x / collectionView.frame.size.width)
+            if (self.lastContentOffsetX > scrollView.contentOffset.x) {
+                if let currentCell = collectionIndicator.cellForItem(at: IndexPath(row: currentIndex, section: 0)) as? CategorySlidingTabItem {
+                    if let nextCell = collectionIndicator.cellForItem(at: IndexPath(row: currentIndex + 1, section: 0)) as? CategorySlidingTabItem {
+                        let offsetBetweenCells = nextCell.frame.minX - currentCell.frame.minX
+                        let value = offsetBetweenCells / AppSize.Screen.width * 2
+                        self.collectionIndicator.leftConstraintOfIndicator.constant -= value
+                        self.collectionIndicator.layoutIfNeeded()
+                        print("OffsetBetweenCells: \(offsetBetweenCells)")
+                    }
+                }
+            } else if (self.lastContentOffsetX < scrollView.contentOffset.x) {
+                if let currentCell = collectionIndicator.cellForItem(at: IndexPath(row: currentIndex, section: 0)) as? CategorySlidingTabItem {
+                    if let previousCell = collectionIndicator.cellForItem(at: IndexPath(row: currentIndex - 1, section: 0)) as? CategorySlidingTabItem {
+                        let offsetBetweenCells = currentCell.frame.minX - previousCell.frame.minX
+                        let value =  offsetBetweenCells / AppSize.Screen.width * 2
+                        self.collectionIndicator.leftConstraintOfIndicator.constant += value
+                        self.collectionIndicator.layoutIfNeeded()
+                        print("OffsetBetweenCells: \(offsetBetweenCells)")
+                    }
+                }
+            }
+            self.lastContentOffsetX = scrollView.contentOffset.x
+        }
+    }
 }
+
 
 // MARK: - UICollectionViewDataSource
 

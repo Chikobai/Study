@@ -7,17 +7,16 @@
 //
 
 import UIKit
+import ReadMoreTextView
 
 class PostItem: UITableViewCell {
-
-    var descriptionLabelGestureNotified: (()->())?
 
     private lazy var videoPlaceholderImageView: UIImageView = UIImageView()
     private lazy var postedUserImageView: UIImageView = UIImageView()
     private lazy var postedUserNameLabelView: UILabel = UILabel()
     private lazy var playButtonView: UIButton = UIButton()
     private lazy var postNameLabelView: UILabel = UILabel()
-    private(set) lazy var postDescriptionLabelView: UILabel = UILabel()
+    private(set) lazy var postDescriptionLabelView: ReadMoreTextView = ReadMoreTextView()
     private lazy var postedTimeLabelView: UILabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -34,35 +33,21 @@ class PostItem: UITableViewCell {
         print("DEINIT: PostItem")
     }
 
-    func configure(with data: Post, isCollapsed: Bool) -> Void {
-
-        let mainContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor]
-        let moreContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor.withAlphaComponent(0.5)]
-        if (isCollapsed == false) {
-            if data.description.count >= 150
-            {
-                let mainAttributedString = NSMutableAttributedString(string: "\(data.description.prefix(150))...", attributes: mainContentAttribute)
-                let moreAttributedString = NSMutableAttributedString(string: "More", attributes: moreContentAttribute)
-                mainAttributedString.append(moreAttributedString)
-
-                postDescriptionLabelView.attributedText = mainAttributedString
-            }
-            else{
-                postDescriptionLabelView.attributedText = NSMutableAttributedString(string: data.description, attributes: mainContentAttribute)
-            }
-        }
-
+    func configure(with data: Post, _ isCollapsed: Bool) -> Void {
 
         postedUserNameLabelView.text = data.teacher.first_name + " " + data.teacher.last_name
+        postNameLabelView.text = data.title
+
+        postDescriptionLabelView.text = data.description
+        postDescriptionLabelView.shouldTrim = isCollapsed
+        postDescriptionLabelView.setNeedsUpdateTrim()
+        postDescriptionLabelView.layoutIfNeeded()
     }
-}
 
-private extension PostItem {
+    override func prepareForReuse() {
+        super.prepareForReuse()
 
-    @objc
-    func descriptionLabelTapped(_ sender: UITapGestureRecognizer) -> Void {
-        
-        descriptionLabelGestureNotified?()
+        postDescriptionLabelView.shouldTrim = true
     }
 }
 
@@ -72,7 +57,6 @@ private extension PostItem {
 
         buildViews()
         buildLayouts()
-        buildGestures()
     }
 
     func buildViews() -> Void {
@@ -102,8 +86,15 @@ private extension PostItem {
         postNameLabelView.numberOfLines = 2
 
         //post description label view
-        postDescriptionLabelView.numberOfLines = 0
-        postDescriptionLabelView.isUserInteractionEnabled = true
+        let attributedText = [
+            NSAttributedString.Key.foregroundColor : AppColor.darkGray.uiColor.withAlphaComponent(0.7),
+            NSAttributedString.Key.font :
+                UIFont.systemFont(ofSize: 13.0)
+        ]
+        postDescriptionLabelView.attributedReadMoreText = NSAttributedString(string: "...Read More", attributes: attributedText)
+        postDescriptionLabelView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: attributedText)
+        postDescriptionLabelView.maximumNumberOfLines = 3
+        postDescriptionLabelView.textAlignment = .left
 
         //posted time label view
         postedTimeLabelView.font = .systemFont(ofSize: 8)
@@ -139,8 +130,8 @@ private extension PostItem {
 
         postNameLabelView.snp.makeConstraints { (make) in
             make.top.equalTo(videoPlaceholderImageView.snp.bottom).offset(15.0)
-            make.left.equalTo(25.0)
-            make.right.equalTo(-25.0)
+            make.left.equalTo(20.0)
+            make.right.equalTo(-20.0)
         }
 
         postDescriptionLabelView.snp.makeConstraints { (make) in
@@ -153,11 +144,5 @@ private extension PostItem {
             make.left.right.equalTo(postDescriptionLabelView)
             make.bottom.equalTo(-15.0)
         }
-    }
-
-    func buildGestures() -> Void {
-
-        let tapGesturesForDescriptions = UITapGestureRecognizer(target: self, action: #selector(descriptionLabelTapped))
-        postDescriptionLabelView.addGestureRecognizer(tapGesturesForDescriptions)
     }
 }

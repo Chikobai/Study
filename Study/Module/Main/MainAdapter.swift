@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
+import ReadMoreTextView
 
 class MainAdapter: NSObject {
 
     private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
-    private var collapsedRowStorage: [IndexPath] = []
+    private var collapsedRowStorage = Set<Int>()
     private var posts: [Post] = []
     private var totalPosts: Int = 0
     private var currentOffset: Int = 0
@@ -68,23 +69,14 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
         if let estimatedHeight = estimateRowHeightStorage[indexPath] {
             return estimatedHeight
         }
-        return  UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: PostItem.cellIdentifier(), for: indexPath) as? PostItem
-
-        cell?.configure(with: self.posts[indexPath.row], isCollapsed: collapsedRowStorage.contains(indexPath))
-
-        cell?.descriptionLabelGestureNotified = { [weak self] in
-            if (self?.collapsedRowStorage.contains(indexPath) == false) {
-                self?.collapsedRowStorage.append(indexPath)
-                tableView.beginUpdates()
-                tableView.reloadRows(at: [indexPath], with: .none)
-                tableView.endUpdates()
-            }
-        }
+        let isCollapsed = collapsedRowStorage.contains(indexPath.row)
+        cell?.configure(with: self.posts[indexPath.row], isCollapsed)
 
         return cell!
     }
@@ -103,6 +95,19 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
                 tableView.tableFooterView = nil
             }
         }
+
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if collapsedRowStorage.contains(indexPath.row) {
+            collapsedRowStorage.remove(indexPath.row)
+        }
+        else{
+            collapsedRowStorage.insert(indexPath.row)
+        }
+        tableView.beginUpdates()
+        tableView.reloadData()
+        tableView.endUpdates()
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

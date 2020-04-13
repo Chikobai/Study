@@ -12,7 +12,7 @@ class CategorySlidingTabView: UICollectionView {
 
     lazy var indicatorView: UIView = UIView()
 
-    private var leftConstraintOfIndicator: NSLayoutConstraint!
+    var leftConstraintOfIndicator: NSLayoutConstraint!
     private var widthConstraintOfIndicator: NSLayoutConstraint!
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {

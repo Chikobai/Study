@@ -12,8 +12,7 @@ pod 'Alamofire'
 pod 'SnapKit'
 pod 'InputMask'
 pod 'Cosmos'
-pod ’SJSegmentedScrollView’
-pod 'Charts'
+pod 'ReadMoreTextView'
 pod 'Cache', '~> 4.1'
 
 end

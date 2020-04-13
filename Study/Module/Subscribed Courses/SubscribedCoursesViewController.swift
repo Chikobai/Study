@@ -32,7 +32,7 @@ class SubscribedCoursesViewController: UITableViewController, FetchableMore, Sty
         build()
         fetchSubscribedCourses()
     }
-    
+
     deinit {
         print("DEINIT: SubscribedCoursesViewController")
     }
