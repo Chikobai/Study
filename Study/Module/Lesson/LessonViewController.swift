@@ -27,15 +27,10 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.isTranslucent = false
-        super.viewWillAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.isTranslucent = true
-        super.viewWillDisappear(animated)
     }
 
     override func viewDidLoad() {
@@ -48,7 +43,7 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
-        changeCurrentIndexProgressive = { [weak self] (oldCell: IconableTabItem?, newCell: IconableTabItem?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        changeCurrentIndexProgressive = {(oldCell: IconableTabItem?, newCell: IconableTabItem?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.iconImageView.tintColor = AppColor.black.uiColor.withAlphaComponent(0.3)
             newCell?.iconImageView.tintColor = AppColor.main.uiColor
@@ -57,9 +52,7 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        navigationItem.title = "Hello, world"
         edgesForExtendedLayout = []
-        navigationController?.navigationBar.shadowImage = UIImage()
     }
 
 

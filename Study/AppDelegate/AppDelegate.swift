@@ -63,7 +63,7 @@ private extension AppDelegate {
 
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = rootViewController
+        window?.rootViewController = TestViewController().inNavigate()
     }
 
     func buildNavigationBar() -> Void {

@@ -15,12 +15,10 @@ class CourseDetailsViewController: ScrollViewController {
     private lazy var coverViewOfPagerView: UIView = UIView()
     private lazy var pagerViewController: CourseDetailsPagerViewController = CourseDetailsPagerViewController()
 
-    private var courseIdentifier: Int?
-    private var isJoinedCourse: Bool?
+    private var courseObject: Course?
 
     init(with course: Course) {
-        courseIdentifier = course.id
-        isJoinedCourse = course.is_my_course
+        self.courseObject = course
         super.init(nibName: nil, bundle: nil)
         headerView.configure(with: course)
         pagerViewController.configure(with: course.id)
@@ -41,28 +39,30 @@ class CourseDetailsViewController: ScrollViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.isTranslucent = true
-        super.viewWillAppear(animated)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.isTranslucent = false
-        super.viewDidDisappear(animated)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+//        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+//        navigationController?.navigationBar.isTranslucent = false
+//    }
 }
 
 private extension CourseDetailsViewController {
 
     func toJoinCourse() -> Void {
 
-        if let course_id = courseIdentifier {
+        if let course_id = courseObject?.id {
             headerView.startLoading()
             Request.shared.join(with: course_id, complitionHandler: { (message) in
                 self.headerView.stopLoading()
                 self.headerView.setIsSubscribedCourse(with: true)
-                self.isJoinedCourse = true
+                self.courseObject?.is_my_course = true
                 self.display(with: message)
             }) { (message) in
                 self.headerView.stopLoading()
@@ -118,8 +118,9 @@ private extension CourseDetailsViewController {
     func buildServices() -> Void {
 
         headerView.toJoinCoursePressed = { [weak self] in
-            if self?.isJoinedCourse == true {
+            if self?.courseObject?.is_my_course == true {
                 let viewController = LessonViewController()
+                viewController.title = self?.courseObject?.name
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
             else{
