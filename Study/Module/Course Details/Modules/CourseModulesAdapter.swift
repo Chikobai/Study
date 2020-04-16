@@ -114,7 +114,10 @@ extension CourseModulesAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        delegate?.toRouteLessonDetail(with: modules[indexPath.section].lessons[indexPath.row])
+        let moduleIdentifier = modules[indexPath.section].id
+        let lessonIdentifier = modules[indexPath.section].lessons[indexPath.row].id
+        let title = modules[indexPath.section].title
+        delegate?.toRouteLessonDetail(with: moduleIdentifier, lessonIdentifier, title)
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

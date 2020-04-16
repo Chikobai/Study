@@ -101,8 +101,8 @@ extension  Request {
     ) -> Void {
         if let token = StoreManager.shared().token() {
             let endpoints = Endpoints.courses(
-                token: token, limit: limit,
-                offset: page, categoryIdentifier: categoryIdentifier
+                token: token, categoryIdentifier: categoryIdentifier, limit: limit,
+                offset: page
             )
             networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
                 switch result {
@@ -127,8 +127,8 @@ extension  Request {
         ) -> Void {
         if let token = StoreManager.shared().token() {
             let endpoints = Endpoints.courses(
-                token: token, limit: limit,
-                offset: offset, categoryIdentifier: categoryIdentifier
+                token: token, categoryIdentifier: categoryIdentifier, limit: limit,
+                offset: offset
             )
             networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
                 switch result {
@@ -270,6 +270,34 @@ extension  Request {
                 complitionHandlerError(error)
             case .success(let categories):
                 complitionHandler(categories)
+            }
+        }
+    }
+
+    //  MARK: LESSON
+
+    func loadLesson(
+        with moduleIdentifier: Int,
+        _ lessonIdentifier: Int,
+        complitionHandler: @escaping (([LessonPage])->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.lesson(
+                token: token,
+                moduleIdentifier: moduleIdentifier, lessonIdentifier: lessonIdentifier
+            )
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<LessonPageResult>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let lesson):
+                    guard (lesson.pages.isEmpty == false) else {
+                        complitionHandlerError(AppErrorMessage.noData)
+                        return
+                    }
+                    complitionHandler(lesson.pages)
+                }
             }
         }
     }

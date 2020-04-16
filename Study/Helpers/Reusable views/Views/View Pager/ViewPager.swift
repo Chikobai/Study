@@ -11,7 +11,7 @@ import UIKit
 
 class ViewPager: NSObject {
 
-    private var view: UIView
+    private lazy var view: UIView = UIView()
     private lazy var tabView = ViewPagerTabView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
@@ -27,9 +27,8 @@ class ViewPager: NSObject {
     }
 
     public init(containerView: UIView) {
-        self.view = containerView
         super.init()
-
+        self.view = containerView
         build()
     }
 
@@ -47,25 +46,42 @@ class ViewPager: NSObject {
         self.collectionView.reloadData()
     }
 
+    public func setBackground(with backgroundView: UIView?) {
+        self.collectionView.backgroundView = backgroundView
+    }
+
+    public func setCurrentPosition(with position: Int) {
+        setCurrentPosition(position: currentPosition)
+    }
+}
+
+// MARK: - Private Methods
+
+extension ViewPager {
 
     private  func setCurrentPosition(position: Int){
-        currentPosition = position
-        let path = IndexPath(item: currentPosition, section: 0)
-        DispatchQueue.main.async {
-            self.tabView.configure(with: path)
-            self.tabView.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
-            self.collectionView.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
+        if tabsList.count > position {
+            currentPosition = position
+            let path = IndexPath(item: currentPosition, section: 0)
+            DispatchQueue.main.async {
+                self.tabView.configure(with: path)
+                self.tabView.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
+                self.collectionView.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
+                self.tabView.reloadData()
+            }
         }
     }
 
     private  func calculteWidths() -> [CGFloat] {
 
         var widths = [CGFloat]()
-        tabsList.forEach { (tab) in
-            let width = tab.title.size(withAttributes:[.font: UIFont.boldSystemFont(ofSize: 14)]).width + 10.0
-            widths.append(width)
-        }
 
+        if options.tabType == .basic {
+            tabsList.forEach { (tab) in
+                let width: CGFloat = tab.title?.size(withAttributes:[.font: UIFont.boldSystemFont(ofSize: 14)]).width ?? .zero + 10.0
+                widths.append(width)
+            }
+        }
         return widths
     }
 }
@@ -106,7 +122,9 @@ extension ViewPager: UICollectionViewDataSource {
 
         if collectionView == tabView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewPagerTabItem.cellIdentifier(), for: indexPath) as! ViewPagerTabItem
+            let isSelected = (indexPath.row == currentPosition)
             cell.configure(with: tabsList[indexPath.row], options)
+            cell.configure(with: isSelected, options)
             return cell
         }
         else {

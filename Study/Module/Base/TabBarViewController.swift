@@ -31,7 +31,7 @@ private extension TabBarViewController {
         let main = MainViewController().inNavigate()
         main.tabBarItem = UITabBarItem.init(title: nil, image: #imageLiteral(resourceName: "home"), tag: 0)
 
-        let search = CategorySlidingTabViewController().inNavigate()
+        let search = CategoryViewController().inNavigate()
         search.tabBarItem = UITabBarItem.init(title: nil, image: #imageLiteral(resourceName: "search"), tag: 1)
 
         let subscriptions = SubscribedCoursesViewController().inNavigate()

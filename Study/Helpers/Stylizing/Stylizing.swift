@@ -91,24 +91,6 @@ extension Stylizing where Self: RestorePasswordViewController {
     }
 }
 
-extension Stylizing where Self: CategorySlidingTabViewController {
-    
-    func build() -> Void {
-
-        buildViews()
-    }
-
-    func buildViews() -> Void {
-
-        //navigation item
-        navigationItem.title = AppTitle.Category.title
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .search, target: self, action: #selector(searchPressed))
-
-        //navigation bar
-        navigationController?.navigationBar.shadowImage = UIImage()
-    }
-}
-
 extension Stylizing where Self: SearchViewController {
 
     func build() -> Void {

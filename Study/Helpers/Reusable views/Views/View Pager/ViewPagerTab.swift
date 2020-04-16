@@ -19,10 +19,15 @@ public enum ViewPagerTabType {
 
 public struct ViewPagerTab {
     
-    public var title:String
+    public var title:String?
     public var image:UIImage?
     
     public init(title:String, image:UIImage? = nil) {
+        self.title = title
+        self.image = image
+    }
+
+    public init(title:String? = nil, image:UIImage) {
         self.title = title
         self.image = image
     }

@@ -12,7 +12,7 @@
 		0808588D244703AC00BBC996 /* ViewPagerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0808588C244703AC00BBC996 /* ViewPagerTabView.swift */; };
 		0808588F2447040200BBC996 /* ViewPagerTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0808588E2447040200BBC996 /* ViewPagerTabItem.swift */; };
 		0808589124470FBE00BBC996 /* ViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0808589024470FBE00BBC996 /* ViewPager.swift */; };
-		08085893244719A200BBC996 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08085892244719A200BBC996 /* TestViewController.swift */; };
+		08085893244719A200BBC996 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08085892244719A200BBC996 /* CategoryViewController.swift */; };
 		08089F2923FA6CC900EFDD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08089F2823FA6CC900EFDD85 /* AppDelegate.swift */; };
 		08089F3023FA6CCE00EFDD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08089F2F23FA6CCE00EFDD85 /* Assets.xcassets */; };
 		08089F3323FA6CCE00EFDD85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08089F3123FA6CCE00EFDD85 /* LaunchScreen.storyboard */; };
@@ -50,9 +50,6 @@
 		083707EF2418C962008A85FB /* UIBezierPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */; };
 		083DDF04243F078F00EA917D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF03243F078F00EA917D /* CategoryModel.swift */; };
 		083DDF0624403DD600EA917D /* LoadingBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0524403DD600EA917D /* LoadingBackgroundView.swift */; };
-		083DDF0A2440466B00EA917D /* CategorySlidingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF092440466B00EA917D /* CategorySlidingTabView.swift */; };
-		083DDF0C244048D400EA917D /* CategorySlidingTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0B244048D400EA917D /* CategorySlidingTabItem.swift */; };
-		083DDF0E24408C5400EA917D /* CategorySlidingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0D24408C5400EA917D /* CategorySlidingTabViewController.swift */; };
 		0840502323FCE93800A084A4 /* AuthorizationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502223FCE93800A084A4 /* AuthorizationValidator.swift */; };
 		0840502623FCEFCD00A084A4 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */; };
 		0840502823FCEFE500A084A4 /* RestorePasswordAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */; };
@@ -117,6 +114,8 @@
 		08B0C742240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C741240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift */; };
 		08B0C744240CCF2800D2AE79 /* CourseInfoSkillsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C743240CCF2800D2AE79 /* CourseInfoSkillsItem.swift */; };
 		08B0C746240CD41F00D2AE79 /* CourseInfoLanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0C745240CD41F00D2AE79 /* CourseInfoLanguageItem.swift */; };
+		08BCDB60244835ED00ABCC99 /* LessonDrawlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BCDB5F244835ED00ABCC99 /* LessonDrawlable.swift */; };
+		08BCDB6224483CCA00ABCC99 /* LessonPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BCDB6124483CCA00ABCC99 /* LessonPageModel.swift */; };
 		08C981AA2423BDDD00B2A802 /* GeneralPaginationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981A92423BDDD00B2A802 /* GeneralPaginationModel.swift */; };
 		08C981AC2423BF5600B2A802 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981AB2423BF5600B2A802 /* PostModel.swift */; };
 		08C981AF2423E2AF00B2A802 /* MessageBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */; };
@@ -158,7 +157,7 @@
 		0808588C244703AC00BBC996 /* ViewPagerTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerTabView.swift; sourceTree = "<group>"; };
 		0808588E2447040200BBC996 /* ViewPagerTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPagerTabItem.swift; sourceTree = "<group>"; };
 		0808589024470FBE00BBC996 /* ViewPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPager.swift; sourceTree = "<group>"; };
-		08085892244719A200BBC996 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		08085892244719A200BBC996 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		08089F2523FA6CC900EFDD85 /* Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Study.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08089F2823FA6CC900EFDD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08089F2F23FA6CCE00EFDD85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,9 +197,6 @@
 		083707EE2418C962008A85FB /* UIBezierPath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Extensions.swift"; sourceTree = "<group>"; };
 		083DDF03243F078F00EA917D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		083DDF0524403DD600EA917D /* LoadingBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingBackgroundView.swift; path = ../LoadingBackgroundView.swift; sourceTree = "<group>"; };
-		083DDF092440466B00EA917D /* CategorySlidingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySlidingTabView.swift; sourceTree = "<group>"; };
-		083DDF0B244048D400EA917D /* CategorySlidingTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySlidingTabItem.swift; sourceTree = "<group>"; };
-		083DDF0D24408C5400EA917D /* CategorySlidingTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySlidingTabViewController.swift; sourceTree = "<group>"; };
 		0840502223FCE93800A084A4 /* AuthorizationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationValidator.swift; sourceTree = "<group>"; };
 		0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordAdapter.swift; sourceTree = "<group>"; };
@@ -265,6 +261,8 @@
 		08B0C741240CC6FB00D2AE79 /* CourseInfoTeacherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoTeacherItem.swift; sourceTree = "<group>"; };
 		08B0C743240CCF2800D2AE79 /* CourseInfoSkillsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoSkillsItem.swift; sourceTree = "<group>"; };
 		08B0C745240CD41F00D2AE79 /* CourseInfoLanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoLanguageItem.swift; sourceTree = "<group>"; };
+		08BCDB5F244835ED00ABCC99 /* LessonDrawlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDrawlable.swift; sourceTree = "<group>"; };
+		08BCDB6124483CCA00ABCC99 /* LessonPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPageModel.swift; sourceTree = "<group>"; };
 		08C981A92423BDDD00B2A802 /* GeneralPaginationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPaginationModel.swift; sourceTree = "<group>"; };
 		08C981AB2423BF5600B2A802 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBackgroundView.swift; sourceTree = "<group>"; };
@@ -391,7 +389,6 @@
 				082DAEBF2417573300F025E4 /* VariantItem.swift */,
 				0875B681240DFCE400669C5B /* IconableTabItem.swift */,
 				08CF860A241B9085009F31FE /* Skilltem.swift */,
-				083DDF0B244048D400EA917D /* CategorySlidingTabItem.swift */,
 			);
 			path = "Collection view";
 			sourceTree = "<group>";
@@ -520,7 +517,6 @@
 				08B0C73D240CBD1200D2AE79 /* CourseInfoHeaderView.swift */,
 				08483D64240B655000B40B1F /* ModuleExpandableHeaderView.swift */,
 				0830814C24136CC500947567 /* ProfileHeaderView.swift */,
-				083DDF092440466B00EA917D /* CategorySlidingTabView.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -551,7 +547,6 @@
 			isa = PBXGroup;
 			children = (
 				0875B67C240DF97B00669C5B /* Questions */,
-				0875B67B240DF96D00669C5B /* Information */,
 				0875B67A240DF8FC00669C5B /* Video */,
 				0875B67F240DFBDC00669C5B /* LessonViewController.swift */,
 			);
@@ -564,13 +559,6 @@
 				0875B67D240DF9AD00669C5B /* VideoViewController.swift */,
 			);
 			path = Video;
-			sourceTree = "<group>";
-		};
-		0875B67B240DF96D00669C5B /* Information */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Information;
 			sourceTree = "<group>";
 		};
 		0875B67C240DF97B00669C5B /* Questions */ = {
@@ -605,7 +593,7 @@
 		089A469D2402384F007068DB /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				083DDF0D24408C5400EA917D /* CategorySlidingTabViewController.swift */,
+				08085892244719A200BBC996 /* CategoryViewController.swift */,
 				0829FAE22403847F000CACCF /* SearchViewController.swift */,
 				089A46A02402389F007068DB /* ByCategoryViewController.swift */,
 				089A46A2240238BF007068DB /* ByCategoryAdapter.swift */,
@@ -634,6 +622,7 @@
 				08479E1824374A94005029C8 /* LessonModel.swift */,
 				082D6A942439B72F009B3816 /* AuthModel.swift */,
 				083DDF03243F078F00EA917D /* CategoryModel.swift */,
+				08BCDB6124483CCA00ABCC99 /* LessonPageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -681,7 +670,6 @@
 				0875B683240E15FA00669C5B /* Settings */,
 				0840502423FCEB2C00A084A4 /* Restore Password */,
 				08E1D3EF23FBB1A3006E3042 /* Authorization */,
-				08085892244719A200BBC996 /* TestViewController.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -806,6 +794,7 @@
 			children = (
 				08E1D41923FBDACF006E3042 /* Stylizing.swift */,
 				08FCD8352442E742007F058A /* SearchDrawlable.swift */,
+				08BCDB5F244835ED00ABCC99 /* LessonDrawlable.swift */,
 			);
 			path = Stylizing;
 			sourceTree = "<group>";
@@ -944,7 +933,6 @@
 			files = (
 				08E1D40923FBBCBB006E3042 /* FloatingTextFieldItem.swift in Sources */,
 				08E1D3F123FBB1BB006E3042 /* AuthorizationViewController.swift in Sources */,
-				083DDF0A2440466B00EA917D /* CategorySlidingTabView.swift in Sources */,
 				0830815A2413974F00947567 /* CertificateItem.swift in Sources */,
 				088F4078240783D10094D854 /* SubscribedPackageItem.swift in Sources */,
 				08E1D41523FBC847006E3042 /* FilledButton.swift in Sources */,
@@ -958,7 +946,6 @@
 				0856AA7C241F6C1C00BFAE4F /* NetworkManager.swift in Sources */,
 				082DAEC02417573300F025E4 /* VariantItem.swift in Sources */,
 				0840503323FE41D500A084A4 /* CourseDetailsPagerViewController.swift in Sources */,
-				083DDF0E24408C5400EA917D /* CategorySlidingTabViewController.swift in Sources */,
 				0829FAE524039B92000CACCF /* UILabel+Extenstions.swift in Sources */,
 				0840503B23FE524300A084A4 /* CourseModulesAdapter.swift in Sources */,
 				0840505723FE6E4A00A084A4 /* MessageHeaderView.swift in Sources */,
@@ -1008,12 +995,12 @@
 				0875B680240DFBDC00669C5B /* LessonViewController.swift in Sources */,
 				087D909824386B11003E74BD /* LoadingButton.swift in Sources */,
 				08E1D3F723FBB2EC006E3042 /* NavigationController.swift in Sources */,
-				083DDF0C244048D400EA917D /* CategorySlidingTabItem.swift in Sources */,
 				0808588D244703AC00BBC996 /* ViewPagerTabView.swift in Sources */,
 				0875B68A240E185D00669C5B /* SettingsModel.swift in Sources */,
 				083707EF2418C962008A85FB /* UIBezierPath+Extensions.swift in Sources */,
-				08085893244719A200BBC996 /* TestViewController.swift in Sources */,
+				08085893244719A200BBC996 /* CategoryViewController.swift in Sources */,
 				082DAEBE241755E300F025E4 /* VariantCollectionView.swift in Sources */,
+				08BCDB6224483CCA00ABCC99 /* LessonPageModel.swift in Sources */,
 				0840503723FE424F00A084A4 /* CourseReviewsViewController.swift in Sources */,
 				089A46A12402389F007068DB /* ByCategoryViewController.swift in Sources */,
 				0808588B244702E200BBC996 /* ViewPagerTab.swift in Sources */,
@@ -1049,6 +1036,7 @@
 				08E1D3F423FBB278006E3042 /* UINavigationController+Extenstions.swift in Sources */,
 				0840505423FE6B6B00A084A4 /* CourseInfoAdapter.swift in Sources */,
 				08E1D41323FBC81C006E3042 /* FilledButtonItem.swift in Sources */,
+				08BCDB60244835ED00ABCC99 /* LessonDrawlable.swift in Sources */,
 				0840502A23FCEFF600A084A4 /* RestorePasswordViewModel.swift in Sources */,
 				08A73E262406471200244B9E /* PackageItem.swift in Sources */,
 				0856AA80241F6C1C00BFAE4F /* Parser.swift in Sources */,

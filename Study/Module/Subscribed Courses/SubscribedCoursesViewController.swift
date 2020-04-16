@@ -63,7 +63,7 @@ extension SubscribedCoursesViewController: SubscribedCoursesDelegate {
 
     func toRouteCourseDetails(with course: SubscribedCourse) -> Void {
 
-        let viewController = LessonViewController()
+        let viewController = LessonViewController(with: 0, 0)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

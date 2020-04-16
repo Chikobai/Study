@@ -7,23 +7,22 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 
-class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTabItem> {
+class LessonViewController: UIViewController, LessonDrawlable{
 
-    init() {
+    var options: ViewPagerOptions = ViewPagerOptions()
+    var viewPager:ViewPager?
+    var moduleIdentifier: Int
+    var lessonIdentifier: Int
+
+    init(with moduleIdentifier: Int, _ lessonIdentifier: Int) {
+        self.moduleIdentifier = moduleIdentifier
+        self.lessonIdentifier = lessonIdentifier
         super.init(nibName: nil, bundle: nil)
-        buttonBarItemSpec = ButtonBarItemSpec.cellClass(width: { (_) -> CGFloat in
-            return 50.0
-        })
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        buttonBarItemSpec = ButtonBarItemSpec.cellClass(width: { (_) -> CGFloat in
-            return 50.0
-        })
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,61 +33,48 @@ class LessonViewController: BaseButtonBarPagerTabStripViewController<IconableTab
     }
 
     override func viewDidLoad() {
-        settings.style.buttonBarBackgroundColor = AppColor.white.uiColor
-        settings.style.buttonBarItemBackgroundColor = .clear
-        settings.style.selectedBarBackgroundColor = AppColor.main.uiColor
-        settings.style.selectedBarHeight = 2.0
-        settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
-        settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        settings.style.buttonBarLeftContentInset = 0
-        settings.style.buttonBarRightContentInset = 0
-        changeCurrentIndexProgressive = {(oldCell: IconableTabItem?, newCell: IconableTabItem?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
-            oldCell?.iconImageView.tintColor = AppColor.black.uiColor.withAlphaComponent(0.3)
-            newCell?.iconImageView.tintColor = AppColor.main.uiColor
-        }
-
         super.viewDidLoad()
 
-        view.backgroundColor = .white
-        edgesForExtendedLayout = []
+        build()
+        fetchLesson()
     }
 
 
     deinit {
         print("DEINIT: LessonViewController")
     }
+}
 
+// MARK: - Configure
 
-    // MARK: - PagerTabStripDataSource
-    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let child_1 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "play-button 1")))
-        let child_2 = QuestionsViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question")))
-        let child_3 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question")))
-        let child_4 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "book 3")))
-        let child_5 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "play-button 1")))
-        let child_6 = VideoViewController.init(with: IndicatorInfo.init(title: "Video", image: #imageLiteral(resourceName: "question")))
-        return [child_1, child_2, child_3, child_4, child_5, child_6]
-    }
+extension LessonViewController {
 
-    override func configure(cell: IconableTabItem, for indicatorInfo: IndicatorInfo) {
-        cell.iconImageView.image = indicatorInfo.image?.withRenderingMode(.alwaysTemplate)
-    }
+    func configureViewPager(with pages: [LessonPage]) -> Void {
 
-    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
-        super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
-        if indexWasChanged && toIndex > -1 && toIndex < viewControllers.count {
-            let child = viewControllers[toIndex] as! IndicatorInfoProvider // swiftlint:disable:this force_cast
-            UIView.performWithoutAnimation({ [weak self] () -> Void in
-                guard let me = self else { return }
-                me.navigationItem.leftBarButtonItem?.title =  child.indicatorInfo(for: me).title
-            })
-        }
+        viewPager?.setBackground(with: nil)
+
+        var viewControllers = [UIViewController]()
+        var viewPagerTabs = [ViewPagerTab]()
+        pages.forEach({ (page) in
+            let icon = (page.order == 1) ? #imageLiteral(resourceName: "play-button 1") : #imageLiteral(resourceName: "question")
+            let pagerTab = ViewPagerTab(image: icon)
+            viewPagerTabs.append(pagerTab)
+            let viewController: UIViewController = (page.order == 1) ?
+                VideoViewController(with: page) : QuestionsViewController(with: page)
+            viewControllers.append(viewController)
+            self.addChild(viewController)
+        })
+        options.tabType = .image
+        viewPager?.setOptions(options: options)
+        viewPager?.setTabList(with: viewPagerTabs)
+        viewPager?.setTabsViewList(with: viewControllers)
+        viewPager?.setCurrentPosition(with: 0)
     }
 }
 
-private extension LessonViewController {
+// MARK: - Targets
+
+extension LessonViewController {
 
     @objc
     func sharePressedEvent() -> Void {
@@ -100,3 +86,29 @@ private extension LessonViewController {
 
     }
 }
+
+// MARK: - Request
+
+extension LessonViewController {
+
+
+    func fetchLesson() -> Void {
+        let loadingView = LoadingBackgroundView()
+        viewPager?.setBackground(with: loadingView)
+        Request.shared.loadLesson(with: moduleIdentifier, lessonIdentifier, complitionHandler: { (pages) in
+            self.configureViewPager(with: pages)
+        }) { (message) in
+            let retryView = RetryBackgroundView(with: message, retry: {
+                self.fetchLesson()
+            })
+            self.viewPager?.setBackground(with: retryView)
+        }
+    }
+}
+
+
+
+
+
+
+

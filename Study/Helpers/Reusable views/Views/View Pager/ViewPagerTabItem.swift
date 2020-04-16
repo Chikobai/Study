@@ -11,23 +11,14 @@ import UIKit
 
 class ViewPagerTabItem: UICollectionViewCell {
 
-    private var titleLabelView: UILabel?
-    private var imageView: UIImageView?
-
-    var text: String? {
-        didSet {
-            titleLabelView?.text = text
-        }
-    }
-
-    var image: UIImage? {
-        didSet {
-            titleLabelView?.text = text
-        }
-    }
+    private var options: ViewPagerOptions = ViewPagerOptions()
+    private var titleLabelView: UILabel = UILabel()
+    private var imageView: UIImageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        build()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -40,84 +31,61 @@ class ViewPagerTabItem: UICollectionViewCell {
 
     func configure(with tab:ViewPagerTab, _ options:ViewPagerOptions) {
         switch options.tabType {
-
         case ViewPagerTabType.basic:
-            buildBasicTab(with: tab, options)
-
+            titleLabelView.isHidden = false
+            titleLabelView.text = tab.title
+            imageView.isHidden = true
         case ViewPagerTabType.image:
-            buildImageTab(with: tab, options)
+            imageView.isHidden = false
+            imageView.image = tab.image
+            titleLabelView.isHidden = true
+        }
+    }
+
+    func configure(with isSelected: Bool, _ options:ViewPagerOptions) -> Void {
+        switch options.tabType {
+        case ViewPagerTabType.basic:
+            return
+        case ViewPagerTabType.image:
+            imageView.tintColor = isSelected ?
+                options.tabSelectedImageColor : options.tabUnselectedImageColor
         }
     }
 }
 
 extension ViewPagerTabItem {
 
-    func buildBasicTab(
-        with tab:ViewPagerTab, _ options:ViewPagerOptions
-    ) -> Void {
+    func build() -> Void {
 
-        buildViewsOfBasicTab(with: tab, options)
-        buildLayoutsOfBasicTab(with: tab, options)
+        buildViews()
+        buildLayouts()
     }
 
-    func buildViewsOfBasicTab(
-        with tab:ViewPagerTab, _ options:ViewPagerOptions
-    ) -> Void {
+    func buildViews() -> Void {
 
         //superview
         backgroundColor = .clear
 
         //title label view
-        titleLabelView = UILabel()
-        titleLabelView?.text = tab.title
-        titleLabelView?.textAlignment = .center
-        titleLabelView?.font = options.tabViewTextFont
-    }
-
-    func buildLayoutsOfBasicTab(
-        with tab:ViewPagerTab, _ options:ViewPagerOptions
-    ) -> Void {
-
-        self.addSubviews(with: [titleLabelView!])
-
-        titleLabelView?.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-        }
-    }
-}
-
-extension ViewPagerTabItem {
-
-    func buildImageTab(
-        with tab:ViewPagerTab, _ options:ViewPagerOptions
-    ) -> Void {
-
-        buildViewsOfImageTab(with: tab, options)
-        buildLayoutsOfImageTab(with: tab, options)
-    }
-
-    func buildViewsOfImageTab(
-        with tab:ViewPagerTab, _ options:ViewPagerOptions
-    ) -> Void {
-
-        //superview
-        backgroundColor = .clear
+        titleLabelView.textAlignment = .center
+        titleLabelView.font = options.tabViewTextFont
 
         //image view
-        imageView = UIImageView()
-        imageView?.contentMode = .scaleAspectFit
-        imageView?.image = tab.image
+        imageView.contentMode = .scaleAspectFit
     }
 
-    func buildLayoutsOfImageTab(
-        with tab:ViewPagerTab, _ options:ViewPagerOptions
-    ) -> Void {
+    func buildLayouts() -> Void {
 
-        self.addSubviews(with: [imageView!])
+        self.addSubviews(with: [titleLabelView, imageView])
 
-        imageView?.snp.makeConstraints { (make) in
+        titleLabelView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+
+        imageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(options.tabViewImageSize)
             make.center.equalToSuperview()
         }
     }
 }
+

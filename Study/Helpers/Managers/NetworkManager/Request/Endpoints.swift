@@ -13,24 +13,28 @@ enum Endpoints: EndPointType {
     //GET
 
     case categories
+    case subscribedCourses(
+        token: String
+    )
+    case lesson(
+        token: String,
+        moduleIdentifier: Int, lessonIdentifier: Int
+    )
     case posts(
         token: String,
         limit: Int, offset: Int
     )
-    case subscribedCourses(
-        token: String
-    )
     case courses(
-        token: String, limit: Int, offset: Int,
-        categoryIdentifier: Int
+        token: String,
+        categoryIdentifier: Int, limit: Int, offset: Int
     )
     case modules(
-        token: String, courseIdentifier: Int,
-        limit: Int, offset: Int
+        token: String,
+        courseIdentifier: Int, limit: Int, offset: Int
     )
     case reviews(
-        token: String, courseIdentifier: Int,
-        limit: Int, offset: Int
+        token: String,
+        courseIdentifier: Int, limit: Int, offset: Int
     )
     case info(
         token: String, courseIdentifier: Int
@@ -70,7 +74,7 @@ enum Endpoints: EndPointType {
             return .requestWithParameters(parameters: [
                 "page": offset, "limit": limit
             ])
-        case .courses(_, let limit, let offset, let categoryIdentifier):
+        case .courses(_, let categoryIdentifier, let limit, let offset):
             return .requestWithParameters(parameters: [
                 "page": offset, "limit": limit, "category_id": categoryIdentifier
             ])
@@ -92,6 +96,7 @@ enum Endpoints: EndPointType {
              .join(let token, _),
              .info(let token, _),
              .posts(let token, _, _),
+             .lesson(let token, _, _),
              .courses(let token, _, _, _),
              .modules(let token, _, _, _),
              .reviews(let token, _, _, _):
@@ -119,6 +124,8 @@ enum Endpoints: EndPointType {
             return "/api/v1/course/\(courseIdentifier)/reviews/"
         case .info(_, let courseIdentifier):
             return "/api/v1/courses/\(courseIdentifier)/"
+        case .lesson(_, let moduleIdentifier, let lessonIdentifier):
+            return "/api/v1/course/modules/\(moduleIdentifier)/lessons/\(lessonIdentifier)/"
         case .join:
             return "/api/v1/course/join/"
         case .categories:

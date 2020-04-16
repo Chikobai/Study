@@ -9,14 +9,14 @@
 import UIKit
 import XLPagerTabStrip
 
-class VideoViewController: UIViewController {
+class VideoViewController: UIViewController, LessonDrawlable {
 
-    private lazy var videoPlaceholderImageView: UIImageView = UIImageView()
-    private lazy var playButtonView: UIButton = UIButton()
-    private var itemInfo: IndicatorInfo?
+    private(set) lazy var videoPlaceholderImageView: UIImageView = UIImageView()
+    private(set) lazy var playButtonView: UIButton = UIButton()
+    private var lessonVideo: LessonPage
 
-    init(with itemInfo: IndicatorInfo) {
-        self.itemInfo = itemInfo
+    init(with lessonVideo: LessonPage) {
+        self.lessonVideo = lessonVideo
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,52 +35,3 @@ class VideoViewController: UIViewController {
     }
 }
 
-// MARK: - IndicatorInfoProvider
-
-extension VideoViewController: IndicatorInfoProvider {
-
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo!
-    }
-}
-
-
-// MARK: - Builds
-
-private extension VideoViewController {
-
-    func build() -> Void {
-
-        buildViews()
-        buildLayouts()
-    }
-
-    func buildViews() -> Void {
-
-        //superview
-        view.backgroundColor = AppColor.white.uiColor
-
-        //video placeholder image view
-        videoPlaceholderImageView.backgroundColor = AppColor.main.uiColor
-
-        //play button view
-        playButtonView.setImage(#imageLiteral(resourceName: "play-button (2) 6"), for: .normal)
-        playButtonView.backgroundColor = .clear
-        playButtonView.layer.cornerRadius = 18.0
-        playButtonView.clipsToBounds = true
-    }
-
-    func buildLayouts() -> Void {
-
-        view.addSubviews(with: [videoPlaceholderImageView, playButtonView])
-        videoPlaceholderImageView.snp.makeConstraints { (make) in
-            make.left.right.centerY.centerX.equalToSuperview()
-            make.height.equalTo(230.0)
-        }
-
-        playButtonView.snp.makeConstraints { (make) in
-            make.center.equalTo(videoPlaceholderImageView)
-            make.height.width.equalTo(36.0)
-        }
-    }
-}

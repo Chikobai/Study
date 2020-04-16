@@ -119,9 +119,9 @@ private extension CourseDetailsViewController {
 
         headerView.toJoinCoursePressed = { [weak self] in
             if self?.courseObject?.is_my_course == true {
-                let viewController = LessonViewController()
-                viewController.title = self?.courseObject?.name
-                self?.navigationController?.pushViewController(viewController, animated: true)
+//                let viewController = LessonViewController(with: <#T##Int#>, cour)
+//                viewController.title = self?.courseObject?.name
+//                self?.navigationController?.pushViewController(viewController, animated: true)
             }
             else{
                 self?.toJoinCourse()

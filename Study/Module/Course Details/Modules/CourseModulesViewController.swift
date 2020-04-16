@@ -17,7 +17,7 @@ protocol CourseModuleDelegate: class {
     
     func toExpand( with section: Int, _ isCollapsed: Bool, _ lessonIndexPaths: [IndexPath]) -> Void
     func fetchMoreModules(with offset: Int) -> Void
-    func toRouteLessonDetail(with lesson: Lesson) -> Void
+    func toRouteLessonDetail(with moduleIdentifier: Int, _ lessonIdentifier: Int, _ title: String) -> Void
 }
 
 class CourseModulesViewController: UITableViewController, FetchableMore {
@@ -88,9 +88,14 @@ extension CourseModulesViewController: CourseModuleDelegate {
         }
     }
 
-    func toRouteLessonDetail(with lesson: Lesson) -> Void {
+    func toRouteLessonDetail(
+        with moduleIdentifier: Int,
+        _ lessonIdentifier: Int,
+        _ title: String
+    ) -> Void {
 
-        let viewController = LessonViewController()
+        let viewController = LessonViewController(with: moduleIdentifier, lessonIdentifier)
+        viewController.title = title
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
