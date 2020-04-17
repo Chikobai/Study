@@ -14,7 +14,7 @@ public class ViewPagerOptions {
     public var tabViewHeight:CGFloat = 44
     public var tabViewTextFont:UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
     
-    public var tabViewImageSize:CGSize = CGSize(width: 30, height: 30)
+    public var tabViewImageSize:CGSize = CGSize(width: 25, height: 25)
     public var tabViewImageMarginTop:CGFloat = 10
     public var tabViewImageMarginBottom:CGFloat = 5
     public var tabSelectedImageColor = AppColor.main.uiColor

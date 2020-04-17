@@ -11,7 +11,7 @@ import Foundation
 class Request{
 
     private let networkManager: NetworkManager = NetworkManager()
-    private let limit: Int = 3
+    private let limit: Int = 10
     private let page: Int = 1
     static let shared = Request()
 
@@ -72,12 +72,12 @@ extension  Request {
     //  MARK: SUBSCRIBED COURSES
 
     func loadSubscribedCourses(
-        complitionHandler: @escaping (([SubscribedCourse])->Void),
+        complitionHandler: @escaping (([Course])->Void),
         complitionHandlerError: @escaping ((String)->Void)
     ) -> Void {
         if let token = StoreManager.shared().token() {
             let endpoints = Endpoints.subscribedCourses(token: token)
-            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<SubscribedCourse>>) in
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<GeneralPaginationModel<Course>>) in
                 switch result {
                 case .failure(let error, _):
                     complitionHandlerError(error)

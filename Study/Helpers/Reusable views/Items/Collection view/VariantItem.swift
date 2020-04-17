@@ -26,6 +26,25 @@ class VariantItem: UICollectionViewCell {
     deinit {
         print("DEINIT: VariantItem")
     }
+
+    func configure(with variantText: String?) -> Void {
+
+        self.variantLabelView.text = variantText
+    }
+
+    func setCorrect(with isSelected: Bool) {
+        let icon: UIImage = isSelected ? #imageLiteral(resourceName: "checked") : #imageLiteral(resourceName: "correct")
+        self.backgroundColor = AppColor.main.uiColor
+        self.checkButtonView.setImage(icon, for: .normal)
+        self.variantLabelView.textColor = AppColor.white.uiColor
+    }
+
+    func setIncorrect(with isSelected: Bool) {
+        let icon: UIImage = isSelected ? #imageLiteral(resourceName: "checked") : #imageLiteral(resourceName: "correct")
+        self.backgroundColor = .red
+        self.checkButtonView.setImage(icon, for: .normal)
+        self.variantLabelView.textColor = AppColor.white.uiColor
+    }
 }
 
 // MARK: - Builds
@@ -46,7 +65,8 @@ private extension VariantItem {
         layer.masksToBounds = true
 
         //check button view
-        checkButtonView.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        checkButtonView.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysTemplate), for: .normal)
+        checkButtonView.tintColor = AppColor.main.uiColor
 
         //variant label view
         variantLabelView.numberOfLines = 0

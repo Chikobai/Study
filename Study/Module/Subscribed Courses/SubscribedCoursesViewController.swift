@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SubscribedCoursesDelegate: class {
-    func toRouteCourseDetails(with course: SubscribedCourse) -> Void
+    func toRouteCourseDetails(with course: Course) -> Void
 }
 
 class SubscribedCoursesViewController: UITableViewController, FetchableMore, Stylizing {
@@ -61,9 +61,9 @@ extension SubscribedCoursesViewController {
 
 extension SubscribedCoursesViewController: SubscribedCoursesDelegate {
 
-    func toRouteCourseDetails(with course: SubscribedCourse) -> Void {
+    func toRouteCourseDetails(with course: Course) -> Void {
 
-        let viewController = LessonViewController(with: 0, 0)
+        let viewController = CourseDetailsViewController(with: course)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

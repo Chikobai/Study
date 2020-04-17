@@ -37,7 +37,7 @@ class ViewPagerTabItem: UICollectionViewCell {
             imageView.isHidden = true
         case ViewPagerTabType.image:
             imageView.isHidden = false
-            imageView.image = tab.image
+            imageView.image = tab.image?.withRenderingMode(.alwaysTemplate)
             titleLabelView.isHidden = true
         }
     }
@@ -47,7 +47,7 @@ class ViewPagerTabItem: UICollectionViewCell {
         case ViewPagerTabType.basic:
             return
         case ViewPagerTabType.image:
-            imageView.tintColor = isSelected ?
+            self.imageView.tintColor = isSelected ?
                 options.tabSelectedImageColor : options.tabUnselectedImageColor
         }
     }

@@ -10,6 +10,8 @@ import UIKit
 
 class VariantCollectionView: UICollectionView {
 
+    private var variants: [LessonQuestionVariant] = []
+
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -27,6 +29,11 @@ class VariantCollectionView: UICollectionView {
     deinit {
         print("DEINIT: VariantCollectionView")
     }
+
+    func configure(with variants: [LessonQuestionVariant]) -> Void {
+        self.variants = variants
+        self.reloadData()
+    }
 }
 
 extension VariantCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -36,20 +43,39 @@ extension VariantCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.variants.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VariantItem.cellIdentifier(), for: indexPath) as? VariantItem
-
+        cell?.configure(with: variants[indexPath.row].text)
         return cell!
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let width = 20
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        if (variants[indexPath.item].is_true == true) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? VariantItem {
+                cell.setCorrect(with: true)
+            }
+        }
+        else{
+            if let cell = collectionView.cellForItem(at: indexPath) as? VariantItem {
+                cell.setIncorrect(with: true)
+            }
+
+            for (item, variant) in variants.enumerated() {
+                if variant.is_true == true {
+                    if let cell = collectionView.cellForItem(at: IndexPath(item: item, section: 0)) as? VariantItem {
+                        cell.setCorrect(with: false)
+                        return
+                    }
+                }
+            }
+        }
+        self.isUserInteractionEnabled = false
+    }
 }
 
 private extension VariantCollectionView {

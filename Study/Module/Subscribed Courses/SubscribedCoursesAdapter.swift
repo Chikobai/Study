@@ -13,7 +13,7 @@ import UIKit
 class SubscribedCoursesAdapter: NSObject {
 
     weak var delegate: SubscribedCoursesDelegate?
-    private var courses: [SubscribedCourse] = []
+    private var courses: [Course] = []
 
     override init() {
         super.init()
@@ -23,7 +23,7 @@ class SubscribedCoursesAdapter: NSObject {
         print("DEINIT: MyCoursesAdapter")
     }
 
-    func configure(with courses: [SubscribedCourse]) -> Void {
+    func configure(with courses: [Course]) -> Void {
         self.courses = courses
     }
 }

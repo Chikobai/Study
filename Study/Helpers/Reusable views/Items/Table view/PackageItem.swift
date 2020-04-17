@@ -96,9 +96,11 @@ private extension PackageItem {
 
         //community view
         communityView.configure(with: 169457, #imageLiteral(resourceName: "user"))
+        communityView.isHidden = true
 
         //lessons view
         lessonsView.configure(with: 45, #imageLiteral(resourceName: "pay"))
+        lessonsView.isHidden = true
     }
 
     func buildLayouts() -> Void {

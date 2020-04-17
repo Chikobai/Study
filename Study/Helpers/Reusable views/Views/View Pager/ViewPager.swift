@@ -82,6 +82,9 @@ extension ViewPager {
                 widths.append(width)
             }
         }
+        else{
+            widths = [CGFloat](repeating: options.tabViewImageSize.width + 10.0, count: tabsList.count)
+        }
         return widths
     }
 }
@@ -130,7 +133,7 @@ extension ViewPager: UICollectionViewDataSource {
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.cellIdentifier(), for: indexPath)
             let viewController = tabsViewList[indexPath.row]
-            viewController.view.frame = view.bounds
+            viewController.view.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: collectionView.bounds.height)
             cell.contentView.addSubview(viewController.view)
             return cell
         }
@@ -173,6 +176,7 @@ extension ViewPager {
 
         //tab view
         tabView.backgroundColor = .white
+        tabView.translatesAutoresizingMaskIntoConstraints = false
         tabView.showsHorizontalScrollIndicator = false
         (tabView.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
 

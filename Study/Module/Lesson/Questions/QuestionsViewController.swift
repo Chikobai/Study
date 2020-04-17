@@ -13,7 +13,7 @@ class QuestionsViewController: UIViewController, LessonDrawlable {
 
     private(set) lazy var variantCollectionView: VariantCollectionView = VariantCollectionView()
     private(set) lazy var questionsLabelView: UILabel = UILabel()
-    private var lessonQuestion: LessonPage
+    private(set) var lessonQuestion: LessonPage
 
     init(with lessonQuestion: LessonPage) {
         self.lessonQuestion = lessonQuestion

@@ -91,6 +91,7 @@ private extension ModuleExpandableHeaderView {
 
         //download button view
         downloadButtonView.setImage(#imageLiteral(resourceName: "cloud-computing 3"), for: .normal)
+        downloadButtonView.isHidden = true
 
         //separator line view
         separatorLineView.backgroundColor = AppColor.black.uiColor.withAlphaComponent(0.2)

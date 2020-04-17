@@ -45,11 +45,12 @@ extension LessonDrawlable where Self: QuestionsViewController {
         //questions label view
         questionsLabelView.font = .boldSystemFont(ofSize: 14)
         questionsLabelView.textAlignment = .center
-        questionsLabelView.text = "If you could switch two movie characters, what switch would lead to the most inappropriate movies?"
+        questionsLabelView.text = lessonQuestion.label
         questionsLabelView.numberOfLines = 0
         questionsLabelView.sizeToFit()
 
         //variant collection view
+        variantCollectionView.configure(with: lessonQuestion.answers ?? [])
 
     }
 

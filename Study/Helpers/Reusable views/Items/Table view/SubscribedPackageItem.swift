@@ -34,7 +34,7 @@ class SubscribedPackageItem: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with item: SubscribedCourse) -> Void {
+    func configure(with item: Course) -> Void {
 
         packageNameLabelView.text = item.name
     }

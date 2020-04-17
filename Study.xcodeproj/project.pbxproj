@@ -119,7 +119,6 @@
 		08C981AA2423BDDD00B2A802 /* GeneralPaginationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981A92423BDDD00B2A802 /* GeneralPaginationModel.swift */; };
 		08C981AC2423BF5600B2A802 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981AB2423BF5600B2A802 /* PostModel.swift */; };
 		08C981AF2423E2AF00B2A802 /* MessageBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */; };
-		08C981B12423E4D900B2A802 /* SubscribedCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C981B02423E4D900B2A802 /* SubscribedCourseModel.swift */; };
 		08CF860B241B9085009F31FE /* Skilltem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF860A241B9085009F31FE /* Skilltem.swift */; };
 		08CF860D241B9446009F31FE /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */; };
 		08D2DA412413686D001EC235 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D2DA402413686D001EC235 /* ProfileViewController.swift */; };
@@ -266,7 +265,6 @@
 		08C981A92423BDDD00B2A802 /* GeneralPaginationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPaginationModel.swift; sourceTree = "<group>"; };
 		08C981AB2423BF5600B2A802 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		08C981AE2423E2AF00B2A802 /* MessageBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBackgroundView.swift; sourceTree = "<group>"; };
-		08C981B02423E4D900B2A802 /* SubscribedCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedCourseModel.swift; sourceTree = "<group>"; };
 		08CF860A241B9085009F31FE /* Skilltem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skilltem.swift; sourceTree = "<group>"; };
 		08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		08D2DA402413686D001EC235 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -615,7 +613,6 @@
 			children = (
 				08C981A82423BD4E00B2A802 /* Base */,
 				08C981AB2423BF5600B2A802 /* PostModel.swift */,
-				08C981B02423E4D900B2A802 /* SubscribedCourseModel.swift */,
 				084E8793242516C6006B9524 /* CourseModel.swift */,
 				08479E14243731A4005029C8 /* ModuleModel.swift */,
 				08479E1624373CD8005029C8 /* ReviewModel.swift */,
@@ -1057,7 +1054,6 @@
 				0840505223FE6B5800A084A4 /* CourseInfoViewController.swift in Sources */,
 				08E1D40223FBB822006E3042 /* FloatingTextField.swift in Sources */,
 				0830815124136FA800947567 /* ProfileModels.swift in Sources */,
-				08C981B12423E4D900B2A802 /* SubscribedCourseModel.swift in Sources */,
 				0856AA7E241F6C1C00BFAE4F /* Endpoints.swift in Sources */,
 				082D6A952439B72F009B3816 /* AuthModel.swift in Sources */,
 				083707E72418C848008A85FB /* DataEntry.swift in Sources */,
