@@ -11,45 +11,49 @@ import Foundation
 class AppTitle {
 
     class Authorization {
-
-        static let login = "Вход"
-        static let registration = "Регистрация"
-        static let restorePassword = "Забыли пароль?"
-        static let enterPhoneNumber = "Введите ваш номер"
-        static let enterPassword = "Введите пароль"
-        static let enterEmail = "Введите эл.почту"
-        static let enterName = "Введите ваше имя"
-        static let enterSurname = "Введите вашу фамилию"
-        static let enter = "Войти"
-        static let iHaveAnAccount = "У меня есть аккаунт"
-        static let OTP = "SMS код"
-        static let OTPTimer = "Отправить повторно через "
-        static let resendOTP = "Отправить повторно"
-        static let resume = "Продолжить"
-        static let OTPMessage = "Введите код из SMS"
-        static let loginMessage = "Чтобы продолжить, введите ваш номер и пароль"
-        static let loginWithEmailMessage = "Чтобы продолжить, введите вашу эл.почту и пароль"
+        static let login = "login_title".localized
+        static let registration = "registration_title".localized
+        static let restorePassword = "restore_password_title".localized
+        static let enterPhoneNumber = "enter_phoneNumber_title".localized
+        static let enterPassword = "enter_password_title".localized
+        static let enterEmail = "enter_email_title".localized
+        static let enterName = "enter_name_title".localized
+        static let enterSurname = "enter_surname_title".localized
+        static let enter = "enter_title".localized
+        static let iHaveAnAccount = "i_have_an_account_title".localized
+        static let OTP = "otp_title".localized
+        static let OTPTimer = "otp_timer_title".localized
+        static let resendOTP = "resend_otp_title".localized
+        static let resume = "resume_title".localized
+        static let OTPMessage = "otp_message_title".localized
+        static let loginMessage = "login_message_title".localized
+        static let loginWithEmailMessage = "login_with_email_message_title".localized
     }
 
     class RestorePassword {
 
-        static let changePassword = "Изменить пароль"
-        static let restorePassword = "Забыли пароль?"
-        static let enterPhoneNumber = "Введите ваш номер"
-        static let enterPassword = "Введите новый пароль"
-        static let enterEmail = "Введите эл.почту"
-        static let repeateEnterPassword = "Повторите новый пароль"
-        static let OTP = "SMS код"
-        static let OTPTimer = "Отправить повторно через "
-        static let resendOTP = "Отправить повторно"
-        static let resume = "Продолжить"
-        static let change = "Изменить"
-        static let restore = "Восстановить"
-        static let OTPMessage = "Введите код из SMS"
-        static let enterPhoneMessage = "Чтобы продолжить, введите ваш номер телефона"
-        static let enterEmailMessage = "Чтобы продолжить, введите вашу эл.почту"
-        static let restorePasswordMessage = "Чтобы восстановить пароль, придумайте новый пароль и введите его"
-        static let changePasswordMessage = "Чтобы изменить пароль, придумайте новый пароль и введите его"
+        static let changePassword = "change_password_title".localized
+        static let restorePassword = "restore_password_title".localized
+        static let enterPhoneNumber = "enter_phone_number_title".localized
+        static let enterPassword = "enter_password_title".localized
+        static let enterEmail = "enter_email_title".localized
+        static let repeateEnterPassword = "repeate_enter_password_title".localized
+        static let OTP = "otp_title".localized
+        static let OTPTimer = "otp_timer_title".localized
+        static let resendOTP = "resend_otp_title".localized
+        static let resume = "resume_title".localized
+        static let change = "change_title".localized
+        static let restore = "restore_title".localized
+        static let OTPMessage = "otp_message_title".localized
+        static let enterPhoneMessage = "enter_phone_message_title".localized
+        static let enterEmailMessage = "enter_email_message_title".localized
+        static let restorePasswordMessage = "restore_password_message_title".localized
+        static let changePasswordMessage = "change_password_message_title".localized
+    }
+
+    class Main {
+
+        static let news = "news_title".localized
     }
 
     class CourseDetails {
@@ -59,46 +63,55 @@ class AppTitle {
 
     class Category {
 
-        static let title: String = "Category"
+        static let title: String = "categories_title".localized
+        static let review: String = "review_title".localized
     }
 
     class Search {
 
-        static let title: String = "Search"
+        static let title: String = "search_title".localized
     }
 
     class MyCourses {
 
-        static let title: String = "My Courses"
+        static let title: String = "my_courses_title".localized
+        static let review: String = "review_title".localized
     }
 
     class Settings {
 
-        static let title: String = "Settings"
-        static let exit: String = "Exit"
-        static let aboutApplication: String = "About application"
-        static let help: String = "Help"
-        static let language: String = "Language"
-        static let changePhoneSubtitle: String = "Change phone number"
-        static let changeNameSubtitle: String = "Change user name"
+        static let title: String = "settings_title".localized
+        static let exit: String = "exit_title".localized
+        static let aboutApplication: String = "about_application_title".localized
+        static let help: String = "help_title".localized
+        static let language: String = "language_title".localized
+        static let changePhoneSubtitle: String = "change_phone_subtitle_title".localized
+        static let changeNameSubtitle: String = "change_name_subtitle_title".localized
     }
 
     class Profile {
 
-        static let statistics: String = "Statistics"
-        static let notification: String = "Notifications"
-        static let notificationSubtitle: String = "Напоминать о занятиях"
+        static let certificates: String = "certificates_title".localized
+        static let statistics: String = "statistics_title".localized
+        static let notification: String = "notifications_title".localized
+        static let notificationSubtitle: String = "notifications_subtitle".localized
     }
 
     class Edit {
+        
+        static let nameEdit: String = "name_edit_title".localized
+        static let phoneEdit: String = "phone_edit_title".localized
+        static let enterPhoneNumber = "enter_phone_number_title".localized
+        static let changeNameMessage = "change_name_message_title".localized
+        static let changePhoneMessage = "change_phone_message_title".localized
+        static let enterName = "enter_name_title".localized
+        static let change = "confirm_title".localized
+        static let resume = "resume_title".localized
+    }
 
-        static let nameEdit: String = "Изменить имя"
-        static let phoneEdit: String = "Изменить номер"
-        static let enterPhoneNumber = "Введите ваш номер"
-        static let changeNameMessage = "Чтобы изменить имя пользователя, введите ваше имя"
-        static let changePhoneMessage = "Чтобы изменить номер, введите ваш номер"
-        static let enterName = "Введите ваше имя"
-        static let change = "Подтвердить"
-        static let resume = "Продолжить"
+    class Language {
+
+        static let kazakh: String = "kazakh_title"
+        static let russian: String = "russian_title"
     }
 }

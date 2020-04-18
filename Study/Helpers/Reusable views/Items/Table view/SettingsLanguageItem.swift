@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsLanguageItem: UITableViewCell {
 
+    var languageChanged: (()->())?
+
     private(set) lazy var titleLabelView: UILabel = UILabel()
     private(set) lazy var textInputView: UITextField = UITextField()
     private(set) lazy var pickerView: PickerViewManager = PickerViewManager()
@@ -54,9 +56,14 @@ private extension SettingsLanguageItem {
         textInputView.tintColor = .clear
 
         //picker view
-        pickerView.pickableItems = ["Казакша", "Русский", "English"]
-        pickerView.didSelect = { [weak textInputView] text in
-            textInputView?.text = text
+        pickerView.pickableItems = [
+            Language(key: AppKey.Language.kazakh, title: AppTitle.Language.kazakh.localized),
+            Language(key: AppKey.Language.russian, title: AppTitle.Language.russian.localized)
+        ]
+        pickerView.didSelect = { [weak self] language in
+            StoreManager.shared().setLanguage(with: language)
+            self?.textInputView.text = language.title
+            self?.languageChanged?()
         }
 
     }

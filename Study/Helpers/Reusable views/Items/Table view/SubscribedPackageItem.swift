@@ -79,7 +79,7 @@ private extension SubscribedPackageItem {
         //review button view
         reviewButtonView.layer.cornerRadius = 14
         reviewButtonView.backgroundColor = AppColor.green.uiColor
-        reviewButtonView.setTitle("Review", for: .normal)
+        reviewButtonView.setTitle(AppTitle.MyCourses.review, for: .normal)
 
         //progress view
         progressView.progress = 0.3

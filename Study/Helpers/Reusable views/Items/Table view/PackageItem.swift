@@ -86,7 +86,7 @@ private extension PackageItem {
         //review button view
         reviewButtonView.layer.cornerRadius = 14
         reviewButtonView.backgroundColor = AppColor.green.uiColor
-        reviewButtonView.setTitle("Review", for: .normal)
+        reviewButtonView.setTitle(AppTitle.Category.review, for: .normal)
 
         //package icon view
         packageIconView.layer.cornerRadius = 16

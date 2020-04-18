@@ -107,7 +107,7 @@ private extension ProfileCertificateItem {
         collectionView.showsHorizontalScrollIndicator = false
 
         //title label view
-        titleLabelView.text = "Certifications"
+        titleLabelView.text = AppTitle.Profile.certificates
         titleLabelView.font = .boldSystemFont(ofSize: 14.0)
 
         //next button view

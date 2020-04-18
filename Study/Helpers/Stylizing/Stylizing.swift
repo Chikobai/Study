@@ -217,7 +217,7 @@ extension Stylizing where  Self: MainViewController {
     func buildViews() -> Void {
 
         //navigation item
-        navigationItem.title = "Posts"
+        navigationItem.title = AppTitle.Main.news
 
         //refresh control
         refreshControl = UIRefreshControl()

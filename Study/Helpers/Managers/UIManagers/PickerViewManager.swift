@@ -10,9 +10,9 @@ import UIKit
 
 class PickerViewManager: UIPickerView {
 
-    var didSelect: ((String) -> ())?
+    var didSelect: ((Language) -> ())?
 
-    var pickableItems: [String] = []
+    var pickableItems: [Language] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,7 +54,7 @@ extension PickerViewManager: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickableItems[row]
+        return pickableItems[row].title
     }
 
 }

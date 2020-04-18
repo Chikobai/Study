@@ -1,0 +1,92 @@
+/* 
+  Localizable.strings
+  Study
+
+  Created by I on 4/17/20.
+  Copyright © 2020 Shyngys. All rights reserved.
+*/
+
+
+// MARK: - Authorization
+
+"login_title" = "Вход";
+"registration_title" = "Регистрация";
+"restore_password_title" = "Забыли пароль?";
+"enter_phoneNumber_title" = "Введите ваш номер";
+"enter_password_title" = "Введите пароль";
+"enter_email_title" = "Введите эл.почту";
+"enter_name_title" = "Введите ваше имя";
+"enter_surname_title" = "Введите вашу фамилию";
+"enter_title" = "Войти";
+"i_have_an_account_title" = "У меня есть аккаунт";
+"otp_title" = "SMS код";
+"otp_timer_title" = "Отправить повторно через ";
+"resend_otp_title" = "Отправить повторно";
+"resume_title" = "Продолжить";
+"otp_message_title" = "Введите код из SMS";
+"login_message_title" = "Чтобы продолжить, введите ваш номер и пароль";
+"login_with_email_message_title" = "Чтобы продолжить, введите вашу эл.почту и пароль";
+
+// MARK: - Restore password
+
+"change_password_title" = "Изменить пароль";
+"restore_password_title" = "Забыли пароль?";
+"enter_phone_number_title" = "Введите ваш номер";
+"enter_password_title" = "Введите новый пароль";
+"enter_email_title" = "Введите эл.почту";
+"repeate_enter_password_title" = "Повторите новый пароль";
+"change_title" = "Изменить";
+"restore_title" = "Восстановить";
+"enter_phone_message_title" = "Чтобы продолжить, введите ваш номер телефона";
+"enter_email_message_title" = "Чтобы продолжить, введите вашу эл.почту";
+"restore_password_message_title" = "Чтобы восстановить пароль, придумайте новый пароль и введите его";
+"change_password_message_title" = "Чтобы изменить пароль, придумайте новый пароль и введите его";
+
+// MARK: - Main
+
+"news_title" = "Новости";
+
+// MARK: - Сategory
+
+"categories_title" = "Категории";
+"review_title" = "Смотреть";
+
+// MARK: - Search
+
+"search_title" = "Поиск";
+
+// MARK: - My Courses
+
+"my_courses_title" = "Мои курсы";
+
+// MARK: - Settings
+
+"settings_title" = "Настройки";
+"exit_title" = "Выйти";
+"about_application_title" = "О приложении";
+"help_title" = "Помощь";
+"language_title" = "Язык";
+"change_phone_subtitle_title" = "Изменить номер телефона";
+"change_name_subtitle_title" = "Изменить имя пользователя";
+
+// MARK: - Profile
+
+"statistics_title" = "Статистика";
+"notification_title" = "Уведомления";
+"certificates_title" = "Сертификаты";
+"notification_subtitle" = "Напоминать о занятиях";
+
+// MARK: - Edit
+
+"name_edit_title" = "Изменить имя";
+"phone_edit_title" = "Изменить номер";
+"enter_phone_number_title" = "Введите ваш номер";
+"change_name_message_title" = "Чтобы изменить имя пользователя, введите ваше имя";
+"change_phone_message_title" = "Чтобы изменить номер, введите ваш номер";
+"enter_name_title" = "Введите ваше имя";
+"confirm_title" = "Подтвердить";
+
+// MARK: - Languages
+
+"kazakh_title" = "Казахский";
+"russian_title" = "Русский";

@@ -11,12 +11,13 @@ import UIKit
 
 extension String {
 
-    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
-
-        return ceil(boundingBox.width)
+    var localized: String {
+        let language = StoreManager.shared().language()
+        let path = Bundle.main.path(forResource: language.key, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        return (bundle?.localizedString(forKey: self, value: nil, table: nil))!
     }
+    
 
     func removingWhitespaces() -> String {
         return components(separatedBy: .whitespaces).joined()
@@ -27,5 +28,12 @@ extension String {
 
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: self)
+    }
+
+    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+
+        return ceil(boundingBox.width)
     }
 }

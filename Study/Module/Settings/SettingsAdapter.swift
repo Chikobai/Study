@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class SettingsAdapter: NSObject {
 
     private var items: [SettingsSectionItem] = [.header, .changableProfile, .additional]
@@ -119,7 +118,11 @@ private extension SettingsAdapter {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsLanguageItem.cellIdentifier(), for: indexPath) as? SettingsLanguageItem
         cell?.textLabel?.text = item.title
-        cell?.textInputView.text = "Казакша"
+        cell?.textInputView.text = StoreManager.shared().language().title.localized
+
+        cell?.languageChanged = {
+            tableView.reloadData()
+        }
         
         return cell!
     }

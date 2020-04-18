@@ -56,4 +56,17 @@ class StoreManager: NSObject {
         try? self.storage?.setObject(value, forKey: AppKey.Storage.token)
     }
 
+    func language() -> Language {
+
+        if let language = try? self.storage?.object(ofType: Language.self, forKey: AppKey.Storage.language) {
+            return language
+        }
+        return Language(key: AppKey.Language.kazakh, title: AppTitle.Language.kazakh)
+    }
+
+    func setLanguage(with value: Language) -> Void {
+
+        try? self.storage?.setObject(value, forKey: AppKey.Storage.language)
+    }
+
 }

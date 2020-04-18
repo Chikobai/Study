@@ -16,13 +16,20 @@ class AppKey {
 
         static let diskConfigurationKey     = "DISKCONFIGURATIONKEY"
         static let token                    = "TOKEN"
+        static let language                 = "LANGUAGE"
+    }
+
+    class Language {
+
+        static let kazakh     = "kk-KZ"
+        static let russian    = "ru"
     }
 
     class Authorization {
 
         static let email     = "email"
         static let password  = "password"
-        static let name  = "first_name"
-        static let surname  = "last_name"
+        static let name      = "first_name"
+        static let surname   = "last_name"
     }
 }

@@ -1,0 +1,93 @@
+/* 
+  Localizable.strings
+  Study
+
+  Created by I on 4/17/20.
+  Copyright © 2020 Shyngys. All rights reserved.
+*/
+
+// MARK: - Authorization
+
+"login_title" = "Кіру";
+"registration_title" = "Тіркеу";
+"restore_password_title" = "Құпия сөзді ұмыттыңыз ба?";
+"enter_phoneNumber_title" = "Нөміріңізді енгізіңіз";
+"enter_password_title" = "Құпия сөзді енгізіңіз";
+"enter_email_title" = "Электрондық поштаны енгізіңіз";
+"enter_name_title" = "Атыңызды енгізіңіз";
+"enter_surname_title" = "Тегіңізді енгізіңіз";
+"enter_title" = "Кіру";
+"i_have_an_account_title" = "Менде аккаунт бар";
+"otp_title" = "SMS коды";
+"otp_timer_title" = "Қайта жіберу";
+"resend_otp_title" = "Қайта жіберу";
+"resume_title" = "Жалғастыру";
+"otp_message_title" = "SMS-тен кодты енгізіңіз";
+"login_message_title" = "Жалғастыру үшін нөміріңіз бен пароліңізді енгізіңіз";
+"login_with_email_message_title" = "Жалғастыру үшін электрондық пошта мен құпия сөзді енгізіңіз";
+
+
+// MARK: - Restore password
+
+"change_password_title" = "Құпия сөзді өзгерту";
+"restore_password_title" = "Құпия сөзді ұмыттыңыз ба?";
+"enter_phone_number_title" = "Нөміріңізді енгізіңіз";
+"enter_password_title" = "Жаңа құпия сөзді енгізіңіз";
+"enter_email_title" = "Электрондық поштаны енгізіңіз";
+"repeate_enter_password_title" = "Жаңа құпия сөзді қайталау";
+"change_title" = "Өзгерту";
+"restore_title" = "Қалпына келтіру";
+"enter_phone_message_title" = "Жалғастыру үшін телефон нөміріңізді енгізіңіз";
+"enter_email_message_title" = "Жалғастыру үшін электрондық пошта мекенжайын енгізіңіз";
+"restore_password_message_title" = "Құпия сөзді қалпына келтіру үшін жаңа құпия сөз жасап, оны енгізіңіз";
+"change_password_message_title" = "Құпия сөзді өзгерту үшін жаңа құпия сөз жасап, оны енгізіңіз";
+
+// MARK: - Main
+
+"news_title" = "Жаңалықтар";
+
+// MARK: - Category
+
+"categories_title" = "Категориялар";
+"review_title" = "Қарау";
+
+// MARK: - Search
+
+"search_title" = "Іздеу";
+
+// MARK: - My Courses
+
+"my_courses_title" = "Менің курстарым";
+
+// MARK: - Settings
+
+"settings_title" = "Баптаулар";
+"exit_title" = "Шығу";
+"about_application_title" = "Қосымша туралы";
+"help_title" = "Көмек";
+"language_title" = "Тіл";
+"change_phone_subtitle_title" = "Телефон нөмірін өзгерту";
+"change_name_subtitle_title" = "Пайдаланушының атын өзгерту";
+
+// MARK: - Profile
+
+"statistics_title" = "Статистика";
+"notifications_title" = "Хабарландырулар";
+"certificates_title" = "Сертификаттар";
+"notifications_subtitle" = "Әрекеттер туралы еске салу";
+
+// MARK: - Edit
+
+"name_edit_title" = "Атын өзгерту";
+"phone_edit_title" = "Нөмірді өзгерту";
+"enter_phone_number_title" = "Нөміріңізді енгізіңіз";
+"change_name_message_title" = "Пайдаланушы атын өзгерту үшін атыңызды енгізіңіз";
+"change_phone_message_title" = "Нөмірді өзгерту үшін нөміріңізді енгізіңіз";
+"enter_name_title" = "Атыңызды енгізіңіз";
+"confirm_title" = "Растау";
+
+// MARK: - Languages
+
+"kazakh_title" = "Қазақша";
+"russian_title" = "Орысша";
+
