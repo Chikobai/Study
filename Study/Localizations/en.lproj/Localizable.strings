@@ -2,9 +2,10 @@
   Localizable.strings
   Study
 
-  Created by I on 4/19/20.
+  Created by I on 4/17/20.
   Copyright © 2020 Shyngys. All rights reserved.
 */
+
 
 // MARK: - Authorization
 
@@ -26,7 +27,7 @@
 "login_message_title" = "Чтобы продолжить, введите ваш номер и пароль";
 "login_with_email_message_title" = "Чтобы продолжить, введите вашу эл.почту и пароль";
 
-    // MARK: - Restore password
+// MARK: - Restore password
 
 "change_password_title" = "Изменить пароль";
 "restore_password_title" = "Забыли пароль?";
@@ -41,31 +42,31 @@
 "restore_password_message_title" = "Чтобы восстановить пароль, придумайте новый пароль и введите его";
 "change_password_message_title" = "Чтобы изменить пароль, придумайте новый пароль и введите его";
 
-    // MARK: - Main
+// MARK: - Main
 
 "news_title" = "Новости";
 
-    // MARK: - Сategory
+// MARK: - Сategory
 
 "categories_title" = "Категории";
 "review_title" = "Смотреть";
 
-    // MARK: - Search
+// MARK: - Search
 
 "search_title" = "Поиск";
 
-    // MARK: - My Courses
+// MARK: - My Courses
 
 "my_courses_title" = "Мои курсы";
 
-    // MARK: - Course Details
+// MARK: - Course Details
 
 "info_title" = "Введение";
 "comment_title" = "Отзывы";
 "module_title" = "Уроки";
 "reviews_message" = "Чтобы оставить отзыв, пройдите больше 80% материалов";
 
-    // MARK: - Settings
+// MARK: - Settings
 
 "settings_title" = "Настройки";
 "exit_title" = "Выйти";
@@ -75,14 +76,14 @@
 "change_phone_subtitle_title" = "Изменить номер телефона";
 "change_name_subtitle_title" = "Изменить имя пользователя";
 
-    // MARK: - Profile
+// MARK: - Profile
 
 "statistics_title" = "Статистика";
 "notification_title" = "Уведомления";
 "certificates_title" = "Сертификаты";
 "notification_subtitle" = "Напоминать о занятиях";
 
-    // MARK: - Edit
+// MARK: - Edit
 
 "name_edit_title" = "Изменить имя";
 "phone_edit_title" = "Изменить номер";
@@ -92,12 +93,12 @@
 "enter_name_title" = "Введите ваше имя";
 "confirm_title" = "Подтвердить";
 
-    // MARK: - Languages
+// MARK: - Languages
 
 "kazakh_title" = "Казахский";
 "russian_title" = "Русский";
 
-    // MARK: - Error Message
+// MARK: - Error Message
 
 "something_is_wrong_message" = "Что-то не так. Приносим извинения за неудобства";
 "success_message" = "Успешно прошло.";
