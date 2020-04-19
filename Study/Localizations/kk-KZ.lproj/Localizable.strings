@@ -59,6 +59,13 @@
 
 "my_courses_title" = "Менің курстарым";
 
+// MARK: - Course Details
+
+"info_title" = "Кіріспе";
+"review_title" = "Пікірлер";
+"module_title" = "Сабақтар";
+"review_message_title" = "Пікір қалдыру үшін, материалдардың 80% өтіңіз";
+
 // MARK: - Settings
 
 "settings_title" = "Баптаулар";

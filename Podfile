@@ -6,7 +6,6 @@ target 'Study' do
   use_frameworks!
 
   # Pods for Study
-pod 'XLPagerTabStrip'
 pod 'IQKeyboardManagerSwift'
 pod 'Alamofire'
 pod 'SnapKit'

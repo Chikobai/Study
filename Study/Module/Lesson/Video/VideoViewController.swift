@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 
 class VideoViewController: UIViewController, LessonDrawlable {
 

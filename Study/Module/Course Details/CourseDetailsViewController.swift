@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CourseDetailsViewController: ScrollViewController {
+class CourseDetailsViewController: UIViewController {
 
     private lazy var headerView: CourseHeaderView = CourseHeaderView()
     private lazy var coverViewOfPagerView: UIView = UIView()
@@ -87,16 +87,12 @@ private extension CourseDetailsViewController {
 
         //superview
         view.backgroundColor = AppColor.white.uiColor
-
-        //scroll view
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.bounces = false
     }
 
     func buildLayouts() -> Void {
 
         self.add(pagerViewController, onView: coverViewOfPagerView)
-        addToScrollView([headerView, coverViewOfPagerView])
+        view.addSubviews(with: [headerView, coverViewOfPagerView])
 
         let pagerControlHeight: CGFloat = 20.0
         let headerViewHeight: CGFloat = 175.0

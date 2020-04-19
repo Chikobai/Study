@@ -7,20 +7,16 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 
 class CourseInfoViewController: UITableViewController, FetchableMore {
 
     var state: State = .empty
-
-    private var itemInfo: IndicatorInfo?
     private var courseIdentifier: Int?
 
     private var adapter: CourseInfoAdapter = CourseInfoAdapter()
     private lazy var headerView = CourseInfoHeaderView()
 
-    init(with itemInfo: IndicatorInfo, _ courseIdentifier: Int) {
-        self.itemInfo = itemInfo
+    init(with courseIdentifier: Int) {
         self.courseIdentifier = courseIdentifier
         super.init(nibName: nil, bundle: nil)
     }
@@ -61,16 +57,6 @@ extension CourseInfoViewController {
                 self.handleError(action: .fetching, with: message)
             }
         }
-    }
-}
-
-
-// MARK: - IndicatorInfoProvider
-
-extension CourseInfoViewController: IndicatorInfoProvider {
-
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo!
     }
 }
 

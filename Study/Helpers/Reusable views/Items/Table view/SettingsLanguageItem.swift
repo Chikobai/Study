@@ -65,7 +65,6 @@ private extension SettingsLanguageItem {
             self?.textInputView.text = language.title
             self?.languageChanged?()
         }
-
     }
 
     func buildLayouts() -> Void {

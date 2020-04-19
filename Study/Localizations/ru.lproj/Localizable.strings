@@ -59,6 +59,13 @@
 
 "my_courses_title" = "Мои курсы";
 
+// MARK: - Course Details
+
+"info_title" = "Введение";
+"review_title" = "Отзывы";
+"module_title" = "Уроки";
+"review_message_title" = "Чтобы оставить отзыв, пройдите больше 80% материалов";
+
 // MARK: - Settings
 
 "settings_title" = "Настройки";

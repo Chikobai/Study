@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 
 protocol CourseReviewsScrollDelegate: class {
     
@@ -22,15 +21,11 @@ protocol CourseReviewsDelegate: class {
 class CourseReviewsViewController: UITableViewController, FetchableMore {
 
     var state: State = .empty
-
     weak var scrollDelegate: CourseReviewsScrollDelegate?
-
     private var courseIdentifier: Int?
-    private var itemInfo: IndicatorInfo?
     private var adapter: CourseReviewsAdapter = CourseReviewsAdapter()
 
-    init(with itemInfo: IndicatorInfo, _ courseIdentifier: Int) {
-        self.itemInfo = itemInfo
+    init(with courseIdentifier: Int) {
         self.courseIdentifier = courseIdentifier
         super.init(nibName: nil, bundle: nil)
     }
@@ -90,15 +85,6 @@ extension CourseReviewsViewController: CourseReviewsDelegate {
                 self.handleError(action: .fetchingMore, with: message)
             }
         }
-    }
-}
-
-// MARK: - IndicatorInfoProvider
-
-extension CourseReviewsViewController: IndicatorInfoProvider {
-
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo!
     }
 }
 

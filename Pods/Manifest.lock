@@ -6,7 +6,6 @@ PODS:
   - IQKeyboardManagerSwift (6.5.5)
   - ReadMoreTextView (3.0.1)
   - SnapKit (5.0.1)
-  - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -16,7 +15,6 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - ReadMoreTextView
   - SnapKit
-  - XLPagerTabStrip
 
 SPEC REPOS:
   trunk:
@@ -27,7 +25,6 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - ReadMoreTextView
     - SnapKit
-    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -37,8 +34,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   ReadMoreTextView: 19147adf93abce6d7271e14031a00303fe28720d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: ab9ea3b45c8b6830e0cbaef5e747dcfeac417187
+PODFILE CHECKSUM: f6d685a6e456f3f853c41e5ccaf6fa5e6d3f5ed0
 
 COCOAPODS: 1.8.4

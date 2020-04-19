@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 
-class CourseDetailsPagerViewController: ButtonBarPagerTabStripViewController {
+class CourseDetailsPagerViewController: UIViewController {
 
     private var courseIdentifier: Int?
+    private var options: ViewPagerOptions = ViewPagerOptions()
+    private var viewPager:ViewPager?
 
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -26,49 +27,27 @@ class CourseDetailsPagerViewController: ButtonBarPagerTabStripViewController {
     }
 
     override func viewDidLoad() {
-
-        settings.style.buttonBarBackgroundColor = AppColor.white.uiColor
-        settings.style.buttonBarItemBackgroundColor = AppColor.white.uiColor
-        settings.style.selectedBarBackgroundColor = AppColor.main.uiColor
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
-        settings.style.selectedBarHeight = 2.0
-        settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
-        settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        settings.style.buttonBarLeftContentInset = 0
-        settings.style.buttonBarRightContentInset = 0
-
-        changeCurrentIndexProgressive = {(oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .black
-            newCell?.label.textColor = .black
-        }
-        
         super.viewDidLoad()
-
-        edgesForExtendedLayout = []
     }
 
     func configure(with courseIdentifier: Int) -> Void {
+
         self.courseIdentifier = courseIdentifier
-        self.reloadPagerTabStripView()
-    }
-    
 
-    // MARK: - PagerTabStripDataSource
-    
-    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        viewPager = ViewPager(containerView: self.view)
 
-        if let courseIdentifier = courseIdentifier {
-            let info = CourseInfoViewController(with: "Info", courseIdentifier)
+        let viewControllers: [UIViewController] = [
+            CourseInfoViewController(with: courseIdentifier),
+            CourseReviewsViewController(with: courseIdentifier),
+            CourseModulesViewController(with: courseIdentifier)
+        ]
+        let viewPagerTabs: [ViewPagerTab] = [
+            ViewPagerTab(title: AppTitle.CourseDetails.info), ViewPagerTab(title: AppTitle.CourseDetails.review), ViewPagerTab(title: AppTitle.CourseDetails.module)
+        ]
 
-            let reviews = CourseReviewsViewController(with: "Reviews", courseIdentifier)
-
-            let modules = CourseModulesViewController(with: "Modules", courseIdentifier)
-
-            return [info, reviews, modules]
-        }
-
-        return []
+        viewPager?.setOptions(options: options)
+        viewPager?.setTabList(with: viewPagerTabs)
+        viewPager?.setTabsViewList(with: viewControllers)
+        viewPager?.setCurrentPosition(with: 0)
     }
 }
