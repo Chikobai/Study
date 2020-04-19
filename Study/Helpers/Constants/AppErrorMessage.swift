@@ -10,16 +10,16 @@ import Foundation
 
 class AppErrorMessage {
 
-    static let somethingIsWrong = "Что-то не так. Приносим извинения за неудобства"
-    static let success = "Успешно ;)"
-    static let noData = "К сожалению, данные пока отсутствуют"
+    static let somethingIsWrong = "something_is_wrong_message".localized
+    static let success = "success_message".localized
+    static let noData = "no_data_message".localized
 
     class Authorization {
 
-        static let emailIsNotValid      = "Некорректный адрес электронной почты"
-        static let passwordIsSoWeak     = "Поле пароля должно быть не меньше 8"
-        static let nameIsEmpty          = "Поле имя не должно быть пустым"
-        static let surnameIsEmpty       = "Поле фамилия не должно быть пустым"
-        static let verification         = "Пожалуйста подтвердите вашу почту. Мы были уверены что это действительно ваша почта."
+        static let emailIsNotValid      = "email_is_not_valid_message".localized
+        static let passwordIsSoWeak     = "password_is_so_weak_message".localized
+        static let nameIsEmpty          = "name_is_empty_message".localized
+        static let surnameIsEmpty       = "surname_is_empty_message".localized
+        static let verification         = "verification_message".localized
     }
 }

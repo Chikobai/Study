@@ -62,9 +62,9 @@
 // MARK: - Course Details
 
 "info_title" = "Кіріспе";
-"review_title" = "Пікірлер";
+"comment_title" = "Пікірлер";
 "module_title" = "Сабақтар";
-"review_message_title" = "Пікір қалдыру үшін, материалдардың 80% өтіңіз";
+"reviews_message" = "Пікір қалдыру үшін, материалдардың 80% өтіңіз";
 
 // MARK: - Settings
 
@@ -98,3 +98,13 @@
 "kazakh_title" = "Қазақша";
 "russian_title" = "Орысша";
 
+// MARK: - Error Message
+
+"something_is_wrong_message" = "Бір нәрсе дұрыс емес. Қолайсыздық үшін кешірім сұраймыз.";
+"success_message" = "Сәтті өтті.";
+"no_data_message" = "Өкінішке орай, деректер әзірге бос.";
+"email_is_not_valid_message" = "Электрондық поштаңыздың форматы қате.";
+"password_is_so_weak_message" = "Құпия сөздің ұзындығы кемінде 8 болуы керек.";
+"name_is_empty_message" = "Атыңыз бос болмауы керек.";
+"surname_is_empty_message" = "Тегіңіз бос болмауы керек.";
+"authentic_message" = "Поштаңызды растаңыз. Бұл сіздің поштаңыз екеніне сенімді болуымыз керек.";

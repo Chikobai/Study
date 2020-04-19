@@ -62,9 +62,9 @@
 // MARK: - Course Details
 
 "info_title" = "Введение";
-"review_title" = "Отзывы";
+"comment_title" = "Отзывы";
 "module_title" = "Уроки";
-"review_message_title" = "Чтобы оставить отзыв, пройдите больше 80% материалов";
+"reviews_message" = "Чтобы оставить отзыв, пройдите больше 80% материалов";
 
 // MARK: - Settings
 
@@ -97,3 +97,14 @@
 
 "kazakh_title" = "Казахский";
 "russian_title" = "Русский";
+
+// MARK: - Error Message
+
+"something_is_wrong_message" = "Что-то не так. Приносим извинения за неудобства";
+"success_message" = "Успешно прошло.";
+"no_data_message" = "К сожалению, данные пока отсутствуют.";
+"email_is_not_valid_message" = "Некорректный адрес электронной почты.";
+"password_is_so_weak_message" = "Поле пароля должно быть не меньше 8.";
+"name_is_empty_message" = "Поле имя не должно быть пустым.";
+"surname_is_empty_message" = "Поле фамилия не должно быть пустым.";
+"verification_message" = "Пожалуйста подтвердите вашу почту. Мы были уверены что это действительно ваша почта.";

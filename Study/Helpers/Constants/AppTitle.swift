@@ -58,9 +58,9 @@ class AppTitle {
 
     class CourseDetails {
 
-        static let reviewsMessage = "Чтобы оставить отзыв, пройдите больше 80% материалов"
+        static let reviewsMessage = "reviews_message".localized
         static let info: String = "info_title".localized
-        static let review: String = "review_title".localized
+        static let review: String = "comment_title".localized
         static let module: String = "module_title".localized
     }
 
