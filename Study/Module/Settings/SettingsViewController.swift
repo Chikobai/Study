@@ -22,6 +22,27 @@ class SettingsViewController: UITableViewController {
 
         build()
     }
+
+    func exitEvent() -> Void {
+        let alertController = UIAlertController(title: AppTitle.Alert.warningMessage, message: AppTitle.Alert.logoutMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: AppTitle.Alert.logout, style: .destructive, handler: { (_) in
+
+            let viewController = AuthorizationViewController(with: .loginWithEmail).inNavigate()
+            if let window = UIApplication.shared.keyWindow {
+                let options: UIView.AnimationOptions = .transitionFlipFromLeft
+                let duration: TimeInterval = 1
+                window.rootViewController = viewController
+                UIView.transition(with: window, duration: duration, options: options, animations: nil, completion: { (_) in
+                    StoreManager.shared().setToken(with: nil)
+                })
+            }
+        }))
+
+        alertController.addAction(UIAlertAction(title: AppTitle.Alert.cancel, style: .cancel, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - SettingsDelegate
@@ -36,6 +57,8 @@ extension SettingsViewController: SettingsDelegate {
         case .changablePhoneItem:
             let viewController = EditViewController(with: .changePhone)
             self.pushWithHidesBottomBar(viewController)
+        case .exitItem:
+            self.exitEvent()
         default:
             return
         }

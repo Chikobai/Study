@@ -117,4 +117,12 @@ class AppTitle {
         static let kazakh: String = "kazakh_title"
         static let russian: String = "russian_title"
     }
+
+    class Alert {
+
+        static let warningMessage: String = "warning_message".localized
+        static let logoutMessage: String = "logout_message".localized
+        static let cancel: String = "cancel_title".localized
+        static let logout: String = "logout_title".localized
+    }
 }

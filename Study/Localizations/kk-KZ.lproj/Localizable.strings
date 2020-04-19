@@ -27,7 +27,7 @@
 "login_with_email_message_title" = "Жалғастыру үшін электрондық пошта мен құпия сөзді енгізіңіз";
 
 
-    // MARK: - Restore password
+// MARK: - Restore password
 
 "change_password_title" = "Құпия сөзді өзгерту";
 "restore_password_title" = "Құпия сөзді ұмыттыңыз ба?";
@@ -42,11 +42,11 @@
 "restore_password_message_title" = "Құпия сөзді қалпына келтіру үшін жаңа құпия сөз жасап, оны енгізіңіз";
 "change_password_message_title" = "Құпия сөзді өзгерту үшін жаңа құпия сөз жасап, оны енгізіңіз";
 
-    // MARK: - Main
+// MARK: - Main
 
 "news_title" = "Жаңалықтар";
 
-    // MARK: - Category
+// MARK: - Category
 
 "categories_title" = "Категориялар";
 "review_title" = "Қарау";
@@ -55,18 +55,18 @@
 
 "search_title" = "Іздеу";
 
-    // MARK: - My Courses
+// MARK: - My Courses
 
 "my_courses_title" = "Менің курстарым";
 
-    // MARK: - Course Details
+// MARK: - Course Details
 
 "info_title" = "Кіріспе";
 "comment_title" = "Пікірлер";
 "module_title" = "Сабақтар";
 "reviews_message" = "Пікір қалдыру үшін, материалдардың 80% өтіңіз";
 
-    // MARK: - Settings
+// MARK: - Settings
 
 "settings_title" = "Баптаулар";
 "exit_title" = "Шығу";
@@ -76,14 +76,14 @@
 "change_phone_subtitle_title" = "Телефон нөмірін өзгерту";
 "change_name_subtitle_title" = "Пайдаланушының атын өзгерту";
 
-    // MARK: - Profile
+// MARK: - Profile
 
 "statistics_title" = "Статистика";
 "notifications_title" = "Хабарландырулар";
 "certificates_title" = "Сертификаттар";
 "notifications_subtitle" = "Әрекеттер туралы еске салу";
 
-    // MARK: - Edit
+// MARK: - Edit
 
 "name_edit_title" = "Атын өзгерту";
 "phone_edit_title" = "Нөмірді өзгерту";
@@ -93,12 +93,12 @@
 "enter_name_title" = "Атыңызды енгізіңіз";
 "confirm_title" = "Растау";
 
-    // MARK: - Languages
+// MARK: - Languages
 
 "kazakh_title" = "Қазақша";
 "russian_title" = "Орысша";
 
-    // MARK: - Error Message
+// MARK: - Error Message
 
 "something_is_wrong_message" = "Бір нәрсе дұрыс емес. Қолайсыздық үшін кешірім сұраймыз.";
 "success_message" = "Сәтті өтті.";
@@ -109,3 +109,9 @@
 "surname_is_empty_message" = "Тегіңіз бос болмауы керек.";
 "authentic_message" = "Поштаңызды растаңыз. Бұл сіздің поштаңыз екеніне сенімді болуымыз керек.";
 
+// MARK: - Alert
+
+"warning_message" = "Назар аударыңыз";
+"logout_message" = "Cіздің аккаутыңыз құрылғыдан өшіріледі";
+"cancel_title" = "Бас тарту";
+"logout_title" = "Шығу";
