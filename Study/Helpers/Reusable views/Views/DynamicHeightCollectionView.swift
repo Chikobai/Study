@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class DynamicHeightCollectionViewFlowLayout: UICollectionViewFlowLayout {
+
     var tempCellAttributesArray = [UICollectionViewLayoutAttributes]()
     let leftEdgeInset: CGFloat = 10
 
@@ -19,6 +20,9 @@ class DynamicHeightCollectionViewFlowLayout: UICollectionViewFlowLayout {
         if(cellAttributesArray != nil && cellAttributesArray!.count > 1) {
             for i in 1..<(cellAttributesArray!.count) {
                 let prevLayoutAttributes: UICollectionViewLayoutAttributes = cellAttributesArray![i - 1]
+                if (i == 1) {
+                    prevLayoutAttributes.frame.origin.x = 20
+                }
                 let currentLayoutAttributes: UICollectionViewLayoutAttributes = cellAttributesArray![i]
                 let maximumSpacing: CGFloat = 8
                 let prevCellMaxX: CGFloat = prevLayoutAttributes.frame.maxX
@@ -32,11 +36,12 @@ class DynamicHeightCollectionViewFlowLayout: UICollectionViewFlowLayout {
                     currentLayoutAttributes.frame = frame ?? CGRect.zero
                 } else {
                     // self.shiftCellsToCenter()
-                    currentLayoutAttributes.frame.origin.x = 0
+                    currentLayoutAttributes.frame.origin.x = 20
                     //To Avoid InConvience Emoji Cell
                     if (prevLayoutAttributes.frame.origin.x != 0) {
                         currentLayoutAttributes.frame.origin.y = prevLayoutAttributes.frame.origin.y + prevLayoutAttributes.frame.size.height + 08
                     }
+
                 }
                 // print(currentLayoutAttributes.frame)
             }
@@ -60,60 +65,6 @@ class DynamicHeightCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     }
 }
-
-import UIKit
-
-class TokenCollViewFlowLayout: UICollectionViewFlowLayout {
-
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let attributesForElementsInRect = super.layoutAttributesForElements(in: rect)
-        var newAttributesForElementsInRect = [UICollectionViewLayoutAttributes]()
-
-        var leftMargin: CGFloat = self.sectionInset.left
-
-        for attributes in attributesForElementsInRect! {
-            if (attributes.frame.origin.x == self.sectionInset.left) {
-                leftMargin = self.sectionInset.left
-            } else {
-                var newLeftAlignedFrame = attributes.frame
-
-                if leftMargin + attributes.frame.width < self.collectionViewContentSize.width {
-                    newLeftAlignedFrame.origin.x = leftMargin
-                } else {
-                    newLeftAlignedFrame.origin.x = self.sectionInset.left
-                }
-
-                attributes.frame = newLeftAlignedFrame
-            }
-            leftMargin += attributes.frame.size.width + 8
-            newAttributesForElementsInRect.append(attributes)
-        }
-
-        return newAttributesForElementsInRect
-    }
-}
-
-//class DynmicHeightCollectionView: UICollectionView {
-//
-//    var isDynamicSizeRequired = false
-//
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
-//
-//            if self.intrinsicContentSize.height > frame.size.height {
-//                self.invalidateIntrinsicContentSize()
-//            }
-//            if isDynamicSizeRequired {
-//                self.invalidateIntrinsicContentSize()
-//            }
-//        }
-//    }
-//
-//    override var intrinsicContentSize: CGSize {
-//        return contentSize
-//    }
-//}
 
 class DynamicHeightCollectionView: UICollectionView {
     override func layoutSubviews() {

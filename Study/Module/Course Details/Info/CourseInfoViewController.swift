@@ -89,6 +89,7 @@ private extension CourseInfoViewController {
         tableView.register(CourseInfoTeacherItem.self, forCellReuseIdentifier: CourseInfoTeacherItem.cellIdentifier())
         tableView.register(CourseInfoSkillsItem.self, forCellReuseIdentifier: CourseInfoSkillsItem.cellIdentifier())
         tableView.register(CourseInfoLanguageItem.self, forCellReuseIdentifier: CourseInfoLanguageItem.cellIdentifier())
+        tableView.register(CourseInfoSkillTitleItem.self, forCellReuseIdentifier: CourseInfoSkillTitleItem.cellIdentifier())
     }
 
     func buildTargets() -> Void {

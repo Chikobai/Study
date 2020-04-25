@@ -10,6 +10,8 @@ import UIKit
 
 class SubscribedPackageItem: UITableViewCell {
 
+    var reviewPressedEvent: (()->())?
+
     private var verticalPadding: CGFloat = 25
     private var horizontalPadding: CGFloat = 11
 
@@ -46,7 +48,7 @@ private extension SubscribedPackageItem {
 
     @objc
     func reviewPressed() -> Void {
-        print("reviewPressed")
+        reviewPressedEvent?()
     }
 }
 

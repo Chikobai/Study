@@ -34,16 +34,23 @@ class CourseHeaderView: UIView {
 
     func configure(with course: Course) -> Void {
 
-        joinButtonView.setTitle(course.is_my_course ? "Open" : "Join course", for: .normal)
+        joinButtonView.setTitle(course.is_my_course ? AppTitle.CourseDetails.joinedCourse : AppTitle.CourseDetails.toJoinCourse, for: .normal)
         courseNameLabelView.text = course.name
         communityView.configure(with: course.user_counts, #imageLiteral(resourceName: "avatar 3"))
         ratingView.configure(with: course.rating ?? 5.0)
+
+        if course.is_my_course == true {
+            joinButtonView.backgroundColor = AppColor.main.uiColor.withAlphaComponent(0.5)
+        }
     }
 
     func setIsSubscribedCourse(with value: Bool) -> Void {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.joinButtonView.setTitle(value ? "Open" : "Join course", for: .normal)
+            self.joinButtonView.setTitle(value ? AppTitle.CourseDetails.joinedCourse : AppTitle.CourseDetails.toJoinCourse, for: .normal)
+            if value == true {
+                self.joinButtonView.backgroundColor = AppColor.main.uiColor.withAlphaComponent(0.5)
+            }
         }
     }
 

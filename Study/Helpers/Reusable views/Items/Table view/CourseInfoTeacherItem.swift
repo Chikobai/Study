@@ -68,20 +68,20 @@ private extension CourseInfoTeacherItem {
 
         addSubviews(with: [photoImageView, nameLabelView, experienceLabelView])
         photoImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(24.0)
-            make.top.equalTo(12.0)
+            make.left.equalTo(20.0)
+            make.top.equalTo(15.0)
             make.width.height.equalTo(40.0)
             make.bottom.equalTo(-12.0)
         }
 
         nameLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(photoImageView).offset(5.0)
+            make.top.equalTo(photoImageView).offset(3.0)
             make.left.equalTo(photoImageView.snp.right).offset(13.0)
             make.right.equalTo(-13.0)
         }
 
         experienceLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabelView.snp.bottom).offset(5)
+            make.bottom.equalTo(photoImageView.snp.bottom).offset(-3)
             make.right.left.equalTo(nameLabelView)
         }
     }

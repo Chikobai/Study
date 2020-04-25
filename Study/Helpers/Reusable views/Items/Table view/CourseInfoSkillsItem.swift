@@ -14,7 +14,7 @@ class CourseInfoSkillsItem: UITableViewCell {
     
     private lazy var skillsLabelView: UILabel = UILabel()
     lazy var skillsCollectionView: DynamicHeightCollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = DynamicHeightCollectionViewFlowLayout()
         layout.estimatedItemSize = CGSize.init(width: 1, height: 1)
         let view = DynamicHeightCollectionView(frame: .zero, collectionViewLayout: layout)
         return view
@@ -106,18 +106,9 @@ private extension CourseInfoSkillsItem {
 
     func buildLayouts() -> Void {
 
-        addSubviews(with: [ skillsCollectionView])
-//        skillsLabelView.snp.makeConstraints { (make) in
-//            make.top.equalTo(8)
-//            make.left.equalTo(29.0)
-//            make.right.equalTo(-29.0)
-//        }
+        addSubviews(with: [skillsCollectionView])
 
         skillsCollectionView.snp.makeConstraints { (make) in
-//            make.top.equalTo(skillsLabelView.snp.bottom).offset(8.0)
-//            make.left.equalTo(29.0)
-//            make.right.equalTo(-29.0)
-//            make.bottom.equalTo(-8.0)
             make.edges.equalToSuperview()
         }
     }

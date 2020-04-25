@@ -13,6 +13,7 @@ enum CourseInfoItem {
 
     case descriptions
     case languages
+    case skillsTitle
     case skills
     case teachers
 }
@@ -20,7 +21,7 @@ enum CourseInfoItem {
 class CourseInfoAdapter: NSObject {
 
     private var object: CourseInfo?
-    private let items: [CourseInfoItem] = [.descriptions, .languages, .skills, .teachers]
+    private let items: [CourseInfoItem] = [.descriptions, .languages, .skillsTitle,.skills, .teachers]
     private var descriptionIsExpanded: Bool = false
     private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
 
@@ -72,6 +73,8 @@ extension CourseInfoAdapter: UITableViewDelegate, UITableViewDataSource {
             return skillsItemView(with: tableView, indexPath)
         case .teachers:
             return teacherItemView(with: tableView, indexPath)
+        case .skillsTitle:
+            return skillsTitleItemView(with: tableView, indexPath)
         }
     }
 
@@ -123,6 +126,13 @@ private extension CourseInfoAdapter {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoLanguageItem.cellIdentifier(), for: indexPath) as? CourseInfoLanguageItem
         cell?.configure(with: object?.language)
+
+        return cell!
+    }
+
+    func skillsTitleItemView(with tableView: UITableView, _ indexPath: IndexPath) -> CourseInfoSkillTitleItem {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoSkillTitleItem.cellIdentifier(), for: indexPath) as? CourseInfoSkillTitleItem
 
         return cell!
     }

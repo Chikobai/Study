@@ -71,6 +71,13 @@ extension ByCategoryAdapter: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: PackageItem.cellIdentifier(), for: indexPath) as? PackageItem
         cell?.configure(with: courses[indexPath.row])
+
+        cell?.reviewPressedEvent = { [weak self] in
+            if let course = self?.courses[indexPath.row] {
+                self?.delegate?.toRouteCourseDetails(with: course)
+            }
+        }
+
         return cell!
     }
 

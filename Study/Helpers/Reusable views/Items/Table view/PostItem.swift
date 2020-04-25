@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import AVKit
 import ReadMoreTextView
 
 class PostItem: UITableViewCell {
 
-    private lazy var videoPlaceholderImageView: UIImageView = UIImageView()
+    var player = AVPlayer()
+    var playerController = AVPlayerViewController()
+
+    private lazy var videoView: UIView = UIView()
     private lazy var postedUserImageView: UIImageView = UIImageView()
     private lazy var postedUserNameLabelView: UILabel = UILabel()
-    private lazy var playButtonView: UIButton = UIButton()
+//    private lazy var playButtonView: UIButton = UIButton()
     private lazy var postNameLabelView: UILabel = UILabel()
     private(set) lazy var postDescriptionLabelView: ReadMoreTextView = ReadMoreTextView()
     private lazy var postedTimeLabelView: UILabel = UILabel()
@@ -33,6 +37,12 @@ class PostItem: UITableViewCell {
         print("DEINIT: PostItem")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        postDescriptionLabelView.shouldTrim = true
+    }
+
     func configure(with data: Post, _ isCollapsed: Bool) -> Void {
 
         postedUserNameLabelView.text = data.teacher.first_name + " " + data.teacher.last_name
@@ -42,12 +52,8 @@ class PostItem: UITableViewCell {
         postDescriptionLabelView.shouldTrim = isCollapsed
         postDescriptionLabelView.setNeedsUpdateTrim()
         postDescriptionLabelView.layoutIfNeeded()
-    }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-        postDescriptionLabelView.shouldTrim = true
+        buildReadMoreAttribute()
     }
 }
 
@@ -64,16 +70,12 @@ private extension PostItem {
         //superview
         selectionStyle = .none
 
-        //video placeholder image view
-        videoPlaceholderImageView.image = #imageLiteral(resourceName: "background")
+        //videoView
+        let videoURL = URL(string:"https://www.radiantmediaplayer.com/media/bbb-360p.mp4")!
+        playerController.view.backgroundColor = AppColor.white.uiColor
+        player = AVPlayer(url: videoURL)
+        playerController.player = player
 
-        //play button view
-        playButtonView.setImage(#imageLiteral(resourceName: "play-button (2) 6"), for: .normal)
-        playButtonView.backgroundColor = .clear
-        playButtonView.layer.cornerRadius = 18.0
-        playButtonView.clipsToBounds = true
-
-        //posted user image view
         postedUserImageView.image = #imageLiteral(resourceName: "photo")
         postedUserImageView.clipsToBounds = true
         postedUserImageView.layer.cornerRadius = 18.0
@@ -85,17 +87,6 @@ private extension PostItem {
         postNameLabelView.font = .boldSystemFont(ofSize: 20.0)
         postNameLabelView.numberOfLines = 2
 
-        //post description label view
-        let attributedText = [
-            NSAttributedString.Key.foregroundColor : AppColor.darkGray.uiColor.withAlphaComponent(0.7),
-            NSAttributedString.Key.font :
-                UIFont.systemFont(ofSize: 13.0)
-        ]
-        postDescriptionLabelView.attributedReadMoreText = NSAttributedString(string: "...Read More", attributes: attributedText)
-        postDescriptionLabelView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: attributedText)
-        postDescriptionLabelView.maximumNumberOfLines = 3
-        postDescriptionLabelView.textAlignment = .left
-
         //posted time label view
         postedTimeLabelView.font = .systemFont(ofSize: 8)
         postedTimeLabelView.text = "3 hours ago"
@@ -104,7 +95,9 @@ private extension PostItem {
 
     func buildLayouts() -> Void {
 
-        addSubviews(with: [postedUserImageView, postedUserNameLabelView, videoPlaceholderImageView, playButtonView, postNameLabelView, postDescriptionLabelView, postedTimeLabelView])
+        addSubviews(with: [postedUserImageView, postedUserNameLabelView, videoView, postNameLabelView, postDescriptionLabelView, postedTimeLabelView])
+
+        self.videoView.addSubview(playerController.view)
 
         postedUserImageView.snp.makeConstraints { (make) in
             make.top.left.equalTo(6.0)
@@ -117,21 +110,16 @@ private extension PostItem {
             make.right.equalTo(-6.0)
         }
 
-        videoPlaceholderImageView.snp.makeConstraints { (make) in
+        videoView.snp.makeConstraints { (make) in
             make.top.equalTo(postedUserImageView.snp.bottom).offset(7.0)
             make.left.right.equalToSuperview()
             make.height.equalTo(195.0)
         }
 
-        playButtonView.snp.makeConstraints { (make) in
-            make.center.equalTo(videoPlaceholderImageView)
-            make.height.width.equalTo(36.0)
-        }
-
         postNameLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(videoPlaceholderImageView.snp.bottom).offset(15.0)
-            make.left.equalTo(20.0)
-            make.right.equalTo(-20.0)
+            make.top.equalTo(videoView.snp.bottom).offset(30.0)
+            make.left.equalTo(15.0)
+            make.right.equalTo(-15.0)
         }
 
         postDescriptionLabelView.snp.makeConstraints { (make) in
@@ -144,5 +132,22 @@ private extension PostItem {
             make.left.right.equalTo(postDescriptionLabelView)
             make.bottom.equalTo(-15.0)
         }
+
+        playerController.view.frame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height + 16.0)
+    }
+
+    func buildReadMoreAttribute() -> Void {
+
+        let attributedText = [
+            NSAttributedString.Key.foregroundColor : AppColor.darkGray.uiColor.withAlphaComponent(0.7),
+            NSAttributedString.Key.font :
+                UIFont.systemFont(ofSize: 13.0)
+        ]
+
+        postDescriptionLabelView.attributedReadMoreText = NSAttributedString(string: "...Read More", attributes: attributedText)
+        postDescriptionLabelView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: attributedText)
+
+        postDescriptionLabelView.maximumNumberOfLines = 3
+        postDescriptionLabelView.textAlignment = .left
     }
 }

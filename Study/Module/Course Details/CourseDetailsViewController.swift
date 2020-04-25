@@ -43,6 +43,7 @@ class CourseDetailsViewController: UIViewController {
 
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
 
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -114,12 +115,7 @@ private extension CourseDetailsViewController {
     func buildServices() -> Void {
 
         headerView.toJoinCoursePressed = { [weak self] in
-            if self?.courseObject?.is_my_course == true {
-//                let viewController = LessonViewController(with: <#T##Int#>, cour)
-//                viewController.title = self?.courseObject?.name
-//                self?.navigationController?.pushViewController(viewController, animated: true)
-            }
-            else{
+            if self?.courseObject?.is_my_course == false {
                 self?.toJoinCourse()
             }
         }

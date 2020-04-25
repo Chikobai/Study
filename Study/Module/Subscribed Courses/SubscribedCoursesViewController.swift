@@ -33,6 +33,12 @@ class SubscribedCoursesViewController: UITableViewController, FetchableMore, Sty
         fetchSubscribedCourses()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.navigationBar.shadowImage = nil
+    }
+
     deinit {
         print("DEINIT: SubscribedCoursesViewController")
     }

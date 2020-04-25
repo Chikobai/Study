@@ -59,7 +59,10 @@ private extension Skilltem {
 
         addSubview(titleLabelView)
         titleLabelView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
+            make.left.equalTo(10)
+            make.top.equalTo(3)
+            make.right.equalTo(-10)
+            make.bottom.equalTo(-3)
         }
     }
 }

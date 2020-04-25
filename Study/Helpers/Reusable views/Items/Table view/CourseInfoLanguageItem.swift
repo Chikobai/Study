@@ -67,7 +67,7 @@ private extension CourseInfoLanguageItem {
 
         addSubviews(with: [iconImageView, basicLanguageLabelView, subtitlesLabelView])
         iconImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(29.0)
+            make.left.equalTo(20.0)
             make.centerY.equalToSuperview()
             make.height.width.equalTo(26.0)
         }

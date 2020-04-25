@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import AVKit
 
 class CourseInfoHeaderView: UIView {
 
-    private lazy var videoPlaceholderImageView: UIImageView = UIImageView()
-    private lazy var playButtonView: UIButton = UIButton()
+    var player = AVPlayer()
+    var playerController = AVPlayerViewController()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,26 +45,16 @@ private extension CourseInfoHeaderView {
         backgroundColor = AppColor.white.uiColor
         isHidden = true
 
-        //video placeholder image view
-        videoPlaceholderImageView.backgroundColor = AppColor.main.uiColor
-
-        //play button view
-        playButtonView.setImage(#imageLiteral(resourceName: "play-button (2) 6"), for: .normal)
-        playButtonView.backgroundColor = .clear
-        playButtonView.layer.cornerRadius = 18.0
-        playButtonView.clipsToBounds = true
+        //player view
+        let videoURL = URL(string:"https://www.radiantmediaplayer.com/media/bbb-360p.mp4")!
+        player = AVPlayer(url: videoURL)
+        playerController.player = player
     }
 
     func buildLayouts() -> Void {
 
-        addSubviews(with: [videoPlaceholderImageView, playButtonView])
-        videoPlaceholderImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-
-        playButtonView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.height.width.equalTo(36.0)
-        }
+        playerController.view.frame = CGRect(x: 0, y: 5, width: self.frame.width, height: self.frame.height + 16)
+        self.addSubview(playerController.view)
+        playerController.view.backgroundColor = AppColor.white.uiColor
     }
 }

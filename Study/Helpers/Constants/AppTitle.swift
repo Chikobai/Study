@@ -62,6 +62,9 @@ class AppTitle {
         static let info: String = "info_title".localized
         static let review: String = "comment_title".localized
         static let module: String = "module_title".localized
+        static let skills: String = "skills_message".localized
+        static let toJoinCourse: String = "to_join_title".localized
+        static let joinedCourse: String = "joined_title".localized
     }
 
     class Category {

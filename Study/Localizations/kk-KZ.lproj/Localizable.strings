@@ -65,6 +65,9 @@
 "comment_title" = "Пікірлер";
 "module_title" = "Сабақтар";
 "reviews_message" = "Пікір қалдыру үшін, материалдардың 80% өтіңіз";
+"skills_message" = "Сіз үйренетін дағдылар:";
+"to_join_title" = "Курсқа қосылу";
+"joined_title" = "Cіз курсқа қосылдыңыз";
 
 // MARK: - Settings
 

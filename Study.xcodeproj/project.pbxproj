@@ -123,6 +123,7 @@
 		08CF860D241B9446009F31FE /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */; };
 		08D2DA412413686D001EC235 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D2DA402413686D001EC235 /* ProfileViewController.swift */; };
 		08D2DA4324136880001EC235 /* ProfileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D2DA4224136880001EC235 /* ProfileAdapter.swift */; };
+		08D551542454503F002DC8E7 /* CourseInfoSkillTitleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D551532454503F002DC8E7 /* CourseInfoSkillTitleItem.swift */; };
 		08E13046244AEA4D0086D5BC /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E13045244AEA4D0086D5BC /* LanguageModel.swift */; };
 		08E1D3F123FBB1BB006E3042 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E1D3F023FBB1BB006E3042 /* AuthorizationViewController.swift */; };
 		08E1D3F423FBB278006E3042 /* UINavigationController+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E1D3F323FBB278006E3042 /* UINavigationController+Extenstions.swift */; };
@@ -271,6 +272,7 @@
 		08CF860C241B9446009F31FE /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		08D2DA402413686D001EC235 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		08D2DA4224136880001EC235 /* ProfileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdapter.swift; sourceTree = "<group>"; };
+		08D551532454503F002DC8E7 /* CourseInfoSkillTitleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoSkillTitleItem.swift; sourceTree = "<group>"; };
 		08E13045244AEA4D0086D5BC /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		08E1D3F023FBB1BB006E3042 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		08E1D3F323FBB278006E3042 /* UINavigationController+Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extenstions.swift"; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				08E1D41223FBC81C006E3042 /* FilledButtonItem.swift */,
 				08A937E62410D80F009C50C3 /* SettingsChangableItem.swift */,
 				08E1D40823FBBCBB006E3042 /* FloatingTextFieldItem.swift */,
+				08D551532454503F002DC8E7 /* CourseInfoSkillTitleItem.swift */,
 			);
 			path = "Table view";
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				08E1D40723FBBA23006E3042 /* SecureTextField.swift in Sources */,
 				08B0C746240CD41F00D2AE79 /* CourseInfoLanguageItem.swift in Sources */,
 				08E1D40D23FBBED8006E3042 /* UITableViewCell+Extensions.swift in Sources */,
+				08D551542454503F002DC8E7 /* CourseInfoSkillTitleItem.swift in Sources */,
 				08C981AC2423BF5600B2A802 /* PostModel.swift in Sources */,
 				082B1D142400EB4800316D24 /* MainAdapter.swift in Sources */,
 				08483D69240B882F00B40B1F /* CourseHeaderView.swift in Sources */,

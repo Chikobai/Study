@@ -105,9 +105,10 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
         else{
             collapsedRowStorage.insert(indexPath.row)
         }
-        tableView.beginUpdates()
-        tableView.reloadData()
-        tableView.endUpdates()
+
+        tableView.performBatchUpdates({
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }, completion: nil)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

@@ -11,7 +11,7 @@ import UIKit
 
 class LoadingBackgroundView: UIView {
 
-    private lazy var activityIndicator = UIActivityIndicatorView(style: .white)
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

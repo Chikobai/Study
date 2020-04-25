@@ -96,8 +96,8 @@ private extension CourseInfoDescriptionItem {
 
         addSubviews(with: [titleLabelView, descriptionLabelView])
         titleLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(15.0)
-            make.left.equalTo(27.0)
+            make.top.equalTo(32)
+            make.left.equalTo(20.0)
             make.right.equalTo(-27.0)
         }
 

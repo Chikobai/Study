@@ -41,9 +41,14 @@ class CourseDetailsPagerViewController: UIViewController {
             CourseReviewsViewController(with: courseIdentifier),
             CourseModulesViewController(with: courseIdentifier)
         ]
+        
         let viewPagerTabs: [ViewPagerTab] = [
             ViewPagerTab(title: AppTitle.CourseDetails.info), ViewPagerTab(title: AppTitle.CourseDetails.review), ViewPagerTab(title: AppTitle.CourseDetails.module)
         ]
+
+        viewControllers.forEach { (viewController) in
+            self.addChild(viewController)
+        }
 
         viewPager?.setOptions(options: options)
         viewPager?.setTabList(with: viewPagerTabs)
