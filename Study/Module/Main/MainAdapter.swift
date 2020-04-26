@@ -96,19 +96,27 @@ extension MainAdapter: UITableViewDelegate, UITableViewDataSource {
             }
         }
 
+        if let cell = cell as? PostItem {
+            cell.postDescriptionLabelView.onSizeChange = { [unowned tableView, unowned self] r in
+                let point = tableView.convert(r.bounds.origin, from: r)
+                guard let indexPath = tableView.indexPathForRow(at: point) else { return }
+                if r.shouldTrim {
+                    self.collapsedRowStorage.remove(indexPath.row)
+                } else {
+                    self.collapsedRowStorage.insert(indexPath.row)
+                }
+                tableView.reloadData()
+            }
+        }
+
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if collapsedRowStorage.contains(indexPath.row) {
-            collapsedRowStorage.remove(indexPath.row)
-        }
-        else{
-            collapsedRowStorage.insert(indexPath.row)
-        }
 
-        tableView.performBatchUpdates({
-            tableView.reloadRows(at: [indexPath], with: .none)
-        }, completion: nil)
+        if let cell = tableView.cellForRow(at: indexPath) as? PostItem {
+            let readMoreTextView = cell.postDescriptionLabelView
+            readMoreTextView.shouldTrim = !readMoreTextView.shouldTrim
+        }
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

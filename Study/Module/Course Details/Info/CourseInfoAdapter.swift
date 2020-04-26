@@ -22,7 +22,7 @@ class CourseInfoAdapter: NSObject {
 
     private var object: CourseInfo?
     private let items: [CourseInfoItem] = [.descriptions, .languages, .skillsTitle,.skills, .teachers]
-    private var descriptionIsExpanded: Bool = false
+    private var descriptionIsCollapsed: Bool = true
     private var estimateRowHeightStorage: [IndexPath:CGFloat] = [:]
 
     override init() {
@@ -79,11 +79,21 @@ extension CourseInfoAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        if let cell = tableView.cellForRow(at: indexPath) as? CourseInfoDescriptionItem {
+            let readMoreTextView = cell.descriptionTextView
+            readMoreTextView.shouldTrim = !readMoreTextView.shouldTrim
+        }
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         estimateRowHeightStorage[indexPath] = cell.frame.size.height
+
+        if let cell = cell as? CourseInfoDescriptionItem {
+            cell.descriptionTextView.onSizeChange = { [unowned tableView, unowned self] r in
+                self.descriptionIsCollapsed = !r.shouldTrim
+                tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -95,13 +105,7 @@ private extension CourseInfoAdapter {
     func descriptionItemView(with tableView: UITableView, _ indexPath: IndexPath) -> CourseInfoDescriptionItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseInfoDescriptionItem.cellIdentifier(), for: indexPath) as? CourseInfoDescriptionItem
-        cell?.configure(with: object?.title, object?.info, descriptionIsExpanded)
-        cell?.tapToExpandExecuted = { [weak self] in
-            self?.descriptionIsExpanded.toggle()
-            tableView.beginUpdates()
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
-        }
+        cell?.configure(with: object?.title, object?.info, descriptionIsCollapsed)
 
         return cell!
     }

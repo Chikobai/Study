@@ -39,6 +39,7 @@ class PostItem: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
+        postDescriptionLabelView.onSizeChange = {_ in}
         postDescriptionLabelView.shouldTrim = true
     }
 
@@ -48,11 +49,9 @@ class PostItem: UITableViewCell {
         postNameLabelView.text = data.title
 
         postDescriptionLabelView.text = data.description
-        postDescriptionLabelView.shouldTrim = isCollapsed
+        postDescriptionLabelView.shouldTrim = !isCollapsed
         postDescriptionLabelView.setNeedsUpdateTrim()
         postDescriptionLabelView.layoutIfNeeded()
-
-        buildReadMoreAttribute()
     }
 }
 
@@ -90,6 +89,19 @@ private extension PostItem {
         postedTimeLabelView.font = .systemFont(ofSize: 8)
         postedTimeLabelView.text = "3 hours ago"
         postedTimeLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
+
+        //post description label view
+        let attributedText = [
+            NSAttributedString.Key.foregroundColor : AppColor.darkGray.uiColor.withAlphaComponent(0.7),
+            NSAttributedString.Key.font :
+                UIFont.systemFont(ofSize: 13.0)
+        ]
+
+        postDescriptionLabelView.attributedReadMoreText = NSAttributedString(string: "...Read More", attributes: attributedText)
+        postDescriptionLabelView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: attributedText)
+
+        postDescriptionLabelView.maximumNumberOfLines = 3
+        postDescriptionLabelView.textAlignment = .left
     }
 
     func buildLayouts() -> Void {
@@ -133,20 +145,5 @@ private extension PostItem {
         }
 
         playerController.view.frame = CGRect(x: 0, y: 0, width: self.videoView.frame.width, height: self.videoView.frame.height + 16.0)
-    }
-
-    func buildReadMoreAttribute() -> Void {
-
-        let attributedText = [
-            NSAttributedString.Key.foregroundColor : AppColor.darkGray.uiColor.withAlphaComponent(0.7),
-            NSAttributedString.Key.font :
-                UIFont.systemFont(ofSize: 13.0)
-        ]
-
-        postDescriptionLabelView.attributedReadMoreText = NSAttributedString(string: "...Read More", attributes: attributedText)
-        postDescriptionLabelView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: attributedText)
-
-        postDescriptionLabelView.maximumNumberOfLines = 3
-        postDescriptionLabelView.textAlignment = .left
     }
 }

@@ -7,13 +7,12 @@
 //
 
 import UIKit
+import ReadMoreTextView
 
 class CourseInfoDescriptionItem: UITableViewCell {
 
-    var tapToExpandExecuted: (()->())?
-
     private lazy var titleLabelView: UILabel = UILabel()
-    private lazy var descriptionLabelView: UILabel = UILabel()
+    private(set) lazy var descriptionTextView: ReadMoreTextView = ReadMoreTextView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,43 +24,24 @@ class CourseInfoDescriptionItem: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        descriptionTextView.onSizeChange = {_ in}
+        descriptionTextView.shouldTrim = true
+    }
+
     deinit {
         print("DEINIT: CourseInfoDescriptionItem")
     }
 
-    func configure(with title: String?, _ description: String?, _ isExpanded: Bool) -> Void {
+    func configure(with title: String?, _ description: String?, _ isCollapsed: Bool) -> Void {
 
         titleLabelView.text = title
-
-        let mainContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor]
-        let moreContentAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0), NSAttributedString.Key.foregroundColor: AppColor.black.uiColor.withAlphaComponent(0.5)]
-        if let description  = description {
-            if isExpanded == false {
-                if description.count >= 150
-                {
-                    let mainAttributedString = NSMutableAttributedString(string: "\(description.prefix(150))...", attributes: mainContentAttribute)
-                    let moreAttributedString = NSMutableAttributedString(string: "More", attributes: moreContentAttribute)
-                    mainAttributedString.append(moreAttributedString)
-
-                    descriptionLabelView.attributedText = mainAttributedString
-                }
-                else{
-                    descriptionLabelView.attributedText = NSMutableAttributedString(string: description, attributes: mainContentAttribute)
-                }
-            }
-            else{
-                descriptionLabelView.attributedText = NSMutableAttributedString(string: description, attributes: mainContentAttribute)
-            }
-        }
-    }
-}
-
-private extension CourseInfoDescriptionItem {
-
-    @objc
-    func tapToExpand() -> Void {
-
-        tapToExpandExecuted?()
+        descriptionTextView.text = description
+        descriptionTextView.shouldTrim = !isCollapsed
+        descriptionTextView.setNeedsUpdateTrim()
+        descriptionTextView.layoutIfNeeded()
     }
 }
 
@@ -73,7 +53,6 @@ private extension CourseInfoDescriptionItem {
 
         buildViews()
         buildLayouts()
-        buildGestures()
     }
 
     func buildViews() -> Void {
@@ -88,29 +67,34 @@ private extension CourseInfoDescriptionItem {
         titleLabelView.numberOfLines = 0
 
         //description label view
-        descriptionLabelView.font = .systemFont(ofSize: 11.0)
-        descriptionLabelView.numberOfLines = 0
+
+        let attributedText = [
+            NSAttributedString.Key.foregroundColor : AppColor.darkGray.uiColor.withAlphaComponent(0.7),
+            NSAttributedString.Key.font :
+                UIFont.systemFont(ofSize: 13.0)
+        ]
+
+        descriptionTextView.font = .systemFont(ofSize: 11.0)
+        descriptionTextView.attributedReadMoreText = NSAttributedString(string: "...Read More", attributes: attributedText)
+        descriptionTextView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: attributedText)
+
+        descriptionTextView.maximumNumberOfLines = 3
+        descriptionTextView.textAlignment = .left
     }
 
     func buildLayouts() -> Void {
 
-        addSubviews(with: [titleLabelView, descriptionLabelView])
+        addSubviews(with: [titleLabelView, descriptionTextView])
         titleLabelView.snp.makeConstraints { (make) in
             make.top.equalTo(32)
             make.left.equalTo(20.0)
-            make.right.equalTo(-27.0)
+            make.right.equalTo(-20.0)
         }
 
-        descriptionLabelView.snp.makeConstraints { (make) in
+        descriptionTextView.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabelView.snp.bottom).offset(7.0)
             make.left.right.equalTo(titleLabelView)
-            make.bottom.equalTo(-15.0)
+            make.bottom.equalToSuperview()
         }
-    }
-
-    func buildGestures() -> Void {
-
-        let tapGesturesForDescriptions = UITapGestureRecognizer(target: self, action: #selector(tapToExpand))
-        self.addGestureRecognizer(tapGesturesForDescriptions)
     }
 }
