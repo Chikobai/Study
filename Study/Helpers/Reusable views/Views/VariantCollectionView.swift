@@ -51,33 +51,32 @@ extension VariantCollectionView: UICollectionViewDelegate, UICollectionViewDataS
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VariantItem.cellIdentifier(), for: indexPath) as? VariantItem
         cell?.configure(with: variants[indexPath.row].text)
-        cell?.isUserInteractionEnabled = !alreadyAnsweredForThisQuestion
         return cell!
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        alreadyAnsweredForThisQuestion.toggle()
-        if (variants[indexPath.item].is_true == true) {
-            if let cell = collectionView.cellForItem(at: indexPath) as? VariantItem {
-                cell.setCorrect(with: true)
+        if (alreadyAnsweredForThisQuestion == false) {
+            alreadyAnsweredForThisQuestion.toggle()
+            if (variants[indexPath.item].is_true == true) {
+                if let cell = collectionView.cellForItem(at: indexPath) as? VariantItem {
+                    cell.setCorrect(with: true)
+                }
             }
-        }
-        else{
-            if let cell = collectionView.cellForItem(at: indexPath) as? VariantItem {
-                cell.setIncorrect(with: true)
-            }
+            else{
+                if let cell = collectionView.cellForItem(at: indexPath) as? VariantItem {
+                    cell.setIncorrect(with: true)
+                }
 
-            for (item, variant) in variants.enumerated() {
-                if variant.is_true == true {
-                    if let cell = collectionView.cellForItem(at: IndexPath(item: item, section: 0)) as? VariantItem {
-                        cell.setCorrect(with: false)
-                        return
+                for (item, variant) in variants.enumerated() {
+                    if variant.is_true == true {
+                        if let cell = collectionView.cellForItem(at: IndexPath(item: item, section: 0)) as? VariantItem {
+                            cell.setCorrect(with: false)
+                            return
+                        }
                     }
                 }
             }
         }
-        collectionView.reloadData()
     }
 }
 
