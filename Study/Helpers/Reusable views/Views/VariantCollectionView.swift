@@ -11,6 +11,7 @@ import UIKit
 class VariantCollectionView: UICollectionView {
 
     private var variants: [LessonQuestionVariant] = []
+    private var alreadyAnsweredForThisQuestion: Bool = false
 
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -50,11 +51,13 @@ extension VariantCollectionView: UICollectionViewDelegate, UICollectionViewDataS
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VariantItem.cellIdentifier(), for: indexPath) as? VariantItem
         cell?.configure(with: variants[indexPath.row].text)
+        cell?.isUserInteractionEnabled = !alreadyAnsweredForThisQuestion
         return cell!
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+        alreadyAnsweredForThisQuestion.toggle()
         if (variants[indexPath.item].is_true == true) {
             if let cell = collectionView.cellForItem(at: indexPath) as? VariantItem {
                 cell.setCorrect(with: true)
@@ -74,7 +77,7 @@ extension VariantCollectionView: UICollectionViewDelegate, UICollectionViewDataS
                 }
             }
         }
-        self.isUserInteractionEnabled = false
+        collectionView.reloadData()
     }
 }
 

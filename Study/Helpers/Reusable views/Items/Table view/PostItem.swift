@@ -18,7 +18,6 @@ class PostItem: UITableViewCell {
     private lazy var videoView: UIView = UIView()
     private lazy var postedUserImageView: UIImageView = UIImageView()
     private lazy var postedUserNameLabelView: UILabel = UILabel()
-//    private lazy var playButtonView: UIButton = UIButton()
     private lazy var postNameLabelView: UILabel = UILabel()
     private(set) lazy var postDescriptionLabelView: ReadMoreTextView = ReadMoreTextView()
     private lazy var postedTimeLabelView: UILabel = UILabel()

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVKit
 
 protocol LessonDrawlable {}
 
@@ -57,6 +58,7 @@ extension LessonDrawlable where Self: QuestionsViewController {
     func buildLayouts() -> Void {
 
         view.addSubviews(with: [questionsLabelView, variantCollectionView])
+
         questionsLabelView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(30.0)
             make.centerX.equalToSuperview()
@@ -84,27 +86,20 @@ extension LessonDrawlable where Self: VideoViewController {
         //superview
         view.backgroundColor = AppColor.white.uiColor
 
-        //video placeholder image view
-        videoPlaceholderImageView.backgroundColor = AppColor.main.uiColor
+        //cover video view
+        coverVideoView.backgroundColor = AppColor.main.uiColor
 
-        //play button view
-        playButtonView.setImage(#imageLiteral(resourceName: "play-button (2) 6"), for: .normal)
-        playButtonView.backgroundColor = .clear
-        playButtonView.layer.cornerRadius = 18.0
-        playButtonView.clipsToBounds = true
+        //video player
+        playerController.view.backgroundColor = AppColor.white.uiColor
+        playerController.player = player
     }
 
     func buildLayouts() -> Void {
 
-        view.addSubviews(with: [videoPlaceholderImageView, playButtonView])
-        videoPlaceholderImageView.snp.makeConstraints { (make) in
+        view.addSubviews(with: [coverVideoView])
+        coverVideoView.snp.makeConstraints { (make) in
             make.left.right.centerY.centerX.equalToSuperview()
             make.height.equalTo(230.0)
-        }
-
-        playButtonView.snp.makeConstraints { (make) in
-            make.center.equalTo(videoPlaceholderImageView)
-            make.height.width.equalTo(36.0)
         }
     }
 }

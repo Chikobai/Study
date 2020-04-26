@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import AVKit
 
 class VideoViewController: UIViewController, LessonDrawlable {
 
-    private(set) lazy var videoPlaceholderImageView: UIImageView = UIImageView()
-    private(set) lazy var playButtonView: UIButton = UIButton()
+    private(set) var player: AVPlayer
+    private(set) var playerController = AVPlayerViewController()
+    private(set) lazy var coverVideoView: UIView = UIView()
+
     private var lessonVideo: LessonPage
 
     init(with lessonVideo: LessonPage) {
         self.lessonVideo = lessonVideo
+        let videoURL = URL(string:"https://www.radiantmediaplayer.com/media/bbb-360p.mp4")!
+        self.player = AVPlayer(url: videoURL)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -26,6 +31,7 @@ class VideoViewController: UIViewController, LessonDrawlable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        add(playerController, onView: coverVideoView)
         build()
     }
 
