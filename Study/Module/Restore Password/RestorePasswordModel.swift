@@ -13,17 +13,20 @@ enum RestorePasswordItem {
 
     case phoneInput
     case passwordInput
+    case oldPasswordInput
     case emailInput
     case otpInput
     case repeatePasswordInput
     case sendOTPButton
     case restorePasswordButton
+    case restoreEmailButton
     case changePasswordButton
     case toOTPButton
     case OTPMessage
     case enterPhoneMessage
     case enterEmailMessage
     case restorePasswordMessage
+    case restoreEmailMessage
     case changePasswordMessage
     case emptySpacer
 
@@ -33,16 +36,22 @@ enum RestorePasswordItem {
             return AppTitle.RestorePassword.enterPhoneNumber
         case .passwordInput:
             return AppTitle.RestorePassword.enterPassword
+        case .oldPasswordInput:
+            return AppTitle.RestorePassword.enterOldPassword
         case .repeatePasswordInput:
             return AppTitle.RestorePassword.repeateEnterPassword
         case .sendOTPButton:
             return AppTitle.RestorePassword.resume
         case .restorePasswordButton:
-            return AppTitle.RestorePassword.restore
+            return AppTitle.RestorePassword.resume
+        case .restoreEmailButton:
+            return AppTitle.RestorePassword.resume
         case .toOTPButton:
             return AppTitle.RestorePassword.resume
         case .restorePasswordMessage:
             return AppTitle.RestorePassword.restorePasswordMessage
+        case .restoreEmailMessage:
+            return AppTitle.RestorePassword.restoreEmailMessage
         case .OTPMessage:
             return AppTitle.RestorePassword.OTPMessage
         case .enterPhoneMessage:
@@ -62,7 +71,7 @@ enum RestorePasswordItem {
 
     var keyboardType: UIKeyboardType {
         switch self {
-        case .passwordInput, .repeatePasswordInput:
+        case .passwordInput, .repeatePasswordInput, .oldPasswordInput:
             return .asciiCapable
         case .phoneInput:
             return .numberPad
@@ -75,7 +84,7 @@ enum RestorePasswordItem {
 
     var isSecureTextEntry: Bool {
         switch self {
-        case .passwordInput, .repeatePasswordInput:
+        case .passwordInput, .repeatePasswordInput, .oldPasswordInput:
             return true
         default:
             return false
@@ -92,7 +101,18 @@ enum RestorePasswordItem {
     }
 
     var key: String{
-        return "KEY"
+        switch self {
+        case .oldPasswordInput:
+            return AppKey.Restore.oldPassword
+        case .passwordInput:
+            return AppKey.Restore.password
+        case .repeatePasswordInput:
+            return AppKey.Restore.repeatePassword
+        case .emailInput:
+            return AppKey.Restore.email
+        default:
+            return "KEY"
+        }
     }
 }
 
@@ -102,6 +122,7 @@ enum RestorePasswordSection {
     case enterEmail
     case otp
     case restorePassword
+    case restoreEmail
     case changePassword
 
     var title: String?{
@@ -110,8 +131,12 @@ enum RestorePasswordSection {
             return AppTitle.RestorePassword.OTP
         case .changePassword:
             return AppTitle.RestorePassword.changePassword
-        default:
+        case .restorePassword:
             return AppTitle.RestorePassword.restorePassword
+        case .restoreEmail:
+            return AppTitle.RestorePassword.restoreEmail
+        default:
+            return nil
         }
     }
 
@@ -124,9 +149,11 @@ enum RestorePasswordSection {
         case .otp:
             return [.emptySpacer, .OTPMessage, .emptySpacer, .otpInput , .sendOTPButton]
         case .restorePassword:
-            return [.restorePasswordMessage, .passwordInput, .repeatePasswordInput, .restorePasswordButton]
+            return [.restorePasswordMessage, .emailInput, .restorePasswordButton]
+        case .restoreEmail:
+            return [.restoreEmailMessage, .emailInput, .restoreEmailButton]
         case .changePassword:
-            return [.changePasswordMessage, .passwordInput, .repeatePasswordInput, .changePasswordButton]
+            return [.changePasswordMessage, .oldPasswordInput, .passwordInput, .repeatePasswordInput, .changePasswordButton]
         }
     }
 }

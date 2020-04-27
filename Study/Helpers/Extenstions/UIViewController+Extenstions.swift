@@ -57,3 +57,18 @@ extension UIViewController {
         }
     }
 }
+
+extension UIViewController {
+
+    func changeRootToAuthorization() -> Void {
+        let viewController = AuthorizationViewController(with: .loginWithEmail).inNavigate()
+        if let window = UIApplication.shared.keyWindow {
+            let options: UIView.AnimationOptions = .transitionFlipFromLeft
+            let duration: TimeInterval = 1
+            window.rootViewController = viewController
+            UIView.transition(with: window, duration: duration, options: options, animations: nil, completion: { (_) in
+                StoreManager.shared().setToken(with: nil)
+            })
+        }
+    }
+}

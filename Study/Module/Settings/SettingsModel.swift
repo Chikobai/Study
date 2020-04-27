@@ -12,6 +12,8 @@ enum SettingsItem {
     case headerItem
     case changableNameItem
     case changablePhoneItem
+    case changableEmailItem
+    case changablePasswordItem
     case languagePickerItem
     case aboutApplicationItem
     case helpItem
@@ -27,10 +29,8 @@ enum SettingsItem {
             return AppTitle.Settings.help
         case .aboutApplicationItem:
             return AppTitle.Settings.aboutApplication
-        case .changableNameItem:
-            return "Orynbassar Shyngys"
-        case .changablePhoneItem:
-            return "+7(747)377-80-99"
+        case .changablePasswordItem:
+            return AppTitle.Settings.changePassword
         default:
             return nil
         }
@@ -40,6 +40,8 @@ enum SettingsItem {
         switch self {
         case .changableNameItem:
             return AppTitle.Settings.changeNameSubtitle
+        case .changableEmailItem:
+            return AppTitle.Settings.changeEmailSubtitle
         case .changablePhoneItem:
             return AppTitle.Settings.changePhoneSubtitle
         default:
@@ -58,7 +60,7 @@ enum SettingsSectionItem {
         case .header:
             return [.headerItem]
         case .changableProfile:
-            return [.changableNameItem, .changablePhoneItem]
+            return [.changableNameItem, .changableEmailItem, .changablePasswordItem]
         case .additional:
             return [.aboutApplicationItem, .helpItem, .exitItem]
         }

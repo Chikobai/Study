@@ -54,7 +54,7 @@ extension SettingsAdapter: UITableViewDelegate, UITableViewDataSource {
             return self.headerItem(with: tableView, indexPath)
         case .languagePickerItem:
             return self.languageItem(with: tableView, indexPath, item)
-        case .changablePhoneItem, .changableNameItem:
+        case .changableEmailItem, .changableNameItem:
             return self.changableItemView(with: tableView, indexPath, item)
         default:
             return self.defaultItemView(with: tableView, indexPath, item)
@@ -82,9 +82,14 @@ private extension SettingsAdapter {
         cell.textLabel?.text = item.title
         cell.textLabel?.font = .systemFont(ofSize: 15)
         cell.selectionStyle = .none
-        if items[indexPath.section].cells[indexPath.row] == .exitItem {
+
+        if item == .exitItem {
             cell.textLabel?.textColor = .red
         }
+        else if item == .changablePasswordItem {
+            cell.accessoryType = .disclosureIndicator
+        }
+
         return cell
     }
 

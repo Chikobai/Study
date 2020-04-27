@@ -34,8 +34,10 @@ class AppTitle {
 
         static let changePassword = "change_password_title".localized
         static let restorePassword = "restore_password_title".localized
+        static let restoreEmail = "restore_email_title".localized
         static let enterPhoneNumber = "enter_phone_number_title".localized
         static let enterPassword = "enter_password_title".localized
+        static let enterOldPassword = "old_enter_password_title".localized
         static let enterEmail = "enter_email_title".localized
         static let repeateEnterPassword = "repeate_enter_password_title".localized
         static let OTP = "otp_title".localized
@@ -48,6 +50,7 @@ class AppTitle {
         static let enterPhoneMessage = "enter_phone_message_title".localized
         static let enterEmailMessage = "enter_email_message_title".localized
         static let restorePasswordMessage = "restore_password_message_title".localized
+        static let restoreEmailMessage = "restore_email_message_title".localized
         static let changePasswordMessage = "change_password_message_title".localized
     }
 
@@ -92,7 +95,10 @@ class AppTitle {
         static let help: String = "help_title".localized
         static let language: String = "language_title".localized
         static let changePhoneSubtitle: String = "change_phone_subtitle_title".localized
+        static let changeEmailSubtitle: String = "change_email_subtitle_title".localized
         static let changeNameSubtitle: String = "change_name_subtitle_title".localized
+        static let changePassword: String = "change_password_title".localized
+
     }
 
     class Profile {

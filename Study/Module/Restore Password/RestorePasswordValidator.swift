@@ -17,27 +17,45 @@ protocol RestorePasswordValidatorStrategy {
         ) -> Void
 }
 
-final class EnterPhoneStrategy:  RestorePasswordValidatorStrategy{
 
-    func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String: String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
+final class RestoreStrategy: RestorePasswordValidatorStrategy{
 
+    func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String : String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
+
+        if let email = params[AppKey.Restore.email],
+            email.isValidEmail() == true {
+            complitionOfSuccess(params)
+        }
+        else {
+            complitionOfError(AppErrorMessage.Restore.emailIsNotValid)
+        }
     }
 }
 
 
-final class RestorePasswordOTPStrategy:  RestorePasswordValidatorStrategy{
+final class ChangePasswordStrategy: RestorePasswordValidatorStrategy{
 
     func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String : String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
 
-    }
-}
+        if let oldPassword = params[AppKey.Restore.oldPassword], oldPassword.count > 7 {
 
+            if let newPassword = params[AppKey.Restore.password], newPassword.count > 7 {
 
-final class RestorePasswordStrategy: RestorePasswordValidatorStrategy{
+                if let repeatedPassword = params[AppKey.Restore.repeatePassword], newPassword == repeatedPassword {
 
-    func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String : String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
-
-
+                    complitionOfSuccess(params)
+                }
+                else {
+                    complitionOfError(AppErrorMessage.Restore.passwordsAreNotEqual)
+                }
+            }
+            else{
+                complitionOfError(AppErrorMessage.Restore.passwordIsSoWeak)
+            }
+        }
+        else {
+            complitionOfError(AppErrorMessage.Restore.oldPasswordIsSoWeak)
+        }
     }
 }
 
@@ -49,12 +67,10 @@ final class ContextRestorePasswordValidator {
 
     init(with type: RestorePasswordSection) {
         switch type {
-        case .enterPhone:
-            self.context = EnterPhoneStrategy()
-        case .otp:
-            self.context = RestorePasswordOTPStrategy()
+        case .changePassword:
+            self.context = ChangePasswordStrategy()
         default:
-            self.context = RestorePasswordStrategy()
+            self.context = RestoreStrategy()
         }
     }
 

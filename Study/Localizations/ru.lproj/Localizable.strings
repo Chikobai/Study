@@ -30,8 +30,10 @@
 
 "change_password_title" = "Изменить пароль";
 "restore_password_title" = "Забыли пароль?";
+"restore_email_title" = "Изменить эл.почту";
 "enter_phone_number_title" = "Введите ваш номер";
 "enter_password_title" = "Введите новый пароль";
+"old_enter_password_title" = "Введите текущий пароль";
 "enter_email_title" = "Введите эл.почту";
 "repeate_enter_password_title" = "Повторите новый пароль";
 "change_title" = "Изменить";
@@ -39,6 +41,7 @@
 "enter_phone_message_title" = "Чтобы продолжить, введите ваш номер телефона";
 "enter_email_message_title" = "Чтобы продолжить, введите вашу эл.почту";
 "restore_password_message_title" = "Чтобы восстановить пароль, придумайте новый пароль и введите его";
+"restore_email_message_title" = "Чтобы изменить эл.почту введите новою эл.почту";
 "change_password_message_title" = "Чтобы изменить пароль, придумайте новый пароль и введите его";
 
 // MARK: - Main
@@ -77,6 +80,7 @@
 "language_title" = "Язык";
 "change_phone_subtitle_title" = "Изменить номер телефона";
 "change_name_subtitle_title" = "Изменить имя пользователя";
+"change_email_subtitle_title" = "Изменить эл.почту пользователя";
 
 // MARK: - Profile
 
@@ -101,12 +105,16 @@
 "russian_title" = "Русский";
 
 // MARK: - Error Message
-
+"restore_password_message" = "Мы отправили ссылку на вашу эл.почту. Пожалуйста войдите заново.";
+"restore_email_message" = "Мы отправили ссылку на вашу эл.почту. Пожалуйста войдите заново.";
+"password_changed_message" = "Пароль успешно изменен. Пожалуйста войдите заново.";
 "something_is_wrong_message" = "Что-то не так. Приносим извинения за неудобства";
 "success_message" = "Успешно прошло.";
 "no_data_message" = "К сожалению, данные пока отсутствуют.";
 "email_is_not_valid_message" = "Некорректный адрес электронной почты.";
-"password_is_so_weak_message" = "Поле пароля должно быть не меньше 8.";
+"password_is_so_weak_message" = "Поле нового пароля должно быть не меньше 8.";
+"old_password_is_so_weak_message" = "Поле текущего пароля должно быть не меньше 8.";
+"passwords_are_not_equals" = "Пароли не совпадают.";
 "name_is_empty_message" = "Поле имя не должно быть пустым.";
 "surname_is_empty_message" = "Поле фамилия не должно быть пустым.";
 "verification_message" = "Пожалуйста подтвердите вашу почту. Мы были уверены что это действительно ваша почта.";

@@ -53,14 +53,12 @@ extension RestorePasswordViewController: RestorePasswordDelegate {
 
     func didPressed(with type: RestorePasswordItem) -> Void {
         switch type {
-        case .toOTPButton:
-            let viewController = RestorePasswordViewController(with: .otp)
-            self.navigationController?.pushViewController(viewController, animated: true)
-        case .sendOTPButton:
-            let viewController = RestorePasswordViewController(with: .restorePassword)
-            self.navigationController?.pushViewController(viewController, animated: true)
-        case .repeatePasswordInput:
-            return
+        case .restoreEmailButton:
+            restoreEmail()
+        case .restorePasswordButton:
+            restorePassword()
+        case .changePasswordButton:
+            changePassword()
         default:
             return
         }
@@ -76,5 +74,55 @@ extension RestorePasswordViewController: RestorePasswordDelegate {
 
 private extension RestorePasswordViewController {
 
+    func changePassword() -> Void {
+        validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.adapter?.startLoading()
+            Request.shared.changePassword(with: params, complitionHandler: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: {
+                    self?.changeRootToAuthorization()
+                })
+            }, complitionHandlerError: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: nil)
+            })
+        }, complitionOfError: { [weak self] (message) in
+            self?.display(with: message, completionHandler: nil)
+        })
+    }
+
+    func restorePassword() -> Void {
+        validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.adapter?.startLoading()
+            Request.shared.restorePassword(with: params, complitionHandler: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: {
+                    self?.navigationController?.popViewController(animated: true)
+                })
+            }, complitionHandlerError: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: nil)
+            })
+        }, complitionOfError: { [weak self] (message) in
+                self?.display(with: message, completionHandler: nil)
+        })
+    }
+
+    func restoreEmail() -> Void {
+        validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.adapter?.startLoading()
+            Request.shared.restoreEmail(with: params, complitionHandler: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: {
+                    self?.changeRootToAuthorization()
+                })
+            }, complitionHandlerError: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: nil)
+            })
+            }, complitionOfError: { [weak self] (message) in
+                self?.display(with: message, completionHandler: nil)
+        })
+    }
 }
 

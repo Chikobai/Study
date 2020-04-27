@@ -22,6 +22,20 @@ class RestorePasswordAdapter: NSObject {
     deinit {
         print("DEINIT: RestorePasswordAdapter")
     }
+
+    func startLoading() -> Void {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.init(.startLoading), object: nil)
+        }
+    }
+
+    func stopLoading() -> Void {
+        UIApplication.shared.endIgnoringInteractionEvents()
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.init(.stopLoading), object: nil)
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -47,13 +61,13 @@ extension RestorePasswordAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = items[indexPath.section].cells[indexPath.row]
         switch type {
-        case .passwordInput, .repeatePasswordInput, .phoneInput, .emailInput:
+        case .passwordInput, .repeatePasswordInput, .oldPasswordInput, .phoneInput, .emailInput:
             return self.floatingInputItemView(with: tableView, indexPath, type)
-        case .restorePasswordButton, .toOTPButton, .sendOTPButton, .changePasswordButton:
+        case .restorePasswordButton, .restoreEmailButton, .toOTPButton, .sendOTPButton, .changePasswordButton:
             return self.filledButtonItemView(with: tableView, indexPath, type)
         case .otpInput:
             return self.otpInputItemView(with: tableView, indexPath)
-        case .OTPMessage, .enterPhoneMessage, .restorePasswordMessage, .changePasswordMessage, .enterEmailMessage:
+        case .OTPMessage, .enterPhoneMessage, .restorePasswordMessage, .restoreEmailMessage, .changePasswordMessage, .enterEmailMessage:
             return self.messageItemView(with: tableView, indexPath, type)
         case .emptySpacer:
             return self.emptyItemView(with: tableView, indexPath)

@@ -25,13 +25,14 @@ class AuthorizationAdapter: NSObject {
 
     func startLoading() -> Void {
 
+        UIApplication.shared.beginIgnoringInteractionEvents()
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: NSNotification.Name.init(.startLoading), object: nil)
         }
     }
 
     func stopLoading() -> Void {
-
+        UIApplication.shared.endIgnoringInteractionEvents()
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: NSNotification.Name.init(.stopLoading), object: nil)
         }

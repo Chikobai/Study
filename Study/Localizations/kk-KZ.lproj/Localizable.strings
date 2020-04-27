@@ -31,8 +31,10 @@
 
 "change_password_title" = "Құпия сөзді өзгерту";
 "restore_password_title" = "Құпия сөзді ұмыттыңыз ба?";
+"restore_email_title" = "Эл.поштаны өзгерту";
 "enter_phone_number_title" = "Нөміріңізді енгізіңіз";
 "enter_password_title" = "Жаңа құпия сөзді енгізіңіз";
+"old_enter_password_title" = "Қазіргі құпия сөзді енгізіңіз";
 "enter_email_title" = "Электрондық поштаны енгізіңіз";
 "repeate_enter_password_title" = "Жаңа құпия сөзді қайталау";
 "change_title" = "Өзгерту";
@@ -40,6 +42,7 @@
 "enter_phone_message_title" = "Жалғастыру үшін телефон нөміріңізді енгізіңіз";
 "enter_email_message_title" = "Жалғастыру үшін электрондық пошта мекенжайын енгізіңіз";
 "restore_password_message_title" = "Құпия сөзді қалпына келтіру үшін жаңа құпия сөз жасап, оны енгізіңіз";
+"restore_email_message_title" = "Эл.поштаны өзгерту үшін жаңа эл.поштаны енгізіңіз";
 "change_password_message_title" = "Құпия сөзді өзгерту үшін жаңа құпия сөз жасап, оны енгізіңіз";
 
 // MARK: - Main
@@ -78,6 +81,7 @@
 "language_title" = "Тіл";
 "change_phone_subtitle_title" = "Телефон нөмірін өзгерту";
 "change_name_subtitle_title" = "Пайдаланушының атын өзгерту";
+"change_email_subtitle_title" = "Пайдаланушының электрондық поштасын өзгерту";
 
 // MARK: - Profile
 
@@ -102,12 +106,16 @@
 "russian_title" = "Орысша";
 
 // MARK: - Error Message
-
+"restore_password_message" = "Біз сіздің поштанызға сілтеме жібердік. Қайта кіруіңізді сұраймыз.";
+"restore_email_message" = "Біз сіздің поштанызға сілтеме жібердік. Қайта кіруіңізді сұраймыз.";
+"password_changed_message" = "Құпия сөз сәтті өзгертілді. Қайта кіруіңізді сұраймыз.";
 "something_is_wrong_message" = "Бір нәрсе дұрыс емес. Қолайсыздық үшін кешірім сұраймыз.";
 "success_message" = "Сәтті өтті.";
 "no_data_message" = "Өкінішке орай, деректер әзірге бос.";
 "email_is_not_valid_message" = "Электрондық поштаңыздың форматы қате.";
-"password_is_so_weak_message" = "Құпия сөздің ұзындығы кемінде 8 болуы керек.";
+"password_is_so_weak_message" = "Жаңа құпия сөздің ұзындығы кемінде 8 болуы керек.";
+"old_password_is_so_weak_message" = "Ескі құпия сөздің ұзындығы кемінде 8 болуы керек.";
+"passwords_are_not_equals" = "Құпия сөздер сәйкес келмейді.";
 "name_is_empty_message" = "Атыңыз бос болмауы керек.";
 "surname_is_empty_message" = "Тегіңіз бос болмауы керек.";
 "authentic_message" = "Поштаңызды растаңыз. Бұл сіздің поштаңыз екеніне сенімді болуымыз керек.";

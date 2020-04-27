@@ -26,16 +26,7 @@ class SettingsViewController: UITableViewController {
     func exitEvent() -> Void {
         let alertController = UIAlertController(title: AppTitle.Alert.warningMessage, message: AppTitle.Alert.logoutMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: AppTitle.Alert.logout, style: .destructive, handler: { (_) in
-
-            let viewController = AuthorizationViewController(with: .loginWithEmail).inNavigate()
-            if let window = UIApplication.shared.keyWindow {
-                let options: UIView.AnimationOptions = .transitionFlipFromLeft
-                let duration: TimeInterval = 1
-                window.rootViewController = viewController
-                UIView.transition(with: window, duration: duration, options: options, animations: nil, completion: { (_) in
-                    StoreManager.shared().setToken(with: nil)
-                })
-            }
+            self.changeRootToAuthorization()
         }))
 
         alertController.addAction(UIAlertAction(title: AppTitle.Alert.cancel, style: .cancel, handler: { (_) in
@@ -54,9 +45,12 @@ extension SettingsViewController: SettingsDelegate {
         case .changableNameItem:
             let viewController = EditViewController(with: .changeUserName)
             self.pushWithHidesBottomBar(viewController)
-        case .changablePhoneItem:
-            let viewController = EditViewController(with: .changePhone)
+        case .changableEmailItem:
+            let viewController = RestorePasswordViewController(with: .restoreEmail)
             self.pushWithHidesBottomBar(viewController)
+        case .changablePasswordItem:
+            let viewController = RestorePasswordViewController(with: .changePassword)
+            self.navigationController?.pushViewController(viewController, animated: true)
         case .exitItem:
             self.exitEvent()
         default:

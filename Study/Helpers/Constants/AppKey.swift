@@ -32,4 +32,12 @@ class AppKey {
         static let name      = "first_name"
         static let surname   = "last_name"
     }
+
+    class Restore {
+
+        static let email           = "email"
+        static let oldPassword     = "old_password"
+        static let password        = "new_password"
+        static let repeatePassword = "repeate_password"
+    }
 }

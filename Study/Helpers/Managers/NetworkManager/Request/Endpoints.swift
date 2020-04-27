@@ -46,6 +46,10 @@ enum Endpoints: EndPointType {
     case registration(params: [String: String])
     case join(token: String, courseIdentifier: Int)
 
+    case changePassword(token: String, params: [String: String])
+    case restorePassword(params: [String: String])
+    case restoreEmail(token: String, params: [String: String])
+
     //PUT
 
 
@@ -59,7 +63,10 @@ enum Endpoints: EndPointType {
         switch self {
         case .join,
              .login,
-             .registration:
+             .registration,
+             .changePassword,
+             .restoreEmail,
+             .restorePassword:
             return .post
         default:
             return  .get
@@ -85,6 +92,10 @@ enum Endpoints: EndPointType {
         case .login(let params),
              .registration(let params):
             return .requestAuthorizationWithParameters(parameters: params)
+        case .restorePassword(let params),
+             .restoreEmail(_, let params),
+             .changePassword(_, let params):
+            return .requestWithParameters(parameters: params)
         default:
             return .request
         }
@@ -95,6 +106,8 @@ enum Endpoints: EndPointType {
         case .subscribedCourses(let token),
              .join(let token, _),
              .info(let token, _),
+             .changePassword(let token, _),
+             .restoreEmail(let token, _),
              .posts(let token, _, _),
              .lesson(let token, _, _),
              .courses(let token, _, _, _),
@@ -112,6 +125,12 @@ enum Endpoints: EndPointType {
             return "/auth/login/"
         case .registration:
             return "/auth/registration/"
+        case .changePassword:
+            return "/user/change-password/"
+        case .restorePassword:
+            return "/user/reset-password/"
+        case .restoreEmail:
+            return "/user/change-email/"
         case .posts:
             return "/api/v1/posts/"
         case .subscribedCourses:

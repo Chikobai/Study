@@ -364,6 +364,80 @@ extension Request {
         }
     }
 
+    //  MARK: CHANGE PASSWORD
+
+    func changePassword(
+        with params: [String: String],
+        complitionHandler: @escaping ((String)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.changePassword(token: token, params: params)
+            networkManager.makeRequest(endpoint: endpoints) { (result: Result<Auth>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let response):
+                    guard response.success == true else {
+                        complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
+                        return
+                    }
+                    complitionHandler(AppErrorMessage.restoreEmail)
+                }
+            }
+        }
+    }
+
+
+    //  MARK: RESTORE PASSWORD
+
+    func restorePassword(
+        with params: [String: String],
+        complitionHandler: @escaping ((String)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+
+        let endpoints = Endpoints.restorePassword(params: params)
+        networkManager.makeRequest(endpoint: endpoints) { (result: Result<Auth>) in
+            switch result {
+            case .failure(let error, _):
+                complitionHandlerError(error)
+            case .success(let response):
+                guard response.success == true else {
+                    complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
+                    return
+                }
+                complitionHandler(AppErrorMessage.restorePassword)
+            }
+        }
+    }
+
+    //  MARK: RESTORE EMAIL
+
+    func restoreEmail(
+        with params: [String: String],
+        complitionHandler: @escaping ((String)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+        ) -> Void {
+
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.restoreEmail(token: token, params: params)
+            networkManager.makeRequest(endpoint: endpoints) { (result: Result<Auth>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let response):
+                    guard response.success == true else {
+                        complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
+                        return
+                    }
+                    complitionHandler(AppErrorMessage.restoreEmail)
+                }
+            }
+        }
+    }
+
     //  MARK: JOIN TO COURSE
 
     func join(
