@@ -46,7 +46,7 @@ class MessageBackgroundView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textAlignment = .center
         view.numberOfLines = 2
-        view.font = UIFont.systemFont(ofSize: 16)
+        view.font = UIFont.systemFont(ofSize: 16.byWidth())
 
         return view
     }()

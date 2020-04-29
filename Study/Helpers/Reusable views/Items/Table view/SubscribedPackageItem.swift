@@ -70,16 +70,16 @@ private extension SubscribedPackageItem {
         
         //content view
         contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 16
+        contentView.layer.cornerRadius = 16.byWidth()
         contentView.backgroundColor = AppColor.white.uiColor
 
         //package name label view
         packageNameLabelView.text = "Discrete mathematics"
-        packageNameLabelView.font = UIFont.systemFont(ofSize: 20)
+        packageNameLabelView.font = UIFont.systemFont(ofSize: 20.byWidth())
         packageNameLabelView.numberOfLines = 2
 
         //review button view
-        reviewButtonView.layer.cornerRadius = 14
+        reviewButtonView.layer.cornerRadius = 14.byWidth()
         reviewButtonView.backgroundColor = AppColor.green.uiColor
         reviewButtonView.setTitle(AppTitle.MyCourses.review, for: .normal)
 
@@ -90,7 +90,7 @@ private extension SubscribedPackageItem {
 
         //passed lessons label view
         passedLessonsLabelView.text = "7/44 lessons"
-        passedLessonsLabelView.font = UIFont.systemFont(ofSize: 12)
+        passedLessonsLabelView.font = UIFont.systemFont(ofSize: 12.byWidth())
         passedLessonsLabelView.textAlignment = .right
         passedLessonsLabelView.textColor = AppColor.darkGray.uiColor
     }
@@ -101,32 +101,32 @@ private extension SubscribedPackageItem {
         
         reviewButtonView.snp.makeConstraints { (make) in
             make.centerY.equalTo(snp.bottom).offset(-verticalPadding)
-            make.height.equalTo(31)
-            make.right.equalTo(snp.centerX).offset(-30)
-            make.left.equalToSuperview().offset(40)
+            make.height.equalTo(31.byWidth())
+            make.right.equalTo(snp.centerX).offset(-30.byWidth())
+            make.left.equalToSuperview().offset(40.byWidth())
         }
 
         packageNameLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(verticalPadding + 26)
-            make.left.equalTo(horizontalPadding + 30)
-            make.right.equalTo(-30 - horizontalPadding)
+            make.top.equalTo(verticalPadding + 26.byWidth())
+            make.left.equalTo(horizontalPadding + 30.byWidth())
+            make.right.equalTo(-30.byWidth() - horizontalPadding)
         }
 
         progressView.snp.makeConstraints { (make) in
             make.left.right.equalTo(packageNameLabelView)
-            make.top.equalTo(packageNameLabelView.snp.bottom).offset(26)
-            make.height.equalTo(4)
+            make.top.equalTo(packageNameLabelView.snp.bottom).offset(26.byWidth())
+            make.height.equalTo(4.byWidth())
         }
 
         passedLessonsLabelView.snp.makeConstraints { (make) in
             make.left.right.equalTo(packageNameLabelView)
-            make.top.equalTo(progressView.snp.bottom).offset(26)
-            make.bottom.equalTo(-26 - verticalPadding)
+            make.top.equalTo(progressView.snp.bottom).offset(26.byWidth())
+            make.bottom.equalTo(-26.byWidth() - verticalPadding)
         }
     }
 
     func buildShadows() -> Void {
-        let shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 16)
+        let shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 16.byWidth())
         contentView.layer.masksToBounds = false
         contentView.layer.shadowColor = UIColor.lightGray.cgColor
         contentView.layer.shadowOffset = .zero

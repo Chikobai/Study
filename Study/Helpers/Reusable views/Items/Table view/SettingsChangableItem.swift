@@ -40,10 +40,10 @@ private extension SettingsChangableItem {
         selectionStyle = .none
 
         //text label view
-        textLabel?.font = .systemFont(ofSize: 15)
+        textLabel?.font = .systemFont(ofSize: 15.byWidth())
 
         //detail label view
-        detailTextLabel?.font = .systemFont(ofSize: 12)
+        detailTextLabel?.font = .systemFont(ofSize: 12.byWidth())
         detailTextLabel?.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
     }
 }

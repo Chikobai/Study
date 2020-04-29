@@ -34,9 +34,10 @@ class SubscribedCoursesViewController: UITableViewController, FetchableMore, Sty
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.isTranslucent = false
         super.viewWillAppear(animated)
-
-        self.navigationController?.navigationBar.shadowImage = nil
     }
 
     deinit {

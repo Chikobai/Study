@@ -154,7 +154,7 @@ extension OTPItem {
         coverStackView.spacing = 20
 
         //timer message view
-        timerMessageView.font = UIFont.systemFont(ofSize: 14)
+        timerMessageView.font = UIFont.systemFont(ofSize: 14.byWidth())
         timerMessageView.textColor = .lightGray
         timerMessageView.numberOfLines = 0
         timerMessageView.sizeToFit()
@@ -162,7 +162,7 @@ extension OTPItem {
 
         //resend button view
         resendButtonView.setTitle(AppTitle.Authorization.resendOTP, for: .normal)
-        resendButtonView.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        resendButtonView.titleLabel?.font = UIFont.systemFont(ofSize: 14.byWidth())
         resendButtonView.contentHorizontalAlignment = .left
         resendButtonView.setTitleColor(AppColor.main.uiColor, for: .normal)
         resendButtonView.addTarget(self, action: #selector(againSendCode), for: .touchUpInside)
@@ -175,16 +175,16 @@ extension OTPItem {
         coverStackView.addArrangedSubviews(with: [otpTextField1, otpTextField2, otpTextField3, otpTextField4])
 
         coverStackView.snp.makeConstraints { (make) in
-            make.height.equalTo(55.0)
-            make.left.equalTo(50.0)
-            make.right.equalTo(-50.0)
-            make.top.equalTo(10.0)
+            make.height.equalTo(55.byWidth())
+            make.left.equalTo(50.byWidth())
+            make.right.equalTo(-50.byWidth())
+            make.top.equalTo(10.byWidth())
         }
 
         timerMessageView.snp.makeConstraints { (make) in
-            make.top.equalTo(coverStackView.snp.bottom).offset(10)
+            make.top.equalTo(coverStackView.snp.bottom).offset(10.byWidth())
             make.right.left.equalTo(coverStackView)
-            make.bottom.equalTo(-10)
+            make.bottom.equalTo(-10.byWidth())
         }
 
         resendButtonView.snp.makeConstraints { (make) in

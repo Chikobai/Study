@@ -46,12 +46,6 @@ class CourseDetailsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
 
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//
-//        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-//        navigationController?.navigationBar.isTranslucent = false
-//    }
 }
 
 private extension CourseDetailsViewController {
@@ -96,12 +90,12 @@ private extension CourseDetailsViewController {
         view.addSubviews(with: [headerView, coverViewOfPagerView])
 
         let pagerControlHeight: CGFloat = 20.0
-        let headerViewHeight: CGFloat = 175.0
+        let headerViewHeight: CGFloat = 175.byWidth()
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 0
 
         headerView.snp.makeConstraints { (make) in
             make.centerX.top.width.equalToSuperview()
-            make.height.equalTo(175)
+            make.height.equalTo(175.byWidth())
         }
 
         coverViewOfPagerView.snp.makeConstraints { (make) in

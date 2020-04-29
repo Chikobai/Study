@@ -8,12 +8,12 @@
 
 import UIKit
 
-fileprivate let circleRadius: CGFloat = 15
+fileprivate let circleRadius: CGFloat = 15.byWidth()
 
 class LoadingButton: UIButton {
     
     private var savedTitle: String? = nil
-    private var savedCornerRadius: CGFloat = 0
+    private var savedCornerRadius: CGFloat = 0.byWidth()
     
     lazy var spinner: SpinnerView = {
         let spinner = SpinnerView()

@@ -50,7 +50,7 @@ private extension MessageItem {
         selectionStyle = .none
 
         //title label view
-        titleLabelView.font = .systemFont(ofSize: 17.0)
+        titleLabelView.font = .systemFont(ofSize: 17.byWidth())
         titleLabelView.numberOfLines = 0
     }
 
@@ -58,10 +58,10 @@ private extension MessageItem {
 
         addSubview(titleLabelView)
         titleLabelView.snp.makeConstraints { (make) in
-            make.left.equalTo(16.0)
-            make.right.equalTo(-16.0)
-            make.top.equalTo(10.0)
-            make.bottom.equalTo(-10.0)
+            make.left.equalTo(16.byWidth())
+            make.right.equalTo(-16.byWidth())
+            make.top.equalTo(10.byWidth())
+            make.bottom.equalTo(-10.byWidth())
         }
     }
 }

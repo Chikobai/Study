@@ -43,7 +43,7 @@ private extension FilledButton {
 
         setTitleColor(AppColor.white.uiColor, for: .normal)
         backgroundColor = AppColor.main.uiColor
-        layer.cornerRadius = 8
+        layer.cornerRadius = 8.byWidth()
     }
 }
 

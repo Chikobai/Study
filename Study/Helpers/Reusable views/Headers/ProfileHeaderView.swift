@@ -47,7 +47,7 @@ private extension ProfileHeaderView {
         backgroundColor = .clear
 
         //photo image view
-        photoImageView.layer.cornerRadius = 55
+        photoImageView.layer.cornerRadius = 55.byWidth()
         photoImageView.clipsToBounds = true
         photoImageView.image = #imageLiteral(resourceName: "photo")
         photoImageView.contentMode = .scaleAspectFill
@@ -55,24 +55,24 @@ private extension ProfileHeaderView {
         //user name label view
         userNameLabelView.text = "Jhon Jones"
         userNameLabelView.textAlignment = .center
-        userNameLabelView.font = .boldSystemFont(ofSize: 18)
+        userNameLabelView.font = .boldSystemFont(ofSize: 18.byWidth())
 
         //type of user label view
         typeOfUserLabelView.text = "student"
         typeOfUserLabelView.textAlignment = .center
-        typeOfUserLabelView.font = .systemFont(ofSize: 14)
+        typeOfUserLabelView.font = .systemFont(ofSize: 14.byWidth())
         typeOfUserLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
 
         //phone number label view
         phoneNumberLabelView.text = "+7(747)377-80-99"
         phoneNumberLabelView.textAlignment = .center
-        phoneNumberLabelView.font = .systemFont(ofSize: 13)
+        phoneNumberLabelView.font = .systemFont(ofSize: 13.byWidth())
         phoneNumberLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
 
         //email label view
         emailLabelView.text = "160107084@stu.sdu.edu.kz"
         emailLabelView.textAlignment = .center
-        emailLabelView.font = .systemFont(ofSize: 13)
+        emailLabelView.font = .systemFont(ofSize: 13.byWidth())
         emailLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
     }
 
@@ -80,7 +80,7 @@ private extension ProfileHeaderView {
 
         addSubviews(with: [userNameLabelView, typeOfUserLabelView, photoImageView, phoneNumberLabelView, emailLabelView])
         userNameLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(10.0)
+            make.top.equalTo(10.byWidth())
             make.centerX.equalToSuperview()
         }
 
@@ -90,13 +90,13 @@ private extension ProfileHeaderView {
         }
 
         photoImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(typeOfUserLabelView.snp.bottom).offset(20.0)
+            make.top.equalTo(typeOfUserLabelView.snp.bottom).offset(20.byWidth())
             make.centerX.equalToSuperview()
-            make.height.width.equalTo(110.0)
+            make.height.width.equalTo(110.byWidth())
         }
 
         phoneNumberLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(photoImageView.snp.bottom).offset(10)
+            make.top.equalTo(photoImageView.snp.bottom).offset(10.byWidth())
             make.centerX.equalToSuperview()
         }
 

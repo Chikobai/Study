@@ -63,7 +63,7 @@ private extension CourseInfoDescriptionItem {
         selectionStyle = .none
 
         //title label view
-        titleLabelView.font = .boldSystemFont(ofSize: 16.0)
+        titleLabelView.font = .boldSystemFont(ofSize: 16.byWidth())
         titleLabelView.numberOfLines = 0
 
         //description label view
@@ -71,10 +71,10 @@ private extension CourseInfoDescriptionItem {
         let attributedText = [
             NSAttributedString.Key.foregroundColor : AppColor.darkGray.uiColor.withAlphaComponent(0.7),
             NSAttributedString.Key.font :
-                UIFont.systemFont(ofSize: 13.0)
+                UIFont.systemFont(ofSize: 13.byWidth())
         ]
 
-        descriptionTextView.font = .systemFont(ofSize: 11.0)
+        descriptionTextView.font = .systemFont(ofSize: 11.byWidth())
         descriptionTextView.attributedReadMoreText = NSAttributedString(string: "...Read More", attributes: attributedText)
         descriptionTextView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: attributedText)
 
@@ -86,13 +86,13 @@ private extension CourseInfoDescriptionItem {
 
         addSubviews(with: [titleLabelView, descriptionTextView])
         titleLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(32)
-            make.left.equalTo(20.0)
-            make.right.equalTo(-20.0)
+            make.top.equalTo(32.byWidth())
+            make.left.equalTo(20.byWidth())
+            make.right.equalTo(-20.byWidth())
         }
 
         descriptionTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabelView.snp.bottom).offset(7.0)
+            make.top.equalTo(titleLabelView.snp.bottom).offset(7.byWidth())
             make.left.right.equalTo(titleLabelView)
             make.bottom.equalToSuperview()
         }

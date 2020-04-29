@@ -37,9 +37,9 @@ private extension OTPTextField {
     func buildViews() -> Void {
 
         layer.borderColor = UIColor.lightGray.cgColor
-        layer.borderWidth = 1
-        layer.cornerRadius = 8
+        layer.borderWidth = 1.byWidth()
+        layer.cornerRadius = 8.byWidth()
         textAlignment = .center
-        font = .systemFont(ofSize: 18)
+        font = .systemFont(ofSize: 18.byWidth())
     }
 }

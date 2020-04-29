@@ -57,7 +57,7 @@ extension ProfileCertificateItem: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CertificateItem.cellIdentifier(), for: indexPath) as? CertificateItem
         cell?.backgroundColor = AppColor.main.uiColor
-        cell?.layer.cornerRadius = 8
+        cell?.layer.cornerRadius = 8.byWidth()
 
         return cell!
     }
@@ -108,7 +108,7 @@ private extension ProfileCertificateItem {
 
         //title label view
         titleLabelView.text = AppTitle.Profile.certificates
-        titleLabelView.font = .boldSystemFont(ofSize: 14.0)
+        titleLabelView.font = .boldSystemFont(ofSize: 14.byWidth())
 
         //next button view
         nextButtonView.setImage(#imageLiteral(resourceName: "right-chevron 4"), for: .normal)
@@ -121,28 +121,28 @@ private extension ProfileCertificateItem {
 
         addSubviews(with: [titleLabelView, collectionView, nextButtonView, previousButtonView])
         titleLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(12 + verticalPaddingValue)
-            make.left.equalTo(45)
+            make.top.equalTo(12.byWidth() + verticalPaddingValue)
+            make.left.equalTo(45.byWidth())
         }
 
         collectionView.snp.makeConstraints { (make) in
-            make.left.equalTo(40)
-            make.right.equalTo(-40)
-            make.top.equalTo(titleLabelView.snp.bottom).offset(7)
-            make.height.equalTo(60.0)
-            make.bottom.equalTo(-12.0)
+            make.left.equalTo(40.byWidth())
+            make.right.equalTo(-40.byWidth())
+            make.top.equalTo(titleLabelView.snp.bottom).offset(7.byWidth())
+            make.height.equalTo(60.byWidth())
+            make.bottom.equalTo(-12.byWidth())
         }
 
         previousButtonView.snp.makeConstraints { (make) in
             make.centerY.equalTo(collectionView)
-            make.right.equalTo(collectionView.snp.left).offset(-5.0)
-            make.width.height.equalTo(20.0)
+            make.right.equalTo(collectionView.snp.left).offset(-5.byWidth())
+            make.width.height.equalTo(20.byWidth())
         }
 
         nextButtonView.snp.makeConstraints { (make) in
             make.centerY.equalTo(collectionView)
-            make.left.equalTo(collectionView.snp.right).offset(5.0)
-            make.width.height.equalTo(20.0)
+            make.left.equalTo(collectionView.snp.right).offset(5.byWidth())
+            make.width.height.equalTo(20.byWidth())
         }
     }
 

@@ -51,15 +51,15 @@ private extension CourseInfoTeacherItem {
 
         //photo image view
         photoImageView.image = #imageLiteral(resourceName: "Ellipse 18")
-        photoImageView.layer.cornerRadius = 20
+        photoImageView.layer.cornerRadius = 20.byWidth()
         photoImageView.clipsToBounds = true
 
         //name label view
-        nameLabelView.font = .systemFont(ofSize: 13.0)
+        nameLabelView.font = .systemFont(ofSize: 13.byWidth())
         nameLabelView.text = "Nemchenko M."
 
         //experience label view
-        experienceLabelView.font = .systemFont(ofSize: 11.0)
+        experienceLabelView.font = .systemFont(ofSize: 11.byWidth())
         experienceLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         experienceLabelView.text = "experience: 13 years"
     }
@@ -68,20 +68,20 @@ private extension CourseInfoTeacherItem {
 
         addSubviews(with: [photoImageView, nameLabelView, experienceLabelView])
         photoImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(20.0)
-            make.top.equalTo(15.0)
-            make.width.height.equalTo(40.0)
-            make.bottom.equalTo(-12.0)
+            make.left.equalTo(20.byWidth())
+            make.top.equalTo(15.byWidth())
+            make.width.height.equalTo(40.byWidth())
+            make.bottom.equalTo(-12.byWidth())
         }
 
         nameLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(photoImageView).offset(3.0)
-            make.left.equalTo(photoImageView.snp.right).offset(13.0)
-            make.right.equalTo(-13.0)
+            make.top.equalTo(photoImageView).offset(3.byWidth())
+            make.left.equalTo(photoImageView.snp.right).offset(13.byWidth())
+            make.right.equalTo(-13.byWidth())
         }
 
         experienceLabelView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(photoImageView.snp.bottom).offset(-3)
+            make.bottom.equalTo(photoImageView.snp.bottom).offset(-3.byWidth())
             make.right.left.equalTo(nameLabelView)
         }
     }

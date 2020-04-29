@@ -11,12 +11,12 @@ public class ViewPagerOptions {
     public var distribution: ViewPagerOptions.Distribution = .normal
     public var tabType:ViewPagerTabType = .basic
 
-    public var tabViewHeight:CGFloat = 44
-    public var tabViewTextFont:UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+    public var tabViewHeight:CGFloat = 44.byWidth()
+    public var tabViewTextFont:UIFont = UIFont.systemFont(ofSize: 14.byWidth(), weight: .medium)
     
-    public var tabViewImageSize:CGSize = CGSize(width: 25, height: 25)
-    public var tabViewImageMarginTop:CGFloat = 10
-    public var tabViewImageMarginBottom:CGFloat = 5
+    public var tabViewImageSize:CGSize = CGSize(width: 25.byWidth(), height: 25.byWidth())
+    public var tabViewImageMarginTop:CGFloat = 10.byWidth()
+    public var tabViewImageMarginBottom:CGFloat = 5.byWidth()
     public var tabSelectedImageColor = AppColor.main.uiColor
     public var tabUnselectedImageColor = AppColor.secondaryLightGray.uiColor
 

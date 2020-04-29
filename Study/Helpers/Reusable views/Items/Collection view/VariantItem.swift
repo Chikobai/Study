@@ -61,7 +61,7 @@ private extension VariantItem {
 
         //superview
         backgroundColor = AppColor.lightGray.uiColor
-        layer.cornerRadius = 10
+        layer.cornerRadius = 10.byWidth()
         layer.masksToBounds = true
 
         //check button view
@@ -70,7 +70,7 @@ private extension VariantItem {
 
         //variant label view
         variantLabelView.numberOfLines = 0
-        variantLabelView.font = .boldSystemFont(ofSize: 14)
+        variantLabelView.font = .boldSystemFont(ofSize: 14.byWidth())
         variantLabelView.textColor = .darkGray
         variantLabelView.text = "What current trend do you hope will go on for a long time?"
         
@@ -81,20 +81,20 @@ private extension VariantItem {
         addSubviews(with: [checkButtonView, variantLabelView])
 
         snp.makeConstraints { (make) in
-            make.width.equalTo(AppSize.Screen.width - 20.0)
+            make.width.equalTo(AppSize.Screen.width - 20.byWidth())
         }
 
         checkButtonView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(10.byWidth())
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(23)
+            make.height.width.equalTo(23.byWidth())
         }
 
         variantLabelView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(15)
-            make.left.equalTo(checkButtonView.snp.right).offset(10)
-            make.right.equalToSuperview().offset(-15)
-            make.bottom.equalToSuperview().offset(-15)
+            make.top.equalToSuperview().offset(15.byWidth())
+            make.left.equalTo(checkButtonView.snp.right).offset(10.byWidth())
+            make.right.equalToSuperview().offset(-15.byWidth())
+            make.bottom.equalToSuperview().offset(-15.byWidth())
         }
 
     }

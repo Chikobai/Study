@@ -51,7 +51,7 @@ private extension IconableLabelView {
         backgroundColor = AppColor.white.uiColor
 
         //title label view
-        countLabelView.font = .systemFont(ofSize: 10)
+        countLabelView.font = .systemFont(ofSize: 10.byWidth())
         countLabelView.textColor = AppColor.darkGray.uiColor
 
     }
@@ -62,15 +62,15 @@ private extension IconableLabelView {
 
         iconView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
-            make.width.equalTo(7)
-            make.height.equalTo(8)
-            make.left.equalTo(5)
+            make.width.equalTo(7.byWidth())
+            make.height.equalTo(8.byWidth())
+            make.left.equalTo(5.byWidth())
         }
 
         countLabelView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalTo(iconView.snp.right).offset(5)
-            make.right.equalTo(-5)
+            make.left.equalTo(iconView.snp.right).offset(5.byWidth())
+            make.right.equalTo(-5.byWidth())
         }
     }
 }

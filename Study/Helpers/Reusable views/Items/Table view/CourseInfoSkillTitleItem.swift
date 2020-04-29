@@ -43,7 +43,7 @@ private extension CourseInfoSkillTitleItem {
         //skills label view
         skillsLabelView.text = AppTitle.CourseDetails.skills
         skillsLabelView.numberOfLines =  2
-        skillsLabelView.font = .boldSystemFont(ofSize: 16.0)
+        skillsLabelView.font = .boldSystemFont(ofSize: 16.byWidth())
 
     }
 
@@ -52,10 +52,10 @@ private extension CourseInfoSkillTitleItem {
         addSubviews(with: [skillsLabelView])
 
         skillsLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(7.0)
-            make.left.equalTo(20)
-            make.right.equalTo(-20)
-            make.bottom.equalTo(-7.0)
+            make.top.equalTo(7.byWidth())
+            make.left.equalTo(20.byWidth())
+            make.right.equalTo(-20.byWidth())
+            make.bottom.equalTo(-7.byWidth())
         }
     }
 }

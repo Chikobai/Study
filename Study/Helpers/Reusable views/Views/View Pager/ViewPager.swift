@@ -78,7 +78,7 @@ extension ViewPager {
 
         if options.tabType == .basic {
             tabsList.forEach { (tab) in
-                let width: CGFloat = tab.title?.size(withAttributes:[.font: UIFont.boldSystemFont(ofSize: 14)]).width ?? .zero + 10.0
+                let width: CGFloat = tab.title?.size(withAttributes:[.font: UIFont.boldSystemFont(ofSize: 14.byWidth())]).width ?? .zero + 10.0
                 widths.append(width)
             }
         }

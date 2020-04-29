@@ -195,7 +195,7 @@ private extension FloatingTextField {
 
         //superview
         backgroundColor = AppColor.lightGray.uiColor
-        layer.cornerRadius = 8
+        layer.cornerRadius = 8.byWidth()
 
         //mask configuration
         maskString = "[...]"
@@ -206,7 +206,7 @@ private extension FloatingTextField {
 
         //title label view
         titleLabel.textColor = UIColor.lightGray
-        titleLabel.font = UIFont.systemFont(ofSize: 13)
+        titleLabel.font = UIFont.systemFont(ofSize: 13.byWidth())
         titleLabel.alpha = 0
 
         //text field view

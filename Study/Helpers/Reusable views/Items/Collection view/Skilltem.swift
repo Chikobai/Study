@@ -46,11 +46,11 @@ private extension Skilltem {
 
         //superview
         backgroundColor = AppColor.main.uiColor.withAlphaComponent(0.7)
-        layer.cornerRadius = 8
+        layer.cornerRadius = 8.byWidth()
         clipsToBounds = true
 
         //title label view
-        titleLabelView.font = UIFont.systemFont(ofSize: 12.0)
+        titleLabelView.font = UIFont.systemFont(ofSize: 12.byWidth())
         titleLabelView.textColor = AppColor.white.uiColor
         titleLabelView.textAlignment = .center
     }
@@ -59,10 +59,10 @@ private extension Skilltem {
 
         addSubview(titleLabelView)
         titleLabelView.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
-            make.top.equalTo(3)
-            make.right.equalTo(-10)
-            make.bottom.equalTo(-3)
+            make.left.equalTo(10.byWidth())
+            make.top.equalTo(3.byWidth())
+            make.right.equalTo(-10.byWidth())
+            make.bottom.equalTo(-3.byWidth())
         }
     }
 }

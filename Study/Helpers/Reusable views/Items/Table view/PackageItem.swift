@@ -77,21 +77,21 @@ private extension PackageItem {
 
         //content view
         contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 16
+        contentView.layer.cornerRadius = 16.byWidth()
         contentView.backgroundColor = AppColor.white.uiColor
 
         //package name label view
         packageNameLabelView.text = "Discrete mathematics"
-        packageNameLabelView.font = UIFont.systemFont(ofSize: 20)
+        packageNameLabelView.font = UIFont.systemFont(ofSize: 20.byWidth())
         packageNameLabelView.numberOfLines = 2
 
         //review button view
-        reviewButtonView.layer.cornerRadius = 14
+        reviewButtonView.layer.cornerRadius = 14.byWidth()
         reviewButtonView.backgroundColor = AppColor.green.uiColor
         reviewButtonView.setTitle(AppTitle.Category.review, for: .normal)
 
         //package icon view
-        packageIconView.layer.cornerRadius = 16
+        packageIconView.layer.cornerRadius = 16.byWidth()
         packageIconView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         packageIconView.backgroundColor = AppColor.white.uiColor
         packageIconView.contentMode = .scaleAspectFit
@@ -110,38 +110,38 @@ private extension PackageItem {
         addSubviews(with: [packageIconView, packageNameLabelView, communityView, lessonsView, reviewButtonView])
         reviewButtonView.snp.makeConstraints { (make) in
             make.centerY.equalTo(snp.bottom).offset(-verticalPadding)
-            make.height.equalTo(31)
-            make.left.equalTo(snp.centerX).offset(30)
-            make.right.equalTo(snp.right).offset(-30)
+            make.height.equalTo(31.byWidth())
+            make.left.equalTo(snp.centerX).offset(30.byWidth())
+            make.right.equalTo(snp.right).offset(-30.byWidth())
         }
 
         packageIconView.snp.makeConstraints { (make) in
             make.top.equalTo(verticalPadding)
             make.bottom.equalTo(-verticalPadding)
             make.left.equalTo(horizontalPadding)
-            make.height.equalTo(141)
-            make.width.equalTo(128)
+            make.height.equalTo(141.byWidth())
+            make.width.equalTo(128.byWidth())
         }
 
         packageNameLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(verticalPadding + 14)
-            make.left.equalTo(packageIconView.snp.right).offset(18)
-            make.right.equalTo(-horizontalPadding - 18)
+            make.top.equalTo(verticalPadding + 14.byWidth())
+            make.left.equalTo(packageIconView.snp.right).offset(18.byWidth())
+            make.right.equalTo(-horizontalPadding - 18.byWidth())
         }
 
         communityView.snp.makeConstraints { (make) in
-            make.top.equalTo(packageNameLabelView.snp.bottom).offset(20)
+            make.top.equalTo(packageNameLabelView.snp.bottom).offset(20.byWidth())
             make.left.equalTo(packageNameLabelView.snp.left)
         }
 
         lessonsView.snp.makeConstraints { (make) in
-            make.top.equalTo(communityView.snp.bottom).offset(6)
+            make.top.equalTo(communityView.snp.bottom).offset(6.byWidth())
             make.left.equalTo(packageNameLabelView.snp.left)
         }
     }
 
     func buildShadows() -> Void {
-        let shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 16)
+        let shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 16.byWidth())
         contentView.layer.masksToBounds = false
         contentView.layer.shadowColor = UIColor.lightGray.cgColor
         contentView.layer.shadowOffset = .zero

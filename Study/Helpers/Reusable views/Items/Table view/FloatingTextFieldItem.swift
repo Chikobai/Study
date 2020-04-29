@@ -116,18 +116,18 @@ private extension FloatingTextFieldItem {
 
         addSubview(textField)
         textField.snp.makeConstraints { (make) in
-            make.top.equalTo(10.0)
-            make.bottom.equalTo(-10.0)
-            make.left.equalTo(16.0)
-            make.right.equalTo(-16.0)
-            make.height.equalTo(56.0)
+            make.top.equalTo(10.byWidth())
+            make.bottom.equalTo(-10.byWidth())
+            make.left.equalTo(16.byWidth())
+            make.right.equalTo(-16.byWidth())
+            make.height.equalTo(56.byWidth())
         }
 
         addSubview(visibilityButtonView)
         visibilityButtonView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(25.0)
+            make.width.height.equalTo(25.byWidth())
             make.centerY.equalToSuperview()
-            make.right.equalTo(-25.0)
+            make.right.equalTo(-25.byWidth())
         }
     }
 

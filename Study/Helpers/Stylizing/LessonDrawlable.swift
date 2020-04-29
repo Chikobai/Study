@@ -44,7 +44,7 @@ extension LessonDrawlable where Self: QuestionsViewController {
         view.backgroundColor = AppColor.white.uiColor
 
         //questions label view
-        questionsLabelView.font = .boldSystemFont(ofSize: 14)
+        questionsLabelView.font = .boldSystemFont(ofSize: 14.byWidth())
         questionsLabelView.textAlignment = .center
         questionsLabelView.text = lessonQuestion.label
         questionsLabelView.numberOfLines = 0
@@ -60,14 +60,14 @@ extension LessonDrawlable where Self: QuestionsViewController {
         view.addSubviews(with: [questionsLabelView, variantCollectionView])
 
         questionsLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(30.0)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(30.byWidth())
             make.centerX.equalToSuperview()
-            make.left.equalTo(15.0)
-            make.right.equalTo(-15.0)
+            make.left.equalTo(15.byWidth())
+            make.right.equalTo(-15.byWidth())
         }
 
         variantCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(questionsLabelView.snp.bottom).offset(30)
+            make.top.equalTo(questionsLabelView.snp.bottom).offset(30.byWidth())
             make.bottom.centerX.width.equalToSuperview()
         }
     }

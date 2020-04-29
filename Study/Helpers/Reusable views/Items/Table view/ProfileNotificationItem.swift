@@ -64,12 +64,12 @@ private extension ProfileNotificationItem {
 
         //title label view
         titleLabelView.textColor = AppColor.black.uiColor
-        titleLabelView.font = .boldSystemFont(ofSize: 14)
+        titleLabelView.font = .boldSystemFont(ofSize: 14.byWidth())
         titleLabelView.text = AppTitle.Profile.notification
 
         //subtitle label view
         subtitleLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.95)
-        subtitleLabelView.font = .systemFont(ofSize: 11)
+        subtitleLabelView.font = .systemFont(ofSize: 11.byWidth())
         subtitleLabelView.text = AppTitle.Profile.notificationSubtitle
 
         //separator line view
@@ -78,14 +78,14 @@ private extension ProfileNotificationItem {
         //from time input view
         fromTimeInputView.placeholder = "20:00"
         fromTimeInputView.textAlignment = .center
-        fromTimeInputView.font = .boldSystemFont(ofSize: 22)
+        fromTimeInputView.font = .boldSystemFont(ofSize: 22.byWidth())
         fromTimeInputView.textColor = AppColor.main.uiColor
         fromTimeInputView.inputView = fromDatePicker
 
         //to time input view
         toTimeInputView.placeholder = "23:00"
         toTimeInputView.textAlignment = .center
-        toTimeInputView.font = .boldSystemFont(ofSize: 22)
+        toTimeInputView.font = .boldSystemFont(ofSize: 22.byWidth())
         toTimeInputView.textColor = AppColor.main.uiColor
         toTimeInputView.inputView = tillDatePicker
 
@@ -98,38 +98,38 @@ private extension ProfileNotificationItem {
 
         addSubviews(with: [titleLabelView, subtitleLabelView, switchView, fromTimeInputView, toTimeInputView, separatorLineView])
         titleLabelView.snp.makeConstraints { (make) in
-            make.left.equalTo(45)
-            make.top.equalTo(12 + verticalPaddingValue)
+            make.left.equalTo(45.byWidth())
+            make.top.equalTo(12.byWidth() + verticalPaddingValue)
         }
 
         subtitleLabelView.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabelView)
-            make.top.equalTo(titleLabelView.snp.bottom).offset(5)
+            make.top.equalTo(titleLabelView.snp.bottom).offset(5.byWidth())
         }
 
         switchView.snp.makeConstraints { (make) in
-            make.right.equalTo(-25)
-            make.top.equalTo(25)
+            make.right.equalTo(-25.byWidth())
+            make.top.equalTo(25.byWidth())
         }
 
         fromTimeInputView.snp.makeConstraints { (make) in
-            make.top.equalTo(switchView.snp.bottom).offset(20)
-            make.left.equalTo(10)
-            make.right.equalTo(-10)
+            make.top.equalTo(switchView.snp.bottom).offset(20.byWidth())
+            make.left.equalTo(10.byWidth())
+            make.right.equalTo(-10.byWidth())
         }
 
         separatorLineView.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
-            make.right.equalTo(-10)
+            make.left.equalTo(10.byWidth())
+            make.right.equalTo(-10.byWidth())
             make.height.equalTo(1)
-            make.top.equalTo(fromTimeInputView.snp.bottom).offset(5)
+            make.top.equalTo(fromTimeInputView.snp.bottom).offset(5.byWidth())
         }
 
         toTimeInputView.snp.makeConstraints { (make) in
-            make.top.equalTo(separatorLineView.snp.bottom).offset(5)
-            make.left.equalTo(10)
-            make.right.equalTo(-10)
-            make.bottom.equalTo(-20)
+            make.top.equalTo(separatorLineView.snp.bottom).offset(5.byWidth())
+            make.left.equalTo(10.byWidth())
+            make.right.equalTo(-10.byWidth())
+            make.bottom.equalTo(-20.byWidth())
         }
     }
 

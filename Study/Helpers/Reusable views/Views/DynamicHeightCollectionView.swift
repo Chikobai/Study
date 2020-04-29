@@ -47,6 +47,10 @@ class DynamicHeightCollectionViewFlowLayout: UICollectionViewFlowLayout {
             }
             //print("Main For Loop End")
         }
+        else if (cellAttributesArray != nil && cellAttributesArray!.count == 1) {
+            let startLayoutAttributes: UICollectionViewLayoutAttributes = cellAttributesArray![0]
+            startLayoutAttributes.frame.origin.x = 20
+        }
         // self.shiftCellsToCenter()
         return cellAttributesArray
     }

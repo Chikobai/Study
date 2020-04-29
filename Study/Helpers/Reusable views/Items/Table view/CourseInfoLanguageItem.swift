@@ -54,11 +54,11 @@ private extension CourseInfoLanguageItem {
         iconImageView.image = #imageLiteral(resourceName: "language")
 
         //basic language label view
-        basicLanguageLabelView.font = .boldSystemFont(ofSize: 13.0)
+        basicLanguageLabelView.font = .boldSystemFont(ofSize: 13.byWidth())
         basicLanguageLabelView.text = "English"
 
         //subtitles language view
-        subtitlesLabelView.font = .boldSystemFont(ofSize: 11.0)
+        subtitlesLabelView.font = .boldSystemFont(ofSize: 11.byWidth())
         subtitlesLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         subtitlesLabelView.text = "Subtitles: Russian, Kazakh, Turkish"
     }
@@ -67,21 +67,21 @@ private extension CourseInfoLanguageItem {
 
         addSubviews(with: [iconImageView, basicLanguageLabelView, subtitlesLabelView])
         iconImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(20.0)
+            make.left.equalTo(20.byWidth())
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(26.0)
+            make.height.width.equalTo(26.byWidth())
         }
 
         basicLanguageLabelView.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(10.0)
-            make.top.equalTo(12.0)
-            make.right.equalTo(-26.0)
+            make.left.equalTo(iconImageView.snp.right).offset(10.byWidth())
+            make.top.equalTo(12.byWidth())
+            make.right.equalTo(-26.byWidth())
         }
 
         subtitlesLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(basicLanguageLabelView.snp.bottom).offset(5)
+            make.top.equalTo(basicLanguageLabelView.snp.bottom).offset(5.byWidth())
             make.left.right.equalTo(basicLanguageLabelView)
-            make.bottom.equalTo(-12.0)
+            make.bottom.equalTo(-12.byWidth())
         }
     }
 }

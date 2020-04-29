@@ -72,8 +72,8 @@ extension CourseInfoSkillsItem: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let text = items[indexPath.item].name
-        let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize:12.0)]).width + 30.0
-        return CGSize(width: cellWidth, height: 30.0)
+        let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize:12.byWidth())]).width + 30.byWidth()
+        return CGSize(width: cellWidth, height: 30.byWidth())
     }
 }
 
@@ -97,7 +97,7 @@ private extension CourseInfoSkillsItem {
         //skills label view
         skillsLabelView.text = "Skills you will gain:"
         skillsLabelView.numberOfLines =  2
-        skillsLabelView.font = .boldSystemFont(ofSize: 16.0)
+        skillsLabelView.font = .boldSystemFont(ofSize: 16.byWidth())
 
         //skills collection view
         skillsCollectionView.backgroundColor = .clear

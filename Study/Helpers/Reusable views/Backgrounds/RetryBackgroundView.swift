@@ -57,7 +57,7 @@ class RetryBackgroundView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textAlignment = .center
         view.numberOfLines = 2
-        view.font = UIFont.systemFont(ofSize: 16)
+        view.font = UIFont.systemFont(ofSize: 16.byWidth())
 
         return view
     }()
@@ -65,7 +65,7 @@ class RetryBackgroundView: UIView {
     lazy var retryButton: UIButton = {
         let view = UIButton()
         view.setTitle("Обновить", for: .normal)
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 16.byWidth())
         view.setTitleColor(AppColor.main.uiColor, for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(handleRetryEvent), for: .touchUpInside)

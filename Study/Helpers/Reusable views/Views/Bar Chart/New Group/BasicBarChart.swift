@@ -77,10 +77,10 @@ class BasicBarChart: UIView {
         mainLayer.addRectangleLayer(frame: entry.barFrame, color: cgColor, animated: animated, oldFrame: oldEntry?.barFrame)
 
         // Show an Int value above the bar
-        mainLayer.addTextLayer(frame: entry.textValueFrame, color: cgColor, fontSize: 14, text: entry.data.textValue, animated: animated, oldFrame: oldEntry?.textValueFrame)
+        mainLayer.addTextLayer(frame: entry.textValueFrame, color: cgColor, fontSize: 14.byWidth(), text: entry.data.textValue, animated: animated, oldFrame: oldEntry?.textValueFrame)
 
         // Show a title below the bar
-        mainLayer.addTextLayer(frame: entry.bottomTitleFrame, color: cgColor, fontSize: 14, text: entry.data.title, animated: animated, oldFrame: oldEntry?.bottomTitleFrame)
+        mainLayer.addTextLayer(frame: entry.bottomTitleFrame, color: cgColor, fontSize: 14.byWidth(), text: entry.data.title, animated: animated, oldFrame: oldEntry?.bottomTitleFrame)
     }
     
     private func showHorizontalLines() {

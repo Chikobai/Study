@@ -45,7 +45,7 @@ private extension MessageHeaderView {
 
         //title label view
         titleLabelView.textColor = AppColor.black.uiColor
-        titleLabelView.font = .systemFont(ofSize: 11)
+        titleLabelView.font = .systemFont(ofSize: 11.byWidth())
         titleLabelView.textAlignment = .center
         titleLabelView.numberOfLines = 0
     }
@@ -54,8 +54,8 @@ private extension MessageHeaderView {
 
         addSubview(titleLabelView)
         titleLabelView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(16.0)
-            make.right.bottom.equalTo(-16.0)
+            make.left.top.equalTo(16.byWidth())
+            make.right.bottom.equalTo(-16.byWidth())
         }
     }
 }

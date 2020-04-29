@@ -74,27 +74,27 @@ private extension ProfileStatisticsItem {
         //title label view
         titleLabelView.text = AppTitle.Profile.statistics
         titleLabelView.textColor = AppColor.black.uiColor
-        titleLabelView.font = .boldSystemFont(ofSize: 14)
+        titleLabelView.font = .boldSystemFont(ofSize: 14.byWidth())
         titleLabelView.textAlignment = .left
 
         //time label view
         timeLabelView.text = "Time"
-        timeLabelView.font = .systemFont(ofSize: 12.0)
+        timeLabelView.font = .systemFont(ofSize: 12.byWidth())
         timeLabelView.textColor = AppColor.darkGray.uiColor
 
         //time value label view
         timeValueLabelView.text = "14h 21m"
-        timeValueLabelView.font = .systemFont(ofSize: 20.0)
+        timeValueLabelView.font = .systemFont(ofSize: 20.byWidth())
         timeValueLabelView.textColor = AppColor.main.uiColor
 
         //efficiency label view
         efficiencyLabelView.text = "Efficiency"
-        efficiencyLabelView.font = .systemFont(ofSize: 12.0)
+        efficiencyLabelView.font = .systemFont(ofSize: 12.byWidth())
         efficiencyLabelView.textColor = AppColor.darkGray.uiColor
 
         //efficiency value label view
         efficiencyValueLabelView.text = "2h 16m"
-        efficiencyValueLabelView.font = .systemFont(ofSize: 20.0)
+        efficiencyValueLabelView.font = .systemFont(ofSize: 20.byWidth())
         efficiencyValueLabelView.textColor = AppColor.main.uiColor
 
         //bar chart view
@@ -108,36 +108,36 @@ private extension ProfileStatisticsItem {
         addSubviews(with: [titleLabelView, timeLabelView, timeValueLabelView, efficiencyLabelView, efficiencyValueLabelView, barChartView])
 
         titleLabelView.snp.makeConstraints { (make) in
-            make.left.equalTo(45.0)
-            make.top.equalTo(12.0 + verticalPaddingValue)
+            make.left.equalTo(45.byWidth())
+            make.top.equalTo(12.byWidth() + verticalPaddingValue)
         }
 
         timeLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabelView.snp.bottom).offset(15.0)
+            make.top.equalTo(titleLabelView.snp.bottom).offset(15.byWidth())
             make.left.equalTo(titleLabelView)
         }
 
         timeValueLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(timeLabelView.snp.bottom).offset(5.0)
+            make.top.equalTo(timeLabelView.snp.bottom).offset(5.byWidth())
             make.left.equalTo(timeLabelView)
         }
 
         efficiencyLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(timeValueLabelView.snp.bottom).offset(15.0)
+            make.top.equalTo(timeValueLabelView.snp.bottom).offset(15.byWidth())
             make.left.equalTo(timeValueLabelView)
         }
 
         efficiencyValueLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(efficiencyLabelView.snp.bottom).offset(5.0)
+            make.top.equalTo(efficiencyLabelView.snp.bottom).offset(5.byWidth())
             make.left.equalTo(efficiencyLabelView)
         }
 
         barChartView.snp.makeConstraints { (make) in
             make.right.equalToSuperview()
-            make.left.equalTo(140.0)
-            make.height.equalTo(140.0)
-            make.bottom.equalTo(-10.0)
-            make.top.equalTo(12.0 + verticalPaddingValue)
+            make.left.equalTo(140.byWidth())
+            make.height.equalTo(140.byWidth())
+            make.bottom.equalTo(-10.byWidth())
+            make.top.equalTo(12.byWidth() + verticalPaddingValue)
         }
     }
 

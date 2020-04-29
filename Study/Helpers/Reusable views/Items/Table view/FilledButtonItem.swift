@@ -65,11 +65,11 @@ private extension FilledButtonItem {
 
         addSubview(buttonView)
         buttonView.snp.makeConstraints { (make) in
-            make.top.equalTo(10.0)
-            make.bottom.equalTo(-10.0)
-            make.left.equalTo(16.0)
-            make.right.equalTo(-16.0)
-            make.height.equalTo(50.0)
+            make.top.equalTo(10.byWidth())
+            make.bottom.equalTo(-10.byWidth())
+            make.left.equalTo(16.byWidth())
+            make.right.equalTo(-16.byWidth())
+            make.height.equalTo(50.byWidth())
         }
     }
 

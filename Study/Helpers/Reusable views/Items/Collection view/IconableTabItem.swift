@@ -49,7 +49,7 @@ private extension IconableTabItem {
         addSubview(iconImageView)
         iconImageView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.height.equalTo(25)
+            make.width.height.equalTo(25.byWidth())
         }
     }
 }

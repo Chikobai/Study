@@ -89,19 +89,19 @@ private extension CourseHeaderView {
 
         //course icon image view
         courseIconImageView.image = #imageLiteral(resourceName: "Ellipse 18")
-        courseIconImageView.layer.cornerRadius = 43.0
+        courseIconImageView.layer.cornerRadius = 43.byWidth()
         courseIconImageView.clipsToBounds = true
 
         //course name label view
-        courseNameLabelView.font = .systemFont(ofSize: 18)
+        courseNameLabelView.font = .systemFont(ofSize: 18.byWidth())
         courseNameLabelView.textColor = AppColor.black.uiColor
 
         //join button view
         joinButtonView.backgroundColor = AppColor.main.uiColor
         joinButtonView.setTitleColor(AppColor.white.uiColor, for: .normal)
         joinButtonView.contentHorizontalAlignment = .left
-        joinButtonView.layer.cornerRadius = 21
-        joinButtonView.titleEdgeInsets = .init(top: 0, left: 20, bottom: 0, right: 0)
+        joinButtonView.layer.cornerRadius = 21.byWidth()
+        joinButtonView.titleEdgeInsets = .init(top: 0, left: 20.byWidth(), bottom: 0, right: 0)
 
     }
 
@@ -109,30 +109,30 @@ private extension CourseHeaderView {
 
         addSubviews(with: [courseIconImageView, courseNameLabelView, communityView, ratingView, joinButtonView])
         courseIconImageView.snp.makeConstraints { (make) in
-            make.top.left.equalTo(25.0)
-            make.width.height.equalTo(86.0)
+            make.top.left.equalTo(25.byWidth())
+            make.width.height.equalTo(86.byWidth())
         }
 
         courseNameLabelView.snp.makeConstraints { (make) in
-            make.left.equalTo(courseIconImageView.snp.right).offset(20.0)
-            make.right.equalTo(-20.0)
-            make.top.equalTo(35.0)
+            make.left.equalTo(courseIconImageView.snp.right).offset(20.byWidth())
+            make.right.equalTo(-20.byWidth())
+            make.top.equalTo(35.byWidth())
         }
 
         communityView.snp.makeConstraints { (make) in
-            make.top.equalTo(courseNameLabelView.snp.bottom).offset(15.0)
+            make.top.equalTo(courseNameLabelView.snp.bottom).offset(15.byWidth())
             make.left.equalTo(courseNameLabelView)
         }
 
         ratingView.snp.makeConstraints { (make) in
             make.centerY.equalTo(communityView)
-            make.left.equalTo(communityView.snp.right).offset(20.0)
+            make.left.equalTo(communityView.snp.right).offset(20.byWidth())
         }
 
         joinButtonView.snp.makeConstraints { (make) in
-            make.top.equalTo(courseIconImageView.snp.bottom).offset(13.0)
-            make.right.bottom.equalTo(-8.0)
-            make.left.equalTo(8.0)
+            make.top.equalTo(courseIconImageView.snp.bottom).offset(13.byWidth())
+            make.right.bottom.equalTo(-8.byWidth())
+            make.left.equalTo(8.byWidth())
         }
     }
 

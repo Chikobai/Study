@@ -75,16 +75,16 @@ private extension ModuleExpandableHeaderView {
         backgroundColor = AppColor.white.uiColor
 
         //section label view
-        sectionLabelView.font = .systemFont(ofSize: 15.0)
+        sectionLabelView.font = .systemFont(ofSize: 15.byWidth())
         sectionLabelView.textColor = AppColor.black.uiColor
 
         //chapter label view
-        chapterLabelView.font = .systemFont(ofSize: 15.0)
+        chapterLabelView.font = .systemFont(ofSize: 15.byWidth())
         chapterLabelView.textColor = AppColor.black.uiColor
 
         //score label view
         scoreLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        scoreLabelView.font = .systemFont(ofSize: 10.0)
+        scoreLabelView.font = .systemFont(ofSize: 10.byWidth())
 
         //to expand button view
         toExpandButtonView.setImage(#imageLiteral(resourceName: "up-and-down 5"), for: .normal)
@@ -102,31 +102,31 @@ private extension ModuleExpandableHeaderView {
         addSubviews(with: [sectionLabelView, chapterLabelView, scoreLabelView, downloadButtonView, toExpandButtonView, separatorLineView])
 
         sectionLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(15.0)
-            make.left.equalTo(30.0)
+            make.top.equalTo(15.byWidth())
+            make.left.equalTo(30.byWidth())
         }
 
         chapterLabelView.snp.makeConstraints { (make) in
             make.top.equalTo(sectionLabelView)
-            make.left.equalTo(sectionLabelView.snp.right).offset(20.0)
+            make.left.equalTo(sectionLabelView.snp.right).offset(20.byWidth())
         }
 
         scoreLabelView.snp.makeConstraints { (make) in
             make.left.equalTo(chapterLabelView)
-            make.top.equalTo(chapterLabelView.snp.bottom).offset(9.0)
+            make.top.equalTo(chapterLabelView.snp.bottom).offset(9.byWidth())
         }
 
         toExpandButtonView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.right.equalTo(-21.0)
-            make.width.height.equalTo(20.0)
+            make.right.equalTo(-21.byWidth())
+            make.width.height.equalTo(20.byWidth())
         }
 
         downloadButtonView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.width.equalTo(22.0)
-            make.height.equalTo(20.0)
-            make.right.equalTo(toExpandButtonView.snp.left).offset(-20.0)
+            make.width.equalTo(22.byWidth())
+            make.height.equalTo(20.byWidth())
+            make.right.equalTo(toExpandButtonView.snp.left).offset(-20.byWidth())
         }
 
         separatorLineView.snp.makeConstraints { (make) in

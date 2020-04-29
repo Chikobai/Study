@@ -51,17 +51,17 @@ private extension CourseRatingView {
         backgroundColor = AppColor.white.uiColor
 
         //rating label view
-        ratingLabelView.font = .systemFont(ofSize: 9)
+        ratingLabelView.font = .systemFont(ofSize: 9.byWidth())
         ratingLabelView.textColor = AppColor.darkGray.uiColor
         ratingLabelView.backgroundColor = AppColor.yellow.uiColor
         ratingLabelView.clipsToBounds = true
         ratingLabelView.textAlignment = .center
-        ratingLabelView.layer.cornerRadius = 10
+        ratingLabelView.layer.cornerRadius = 10.byWidth()
 
         //rating view
         ratingView.settings.filledImage = #imageLiteral(resourceName: "star")
         ratingView.settings.updateOnTouch = false
-        ratingView.settings.starSize = 12
+        ratingView.settings.starSize = Double(12.byWidth())
     }
 
     func buildLayouts() -> Void {
@@ -70,12 +70,12 @@ private extension CourseRatingView {
 
         ratingLabelView.snp.makeConstraints { (make) in
             make.left.bottom.top.equalToSuperview()
-            make.height.width.equalTo(20)
+            make.height.width.equalTo(20.byWidth())
         }
 
         ratingView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalTo(ratingLabelView.snp.right).offset(10)
+            make.left.equalTo(ratingLabelView.snp.right).offset(10.byWidth())
             make.right.equalToSuperview()
         }
     }

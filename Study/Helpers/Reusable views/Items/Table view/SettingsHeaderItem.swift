@@ -47,14 +47,14 @@ private extension SettingsHeaderItem {
 
         //photo image view
         photoImageView.backgroundColor = .lightGray
-        photoImageView.layer.cornerRadius = 42.5
+        photoImageView.layer.cornerRadius = 42.byWidth()
         photoImageView.clipsToBounds = true
         photoImageView.contentMode = .scaleAspectFill
         photoImageView.image = #imageLiteral(resourceName: "photo")
 
         //name label view
         nameLabelView.text = "Aibek S."
-        nameLabelView.font = .systemFont(ofSize: 20)
+        nameLabelView.font = .systemFont(ofSize: 20.byWidth())
         nameLabelView.textColor = AppColor.main.uiColor
     }
 
@@ -62,15 +62,15 @@ private extension SettingsHeaderItem {
 
         addSubviews(with: [photoImageView, nameLabelView])
         photoImageView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(15.0)
-            make.bottom.equalTo(-15.0)
-            make.width.height.equalTo(85.0)
+            make.left.top.equalTo(15.byWidth())
+            make.bottom.equalTo(-15.byWidth())
+            make.width.height.equalTo(85.byWidth())
         }
 
         nameLabelView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalTo(photoImageView.snp.right).offset(30)
-            make.right.equalTo(-30)
+            make.left.equalTo(photoImageView.snp.right).offset(30.byWidth())
+            make.right.equalTo(-30.byWidth())
         }
     }
 }

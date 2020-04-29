@@ -58,30 +58,30 @@ private extension ReviewItem {
         selectionStyle = .none
 
         //reviewer image view
-        reviewerImageView.layer.cornerRadius = 19.0
+        reviewerImageView.layer.cornerRadius = 19.byWidth()
         reviewerImageView.image = #imageLiteral(resourceName: "photo")
         reviewerImageView.contentMode = .scaleToFill
         reviewerImageView.clipsToBounds = true
 
         //reviewed time view
-        reviewedTimeView.font = .systemFont(ofSize: 10.0)
+        reviewedTimeView.font = .systemFont(ofSize: 10.byWidth())
         reviewedTimeView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         reviewedTimeView.text = "3 дня назад"
 
         //reviewer name view
-        reviewerNameView.font = .systemFont(ofSize: 13.0)
+        reviewerNameView.font = .systemFont(ofSize: 13.byWidth())
         reviewerNameView.textColor = AppColor.black.uiColor
         reviewerNameView.text = "Aibow Shadibek"
 
         //comment view
-        commentView.font = .systemFont(ofSize: 13.0)
+        commentView.font = .systemFont(ofSize: 13.byWidth())
         commentView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         commentView.numberOfLines = 0
 
         //rating view
         ratingView.settings.filledImage = #imageLiteral(resourceName: "star")
         ratingView.settings.updateOnTouch = false
-        ratingView.settings.starSize = 12
+        ratingView.settings.starSize = Double(12.byWidth())
         ratingView.rating = 4.5
     }
 
@@ -89,31 +89,31 @@ private extension ReviewItem {
 
         addSubviews(with: [reviewerImageView, reviewedTimeView, reviewerNameView, commentView, ratingView])
         reviewerImageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(38.0)
-            make.top.left.equalTo(20.0)
+            make.width.height.equalTo(38.byWidth())
+            make.top.left.equalTo(20.byWidth())
         }
 
         reviewedTimeView.snp.makeConstraints { (make) in
-            make.top.equalTo(reviewerImageView.snp.top).offset(5.0)
-            make.left.equalTo(reviewerImageView.snp.right).offset(11.0)
+            make.top.equalTo(reviewerImageView.snp.top).offset(5.byWidth())
+            make.left.equalTo(reviewerImageView.snp.right).offset(11.byWidth())
         }
 
         ratingView.snp.makeConstraints { (make) in
-            make.top.equalTo(18.0)
-            make.right.equalTo(-28.0)
+            make.top.equalTo(18.byWidth())
+            make.right.equalTo(-28.byWidth())
 //            make.height.equalTo(30)
         }
 
         reviewerNameView.snp.makeConstraints { (make) in
-            make.top.equalTo(reviewedTimeView.snp.bottom).offset(5.0)
+            make.top.equalTo(reviewedTimeView.snp.bottom).offset(5.byWidth())
             make.left.equalTo(reviewedTimeView)
         }
 
         commentView.snp.makeConstraints { (make) in
-            make.top.equalTo(reviewerImageView.snp.bottom).offset(10.0)
+            make.top.equalTo(reviewerImageView.snp.bottom).offset(10.byWidth())
             make.left.equalTo(reviewerNameView)
-            make.right.equalTo(-16.0)
-            make.bottom.equalTo(-20.0)
+            make.right.equalTo(-16.byWidth())
+            make.bottom.equalTo(-20.byWidth())
         }
     }
 }

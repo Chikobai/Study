@@ -68,10 +68,10 @@ private extension DefaultButtonItem {
 
         addSubview(buttonView)
         buttonView.snp.makeConstraints { (make) in
-            make.top.equalTo(5.0)
-            make.bottom.equalTo(-5.0)
-            make.left.equalTo(16.0)
-            make.right.equalTo(-16.0)
+            make.top.equalTo(5.byWidth())
+            make.bottom.equalTo(-5.byWidth())
+            make.left.equalTo(16.byWidth())
+            make.right.equalTo(-16.byWidth())
         }
     }
 

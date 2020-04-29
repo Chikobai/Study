@@ -59,36 +59,36 @@ private extension LessonItem {
         selectionStyle = .none
 
         //topic image view
-        topicImageView.layer.cornerRadius = 3.0
+        topicImageView.layer.cornerRadius = 3.byWidth()
         topicImageView.clipsToBounds = true
         topicImageView.image = #imageLiteral(resourceName: "topic")
 
         //topic label view
-        topicLabelView.font = .systemFont(ofSize: 13.0)
+        topicLabelView.font = .systemFont(ofSize: 13.byWidth())
         topicLabelView.textColor = AppColor.black.uiColor
 
         //information stack view
         informationStackView.alignment = .fill
         informationStackView.distribution = .equalSpacing
         informationStackView.axis = .horizontal
-        informationStackView.spacing = 20
+        informationStackView.spacing = 20.byWidth()
 
         //score label view
         scoreLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        scoreLabelView.font = .systemFont(ofSize: 10.0)
+        scoreLabelView.font = .systemFont(ofSize: 10.byWidth())
 
         //duration label view
         durationLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        durationLabelView.font = .systemFont(ofSize: 10.0)
+        durationLabelView.font = .systemFont(ofSize: 10.byWidth())
 
         //population label view
         populationLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        populationLabelView.font = .systemFont(ofSize: 10.0)
+        populationLabelView.font = .systemFont(ofSize: 10.byWidth())
 
         //liked label view
         likedLabelView.text = "36 нравиться"
         likedLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-        likedLabelView.font = .systemFont(ofSize: 10.0)
+        likedLabelView.font = .systemFont(ofSize: 10.byWidth())
 
         //separator line view
         separatorLineView.backgroundColor = AppColor.black.uiColor.withAlphaComponent(0.2)
@@ -105,21 +105,21 @@ private extension LessonItem {
         }
 
         topicImageView.snp.makeConstraints { (make) in
-            make.top.left.equalTo(2.0)
-            make.bottom.equalTo(separatorLineView.snp.top).offset(-2.0)
-            make.height.width.equalTo(60.0).priority(999)
+            make.top.left.equalTo(2.byWidth())
+            make.bottom.equalTo(separatorLineView.snp.top).offset(-2.byWidth())
+            make.height.width.equalTo(60.byWidth()).priority(999)
         }
 
         topicLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(16.0)
-            make.left.equalTo(topicImageView.snp.right).offset(18.0)
-            make.right.equalTo(-18.0)
+            make.top.equalTo(16.byWidth())
+            make.left.equalTo(topicImageView.snp.right).offset(18.byWidth())
+            make.right.equalTo(-18.byWidth())
         }
 
         informationStackView.snp.makeConstraints { (make) in
             make.left.equalTo(topicLabelView.snp.left)
-            make.height.equalTo(20.0)
-            make.top.equalTo(topicLabelView.snp.bottom).offset(7.0)
+            make.height.equalTo(20.byWidth())
+            make.top.equalTo(topicLabelView.snp.bottom).offset(7.byWidth())
         }
     }
 }

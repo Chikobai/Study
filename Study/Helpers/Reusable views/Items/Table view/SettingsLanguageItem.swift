@@ -46,10 +46,10 @@ private extension SettingsLanguageItem {
         selectionStyle = .none
 
         //title label view
-        titleLabelView.font = .systemFont(ofSize: 15)
+        titleLabelView.font = .systemFont(ofSize: 15.byWidth())
 
         //text input view
-        textInputView.font = .systemFont(ofSize: 15)
+        textInputView.font = .systemFont(ofSize: 15.byWidth())
         textInputView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
         textInputView.inputView = pickerView
         textInputView.textAlignment = .right
@@ -71,14 +71,14 @@ private extension SettingsLanguageItem {
 
         addSubviews(with: [titleLabelView, textInputView])
         titleLabelView.snp.makeConstraints { (make) in
-            make.left.equalTo(15.0)
+            make.left.equalTo(15.byWidth())
             make.centerY.equalToSuperview()
         }
 
         textInputView.snp.makeConstraints { (make) in
-            make.right.equalTo(-15.0)
-            make.left.equalTo(titleLabelView.snp.right).offset(10.0)
-            make.height.equalTo(50.0)
+            make.right.equalTo(-15.byWidth())
+            make.left.equalTo(titleLabelView.snp.right).offset(10.byWidth())
+            make.height.equalTo(50.byWidth())
             make.centerY.equalToSuperview()
         }
     }
