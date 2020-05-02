@@ -383,7 +383,7 @@ extension Request {
                         complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
                         return
                     }
-                    complitionHandler(AppErrorMessage.restoreEmail)
+                    complitionHandler(AppErrorMessage.Restore.restoreEmail)
                 }
             }
         }
@@ -408,7 +408,7 @@ extension Request {
                     complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
                     return
                 }
-                complitionHandler(AppErrorMessage.restorePassword)
+                complitionHandler(AppErrorMessage.Restore.restorePassword)
             }
         }
     }
@@ -432,7 +432,7 @@ extension Request {
                         complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
                         return
                     }
-                    complitionHandler(AppErrorMessage.restoreEmail)
+                    complitionHandler(AppErrorMessage.Restore.restoreEmail)
                 }
             }
         }
@@ -456,6 +456,27 @@ extension Request {
                         complitionHandlerError(response.message ?? AppErrorMessage.somethingIsWrong)
                         return
                     }
+                    complitionHandler(response.message ?? AppErrorMessage.success)
+                }
+            }
+        }
+    }
+
+    //  MARK: JOIN TO COURSE
+
+    func sendComment(
+        with courseIdentifier: Int,
+        _ params: [String:String],
+        complitionHandler: @escaping ((String)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+        ) -> Void {
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.sendComment(token: token, courseIdentifier: courseIdentifier, params: params)
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<Response>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let response):
                     complitionHandler(response.message ?? AppErrorMessage.success)
                 }
             }

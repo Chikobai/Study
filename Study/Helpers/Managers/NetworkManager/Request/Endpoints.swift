@@ -45,6 +45,7 @@ enum Endpoints: EndPointType {
     case login(params: [String: String])
     case registration(params: [String: String])
     case join(token: String, courseIdentifier: Int)
+    case sendComment(token: String, courseIdentifier: Int, params: [String:String])
 
     case changePassword(token: String, params: [String: String])
     case restorePassword(params: [String: String])
@@ -66,7 +67,8 @@ enum Endpoints: EndPointType {
              .registration,
              .changePassword,
              .restoreEmail,
-             .restorePassword:
+             .restorePassword,
+             .sendComment:
             return .post
         default:
             return  .get
@@ -94,7 +96,8 @@ enum Endpoints: EndPointType {
             return .requestAuthorizationWithParameters(parameters: params)
         case .restorePassword(let params),
              .restoreEmail(_, let params),
-             .changePassword(_, let params):
+             .changePassword(_, let params),
+             .sendComment(_, _, let params):
             return .requestWithParameters(parameters: params)
         default:
             return .request
@@ -110,6 +113,7 @@ enum Endpoints: EndPointType {
              .restoreEmail(let token, _),
              .posts(let token, _, _),
              .lesson(let token, _, _),
+             .sendComment(let token, _, _),
              .courses(let token, _, _, _),
              .modules(let token, _, _, _),
              .reviews(let token, _, _, _):
@@ -147,6 +151,8 @@ enum Endpoints: EndPointType {
             return "/api/v1/course/modules/\(moduleIdentifier)/lessons/\(lessonIdentifier)/"
         case .join:
             return "/api/v1/course/join/"
+        case .sendComment(_, let courseIdentifier, _):
+            return "/api/v1/course/\(courseIdentifier)/reviews/"
         case .categories:
             return "/api/v1/course/categories/"
         }

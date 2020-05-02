@@ -80,6 +80,7 @@ private extension ReviewItem {
 
         //rating view
         ratingView.settings.filledImage = #imageLiteral(resourceName: "star")
+        ratingView.settings.emptyImage = #imageLiteral(resourceName: "unstart")
         ratingView.settings.updateOnTouch = false
         ratingView.settings.starSize = Double(12.byWidth())
         ratingView.rating = 4.5
@@ -101,7 +102,6 @@ private extension ReviewItem {
         ratingView.snp.makeConstraints { (make) in
             make.top.equalTo(18.byWidth())
             make.right.equalTo(-28.byWidth())
-//            make.height.equalTo(30)
         }
 
         reviewerNameView.snp.makeConstraints { (make) in

@@ -40,4 +40,10 @@ class AppKey {
         static let password        = "new_password"
         static let repeatePassword = "repeate_password"
     }
+
+    class CourseDetails {
+
+        static let comment          = "text"
+        static let rating           = "rating"
+    }
 }

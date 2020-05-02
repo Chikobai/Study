@@ -22,8 +22,9 @@ class CourseReviewsViewController: UITableViewController, FetchableMore {
 
     var state: State = .empty
     weak var scrollDelegate: CourseReviewsScrollDelegate?
-    private var courseIdentifier: Int?
+    private var courseIdentifier: Int
     private var adapter: CourseReviewsAdapter = CourseReviewsAdapter()
+    private var button = UIButton()
 
     init(with courseIdentifier: Int) {
         self.courseIdentifier = courseIdentifier
@@ -55,16 +56,15 @@ extension CourseReviewsViewController {
     func fetchReviews() -> Void {
         tableView.backgroundView = nil
         refreshControl?.beginRefreshing()
-        if let courseIdentifier = courseIdentifier {
-            Request.shared.loadReviews(with: courseIdentifier, complitionHandler: { (reviews, count) in
-                self.refreshControl?.endRefreshing()
-                self.state.beginPartFetched = true
-                self.adapter.refreshReviews(with: reviews)
-                self.adapter.totalReviews(with: count)
-                self.tableView.reloadData()
-            }) { (message) in
-                self.handleError(action: .fetching, with: message)
-            }
+        Request.shared.loadReviews(with: courseIdentifier, complitionHandler: { (reviews, count) in
+            self.button.isHidden = false
+            self.refreshControl?.endRefreshing()
+            self.state.beginPartFetched = true
+            self.adapter.refreshReviews(with: reviews)
+            self.adapter.totalReviews(with: count)
+            self.tableView.reloadData()
+        }) { (message) in
+            self.handleError(action: .fetching, with: message)
         }
     }
 }
@@ -75,16 +75,20 @@ extension CourseReviewsViewController: CourseReviewsDelegate {
 
     func fetchMoreReviews(with offset: Int) -> Void {
         tableView.backgroundView = nil
-        if let courseIdentifier = courseIdentifier {
-            Request.shared.loadMoreReviews(with: courseIdentifier, offset: offset + 1, complitionHandler: { (reviews) in
-                self.adapter.appendReviews(with: reviews)
-                self.adapter.currentOffset(with: offset + 1)
-                self.tableView.reloadData()
-                self.tableView.tableFooterView?.isHidden.toggle()
-            }) { (message) in
-                self.handleError(action: .fetchingMore, with: message)
-            }
+        Request.shared.loadMoreReviews(with: courseIdentifier, offset: offset + 1, complitionHandler: { (reviews) in
+            self.adapter.appendReviews(with: reviews)
+            self.adapter.currentOffset(with: offset + 1)
+            self.tableView.reloadData()
+            self.tableView.tableFooterView?.isHidden.toggle()
+        }) { (message) in
+            self.handleError(action: .fetchingMore, with: message)
         }
+    }
+
+    @objc
+    private func shows(_ sender: UIButton) -> Void {
+        let viewController = ReviewViewController(with: courseIdentifier).inNavigate()
+        self.present(viewController, animated: true, completion: nil)
     }
 }
 
@@ -101,10 +105,11 @@ private extension CourseReviewsViewController {
 
     func buildViews() -> Void {
 
+        //comment button view
+        button.isHidden = true
         //table view
         tableView.refreshControl = UIRefreshControl()
         tableView.tableFooterView = UIView()
-
     }
 
     func buildServices() -> Void {
@@ -113,6 +118,11 @@ private extension CourseReviewsViewController {
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(ReviewItem.self, forCellReuseIdentifier: ReviewItem.cellIdentifier())
+        button.setTitle(AppTitle.CourseDetails.writeAReview, for: .normal)
+        button.setTitleColor(AppColor.systemBlue.uiColor, for: .normal)
+        button.addTarget(self, action: #selector(shows), for: .touchUpInside)
+        button.frame.size.height = 44.0
+        tableView.tableHeaderView = button
     }
 
     func buildTargets() -> Void {

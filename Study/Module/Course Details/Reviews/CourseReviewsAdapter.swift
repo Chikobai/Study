@@ -58,20 +58,6 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
         return reviews.count
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 44.0
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = MessageHeaderView(with: AppTitle.CourseDetails.reviewsMessage)
-        header.isHidden = reviews.isEmpty
-        return header
-    }
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -99,7 +85,7 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
                 tableView.tableFooterView?.isHidden = false
             }
             else{
-                tableView.tableFooterView = nil
+                tableView.tableFooterView = UIView()
             }
         }
     }

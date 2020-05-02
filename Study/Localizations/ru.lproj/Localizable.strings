@@ -70,6 +70,8 @@
 "skills_message" = "Навыки, которые вы приобретете:";
 "to_join_title" = "Присоединиться к курсу";
 "joined_title" = "Вы уже присоединились к курсу";
+"write_a_review_title" = "Оставить отзыв";
+"send_title" = "Отправить";
 
 // MARK: - Settings
 
@@ -105,6 +107,7 @@
 "russian_title" = "Русский";
 
 // MARK: - Error Message
+"review_is_empty" = "Поле отзыва не должно быть пустым.";
 "restore_password_message" = "Мы отправили ссылку на вашу эл.почту. Пожалуйста войдите заново.";
 "restore_email_message" = "Мы отправили ссылку на вашу эл.почту. Пожалуйста войдите заново.";
 "password_changed_message" = "Пароль успешно изменен. Пожалуйста войдите заново.";

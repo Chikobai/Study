@@ -71,6 +71,8 @@
 "skills_message" = "Сіз үйренетін дағдылар:";
 "to_join_title" = "Курсқа қосылу";
 "joined_title" = "Cіз курсқа қосылдыңыз";
+"write_a_review_title" = "Пікір қалдыру";
+"send_title" = "Жіберу";
 
 // MARK: - Settings
 
@@ -106,6 +108,7 @@
 "russian_title" = "Орысша";
 
 // MARK: - Error Message
+"review_is_empty" = "Пікір бос болмау керек.";
 "restore_password_message" = "Біз сіздің поштанызға сілтеме жібердік. Қайта кіруіңізді сұраймыз.";
 "restore_email_message" = "Біз сіздің поштанызға сілтеме жібердік. Қайта кіруіңізді сұраймыз.";
 "password_changed_message" = "Құпия сөз сәтті өзгертілді. Қайта кіруіңізді сұраймыз.";
