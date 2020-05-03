@@ -17,6 +17,7 @@
 		08089F3023FA6CCE00EFDD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08089F2F23FA6CCE00EFDD85 /* Assets.xcassets */; };
 		080A5923244C3B8000A9B879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 080A5922244C3B8000A9B879 /* LaunchScreen.storyboard */; };
 		080A5926244C3C0600A9B879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 080A5928244C3C0600A9B879 /* Localizable.strings */; };
+		08251243245EBB4000212F55 /* ProfileNotifcationDateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08251242245EBB4000212F55 /* ProfileNotifcationDateItem.swift */; };
 		0829FAE32403847F000CACCF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0829FAE22403847F000CACCF /* SearchViewController.swift */; };
 		0829FAE524039B92000CACCF /* UILabel+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0829FAE424039B92000CACCF /* UILabel+Extenstions.swift */; };
 		082B1D122400EB2400316D24 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082B1D112400EB2400316D24 /* MainViewController.swift */; };
@@ -93,7 +94,6 @@
 		0875B688240E165C00669C5B /* SettingsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B687240E165C00669C5B /* SettingsAdapter.swift */; };
 		0875B68A240E185D00669C5B /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B689240E185D00669C5B /* SettingsModel.swift */; };
 		0875B68C240E1C4D00669C5B /* SettingsHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68B240E1C4D00669C5B /* SettingsHeaderItem.swift */; };
-		0875B68E240E263100669C5B /* SettingsLanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68D240E263100669C5B /* SettingsLanguageItem.swift */; };
 		0875B690240E284F00669C5B /* PickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68F240E284F00669C5B /* PickerViewManager.swift */; };
 		0875DF202419FDB400CCB46B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF1F2419FDB400CCB46B /* EditViewController.swift */; };
 		0875DF222419FDBE00CCB46B /* EditAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF212419FDBE00CCB46B /* EditAdapter.swift */; };
@@ -168,6 +168,7 @@
 		080A5922244C3B8000A9B879 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		080A5927244C3C0600A9B879 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		080A5929244C3C2600A9B879 /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		08251242245EBB4000212F55 /* ProfileNotifcationDateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotifcationDateItem.swift; sourceTree = "<group>"; };
 		0829FAE22403847F000CACCF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0829FAE424039B92000CACCF /* UILabel+Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extenstions.swift"; sourceTree = "<group>"; };
 		082B1D112400EB2400316D24 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +245,6 @@
 		0875B687240E165C00669C5B /* SettingsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdapter.swift; sourceTree = "<group>"; };
 		0875B689240E185D00669C5B /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		0875B68B240E1C4D00669C5B /* SettingsHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderItem.swift; sourceTree = "<group>"; };
-		0875B68D240E263100669C5B /* SettingsLanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLanguageItem.swift; sourceTree = "<group>"; };
 		0875B68F240E284F00669C5B /* PickerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewManager.swift; sourceTree = "<group>"; };
 		0875DF1F2419FDB400CCB46B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		0875DF212419FDBE00CCB46B /* EditAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAdapter.swift; sourceTree = "<group>"; };
@@ -417,9 +417,9 @@
 				08E1D41623FBCACD006E3042 /* DefaultButtonItem.swift */,
 				08483D66240B6DF800B40B1F /* LessonItem.swift */,
 				083081572413963000947567 /* ProfileCertificateItem.swift */,
-				0875B68D240E263100669C5B /* SettingsLanguageItem.swift */,
 				083081522413884F00947567 /* ProfileNotificationItem.swift */,
 				0830814E24136E6400947567 /* ProfileStatisticsItem.swift */,
+				08251242245EBB4000212F55 /* ProfileNotifcationDateItem.swift */,
 				08E1D41223FBC81C006E3042 /* FilledButtonItem.swift */,
 				08A937E62410D80F009C50C3 /* SettingsChangableItem.swift */,
 				08E1D40823FBBCBB006E3042 /* FloatingTextFieldItem.swift */,
@@ -980,6 +980,7 @@
 				089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */,
 				08E1D42223FC0FAC006E3042 /* UIStackView+Extensions.swift in Sources */,
 				08E1D41723FBCACD006E3042 /* DefaultButtonItem.swift in Sources */,
+				08251243245EBB4000212F55 /* ProfileNotifcationDateItem.swift in Sources */,
 				08FCD8362442E742007F058A /* SearchDrawlable.swift in Sources */,
 				083707EC2418C862008A85FB /* Array+Extensions.swift in Sources */,
 				08483D6B240B8D9E00B40B1F /* CourseCommunityView.swift in Sources */,
@@ -998,7 +999,6 @@
 				08E1D40B23FBBEB7006E3042 /* String+Extensions.swift in Sources */,
 				0840505923FE717700A084A4 /* ReviewItem.swift in Sources */,
 				08A73E2D2406613D00244B9E /* SubscribedCoursesAdapter.swift in Sources */,
-				0875B68E240E263100669C5B /* SettingsLanguageItem.swift in Sources */,
 				082D6A9F2439C6CA009B3816 /* NSNotification.Name+Extensions.swift in Sources */,
 				0808589124470FBE00BBC996 /* ViewPager.swift in Sources */,
 				0856AA82241F6C1C00BFAE4F /* EndpointType.swift in Sources */,

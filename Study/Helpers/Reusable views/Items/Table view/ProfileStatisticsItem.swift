@@ -17,7 +17,7 @@ class ProfileStatisticsItem: UITableViewCell {
     private lazy var efficiencyLabelView: UILabel = UILabel()
     private lazy var efficiencyValueLabelView: UILabel = UILabel()
 
-    private let verticalPaddingValue: CGFloat = 12.0
+    private let verticalPaddingValue: CGFloat = 6.0
     private let numEntry = 7
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -136,7 +136,7 @@ private extension ProfileStatisticsItem {
             make.right.equalToSuperview()
             make.left.equalTo(140.byWidth())
             make.height.equalTo(140.byWidth())
-            make.bottom.equalTo(-10.byWidth())
+            make.bottom.equalTo(-10.byWidth() - verticalPaddingValue)
             make.top.equalTo(12.byWidth() + verticalPaddingValue)
         }
     }
@@ -144,7 +144,7 @@ private extension ProfileStatisticsItem {
     func buildFrames() -> Void {
 
         let contentViewFrame = self.contentView.frame
-        let insetContentViewFrame = contentViewFrame.inset(by: UIEdgeInsets(top: verticalPaddingValue, left: 0, bottom: 0, right: 0))
+        let insetContentViewFrame = contentViewFrame.inset(by: UIEdgeInsets(top: verticalPaddingValue, left: 0, bottom: verticalPaddingValue, right: 0))
         self.contentView.frame = insetContentViewFrame
         self.selectedBackgroundView?.frame = insetContentViewFrame
     }

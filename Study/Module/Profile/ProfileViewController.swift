@@ -113,5 +113,6 @@ private extension ProfileViewController {
         tableView.register(ProfileStatisticsItem.self, forCellReuseIdentifier: ProfileStatisticsItem.cellIdentifier())
         tableView.register(ProfileNotificationItem.self, forCellReuseIdentifier: ProfileNotificationItem.cellIdentifier())
         tableView.register(ProfileCertificateItem.self, forCellReuseIdentifier: ProfileCertificateItem.cellIdentifier())
+        tableView.register(ProfileNotifcationDateItem.self, forCellReuseIdentifier: ProfileNotifcationDateItem.cellIdentifier())
     }
 }

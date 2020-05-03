@@ -56,17 +56,29 @@ class StoreManager: NSObject {
         try? self.storage?.setObject(value, forKey: AppKey.Storage.token)
     }
 
-    func language() -> Language {
+    func notification() -> Bool {
 
-        if let language = try? self.storage?.object(ofType: Language.self, forKey: AppKey.Storage.language) {
-            return language
+        if let value = try? self.storage?.object(ofType: Bool.self, forKey: AppKey.Storage.notification) {
+            return  value
         }
-        return Language(key: AppKey.Language.kazakh, title: AppTitle.Language.kazakh)
+        return false
     }
 
-    func setLanguage(with value: Language) -> Void {
+    func setNotification(with value: Bool) -> Void {
 
-        try? self.storage?.setObject(value, forKey: AppKey.Storage.language)
+        try? self.storage?.setObject(value, forKey: AppKey.Storage.notification)
     }
 
+    func notificationTime() -> String {
+
+        if let value = try? self.storage?.object(ofType: String.self, forKey: AppKey.Storage.notificationTime) {
+            return  value
+        }
+        return "09:00"
+    }
+
+    func setNotificationTime(with value: String) -> Void {
+
+        try? self.storage?.setObject(value, forKey: AppKey.Storage.notificationTime)
+    }
 }

@@ -21,7 +21,7 @@ class ProfileCertificateItem: UITableViewCell {
     private lazy var previousButtonView: UIButton = UIButton()
     private lazy var nextButtonView: UIButton = UIButton()
 
-    private let verticalPaddingValue: CGFloat = 12.0
+    private let verticalPaddingValue: CGFloat = 6.0
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -130,7 +130,7 @@ private extension ProfileCertificateItem {
             make.right.equalTo(-40.byWidth())
             make.top.equalTo(titleLabelView.snp.bottom).offset(7.byWidth())
             make.height.equalTo(60.byWidth())
-            make.bottom.equalTo(-12.byWidth())
+            make.bottom.equalTo(-12.byWidth() - verticalPaddingValue)
         }
 
         previousButtonView.snp.makeConstraints { (make) in
@@ -149,7 +149,7 @@ private extension ProfileCertificateItem {
     func buildFrames() -> Void {
 
         let contentViewFrame = self.contentView.frame
-        let insetContentViewFrame = contentViewFrame.inset(by: UIEdgeInsets(top: verticalPaddingValue, left: 0, bottom: 0, right: 0))
+        let insetContentViewFrame = contentViewFrame.inset(by: UIEdgeInsets(top: verticalPaddingValue, left: 0, bottom: verticalPaddingValue, right: 0))
         self.contentView.frame = insetContentViewFrame
         self.selectedBackgroundView?.frame = insetContentViewFrame
     }

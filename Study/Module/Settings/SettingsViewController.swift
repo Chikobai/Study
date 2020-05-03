@@ -89,7 +89,6 @@ private extension SettingsViewController {
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.cellIdentifier())
-        tableView.register(SettingsLanguageItem.self, forCellReuseIdentifier: SettingsLanguageItem.cellIdentifier())
         tableView.register(SettingsChangableItem.self, forCellReuseIdentifier: SettingsChangableItem.cellIdentifier())
         tableView.register(SettingsHeaderItem.self, forCellReuseIdentifier: SettingsHeaderItem.cellIdentifier())
     }

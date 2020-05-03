@@ -12,10 +12,17 @@ import Foundation
 
 class AppKey {
 
+    class AppDelegate {
+
+        static let localNotification     = "LOCAL_NOTIFICATION"
+    }
+
     class Storage {
 
         static let diskConfigurationKey     = "DISKCONFIGURATIONKEY"
         static let token                    = "TOKEN"
+        static let notification             = "NOTIFICATION"
+        static let notificationTime         = "NOTIFICATION_TIME"
         static let language                 = "LANGUAGE"
     }
 

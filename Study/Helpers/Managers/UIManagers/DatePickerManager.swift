@@ -23,8 +23,6 @@ class DatePickerViewManager: UIDatePicker {
     }
 
     func setupConfiguration() -> Void {
-        self.minimumDate = Date()
-        self.maximumDate = Calendar.current.date(byAdding: .day, value: 10, to: Date())
         self.addTarget(self, action: #selector(valueChangedEvent), for: .valueChanged)
         self.datePickerMode = .time
     }

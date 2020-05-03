@@ -89,6 +89,7 @@
 
 "statistics_title" = "Статистика";
 "notifications_title" = "Хабарландырулар";
+"notifications_time_title" = "Хабарландыру уақыты";
 "certificates_title" = "Сертификаттар";
 "notifications_subtitle" = "Әрекеттер туралы еске салу";
 

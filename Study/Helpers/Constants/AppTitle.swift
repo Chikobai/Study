@@ -108,6 +108,7 @@ class AppTitle {
         static let certificates: String = "certificates_title".localized
         static let statistics: String = "statistics_title".localized
         static let notification: String = "notifications_title".localized
+        static let notificationTime: String = "notifications_time_title".localized
         static let notificationSubtitle: String = "notifications_subtitle".localized
     }
 

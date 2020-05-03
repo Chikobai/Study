@@ -87,9 +87,10 @@
 // MARK: - Profile
 
 "statistics_title" = "Статистика";
-"notification_title" = "Уведомления";
+"notifications_title" = "Уведомления";
+"notifications_time_title" = "Время уведомления";
 "certificates_title" = "Сертификаты";
-"notification_subtitle" = "Напоминать о занятиях";
+"notifications_subtitle" = "Напоминать о занятиях";
 
 // MARK: - Edit
 

@@ -13,6 +13,7 @@ enum ProfileItem {
 
     case statisticItem
     case notificationTimeItem
+    case notificationSwitchItem
     case certificatesItem
 }
 
@@ -27,7 +28,7 @@ enum ProfileSectionItem {
         case .statistic:
             return [.statisticItem]
         case .notification:
-            return [.notificationTimeItem]
+            return [.notificationSwitchItem, .notificationTimeItem]
         case .certificates:
             return [.certificatesItem]
         }

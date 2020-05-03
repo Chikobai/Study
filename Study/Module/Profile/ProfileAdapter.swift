@@ -12,10 +12,14 @@ import UIKit
 class ProfileAdapter: NSObject {
 
     weak var delegate: ProfileDelegate?
+    private var appDelegate = UIApplication.shared.delegate as? AppDelegate
+    private var notificationIsOn: Bool = true
     private var items: [ProfileSectionItem] = [.statistic, .notification, .certificates]
 
     override init() {
         super.init()
+
+        notificationIsOn = StoreManager.shared().notification()
     }
 
     deinit {
@@ -32,6 +36,9 @@ extension ProfileAdapter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (notificationIsOn == false) && (items[section] == .notification) {
+            return 1
+        }
         return items[section].cells.count
     }
 
@@ -52,6 +59,8 @@ extension ProfileAdapter: UITableViewDelegate, UITableViewDataSource {
         case .certificatesItem:
             return self.certificatesItem(with: tableView, indexPath)
         case .notificationTimeItem:
+            return self.notificationsDateItem(with: tableView, indexPath)
+        case .notificationSwitchItem:
             return self.notificationsItem(with: tableView, indexPath)
         }
     }
@@ -85,14 +94,33 @@ private extension ProfileAdapter {
     func notificationsItem(with tableView: UITableView, _ indexPath: IndexPath) -> ProfileNotificationItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileNotificationItem.cellIdentifier(), for: indexPath) as? ProfileNotificationItem
-        //        cell?.backgroundColor = .red
+        cell?.switchView.setOn(notificationIsOn, animated: false)
+        cell?.switchValueChanged = { [weak self] value in
+            self?.notificationIsOn = value
+            value == false ?
+                tableView.deleteRows(at: [IndexPath(row: 1, section: indexPath.section)], with: .right) : tableView.insertRows(at: [IndexPath(row: 1, section: indexPath.section)], with: .left)
+            value == false ? self?.appDelegate?.notificationCenter.removePendingNotificationRequests(withIdentifiers: [AppKey.AppDelegate.localNotification]) : self?.appDelegate?.scheduleNotification()
+        }
         return cell!
     }
+
+    func notificationsDateItem(with tableView: UITableView, _ indexPath: IndexPath) -> ProfileNotifcationDateItem {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileNotifcationDateItem.cellIdentifier(), for: indexPath) as? ProfileNotifcationDateItem
+        cell?.titleLabelView.text = AppTitle.Profile.notificationTime
+        cell?.textInputView.text = StoreManager.shared().notificationTime()
+
+        cell?.valueChanged = { [weak self] in
+            self?.appDelegate?.scheduleNotification()
+        }
+        
+        return cell!
+    }
+
 
     func certificatesItem(with tableView: UITableView, _ indexPath: IndexPath) -> ProfileCertificateItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCertificateItem.cellIdentifier(), for: indexPath) as? ProfileCertificateItem
-        //        cell?.backgroundColor = .red
         return cell!
     }
 }
