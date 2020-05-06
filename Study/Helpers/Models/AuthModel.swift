@@ -14,3 +14,11 @@ struct Auth: Decodable {
     let success: Bool?
     let token: String?
 }
+
+struct Login: Decodable {
+
+    let message: String?
+    let success: Bool?
+    let token: String?
+    let profile: Profile
+}

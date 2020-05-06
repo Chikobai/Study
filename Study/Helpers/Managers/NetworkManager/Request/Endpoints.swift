@@ -42,34 +42,62 @@ enum Endpoints: EndPointType {
 
     //POST
 
-    case login(params: [String: String])
-    case registration(params: [String: String])
-    case join(token: String, courseIdentifier: Int)
-    case sendComment(token: String, courseIdentifier: Int, params: [String:String])
+    case login(
+        params: [String: String]
+    )
+    case profile(
+        token: String
+    )
+    case registration(
+        params: [String: String]
+    )
+    case join(
+        token: String, courseIdentifier: Int
+    )
+    case sendComment(
+        token: String, courseIdentifier: Int, params: [String:String]
+    )
 
-    case changePassword(token: String, params: [String: String])
-    case restorePassword(params: [String: String])
-    case restoreEmail(token: String, params: [String: String])
+    case changePassword(
+        token: String, params: [String: String]
+    )
+    case restorePassword(
+        params: [String: String]
+    )
+    case restoreEmail(
+        token: String, params: [String: String]
+    )
 
     //PUT
+    case update(
+        token: String,
+        params: [String: String]
+    )
 
+    case updateImage(
+        token: String,
+        image: Data
+    )
 
     //DEL
     
     var baseURL: String {
-        return "http://usernotfound.pythonanywhere.com"
+        return "https://usernotfound.pythonanywhere.com"
     }
     
     var httpMethod: HTTPMethod {
         switch self {
         case .join,
              .login,
+             .profile,
              .registration,
              .changePassword,
              .restoreEmail,
              .restorePassword,
              .sendComment:
             return .post
+        case .update, .updateImage:
+            return .put
         default:
             return  .get
         }
@@ -99,6 +127,10 @@ enum Endpoints: EndPointType {
              .changePassword(_, let params),
              .sendComment(_, _, let params):
             return .requestWithParameters(parameters: params)
+        case .update(_, let params):
+            return .requestWithParameters(parameters: params)
+        case .updateImage(_, let image):
+            return .requestWithMultipartData(data: image, parameters: [:], dataParameterName: "image")
         default:
             return .request
         }
@@ -107,6 +139,7 @@ enum Endpoints: EndPointType {
     var headers: HTTPHeaders {
         switch self {
         case .subscribedCourses(let token),
+             .profile(let token),
              .join(let token, _),
              .info(let token, _),
              .changePassword(let token, _),
@@ -116,7 +149,9 @@ enum Endpoints: EndPointType {
              .sendComment(let token, _, _),
              .courses(let token, _, _, _),
              .modules(let token, _, _, _),
-             .reviews(let token, _, _, _):
+             .reviews(let token, _, _, _),
+             .update(let token, _),
+             .updateImage(let token, _):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]
@@ -129,6 +164,10 @@ enum Endpoints: EndPointType {
             return "/auth/login/"
         case .registration:
             return "/auth/registration/"
+        case .profile:
+            return "/user/profile/"
+        case .update, .updateImage:
+            return "/user/update/"
         case .changePassword:
             return "/user/change-password/"
         case .restorePassword:

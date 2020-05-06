@@ -17,6 +17,7 @@
 		08089F3023FA6CCE00EFDD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08089F2F23FA6CCE00EFDD85 /* Assets.xcassets */; };
 		080A5923244C3B8000A9B879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 080A5922244C3B8000A9B879 /* LaunchScreen.storyboard */; };
 		080A5926244C3C0600A9B879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 080A5928244C3C0600A9B879 /* Localizable.strings */; };
+		080A66C224628F61006AEEBE /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A66C124628F61006AEEBE /* ImagePickerManager.swift */; };
 		08251243245EBB4000212F55 /* ProfileNotifcationDateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08251242245EBB4000212F55 /* ProfileNotifcationDateItem.swift */; };
 		0829FAE32403847F000CACCF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0829FAE22403847F000CACCF /* SearchViewController.swift */; };
 		0829FAE524039B92000CACCF /* UILabel+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0829FAE424039B92000CACCF /* UILabel+Extenstions.swift */; };
@@ -54,12 +55,11 @@
 		083DDF04243F078F00EA917D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF03243F078F00EA917D /* CategoryModel.swift */; };
 		083DDF0624403DD600EA917D /* LoadingBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083DDF0524403DD600EA917D /* LoadingBackgroundView.swift */; };
 		0840502323FCE93800A084A4 /* AuthorizationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502223FCE93800A084A4 /* AuthorizationValidator.swift */; };
-		0840502623FCEFCD00A084A4 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */; };
-		0840502823FCEFE500A084A4 /* RestorePasswordAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */; };
-		0840502A23FCEFF600A084A4 /* RestorePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502923FCEFF600A084A4 /* RestorePasswordModel.swift */; };
-		0840502C23FCF02F00A084A4 /* RestorePasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502B23FCF02F00A084A4 /* RestorePasswordValidator.swift */; };
+		0840502623FCEFCD00A084A4 /* RestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502523FCEFCD00A084A4 /* RestoreViewController.swift */; };
+		0840502823FCEFE500A084A4 /* RestoreAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502723FCEFE500A084A4 /* RestoreAdapter.swift */; };
+		0840502A23FCEFF600A084A4 /* RestoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502923FCEFF600A084A4 /* RestoreModel.swift */; };
+		0840502C23FCF02F00A084A4 /* RestoreValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502B23FCF02F00A084A4 /* RestoreValidator.swift */; };
 		0840502F23FE403600A084A4 /* CourseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840502E23FE403600A084A4 /* CourseDetailsViewController.swift */; };
-		0840503123FE405F00A084A4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840503023FE405F00A084A4 /* ScrollViewController.swift */; };
 		0840503323FE41D500A084A4 /* CourseDetailsPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840503223FE41D500A084A4 /* CourseDetailsPagerViewController.swift */; };
 		0840503523FE422900A084A4 /* CourseModulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840503423FE422900A084A4 /* CourseModulesViewController.swift */; };
 		0840503723FE424F00A084A4 /* CourseReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840503623FE424F00A084A4 /* CourseReviewsViewController.swift */; };
@@ -80,6 +80,7 @@
 		08483D6D240B8E1A00B40B1F /* CourseRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D6C240B8E1A00B40B1F /* CourseRatingView.swift */; };
 		08483D6F240B8E4E00B40B1F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08483D6E240B8E4E00B40B1F /* PaddingLabel.swift */; };
 		084E8794242516C6006B9524 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E8793242516C6006B9524 /* CourseModel.swift */; };
+		08502CB424613BD600EEAE5E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08502CB324613BD600EEAE5E /* ProfileModel.swift */; };
 		0856AA7C241F6C1C00BFAE4F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA74241F6C1C00BFAE4F /* NetworkManager.swift */; };
 		0856AA7D241F6C1C00BFAE4F /* CustomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA75241F6C1C00BFAE4F /* CustomParser.swift */; };
 		0856AA7E241F6C1C00BFAE4F /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856AA77241F6C1C00BFAE4F /* Endpoints.swift */; };
@@ -95,10 +96,6 @@
 		0875B68A240E185D00669C5B /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B689240E185D00669C5B /* SettingsModel.swift */; };
 		0875B68C240E1C4D00669C5B /* SettingsHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68B240E1C4D00669C5B /* SettingsHeaderItem.swift */; };
 		0875B690240E284F00669C5B /* PickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875B68F240E284F00669C5B /* PickerViewManager.swift */; };
-		0875DF202419FDB400CCB46B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF1F2419FDB400CCB46B /* EditViewController.swift */; };
-		0875DF222419FDBE00CCB46B /* EditAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF212419FDBE00CCB46B /* EditAdapter.swift */; };
-		0875DF242419FDC900CCB46B /* EditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF232419FDC900CCB46B /* EditModels.swift */; };
-		0875DF262419FE5900CCB46B /* EditValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875DF252419FE5900CCB46B /* EditValidator.swift */; };
 		087D909624386199003E74BD /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087D909524386199003E74BD /* ResponseModel.swift */; };
 		087D909824386B11003E74BD /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087D909724386B11003E74BD /* LoadingButton.swift */; };
 		088F4078240783D10094D854 /* SubscribedPackageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F4077240783D10094D854 /* SubscribedPackageItem.swift */; };
@@ -168,6 +165,7 @@
 		080A5922244C3B8000A9B879 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		080A5927244C3C0600A9B879 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		080A5929244C3C2600A9B879 /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		080A66C124628F61006AEEBE /* ImagePickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		08251242245EBB4000212F55 /* ProfileNotifcationDateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotifcationDateItem.swift; sourceTree = "<group>"; };
 		0829FAE22403847F000CACCF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0829FAE424039B92000CACCF /* UILabel+Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extenstions.swift"; sourceTree = "<group>"; };
@@ -205,12 +203,11 @@
 		083DDF03243F078F00EA917D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		083DDF0524403DD600EA917D /* LoadingBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingBackgroundView.swift; path = ../LoadingBackgroundView.swift; sourceTree = "<group>"; };
 		0840502223FCE93800A084A4 /* AuthorizationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationValidator.swift; sourceTree = "<group>"; };
-		0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
-		0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordAdapter.swift; sourceTree = "<group>"; };
-		0840502923FCEFF600A084A4 /* RestorePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordModel.swift; sourceTree = "<group>"; };
-		0840502B23FCF02F00A084A4 /* RestorePasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordValidator.swift; sourceTree = "<group>"; };
+		0840502523FCEFCD00A084A4 /* RestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
+		0840502723FCEFE500A084A4 /* RestoreAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreAdapter.swift; sourceTree = "<group>"; };
+		0840502923FCEFF600A084A4 /* RestoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreModel.swift; sourceTree = "<group>"; };
+		0840502B23FCF02F00A084A4 /* RestoreValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreValidator.swift; sourceTree = "<group>"; };
 		0840502E23FE403600A084A4 /* CourseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsViewController.swift; sourceTree = "<group>"; };
-		0840503023FE405F00A084A4 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		0840503223FE41D500A084A4 /* CourseDetailsPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsPagerViewController.swift; sourceTree = "<group>"; };
 		0840503423FE422900A084A4 /* CourseModulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModulesViewController.swift; sourceTree = "<group>"; };
 		0840503623FE424F00A084A4 /* CourseReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseReviewsViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +228,7 @@
 		08483D6C240B8E1A00B40B1F /* CourseRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRatingView.swift; sourceTree = "<group>"; };
 		08483D6E240B8E4E00B40B1F /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		084E8793242516C6006B9524 /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
+		08502CB324613BD600EEAE5E /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		0856AA74241F6C1C00BFAE4F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0856AA75241F6C1C00BFAE4F /* CustomParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomParser.swift; sourceTree = "<group>"; };
 		0856AA77241F6C1C00BFAE4F /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
@@ -246,10 +244,6 @@
 		0875B689240E185D00669C5B /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		0875B68B240E1C4D00669C5B /* SettingsHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderItem.swift; sourceTree = "<group>"; };
 		0875B68F240E284F00669C5B /* PickerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewManager.swift; sourceTree = "<group>"; };
-		0875DF1F2419FDB400CCB46B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
-		0875DF212419FDBE00CCB46B /* EditAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAdapter.swift; sourceTree = "<group>"; };
-		0875DF232419FDC900CCB46B /* EditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModels.swift; sourceTree = "<group>"; };
-		0875DF252419FE5900CCB46B /* EditValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValidator.swift; sourceTree = "<group>"; };
 		087D909524386199003E74BD /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		087D909724386B11003E74BD /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		088F4077240783D10094D854 /* SubscribedPackageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedPackageItem.swift; sourceTree = "<group>"; };
@@ -375,6 +369,7 @@
 		082D6A962439B814009B3816 /* UIManagers */ = {
 			isa = PBXGroup;
 			children = (
+				080A66C124628F61006AEEBE /* ImagePickerManager.swift */,
 				083081552413916100947567 /* DatePickerManager.swift */,
 				0875B68F240E284F00669C5B /* PickerViewManager.swift */,
 			);
@@ -467,15 +462,15 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
-		0840502423FCEB2C00A084A4 /* Restore Password */ = {
+		0840502423FCEB2C00A084A4 /* Restore */ = {
 			isa = PBXGroup;
 			children = (
-				0840502523FCEFCD00A084A4 /* RestorePasswordViewController.swift */,
-				0840502923FCEFF600A084A4 /* RestorePasswordModel.swift */,
-				0840502723FCEFE500A084A4 /* RestorePasswordAdapter.swift */,
-				0840502B23FCF02F00A084A4 /* RestorePasswordValidator.swift */,
+				0840502523FCEFCD00A084A4 /* RestoreViewController.swift */,
+				0840502923FCEFF600A084A4 /* RestoreModel.swift */,
+				0840502723FCEFE500A084A4 /* RestoreAdapter.swift */,
+				0840502B23FCF02F00A084A4 /* RestoreValidator.swift */,
 			);
-			path = "Restore Password";
+			path = Restore;
 			sourceTree = "<group>";
 		};
 		0840502D23FE3F8F00A084A4 /* Course Details */ = {
@@ -588,17 +583,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		0875DF1E2419FD9200CCB46B /* Edit  */ = {
-			isa = PBXGroup;
-			children = (
-				0875DF1F2419FDB400CCB46B /* EditViewController.swift */,
-				0875DF212419FDBE00CCB46B /* EditAdapter.swift */,
-				0875DF232419FDC900CCB46B /* EditModels.swift */,
-				0875DF252419FE5900CCB46B /* EditValidator.swift */,
-			);
-			path = "Edit ";
-			sourceTree = "<group>";
-		};
 		089A469D2402384F007068DB /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +616,7 @@
 				083DDF03243F078F00EA917D /* CategoryModel.swift */,
 				08BCDB6124483CCA00ABCC99 /* LessonPageModel.swift */,
 				08E13045244AEA4D0086D5BC /* LanguageModel.swift */,
+				08502CB324613BD600EEAE5E /* ProfileModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -678,14 +663,13 @@
 			children = (
 				08E1D3F523FBB2BC006E3042 /* Base */,
 				08D2DA3F241366E4001EC235 /* Profile */,
-				0875DF1E2419FD9200CCB46B /* Edit  */,
 				082B1D102400EAF800316D24 /* Main */,
 				0840502D23FE3F8F00A084A4 /* Course Details */,
 				089A469D2402384F007068DB /* Search */,
 				08A73E292406609700244B9E /* Subscribed Courses */,
 				0875B679240DF8E200669C5B /* Lesson */,
 				0875B683240E15FA00669C5B /* Settings */,
-				0840502423FCEB2C00A084A4 /* Restore Password */,
+				0840502423FCEB2C00A084A4 /* Restore */,
 				08E1D3EF23FBB1A3006E3042 /* Authorization */,
 			);
 			path = Module;
@@ -726,7 +710,6 @@
 		08E1D3F523FBB2BC006E3042 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				0840503023FE405F00A084A4 /* ScrollViewController.swift */,
 				08E1D3F623FBB2EC006E3042 /* NavigationController.swift */,
 				082B1D162400F0D200316D24 /* TabBarViewController.swift */,
 			);
@@ -960,7 +943,6 @@
 				080858882446EAC400BBC996 /* ViewPagerOptions.swift in Sources */,
 				087D909624386199003E74BD /* ResponseModel.swift in Sources */,
 				08E1D3FC23FBB4E6006E3042 /* AppTitle.swift in Sources */,
-				0875DF222419FDBE00CCB46B /* EditAdapter.swift in Sources */,
 				08E1D40F23FBC1F3006E3042 /* AuthorizationViewModel.swift in Sources */,
 				0856AA7C241F6C1C00BFAE4F /* NetworkManager.swift in Sources */,
 				082DAEC02417573300F025E4 /* VariantItem.swift in Sources */,
@@ -970,13 +952,14 @@
 				0840505723FE6E4A00A084A4 /* MessageHeaderView.swift in Sources */,
 				082B1D122400EB2400316D24 /* MainViewController.swift in Sources */,
 				08B0C740240CBFC500D2AE79 /* CourseInfoDescriptionItem.swift in Sources */,
+				08502CB424613BD600EEAE5E /* ProfileModel.swift in Sources */,
 				0840503D23FE526C00A084A4 /* CourseReviewsAdapter.swift in Sources */,
 				083707E42418C848008A85FB /* CustomSegments.swift in Sources */,
 				08E13046244AEA4D0086D5BC /* LanguageModel.swift in Sources */,
 				082B1D192400F43500316D24 /* PostItem.swift in Sources */,
 				082D6A992439BF5A009B3816 /* StorageManager.swift in Sources */,
 				08479E15243731A4005029C8 /* ModuleModel.swift in Sources */,
-				0840502C23FCF02F00A084A4 /* RestorePasswordValidator.swift in Sources */,
+				0840502C23FCF02F00A084A4 /* RestoreValidator.swift in Sources */,
 				089A46A3240238BF007068DB /* ByCategoryAdapter.swift in Sources */,
 				08E1D42223FC0FAC006E3042 /* UIStackView+Extensions.swift in Sources */,
 				08E1D41723FBCACD006E3042 /* DefaultButtonItem.swift in Sources */,
@@ -1011,7 +994,7 @@
 				0840503523FE422900A084A4 /* CourseModulesViewController.swift in Sources */,
 				08483D65240B655000B40B1F /* ModuleExpandableHeaderView.swift in Sources */,
 				08483D6D240B8E1A00B40B1F /* CourseRatingView.swift in Sources */,
-				0840502823FCEFE500A084A4 /* RestorePasswordAdapter.swift in Sources */,
+				0840502823FCEFE500A084A4 /* RestoreAdapter.swift in Sources */,
 				0829FAE32403847F000CACCF /* SearchViewController.swift in Sources */,
 				0875B680240DFBDC00669C5B /* LessonViewController.swift in Sources */,
 				087D909824386B11003E74BD /* LoadingButton.swift in Sources */,
@@ -1026,7 +1009,7 @@
 				089A46A12402389F007068DB /* ByCategoryViewController.swift in Sources */,
 				0808588B244702E200BBC996 /* ViewPagerTab.swift in Sources */,
 				082DF68E245D60D4009C3F46 /* ReviewViewController.swift in Sources */,
-				0840502623FCEFCD00A084A4 /* RestorePasswordViewController.swift in Sources */,
+				0840502623FCEFCD00A084A4 /* RestoreViewController.swift in Sources */,
 				083081532413884F00947567 /* ProfileNotificationItem.swift in Sources */,
 				0840502323FCE93800A084A4 /* AuthorizationValidator.swift in Sources */,
 				08E1D3F923FBB313006E3042 /* UIViewController+Extenstions.swift in Sources */,
@@ -1048,7 +1031,6 @@
 				08C981AC2423BF5600B2A802 /* PostModel.swift in Sources */,
 				082B1D142400EB4800316D24 /* MainAdapter.swift in Sources */,
 				08483D69240B882F00B40B1F /* CourseHeaderView.swift in Sources */,
-				0875DF202419FDB400CCB46B /* EditViewController.swift in Sources */,
 				08A73E2B2406610400244B9E /* SubscribedCoursesViewController.swift in Sources */,
 				08E1D41C23FC0893006E3042 /* OTPItem.swift in Sources */,
 				082D6A9B2439BF75009B3816 /* AppKey.swift in Sources */,
@@ -1060,26 +1042,24 @@
 				0840505423FE6B6B00A084A4 /* CourseInfoAdapter.swift in Sources */,
 				08E1D41323FBC81C006E3042 /* FilledButtonItem.swift in Sources */,
 				08BCDB60244835ED00ABCC99 /* LessonDrawlable.swift in Sources */,
-				0840502A23FCEFF600A084A4 /* RestorePasswordModel.swift in Sources */,
+				0840502A23FCEFF600A084A4 /* RestoreModel.swift in Sources */,
 				08A73E262406471200244B9E /* PackageItem.swift in Sources */,
 				0856AA80241F6C1C00BFAE4F /* Parser.swift in Sources */,
 				083081582413963000947567 /* ProfileCertificateItem.swift in Sources */,
 				0875B68C240E1C4D00669C5B /* SettingsHeaderItem.swift in Sources */,
-				0875DF242419FDC900CCB46B /* EditModels.swift in Sources */,
 				08CF860D241B9446009F31FE /* DynamicHeightCollectionView.swift in Sources */,
 				083DDF0624403DD600EA917D /* LoadingBackgroundView.swift in Sources */,
 				08479E1724373CD8005029C8 /* ReviewModel.swift in Sources */,
-				0840503123FE405F00A084A4 /* ScrollViewController.swift in Sources */,
 				0875B682240DFCE400669C5B /* IconableTabItem.swift in Sources */,
 				08CF860B241B9085009F31FE /* Skilltem.swift in Sources */,
 				08483D6F240B8E4E00B40B1F /* PaddingLabel.swift in Sources */,
 				084E8794242516C6006B9524 /* CourseModel.swift in Sources */,
 				08479E1924374A94005029C8 /* LessonModel.swift in Sources */,
-				0875DF262419FE5900CCB46B /* EditValidator.swift in Sources */,
 				0856AA7F241F6C1C00BFAE4F /* Requests.swift in Sources */,
 				0840505223FE6B5800A084A4 /* CourseInfoViewController.swift in Sources */,
 				08E1D40223FBB822006E3042 /* FloatingTextField.swift in Sources */,
 				0830815124136FA800947567 /* ProfileModels.swift in Sources */,
+				080A66C224628F61006AEEBE /* ImagePickerManager.swift in Sources */,
 				0856AA7E241F6C1C00BFAE4F /* Endpoints.swift in Sources */,
 				082D6A952439B72F009B3816 /* AuthModel.swift in Sources */,
 				083707E72418C848008A85FB /* DataEntry.swift in Sources */,

@@ -16,6 +16,7 @@ protocol SettingsDelegate: class {
 class SettingsViewController: UITableViewController {
 
     private let adapter = SettingsAdapter()
+    private var imagePickerManager: ImagePicker?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,13 @@ class SettingsViewController: UITableViewController {
         build()
     }
 
-    func exitEvent() -> Void {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
+    }
+
+    private func exitEvent() -> Void {
         let alertController = UIAlertController(title: AppTitle.Alert.warningMessage, message: AppTitle.Alert.logoutMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: AppTitle.Alert.logout, style: .destructive, handler: { (_) in
             self.changeRootToAuthorization()
@@ -36,6 +43,23 @@ class SettingsViewController: UITableViewController {
     }
 }
 
+extension SettingsViewController: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) -> Void {
+
+        if let image = image,
+            let dataImage = image.jpegData(compressionQuality: 0.001) {
+            Request.shared.updateImage(with: dataImage, complitionHandler: { (message) in
+                self.display(with: message, completionHandler: { [weak self] in
+                    self?.tableView.reloadData()
+                })
+            }) { (message) in
+                self.display(with: message, completionHandler: nil)
+            }
+        }
+    }
+}
+
 // MARK: - SettingsDelegate
 
 extension SettingsViewController: SettingsDelegate {
@@ -43,16 +67,18 @@ extension SettingsViewController: SettingsDelegate {
     func didSelected(with item: SettingsItem) {
         switch item {
         case .changableNameItem:
-            let viewController = EditViewController(with: .changeUserName)
+            let viewController = RestoreViewController(with: .changeUsername)
             self.pushWithHidesBottomBar(viewController)
         case .changableEmailItem:
-            let viewController = RestorePasswordViewController(with: .restoreEmail)
+            let viewController = RestoreViewController(with: .restoreEmail)
             self.pushWithHidesBottomBar(viewController)
         case .changablePasswordItem:
-            let viewController = RestorePasswordViewController(with: .changePassword)
+            let viewController = RestoreViewController(with: .changePassword)
             self.navigationController?.pushViewController(viewController, animated: true)
         case .exitItem:
             self.exitEvent()
+        case .headerItem:
+            self.imagePickerManager?.present(from: view)
         default:
             return
         }
@@ -81,6 +107,8 @@ private extension SettingsViewController {
         //navigation item
         navigationItem.title = AppTitle.Settings.title
 
+        //image picker
+        imagePickerManager = ImagePicker.init(presentationController: self, delegate: self)
     }
 
     func buildServices() -> Void {

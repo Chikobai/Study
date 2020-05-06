@@ -11,6 +11,11 @@ import UIKit
 
 class SettingsAdapter: NSObject {
 
+    private var profile: Profile? {
+        get{
+            return StoreManager.shared().profile()
+        }
+    }
     private var items: [SettingsSectionItem] = [.header, .changableProfile, .additional]
     weak var delegate: SettingsDelegate?
 
@@ -51,7 +56,7 @@ extension SettingsAdapter: UITableViewDelegate, UITableViewDataSource {
         let item = items[indexPath.section].cells[indexPath.row]
         switch item {
         case .headerItem:
-            return self.headerItem(with: tableView, indexPath)
+            return self.headerItem(with: tableView, indexPath, item)
         case .changableEmailItem, .changableNameItem:
             return self.changableItemView(with: tableView, indexPath, item)
         default:
@@ -98,7 +103,11 @@ private extension SettingsAdapter {
     ) -> SettingsChangableItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsChangableItem.cellIdentifier(), for: indexPath) as? SettingsChangableItem
-        cell?.textLabel?.text = item.title
+
+        if let profile = profile {
+            cell?.textLabel?.text = (item == .changableEmailItem) ?
+                profile.email : profile.first_name + " " + profile.last_name
+        }
         cell?.detailTextLabel?.text = item.subtitle
 
         return cell!
@@ -106,10 +115,20 @@ private extension SettingsAdapter {
 
     func headerItem(
         with tableView: UITableView,
-        _ indexPath: IndexPath
+        _ indexPath: IndexPath,
+        _ item: SettingsItem
     ) -> SettingsHeaderItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsHeaderItem.cellIdentifier(), for: indexPath) as? SettingsHeaderItem
+        cell?.photoImageView.kf.indicatorType = .activity
+        if let profile = profile {
+            cell?.photoImageView.kf.setImage(with: URL.init(string: profile.image))
+        }
+
+        cell?.changePhotoDidPressed = { [weak self] in
+            self?.delegate?.didSelected(with: item)
+        }
+
         return cell!
     }
 }

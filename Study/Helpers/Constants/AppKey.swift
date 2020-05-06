@@ -24,6 +24,7 @@ class AppKey {
         static let notification             = "NOTIFICATION"
         static let notificationTime         = "NOTIFICATION_TIME"
         static let language                 = "LANGUAGE"
+        static let profile                  = "PROFILE"
     }
 
     class Language {
@@ -46,6 +47,8 @@ class AppKey {
         static let oldPassword     = "old_password"
         static let password        = "new_password"
         static let repeatePassword = "repeate_password"
+        static let lastname = "last_name"
+        static let firstname = "first_name"
     }
 
     class CourseDetails {

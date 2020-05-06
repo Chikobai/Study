@@ -32,6 +32,8 @@ class AppErrorMessage {
         static let passwordChanged = "password_changed_message".localized
         static let restorePassword = "restore_password_message".localized
         static let restoreEmail = "restore_email_message".localized
+        static let nameIsEmpty          = "name_is_empty_message".localized
+        static let surnameIsEmpty       = "surname_is_empty_message".localized
     }
 
     class CourseDetails {

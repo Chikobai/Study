@@ -69,7 +69,7 @@ extension CourseReviewsAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewItem.cellIdentifier(), for: indexPath) as? ReviewItem
-        cell?.configure(with: reviews[indexPath.row].text)
+        cell?.configure(with: reviews[indexPath.row])
         return cell!
     }
 

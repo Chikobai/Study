@@ -1,5 +1,5 @@
 //
-//  RestorePasswordViewModel.swift
+//  RestoreViewModel.swift
 //  Study
 //
 //  Created by I on 2/19/20.
@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
-enum RestorePasswordItem {
+enum RestoreItem {
 
     case phoneInput
+    case nameInput
+    case lastnameInput
     case passwordInput
     case oldPasswordInput
     case emailInput
@@ -21,6 +23,7 @@ enum RestorePasswordItem {
     case restorePasswordButton
     case restoreEmailButton
     case changePasswordButton
+    case changeFullnameButton
     case toOTPButton
     case OTPMessage
     case enterPhoneMessage
@@ -28,42 +31,51 @@ enum RestorePasswordItem {
     case restorePasswordMessage
     case restoreEmailMessage
     case changePasswordMessage
+    case changeFullnameMessage
     case emptySpacer
 
     var placeholder: String?{
         switch self {
         case .phoneInput:
-            return AppTitle.RestorePassword.enterPhoneNumber
+            return AppTitle.Restore.enterPhoneNumber
         case .passwordInput:
-            return AppTitle.RestorePassword.enterPassword
+            return AppTitle.Restore.enterPassword
         case .oldPasswordInput:
-            return AppTitle.RestorePassword.enterOldPassword
+            return AppTitle.Restore.enterOldPassword
         case .repeatePasswordInput:
-            return AppTitle.RestorePassword.repeateEnterPassword
+            return AppTitle.Restore.repeateEnterPassword
         case .sendOTPButton:
-            return AppTitle.RestorePassword.resume
+            return AppTitle.Restore.resume
         case .restorePasswordButton:
-            return AppTitle.RestorePassword.resume
+            return AppTitle.Restore.resume
         case .restoreEmailButton:
-            return AppTitle.RestorePassword.resume
+            return AppTitle.Restore.resume
         case .toOTPButton:
-            return AppTitle.RestorePassword.resume
+            return AppTitle.Restore.resume
         case .restorePasswordMessage:
-            return AppTitle.RestorePassword.restorePasswordMessage
+            return AppTitle.Restore.restorePasswordMessage
         case .restoreEmailMessage:
-            return AppTitle.RestorePassword.restoreEmailMessage
+            return AppTitle.Restore.restoreEmailMessage
         case .OTPMessage:
-            return AppTitle.RestorePassword.OTPMessage
+            return AppTitle.Restore.OTPMessage
         case .enterPhoneMessage:
-            return AppTitle.RestorePassword.enterPhoneMessage
+            return AppTitle.Restore.enterPhoneMessage
         case .changePasswordMessage:
-            return AppTitle.RestorePassword.changePasswordMessage
+            return AppTitle.Restore.changePasswordMessage
         case .changePasswordButton:
-            return AppTitle.RestorePassword.change
+            return AppTitle.Restore.change
         case .enterEmailMessage:
-            return AppTitle.RestorePassword.enterEmailMessage
+            return AppTitle.Restore.enterEmailMessage
         case .emailInput:
-            return AppTitle.RestorePassword.enterEmail
+            return AppTitle.Restore.enterEmail
+        case .changeFullnameButton:
+            return AppTitle.Restore.change
+        case .nameInput:
+            return AppTitle.Restore.enterName
+        case .lastnameInput:
+            return AppTitle.Restore.enterLastname
+        case .changeFullnameMessage:
+            return AppTitle.Restore.changefullnameMessage
         default:
             return nil
         }
@@ -110,13 +122,17 @@ enum RestorePasswordItem {
             return AppKey.Restore.repeatePassword
         case .emailInput:
             return AppKey.Restore.email
+        case .nameInput:
+            return AppKey.Restore.firstname
+        case .lastnameInput:
+            return AppKey.Restore.lastname
         default:
             return "KEY"
         }
     }
 }
 
-enum RestorePasswordSection {
+enum RestoreSection {
 
     case enterPhone
     case enterEmail
@@ -124,23 +140,26 @@ enum RestorePasswordSection {
     case restorePassword
     case restoreEmail
     case changePassword
+    case changeUsername
 
     var title: String?{
         switch self {
         case .otp:
-            return AppTitle.RestorePassword.OTP
+            return AppTitle.Restore.OTP
         case .changePassword:
-            return AppTitle.RestorePassword.changePassword
+            return AppTitle.Restore.changePassword
         case .restorePassword:
-            return AppTitle.RestorePassword.restorePassword
+            return AppTitle.Restore.restorePassword
         case .restoreEmail:
-            return AppTitle.RestorePassword.restoreEmail
+            return AppTitle.Restore.restoreEmail
+        case .changeUsername:
+            return AppTitle.Restore.nameEdit
         default:
             return nil
         }
     }
 
-    var cells: [RestorePasswordItem] {
+    var cells: [RestoreItem] {
         switch self {
         case .enterPhone:
             return [.enterPhoneMessage, .phoneInput, .toOTPButton]
@@ -154,6 +173,8 @@ enum RestorePasswordSection {
             return [.restoreEmailMessage, .emailInput, .restoreEmailButton]
         case .changePassword:
             return [.changePasswordMessage, .oldPasswordInput, .passwordInput, .repeatePasswordInput, .changePasswordButton]
+        case .changeUsername:
+            return [.changeFullnameMessage, .nameInput, .lastnameInput, .changeFullnameButton]
         }
     }
 }

@@ -13,5 +13,6 @@ pod 'InputMask'
 pod 'Cosmos'
 pod 'ReadMoreTextView'
 pod 'Cache', '~> 4.1'
+pod 'Kingfisher', '~> 4.10.1'
 
 end

@@ -11,8 +11,10 @@ import UIKit
 
 class SettingsHeaderItem: UITableViewCell {
 
-    private lazy var photoImageView: UIImageView = UIImageView()
-    private lazy var nameLabelView: UILabel = UILabel()
+    var changePhotoDidPressed: (()->())?
+
+    private(set) lazy var photoImageView: UIImageView = UIImageView()
+    private lazy var changeButtonView: UIButton = UIButton()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,10 +35,22 @@ class SettingsHeaderItem: UITableViewCell {
 
 private extension SettingsHeaderItem {
 
+    @objc
+    func changeButtonPressed() -> Void {
+
+        changePhotoDidPressed?()
+    }
+}
+
+// MARK: - Builds
+
+private extension SettingsHeaderItem {
+
     func build() -> Void {
 
         buildViews()
         buildLayouts()
+        buildTargets()
     }
 
     func buildViews() -> Void {
@@ -50,28 +64,32 @@ private extension SettingsHeaderItem {
         photoImageView.layer.cornerRadius = 42.byWidth()
         photoImageView.clipsToBounds = true
         photoImageView.contentMode = .scaleAspectFill
-        photoImageView.image = #imageLiteral(resourceName: "photo")
+        photoImageView.alpha = 0.5
 
-        //name label view
-        nameLabelView.text = "Aibek S."
-        nameLabelView.font = .systemFont(ofSize: 20.byWidth())
-        nameLabelView.textColor = AppColor.main.uiColor
+        //change button view
+        changeButtonView.setBackgroundImage(#imageLiteral(resourceName: "technology"), for: .normal)
+        changeButtonView.backgroundColor = .clear
     }
 
     func buildLayouts() -> Void {
 
-        addSubviews(with: [photoImageView, nameLabelView])
+        addSubviews(with: [photoImageView, changeButtonView])
         photoImageView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(15.byWidth())
-            make.bottom.equalTo(-15.byWidth())
-            make.width.height.equalTo(85.byWidth())
+            make.centerX.equalToSuperview()
+            make.top.equalTo(15.byWidth())
+            make.bottom.equalTo(-25.byWidth())
+            make.width.height.equalTo(90.byWidth())
         }
 
-        nameLabelView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.left.equalTo(photoImageView.snp.right).offset(30.byWidth())
-            make.right.equalTo(-30.byWidth())
+        changeButtonView.snp.makeConstraints { (make) in
+            make.center.equalTo(photoImageView)
+            make.height.width.equalTo(30.byWidth())
         }
+    }
+
+    func buildTargets() -> Void {
+
+        changeButtonView.addTarget(self, action: #selector(changeButtonPressed), for: .touchUpInside)
     }
 }
 

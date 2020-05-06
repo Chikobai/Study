@@ -1,32 +1,46 @@
 //
-//  EditAdapter.swift
+//  RestoreAdapter.swift
 //  Study
 //
-//  Created by I on 3/12/20.
+//  Created by I on 2/19/20.
 //  Copyright © 2020 Shyngys. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class EditAdapter: NSObject {
+class RestoreAdapter: NSObject {
 
-    private var items: [EditSection] = []
-    weak var delegate: EditDelegate?
+    private var items: [RestoreSection] = []
+    weak var delegate: RestoreDelegate?
 
-    init(with type: EditSection) {
+    init(with type: RestoreSection) {
         items = [type]
         super.init()
     }
 
     deinit {
-        print("DEINIT: EditAdapter")
+        print("DEINIT: RestoreAdapter")
+    }
+
+    func startLoading() -> Void {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.init(.startLoading), object: nil)
+        }
+    }
+
+    func stopLoading() -> Void {
+        UIApplication.shared.endIgnoringInteractionEvents()
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.init(.stopLoading), object: nil)
+        }
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension EditAdapter: UITableViewDelegate, UITableViewDataSource {
+extension RestoreAdapter: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
@@ -47,11 +61,13 @@ extension EditAdapter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = items[indexPath.section].cells[indexPath.row]
         switch type {
-        case .phoneInput, .nameInput:
+        case .passwordInput, .repeatePasswordInput, .oldPasswordInput, .phoneInput, .emailInput, .nameInput, .lastnameInput:
             return self.floatingInputItemView(with: tableView, indexPath, type)
-        case .changeButton, .resumeButton:
+        case .restorePasswordButton, .restoreEmailButton, .toOTPButton, .sendOTPButton, .changePasswordButton, .changeFullnameButton:
             return self.filledButtonItemView(with: tableView, indexPath, type)
-        case .nameMessageItem, .phoneMessageItem:
+        case .otpInput:
+            return self.otpInputItemView(with: tableView, indexPath)
+        case .OTPMessage, .enterPhoneMessage, .restorePasswordMessage, .restoreEmailMessage, .changePasswordMessage, .enterEmailMessage, .changeFullnameMessage:
             return self.messageItemView(with: tableView, indexPath, type)
         case .emptySpacer:
             return self.emptyItemView(with: tableView, indexPath)
@@ -67,13 +83,13 @@ extension EditAdapter: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Custom Items
 
-private extension EditAdapter {
+private extension RestoreAdapter {
 
     func filledButtonItemView(
         with tableView: UITableView,
         _ indexPath: IndexPath,
-        _ type: EditItem
-    ) -> FilledButtonItem {
+        _ type: RestoreItem
+        ) -> FilledButtonItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: FilledButtonItem.cellIdentifier(), for: indexPath) as? FilledButtonItem
         cell?.configure(with: type.placeholder)
@@ -86,8 +102,8 @@ private extension EditAdapter {
     func floatingInputItemView(
         with tableView: UITableView,
         _ indexPath: IndexPath,
-        _ type: EditItem
-    ) -> FloatingTextFieldItem {
+        _ type: RestoreItem
+        ) -> FloatingTextFieldItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: FloatingTextFieldItem.cellIdentifier(), for: indexPath) as? FloatingTextFieldItem
         cell?.configure(with: type)
@@ -97,27 +113,33 @@ private extension EditAdapter {
         return cell!
     }
 
+    func otpInputItemView(
+        with tableView: UITableView,
+        _ indexPath: IndexPath
+        ) -> OTPItem {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: OTPItem.cellIdentifier(), for: indexPath) as? OTPItem
+        return cell!
+    }
 
     func messageItemView(
         with tableView: UITableView,
         _ indexPath: IndexPath,
-        _ type: EditItem
-    ) -> UITableViewCell {
+        _ type: RestoreItem
+        ) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageItem.cellIdentifier(), for: indexPath) as? MessageItem
-        cell?.configure(with: type.placeholder, .left)
+        cell?.configure(with: type.placeholder, (type == .OTPMessage) ? .center : .left)
         return cell!
     }
 
     func emptyItemView(
         with tableView: UITableView,
         _ indexPath: IndexPath
-    ) -> UITableViewCell {
+        ) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.cellIdentifier(), for: indexPath)
         cell.selectionStyle = .none
         return cell
     }
 }
-
-

@@ -60,6 +60,7 @@ private extension CourseRatingView {
 
         //rating view
         ratingView.settings.filledImage = #imageLiteral(resourceName: "star")
+        ratingView.settings.emptyImage = #imageLiteral(resourceName: "unstart")
         ratingView.settings.updateOnTouch = false
         ratingView.settings.starSize = Double(12.byWidth())
     }

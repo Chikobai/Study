@@ -37,8 +37,10 @@ class ReviewItem: UITableViewCell {
         ratingView.prepareForReuse()
     }
 
-    func configure(with comment: String) -> Void {
-        commentView.text = comment
+    func configure(with comment: Review) -> Void {
+        commentView.text = comment.text
+        ratingView.rating = Double(comment.rating) ?? 0.0
+        reviewerNameView.text = comment.reviewer.first_name + " " + comment.reviewer.last_name
     }
 }
 
@@ -71,7 +73,6 @@ private extension ReviewItem {
         //reviewer name view
         reviewerNameView.font = .systemFont(ofSize: 13.byWidth())
         reviewerNameView.textColor = AppColor.black.uiColor
-        reviewerNameView.text = "Aibow Shadibek"
 
         //comment view
         commentView.font = .systemFont(ofSize: 13.byWidth())
@@ -83,7 +84,6 @@ private extension ReviewItem {
         ratingView.settings.emptyImage = #imageLiteral(resourceName: "unstart")
         ratingView.settings.updateOnTouch = false
         ratingView.settings.starSize = Double(12.byWidth())
-        ratingView.rating = 4.5
     }
 
     func buildLayout() -> Void {

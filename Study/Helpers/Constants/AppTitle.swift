@@ -30,7 +30,7 @@ class AppTitle {
         static let loginWithEmailMessage = "login_with_email_message_title".localized
     }
 
-    class RestorePassword {
+    class Restore {
 
         static let changePassword = "change_password_title".localized
         static let restorePassword = "restore_password_title".localized
@@ -52,6 +52,10 @@ class AppTitle {
         static let restorePasswordMessage = "restore_password_message_title".localized
         static let restoreEmailMessage = "restore_email_message_title".localized
         static let changePasswordMessage = "change_password_message_title".localized
+        static let nameEdit: String = "name_edit_title".localized
+        static let changefullnameMessage = "change_name_message_title".localized
+        static let enterName = "enter_name_title".localized
+        static let enterLastname = "enter_lastname_title".localized
     }
 
     class Main {
@@ -110,18 +114,6 @@ class AppTitle {
         static let notification: String = "notifications_title".localized
         static let notificationTime: String = "notifications_time_title".localized
         static let notificationSubtitle: String = "notifications_subtitle".localized
-    }
-
-    class Edit {
-        
-        static let nameEdit: String = "name_edit_title".localized
-        static let phoneEdit: String = "phone_edit_title".localized
-        static let enterPhoneNumber = "enter_phone_number_title".localized
-        static let changeNameMessage = "change_name_message_title".localized
-        static let changePhoneMessage = "change_phone_message_title".localized
-        static let enterName = "enter_name_title".localized
-        static let change = "confirm_title".localized
-        static let resume = "resume_title".localized
     }
 
     class Language {

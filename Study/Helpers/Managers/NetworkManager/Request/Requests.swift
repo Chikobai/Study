@@ -306,7 +306,43 @@ extension  Request {
 //  MARK: PUT REQUESTS
 extension Request {
 
+    func update(
+        with params: [String: String],
+        complitionHandler: @escaping ((String)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.update(token: token, params: params)
+            networkManager.makeRequest(endpoint: endpoints) { (result: Result<Profile>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let response):
+                    complitionHandler(AppErrorMessage.success)
+                    StoreManager.shared().setProfile(with: response)
+                }
+            }
+        }
+    }
 
+    func updateImage(
+        with image: Data,
+        complitionHandler: @escaping ((String)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+    ) -> Void {
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.updateImage(token: token, image: image)
+            networkManager.makeRequest(endpoint: endpoints) { (result: Result<Profile>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let response):
+                    complitionHandler(AppErrorMessage.success)
+                    StoreManager.shared().setProfile(with: response)
+                }
+            }
+        }
+    }
 }
 
 //  MARK: DELETE
@@ -326,7 +362,7 @@ extension Request {
     ) -> Void {
 
         let endpoints = Endpoints.login(params: params)
-        networkManager.makeRequest(endpoint: endpoints) { (result: Result<Auth>) in
+        networkManager.makeRequest(endpoint: endpoints) { (result: Result<Login>) in
             switch result {
             case .failure(let error, _):
                 complitionHandlerError(error)
@@ -336,6 +372,7 @@ extension Request {
                     return
                 }
                 complitionHandler()
+                StoreManager.shared().setProfile(with: response.profile)
                 StoreManager.shared().setToken(with: response.token)
             }
         }
@@ -478,6 +515,25 @@ extension Request {
                     complitionHandlerError(error)
                 case .success(let response):
                     complitionHandler(response.message ?? AppErrorMessage.success)
+                }
+            }
+        }
+    }
+
+    //  MARK: PROFILE
+
+    func profile(
+        complitionHandler: @escaping ((Profile)->Void),
+        complitionHandlerError: @escaping ((String)->Void)
+        ) -> Void {
+        if let token = StoreManager.shared().token() {
+            let endpoints = Endpoints.profile(token: token)
+            networkManager.makeRequest(endpoint: endpoints) {(result: Result<Profile>) in
+                switch result {
+                case .failure(let error, _):
+                    complitionHandlerError(error)
+                case .success(let response):
+                    complitionHandler(response)
                 }
             }
         }

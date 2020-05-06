@@ -27,8 +27,9 @@ class LoadingBackgroundView: UIView {
             activityIndicator.heightAnchor.constraint(equalToConstant: AppSize.Screen.height)
         ])
 
-        activityIndicator.color = AppColor.main.uiColor
+        activityIndicator.color = AppColor.black.uiColor
         activityIndicator.startAnimating()
+        activityIndicator.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -52,7 +52,7 @@ extension Stylizing where Self: AuthorizationViewController {
     }
 }
 
-extension Stylizing where Self: RestorePasswordViewController {
+extension Stylizing where Self: RestoreViewController {
 
     func build() -> Void {
 

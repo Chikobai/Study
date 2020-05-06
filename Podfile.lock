@@ -4,6 +4,7 @@ PODS:
   - Cosmos (21.0.0)
   - InputMask (5.0.0)
   - IQKeyboardManagerSwift (6.5.5)
+  - Kingfisher (4.10.1)
   - ReadMoreTextView (3.0.1)
   - SnapKit (5.0.1)
 
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - Cosmos
   - InputMask
   - IQKeyboardManagerSwift
+  - Kingfisher (~> 4.10.1)
   - ReadMoreTextView
   - SnapKit
 
@@ -23,6 +25,7 @@ SPEC REPOS:
     - Cosmos
     - InputMask
     - IQKeyboardManagerSwift
+    - Kingfisher
     - ReadMoreTextView
     - SnapKit
 
@@ -32,9 +35,10 @@ SPEC CHECKSUMS:
   Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
   InputMask: 8a10dbc8ac3f94f0a5b4c380424bbe6795c69b16
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   ReadMoreTextView: 19147adf93abce6d7271e14031a00303fe28720d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: f6d685a6e456f3f853c41e5ccaf6fa5e6d3f5ed0
+PODFILE CHECKSUM: 2551942c773e976ccda4da871eb513efe9b56382
 
 COCOAPODS: 1.8.4

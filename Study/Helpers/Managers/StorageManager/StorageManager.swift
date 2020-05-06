@@ -81,4 +81,14 @@ class StoreManager: NSObject {
 
         try? self.storage?.setObject(value, forKey: AppKey.Storage.notificationTime)
     }
+
+    func profile() -> Profile? {
+
+        return try? self.storage?.object(ofType: Profile.self, forKey: AppKey.Storage.profile)
+    }
+
+    func setProfile(with value: Profile) -> Void {
+
+        try? self.storage?.setObject(value, forKey: AppKey.Storage.profile)
+    }
 }

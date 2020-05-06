@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import SnapKit
+import Kingfisher
 import IQKeyboardManagerSwift
 
 @UIApplicationMain

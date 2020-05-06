@@ -8,20 +8,20 @@
 
 import UIKit
 
-protocol RestorePasswordDelegate: class {
+protocol RestoreDelegate: class {
 
-    func didPressed(with type: RestorePasswordItem) -> Void
+    func didPressed(with type: RestoreItem) -> Void
     func didTyped(with key: String, _ typedText: String?, _ id: Int?)
 }
 
-class RestorePasswordViewController: UITableViewController, Stylizing {
+class RestoreViewController: UITableViewController, Stylizing {
 
-    private(set) var adapter: RestorePasswordAdapter?
-    private var validator: ContextRestorePasswordValidator?
+    private(set) var adapter: RestoreAdapter?
+    private var validator: ContextRestoreValidator?
 
-    init(with type: RestorePasswordSection) {
-        adapter = RestorePasswordAdapter.init(with: type)
-        validator = ContextRestorePasswordValidator(with: type)
+    init(with type: RestoreSection) {
+        adapter = RestoreAdapter.init(with: type)
+        validator = ContextRestoreValidator(with: type)
         super.init(nibName: nil, bundle: nil)
         navigationItem.title = type.title
     }
@@ -31,7 +31,7 @@ class RestorePasswordViewController: UITableViewController, Stylizing {
     }
 
     deinit {
-        print("DEINIT: RestorePasswordViewController")
+        print("DEINIT: RestoreViewController")
     }
 
     override func viewDidLoad() {
@@ -47,11 +47,11 @@ class RestorePasswordViewController: UITableViewController, Stylizing {
     }
 }
 
-// MARK: - RestorePasswordDelegate
+// MARK: - RestoreDelegate
 
-extension RestorePasswordViewController: RestorePasswordDelegate {
+extension RestoreViewController: RestoreDelegate {
 
-    func didPressed(with type: RestorePasswordItem) -> Void {
+    func didPressed(with type: RestoreItem) -> Void {
         switch type {
         case .restoreEmailButton:
             restoreEmail()
@@ -59,6 +59,8 @@ extension RestorePasswordViewController: RestorePasswordDelegate {
             restorePassword()
         case .changePasswordButton:
             changePassword()
+        case .changeFullnameButton:
+            changeFullname()
         default:
             return
         }
@@ -72,7 +74,7 @@ extension RestorePasswordViewController: RestorePasswordDelegate {
 
 // MARK: - Requests
 
-private extension RestorePasswordViewController {
+private extension RestoreViewController {
 
     func changePassword() -> Void {
         validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
@@ -88,6 +90,23 @@ private extension RestorePasswordViewController {
             })
         }, complitionOfError: { [weak self] (message) in
             self?.display(with: message, completionHandler: nil)
+        })
+    }
+
+    func changeFullname() -> Void {
+        validator?.executeValidation(complitionOfSuccess: { [weak self] (params) in
+            self?.adapter?.startLoading()
+            Request.shared.update(with: params, complitionHandler: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: {
+                    self?.navigationController?.popViewController(animated: true)
+                })
+            }, complitionHandlerError: { (message) in
+                self?.adapter?.stopLoading()
+                self?.display(with: message, completionHandler: nil)
+            })
+        }, complitionOfError: { [weak self] (message) in
+                self?.display(with: message, completionHandler: nil)
         })
     }
 

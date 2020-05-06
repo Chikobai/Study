@@ -15,10 +15,7 @@ protocol ProfileDelegate: class {
 
 class ProfileViewController: UITableViewController {
 
-    private lazy var editBarButtonItemView: UIBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "pencil 1"), style: .plain, target: self, action: #selector(editBarButtonDidPressed))
-    private lazy var settingsBarButtonItemView: UIBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "wheel 1"), style: .plain, target: self, action: #selector(settingsBarButtonDidPressed))
     private lazy var headerView: ProfileHeaderView = ProfileHeaderView()
-
     private let adapter: ProfileAdapter = ProfileAdapter()
 
     override func viewDidLoad() {
@@ -30,7 +27,7 @@ class ProfileViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-
+        fetchProfile()
     }
 
     deinit {
@@ -38,12 +35,9 @@ class ProfileViewController: UITableViewController {
     }
 }
 
+// MARK: - Targets
+
 private extension ProfileViewController {
-
-    @objc
-    func editBarButtonDidPressed() -> Void {
-
-    }
 
     @objc
     func settingsBarButtonDidPressed() -> Void {
@@ -52,6 +46,8 @@ private extension ProfileViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
+// MARK: - ProfileDelegate
 
 extension ProfileViewController: ProfileDelegate {
 
@@ -66,6 +62,20 @@ extension ProfileViewController: ProfileDelegate {
     }
 }
 
+// MARK: - Requests
+
+private extension ProfileViewController {
+
+    func fetchProfile() -> Void {
+        Request.shared.profile(complitionHandler: { (profile) in
+            self.headerView.setProfileObject(with: profile)
+            StoreManager.shared().setProfile(with: profile)
+        }) { (message) in
+            return
+        }
+    }
+}
+
 // MARK: - Builds
 
 private extension ProfileViewController {
@@ -73,7 +83,6 @@ private extension ProfileViewController {
     func build() -> Void {
 
         buildViews()
-        buildLayouts()
         buildServices()
     }
 
@@ -83,7 +92,10 @@ private extension ProfileViewController {
         view.backgroundColor = AppColor.lightGray.uiColor.withAlphaComponent(0.5)
 
         //header view
-        headerView.frame.size.height = 230.0
+        headerView.frame.size.height = 210.byWidth()
+        if let profile = StoreManager.shared().profile() {
+            headerView.setProfileObject(with: profile)
+        }
 
         //table view
         tableView.tableHeaderView = headerView
@@ -98,18 +110,15 @@ private extension ProfileViewController {
         self.navigationController?.navigationBar.tintColor = AppColor.main.uiColor
 
         //navigation items
-        navigationItem.rightBarButtonItems = [settingsBarButtonItemView, editBarButtonItemView]
-    }
-
-    func buildLayouts() -> Void {
-
+        navigationItem.title = "Профиль"
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "wheel 1"), style: .plain, target: self, action: #selector(settingsBarButtonDidPressed))
     }
 
     func buildServices() -> Void {
 
-        adapter.delegate = self
         tableView.delegate = adapter
         tableView.dataSource = adapter
+        adapter.delegate = self
         tableView.register(ProfileStatisticsItem.self, forCellReuseIdentifier: ProfileStatisticsItem.cellIdentifier())
         tableView.register(ProfileNotificationItem.self, forCellReuseIdentifier: ProfileNotificationItem.cellIdentifier())
         tableView.register(ProfileCertificateItem.self, forCellReuseIdentifier: ProfileCertificateItem.cellIdentifier())

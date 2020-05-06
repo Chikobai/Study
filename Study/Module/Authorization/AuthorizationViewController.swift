@@ -59,7 +59,7 @@ extension AuthorizationViewController: AuthorizationDelegate {
         case .toLoginButton:
             self.navigationController?.popViewController(animated: true)
         case .toRestorePasswordButton:
-            let viewController = RestorePasswordViewController(with: .restorePassword)
+            let viewController = RestoreViewController(with: .restorePassword)
             self.navigationController?.pushViewController(viewController, animated: true)
         case .loginButton:
             self.login()

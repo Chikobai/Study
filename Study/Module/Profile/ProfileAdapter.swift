@@ -87,7 +87,6 @@ private extension ProfileAdapter {
     func statisticsItem(with tableView: UITableView, _ indexPath: IndexPath) -> ProfileStatisticsItem {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileStatisticsItem.cellIdentifier(), for: indexPath) as? ProfileStatisticsItem
-//        cell?.backgroundColor = .red
         return cell!
     }
 

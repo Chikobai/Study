@@ -27,8 +27,12 @@
 "login_with_email_message_title" = "Жалғастыру үшін электрондық пошта мен құпия сөзді енгізіңіз";
 
 
-// MARK: - Restore password
+// MARK: - Restore
 
+"name_edit_title" = "Атын өзгерту";
+"enter_name_title" = "Атыңызды енгізіңіз";
+"enter_lastname_title" = "Тегіңізды енгізіңіз";
+"change_name_message_title" = "Пайдаланушы атын-жөнін өзгерту үшін атыңызды және тегіңізді енгізіңіз";
 "change_password_title" = "Құпия сөзді өзгерту";
 "restore_password_title" = "Құпия сөзді ұмыттыңыз ба?";
 "restore_email_title" = "Эл.поштаны өзгерту";
@@ -95,12 +99,9 @@
 
 // MARK: - Edit
 
-"name_edit_title" = "Атын өзгерту";
 "phone_edit_title" = "Нөмірді өзгерту";
 "enter_phone_number_title" = "Нөміріңізді енгізіңіз";
-"change_name_message_title" = "Пайдаланушы атын өзгерту үшін атыңызды енгізіңіз";
 "change_phone_message_title" = "Нөмірді өзгерту үшін нөміріңізді енгізіңіз";
-"enter_name_title" = "Атыңызды енгізіңіз";
 "confirm_title" = "Растау";
 
 // MARK: - Languages

@@ -12,8 +12,6 @@ class ProfileHeaderView: UIView {
 
     private lazy var photoImageView: UIImageView = UIImageView()
     private lazy var userNameLabelView: UILabel = UILabel()
-    private lazy var typeOfUserLabelView: UILabel = UILabel()
-    private lazy var phoneNumberLabelView: UILabel = UILabel()
     private lazy var emailLabelView: UILabel = UILabel()
 
     override init(frame: CGRect) {
@@ -28,6 +26,13 @@ class ProfileHeaderView: UIView {
 
     deinit {
         print("DEINIT: ProfileHeaderView")
+    }
+
+    func setProfileObject(with object: Profile) -> Void {
+        self.userNameLabelView.text = object.first_name + " " + object.last_name
+        self.emailLabelView.text = object.email
+        self.photoImageView.kf.indicatorType = .activity
+        self.photoImageView.kf.setImage(with: URL(string: object.image))
     }
 }
 
@@ -49,28 +54,13 @@ private extension ProfileHeaderView {
         //photo image view
         photoImageView.layer.cornerRadius = 55.byWidth()
         photoImageView.clipsToBounds = true
-        photoImageView.image = #imageLiteral(resourceName: "photo")
         photoImageView.contentMode = .scaleAspectFill
 
         //user name label view
-        userNameLabelView.text = "Jhon Jones"
         userNameLabelView.textAlignment = .center
         userNameLabelView.font = .boldSystemFont(ofSize: 18.byWidth())
 
-        //type of user label view
-        typeOfUserLabelView.text = "student"
-        typeOfUserLabelView.textAlignment = .center
-        typeOfUserLabelView.font = .systemFont(ofSize: 14.byWidth())
-        typeOfUserLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-
-        //phone number label view
-        phoneNumberLabelView.text = "+7(747)377-80-99"
-        phoneNumberLabelView.textAlignment = .center
-        phoneNumberLabelView.font = .systemFont(ofSize: 13.byWidth())
-        phoneNumberLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
-
         //email label view
-        emailLabelView.text = "160107084@stu.sdu.edu.kz"
         emailLabelView.textAlignment = .center
         emailLabelView.font = .systemFont(ofSize: 13.byWidth())
         emailLabelView.textColor = AppColor.black.uiColor.withAlphaComponent(0.5)
@@ -78,30 +68,20 @@ private extension ProfileHeaderView {
 
     func buildLayouts() -> Void {
 
-        addSubviews(with: [userNameLabelView, typeOfUserLabelView, photoImageView, phoneNumberLabelView, emailLabelView])
+        addSubviews(with: [userNameLabelView, photoImageView, emailLabelView])
         userNameLabelView.snp.makeConstraints { (make) in
             make.top.equalTo(10.byWidth())
             make.centerX.equalToSuperview()
         }
 
-        typeOfUserLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(userNameLabelView.snp.bottom)
-            make.centerX.equalToSuperview()
-        }
-
         photoImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(typeOfUserLabelView.snp.bottom).offset(20.byWidth())
+            make.top.equalTo(userNameLabelView.snp.bottom).offset(20.byWidth())
             make.centerX.equalToSuperview()
             make.height.width.equalTo(110.byWidth())
         }
 
-        phoneNumberLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(photoImageView.snp.bottom).offset(10.byWidth())
-            make.centerX.equalToSuperview()
-        }
-
         emailLabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(phoneNumberLabelView.snp.bottom)
+            make.top.equalTo(photoImageView.snp.bottom).offset(20.byWidth())
             make.centerX.equalToSuperview()
         }
     }

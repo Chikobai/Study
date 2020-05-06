@@ -1,5 +1,5 @@
 //
-//  RestorePasswordValidator.swift
+//  RestoreValidator.swift
 //  Study
 //
 //  Created by I on 2/19/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RestorePasswordValidatorStrategy {
+protocol RestoreValidatorStrategy {
 
     func isValid(
         with params: [String : String],
@@ -18,7 +18,7 @@ protocol RestorePasswordValidatorStrategy {
 }
 
 
-final class RestoreStrategy: RestorePasswordValidatorStrategy{
+final class RestoreStrategy: RestoreValidatorStrategy{
 
     func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String : String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
 
@@ -32,8 +32,28 @@ final class RestoreStrategy: RestorePasswordValidatorStrategy{
     }
 }
 
+final class ChangeFullnameStrategy: RestoreValidatorStrategy{
 
-final class ChangePasswordStrategy: RestorePasswordValidatorStrategy{
+    func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String : String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
+
+        if let name = params[AppKey.Restore.firstname],
+            name.removingWhitespaces().isEmpty == false {
+            if let lastname = params[AppKey.Restore.lastname],
+                lastname.removingWhitespaces().isEmpty == false {
+                complitionOfSuccess(params)
+            }
+            else{
+                complitionOfError(AppErrorMessage.Restore.surnameIsEmpty)
+            }
+        }
+        else {
+            complitionOfError(AppErrorMessage.Restore.nameIsEmpty)
+        }
+    }
+}
+
+
+final class ChangePasswordStrategy: RestoreValidatorStrategy{
 
     func isValid(with params: [String : String], complitionOfSuccess: @escaping (([String : String]) -> ()), complitionOfError: @escaping ((String) -> ())) {
 
@@ -59,16 +79,18 @@ final class ChangePasswordStrategy: RestorePasswordValidatorStrategy{
     }
 }
 
-final class ContextRestorePasswordValidator {
+final class ContextRestoreValidator {
 
     private var params: [String:String] = [:]
     private var typedText: [String:String] = [:]
-    private var context: RestorePasswordValidatorStrategy?
+    private var context: RestoreValidatorStrategy?
 
-    init(with type: RestorePasswordSection) {
+    init(with type: RestoreSection) {
         switch type {
         case .changePassword:
             self.context = ChangePasswordStrategy()
+        case .changeUsername:
+            self.context = ChangeFullnameStrategy()
         default:
             self.context = RestoreStrategy()
         }

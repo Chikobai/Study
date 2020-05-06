@@ -119,6 +119,13 @@ extension ReviewViewController {
         //navigation view
         navigationItem.title = AppTitle.CourseDetails.writeAReview
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel"), style: .plain, target: self, action: #selector(cancelPressed))
+
+        //configure
+        if let profile = StoreManager.shared().profile() {
+            usernameLabelView.text = profile.first_name + " " + profile.last_name
+            profileImageView.kf.indicatorType = .activity
+            profileImageView.kf.setImage(with: URL.init(string: profile.image))
+        }
     }
 
     func buildLayouts() -> Void {
