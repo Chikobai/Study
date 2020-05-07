@@ -33,7 +33,7 @@ extension CategoryViewController {
         var viewControllers = [UIViewController]()
         var viewPagerTabs = [ViewPagerTab]()
         categories.forEach({ (category) in
-            let pagerTab = ViewPagerTab(title: category.name_kz)
+            let pagerTab = ViewPagerTab(title: StoreManager.shared().language().key == "ru" ? category.name_ru : category.name_kz)
             viewPagerTabs.append(pagerTab)
             let viewController = ByCategoryViewController(with: category.id)
             viewControllers.append(viewController)

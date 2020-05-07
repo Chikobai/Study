@@ -108,6 +108,7 @@
 
 "kazakh_title" = "Қазақша";
 "russian_title" = "Орысша";
+"language_changed_successfully" = "Қосымша келесі рет іске қосылған кезде тіл өзгереді";
 
 // MARK: - Error Message
 "review_is_empty" = "Пікір бос болмау керек.";

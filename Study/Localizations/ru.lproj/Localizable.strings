@@ -106,6 +106,7 @@
 
 "kazakh_title" = "Казахский";
 "russian_title" = "Русский";
+"language_changed_successfully" = "Язык изменится при следующем запуске приложения";
 
 // MARK: - Error Message
 "review_is_empty" = "Поле отзыва не должно быть пустым.";

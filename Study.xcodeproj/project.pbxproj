@@ -44,6 +44,7 @@
 		083081582413963000947567 /* ProfileCertificateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083081572413963000947567 /* ProfileCertificateItem.swift */; };
 		0830815A2413974F00947567 /* CertificateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083081592413974F00947567 /* CertificateItem.swift */; };
 		0830815C241399DD00947567 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830815B241399DD00947567 /* UICollectionViewCell+Extensions.swift */; };
+		0833D6D324644E220079198D /* SettingsLanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833D6D224644E220079198D /* SettingsLanguageItem.swift */; };
 		083707E32418C848008A85FB /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DB2418C843008A85FB /* CALayerExtension.swift */; };
 		083707E42418C848008A85FB /* CustomSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DC2418C843008A85FB /* CustomSegments.swift */; };
 		083707E52418C848008A85FB /* BasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083707DD2418C844008A85FB /* BasicBarChart.swift */; };
@@ -192,6 +193,7 @@
 		083081572413963000947567 /* ProfileCertificateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCertificateItem.swift; sourceTree = "<group>"; };
 		083081592413974F00947567 /* CertificateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateItem.swift; sourceTree = "<group>"; };
 		0830815B241399DD00947567 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		0833D6D224644E220079198D /* SettingsLanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLanguageItem.swift; sourceTree = "<group>"; };
 		083707DB2418C843008A85FB /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		083707DC2418C843008A85FB /* CustomSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegments.swift; sourceTree = "<group>"; };
 		083707DD2418C844008A85FB /* BasicBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicBarChart.swift; path = "../New Group/BasicBarChart.swift"; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				08A937E62410D80F009C50C3 /* SettingsChangableItem.swift */,
 				08E1D40823FBBCBB006E3042 /* FloatingTextFieldItem.swift */,
 				08D551532454503F002DC8E7 /* CourseInfoSkillTitleItem.swift */,
+				0833D6D224644E220079198D /* SettingsLanguageItem.swift */,
 			);
 			path = "Table view";
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				08C981AA2423BDDD00B2A802 /* GeneralPaginationModel.swift in Sources */,
 				08E1D42023FC0C6A006E3042 /* UIView+Extensions.swift in Sources */,
 				0840503523FE422900A084A4 /* CourseModulesViewController.swift in Sources */,
+				0833D6D324644E220079198D /* SettingsLanguageItem.swift in Sources */,
 				08483D65240B655000B40B1F /* ModuleExpandableHeaderView.swift in Sources */,
 				08483D6D240B8E1A00B40B1F /* CourseRatingView.swift in Sources */,
 				0840502823FCEFE500A084A4 /* RestoreAdapter.swift in Sources */,

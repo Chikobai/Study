@@ -40,4 +40,9 @@ class AppErrorMessage {
 
         static let reviewIsEmpty = "review_is_empty".localized
     }
+
+    class Language {
+
+        static let success = "language_changed_successfully".localized
+    }
 }

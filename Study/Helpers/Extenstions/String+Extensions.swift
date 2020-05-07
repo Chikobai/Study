@@ -12,13 +12,10 @@ import UIKit
 extension String {
 
     var localized: String {
-        if let languageCode = Locale.current.languageCode {
-            let resource = (languageCode == "ru") ? "ru" : "kk-KZ"
-            let path = Bundle.main.path(forResource: resource, ofType: "lproj")
-            let bundle = Bundle(path: path!)
-            return (bundle?.localizedString(forKey: self, value: nil, table: nil))!
-        }
-        return ""
+        let language = StoreManager.shared().language()
+        let path = Bundle.main.path(forResource: language.key, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        return (bundle?.localizedString(forKey: self, value: nil, table: nil))!
     }
     
 

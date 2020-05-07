@@ -12,4 +12,5 @@ struct Language: Codable {
 
     let key: String
     let title: String
+    let keyOfTitle: String 
 }

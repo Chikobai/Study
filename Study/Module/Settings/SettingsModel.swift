@@ -60,7 +60,7 @@ enum SettingsSectionItem {
         case .header:
             return [.headerItem]
         case .changableProfile:
-            return [.changableNameItem, .changableEmailItem, .changablePasswordItem]
+            return [.changableNameItem, .changableEmailItem, .changablePasswordItem, .languagePickerItem]
         case .additional:
             return [.aboutApplicationItem, .helpItem, .exitItem]
         }

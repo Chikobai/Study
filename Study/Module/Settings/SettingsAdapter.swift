@@ -59,6 +59,8 @@ extension SettingsAdapter: UITableViewDelegate, UITableViewDataSource {
             return self.headerItem(with: tableView, indexPath, item)
         case .changableEmailItem, .changableNameItem:
             return self.changableItemView(with: tableView, indexPath, item)
+        case .languagePickerItem:
+            return self.languageItem(with: tableView, indexPath, item)
         default:
             return self.defaultItemView(with: tableView, indexPath, item)
         }
@@ -129,6 +131,23 @@ private extension SettingsAdapter {
             self?.delegate?.didSelected(with: item)
         }
 
+        return cell!
+    }
+
+
+    func languageItem(
+        with tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ item: SettingsItem
+        ) -> SettingsLanguageItem {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsLanguageItem.cellIdentifier(), for: indexPath) as? SettingsLanguageItem
+        cell?.textLabel?.text = item.title
+
+        cell?.languageChanged = { [weak self] in
+            self?.delegate?.languageChanged(with: AppErrorMessage.Language.success)
+        }
+        
         return cell!
     }
 }

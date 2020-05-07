@@ -11,6 +11,7 @@ import UIKit
 protocol SettingsDelegate: class {
 
     func didSelected(with item: SettingsItem) -> Void
+    func languageChanged(with message: String) -> Void
 }
 
 class SettingsViewController: UITableViewController {
@@ -83,6 +84,10 @@ extension SettingsViewController: SettingsDelegate {
             return
         }
     }
+
+    func languageChanged(with message: String) -> Void {
+        self.display(with: message, completionHandler: nil)
+    }
 }
 
 // MARK: - Builds
@@ -119,5 +124,6 @@ private extension SettingsViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.cellIdentifier())
         tableView.register(SettingsChangableItem.self, forCellReuseIdentifier: SettingsChangableItem.cellIdentifier())
         tableView.register(SettingsHeaderItem.self, forCellReuseIdentifier: SettingsHeaderItem.cellIdentifier())
+        tableView.register(SettingsLanguageItem.self, forCellReuseIdentifier: SettingsLanguageItem.cellIdentifier())
     }
 }

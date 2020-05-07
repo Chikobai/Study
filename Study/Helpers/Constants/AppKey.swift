@@ -31,6 +31,10 @@ class AppKey {
 
         static let kazakh     = "kk-KZ"
         static let russian    = "ru"
+        static let kazakh_title    = "kazakh_title"
+        static let russian_title    = "russian_title"
+
+
     }
 
     class Authorization {
